@@ -1,0 +1,386 @@
+/* Objektor – Betriebsdokumentation
+   Gestaltung: technische Anlagenkennzeichnung als Leitmotiv */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root{
+  --tiefe:      #14181b;   /* Anthrazit, Gehäuse */
+  --papier:     #eef1f2;   /* kühles Papierweiß */
+  --papier-tief:#dfe4e6;
+  --petrol:     #0e5c63;   /* Akzent, technisches Petrol */
+  --petrol-hell:#14818b;
+  --plakette:   #e8b21c;   /* Prüfplakettengelb, sehr sparsam */
+  --schrift:    #14181b;
+  --gedaempft:  #5a666c;
+  --linie:      #c8d1d4;
+
+  --display: 'Archivo', system-ui, sans-serif;
+  --body: 'Source Sans 3', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation:none !important; transition:none !important;}
+}
+
+body{
+  margin:0;
+  background:var(--papier);
+  color:var(--schrift);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.huelle{
+  max-width:1060px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf{
+  border-bottom:1px solid var(--linie);
+  background:var(--papier);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.kopf .huelle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:68px;
+  gap:24px;
+}
+.wortmarke{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:22px;
+  letter-spacing:-.4px;
+  text-decoration:none;
+  color:var(--schrift);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.wortmarke::before{
+  content:"";
+  width:13px;
+  height:13px;
+  background:var(--petrol);
+  border-radius:2px;
+  flex:none;
+}
+.kopf nav{
+  display:flex;
+  gap:26px;
+  font-family:var(--mono);
+  font-size:13px;
+}
+.kopf nav a{
+  color:var(--gedaempft);
+  text-decoration:none;
+  padding-bottom:2px;
+  border-bottom:1px solid transparent;
+}
+.kopf nav a:hover, .kopf nav a:focus-visible{
+  color:var(--petrol);
+  border-bottom-color:var(--petrol);
+}
+
+/* ---------- Auftakt ---------- */
+
+.auftakt{
+  padding:76px 0 68px;
+  border-bottom:1px solid var(--linie);
+}
+.auftakt .huelle{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:56px;
+  align-items:center;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  color:var(--petrol);
+  margin:0 0 18px;
+}
+h1{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(34px, 5vw, 52px);
+  line-height:1.08;
+  letter-spacing:-1.2px;
+  margin:0 0 20px;
+}
+.vorspann{
+  font-size:19px;
+  color:var(--gedaempft);
+  margin:0 0 28px;
+  max-width:44ch;
+}
+
+/* Signaturelement: Typenschild */
+
+.typenschild{
+  background:var(--tiefe);
+  color:var(--papier);
+  border-radius:4px;
+  padding:26px 28px 22px;
+  font-family:var(--mono);
+  font-size:13px;
+  box-shadow:0 18px 44px rgba(20,24,27,.22);
+  position:relative;
+}
+.typenschild::before,
+.typenschild::after{
+  content:"";
+  position:absolute;
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#3b464c;
+  top:13px;
+}
+.typenschild::before{left:13px;}
+.typenschild::after{right:13px;}
+.ts-titel{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:2.6px;
+  text-transform:uppercase;
+  color:var(--papier);
+  padding-bottom:14px;
+  margin-bottom:16px;
+  border-bottom:1px solid #333e44;
+  text-align:center;
+}
+.ts-zeile{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding:7px 0;
+  border-bottom:1px dotted #333e44;
+}
+.ts-zeile:last-of-type{border-bottom:none;}
+.ts-feld{color:#8a979e; letter-spacing:.4px;}
+.ts-wert{color:var(--papier); text-align:right;}
+.ts-status{
+  margin-top:16px;
+  padding:9px 12px;
+  background:var(--plakette);
+  color:var(--tiefe);
+  border-radius:3px;
+  font-weight:500;
+  letter-spacing:1px;
+  text-align:center;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+/* ---------- Schaltflächen ---------- */
+
+.knopf{
+  display:inline-block;
+  background:var(--petrol);
+  color:#fff;
+  text-decoration:none;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:16px;
+  padding:13px 26px;
+  border-radius:3px;
+}
+.knopf:hover, .knopf:focus-visible{background:var(--petrol-hell);}
+.knopf.leise{
+  background:transparent;
+  color:var(--petrol);
+  border:1px solid var(--petrol);
+  margin-left:10px;
+}
+.knopf.leise:hover{background:var(--petrol); color:#fff;}
+
+/* ---------- Abschnitte ---------- */
+
+section{padding:64px 0;}
+section + section{border-top:1px solid var(--linie);}
+
+h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:30px;
+  letter-spacing:-.6px;
+  margin:0 0 10px;
+}
+.abschnitt-vorspann{
+  color:var(--gedaempft);
+  max-width:56ch;
+  margin:0 0 38px;
+}
+
+/* Leistungsliste im Stil eines Prüfprotokolls */
+
+.protokoll{
+  border-top:1px solid var(--linie);
+}
+.posten{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:24px;
+  padding:20px 0;
+  border-bottom:1px solid var(--linie);
+  align-items:start;
+}
+.posten-nr{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--petrol);
+  padding-top:3px;
+}
+.posten h3{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:19px;
+  margin:0 0 3px;
+}
+.posten p{
+  margin:0;
+  color:var(--gedaempft);
+  font-size:16px;
+  max-width:62ch;
+}
+
+/* Referenz */
+
+.referenz{
+  background:var(--tiefe);
+  color:var(--papier);
+}
+.referenz h2{color:var(--papier);}
+.referenz-zitat{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(21px, 2.7vw, 28px);
+  line-height:1.38;
+  letter-spacing:-.4px;
+  max-width:24ch;
+  margin:0;
+}
+.referenz .huelle{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:52px;
+  align-items:center;
+}
+.kennzahlen{
+  display:grid;
+  gap:1px;
+  background:#333e44;
+  border:1px solid #333e44;
+  border-radius:3px;
+  overflow:hidden;
+}
+.kennzahl{
+  background:var(--tiefe);
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  font-family:var(--mono);
+  font-size:13px;
+}
+.kennzahl span:first-child{color:#8a979e;}
+.kennzahl span:last-child{color:var(--plakette);}
+
+/* Kontakt */
+
+.kontakt-karte{
+  border:1px solid var(--linie);
+  border-left:3px solid var(--petrol);
+  border-radius:3px;
+  background:#fff;
+  padding:26px 28px;
+  max-width:520px;
+}
+.kontakt-karte dl{margin:0; font-family:var(--mono); font-size:14px;}
+.kontakt-karte dt{color:var(--gedaempft); margin-top:12px;}
+.kontakt-karte dt:first-child{margin-top:0;}
+.kontakt-karte dd{margin:0;}
+a{color:var(--petrol);}
+
+/* ---------- Rechtsseiten ---------- */
+
+.rechtstext{padding:52px 0 72px;}
+.rechtstext h1{font-size:clamp(28px,4vw,38px); margin-bottom:8px;}
+.rechtstext .stand{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--gedaempft);
+  margin:0 0 36px;
+}
+.block{
+  border-top:1px solid var(--linie);
+  padding:22px 0;
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:32px;
+}
+.block h2{
+  font-size:18px;
+  margin:0;
+  letter-spacing:-.2px;
+}
+.block-inhalt p{margin:0 0 12px; max-width:66ch;}
+.block-inhalt p:last-child{margin-bottom:0;}
+.block-inhalt ul{margin:0 0 12px; padding-left:19px; max-width:66ch;}
+.block-inhalt li{margin-bottom:5px;}
+.block-inhalt dl{margin:0;}
+.block-inhalt dt{font-weight:600; margin-top:10px;}
+.block-inhalt dt:first-child{margin-top:0;}
+.block-inhalt dd{margin:0;}
+
+/* ---------- Fuß ---------- */
+
+.fuss{
+  border-top:1px solid var(--linie);
+  padding:26px 0 40px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--gedaempft);
+}
+.fuss .huelle{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.fuss nav{display:flex; gap:20px;}
+.fuss a{color:var(--gedaempft); text-decoration:none;}
+.fuss a:hover{color:var(--petrol);}
+
+/* ---------- Schmale Bildschirme ---------- */
+
+@media (max-width: 820px){
+  .auftakt .huelle,
+  .referenz .huelle{grid-template-columns:1fr; gap:38px;}
+  .block{grid-template-columns:1fr; gap:10px;}
+  .kopf nav{gap:16px;}
+  .auftakt{padding:52px 0 46px;}
+  section{padding:48px 0;}
+  .knopf.leise{margin-left:0; margin-top:10px;}
+}
+@media (max-width: 520px){
+  .kopf .huelle{height:auto; padding-top:14px; padding-bottom:14px; flex-direction:column; align-items:flex-start; gap:10px;}
+  .posten{grid-template-columns:1fr; gap:4px;}
+}
