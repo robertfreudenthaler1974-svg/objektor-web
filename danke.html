@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danke — Objektor</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#EDF0EF;--text:#16211F;--leise:#59645F;--still:#8A9490;--teal:#0F5757;--rand:#DDE3E1;--rand-stark:#C8D1CE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+header{background:rgba(255,255,255,.92);border-bottom:1px solid var(--rand)}
+.kopf{max-width:1180px;margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center}
+.marke{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.3px;text-decoration:none;color:var(--text)}
+.marke i{width:13px;height:13px;background:var(--teal);border-radius:2px;display:inline-block}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 28px}
+.kasten{max-width:520px;text-align:center}
+.haken{width:60px;height:60px;border-radius:50%;background:var(--teal);margin:0 auto 26px;display:flex;align-items:center;justify-content:center}
+.haken svg{width:28px;height:28px}
+h1{font-size:32px;letter-spacing:-1px;margin-bottom:14px}
+p{font-size:16.5px;color:var(--leise);margin-bottom:12px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;color:var(--text);user-select:all}
+.knopf{display:inline-block;margin-top:26px;padding:13px 26px;border-radius:5px;font-size:15px;font-weight:600;text-decoration:none;background:#fff;color:var(--text);border:1px solid var(--rand-stark)}
+.knopf:hover{border-color:var(--teal);color:var(--teal)}
+footer{padding:30px 28px;font-size:14px;color:var(--still);text-align:center}
+footer a{color:var(--leise);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<header><div class="kopf"><a class="marke" href="index.html"><i></i>Objektor</a></div></header>
+
+<main>
+<div class="kasten">
+  <div class="haken"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 l5.5 5.5 L20 6"/></svg></div>
+  <h1>Anfrage ist angekommen</h1>
+  <p>Danke für Ihre Nachricht. Ich melde mich innerhalb eines Werktags bei Ihnen.</p>
+  <p>Falls es eilt, erreichen Sie mich direkt unter</p>
+  <p class="mono">kontakt@objektor.at</p>
+  <a class="knopf" href="index.html">Zurück zur Startseite</a>
+</div>
+</main>
+
+<footer>
+  © 2026 Objektor
+  <a href="impressum.html">Impressum</a>
+  <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+</body>
+</html>

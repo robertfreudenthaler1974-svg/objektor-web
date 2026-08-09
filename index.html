@@ -95,6 +95,28 @@ h2.gross{font-size:clamp(26px,3.2vw,36px);letter-spacing:-.9px;font-weight:700;m
 .kontakt-feld{background:#17171A;color:#fff;border-radius:12px;padding:48px 44px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
 .kontakt-feld h2{font-size:29px;letter-spacing:-.8px;margin-bottom:12px}
 .kontakt-feld p{color:#A3ADA9;font-size:16px}
+.kontakt-feld button.knopf-voll{background:var(--teal-hell);color:#04342C;cursor:pointer;font-family:inherit}
+.kontakt-feld button.knopf-voll:hover{background:#3fb69c}
+
+.hg{display:none;position:fixed;inset:0;background:rgba(14,17,19,.72);z-index:100;overflow-y:auto;padding:28px 18px}
+.hg.auf{display:block}
+.dialog{background:#fff;border-radius:12px;max-width:520px;margin:0 auto;padding:36px 38px 30px;position:relative}
+.dlg-zu{position:absolute;top:14px;right:16px;background:none;border:none;font-size:28px;line-height:1;color:var(--text-still);cursor:pointer;padding:4px 10px}
+.dlg-zu:hover{color:var(--text)}
+.dialog h2{font-size:24px;letter-spacing:-.6px;margin-bottom:8px}
+.dlg-blei{font-size:15px;color:var(--text-leise);margin-bottom:24px}
+.dialog label{display:block;font-size:13.5px;font-weight:600;margin:16px 0 6px}
+.dialog .opt{font-weight:400;color:var(--text-still)}
+.dialog input[type=text],.dialog input[type=email],.dialog input[type=tel],.dialog textarea{width:100%;padding:11px 13px;border:1px solid var(--rand-stark);border-radius:6px;font-size:15px;font-family:inherit;color:var(--text);background:#fff}
+.dialog textarea{resize:vertical}
+.dialog input:focus,.dialog textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,87,87,.12)}
+.zustimmung{display:flex;gap:9px;align-items:flex-start;font-size:13px;font-weight:400;color:var(--text-leise);margin:22px 0 6px;line-height:1.5}
+.zustimmung input{margin-top:3px;flex-shrink:0}
+.zustimmung a{color:var(--teal)}
+.dlg-senden{width:100%;margin-top:16px;border:none;cursor:pointer;font-family:inherit;font-size:15px}
+.dlg-fuss{font-size:13px;color:var(--text-still);text-align:center;margin-top:16px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text-leise)}
+
 .kontakt-adresse{margin-top:18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;color:#fff;letter-spacing:.4px;user-select:all}
 .kontakt-feld a.knopf-voll{background:var(--teal-hell);color:#04342C}
 .kontakt-feld a.knopf-voll:hover{background:#3fb69c}
@@ -1449,10 +1471,45 @@ footer a:hover{color:var(--teal)}
       <p>Eine halbe Stunde reicht, um zu klären, welche Bereiche bei Ihnen Sinn ergeben und was angepasst werden müsste. Unverbindlich und ohne Vorbereitung Ihrerseits.</p>
       <p class="kontakt-adresse">kontakt@objektor.at</p>
     </div>
-    <div><a class="knopf knopf-voll" href="mailto:kontakt@objektor.at?subject=Terminanfrage%20Objektor">Termin anfragen</a></div>
+    <div><button class="knopf knopf-voll" id="formularAuf">Termin anfragen</button></div>
   </div>
 </div>
 </section>
+
+<div class="hg" id="formularHg">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlgTitel">
+    <button class="dlg-zu" id="formularZu" aria-label="Schließen">&times;</button>
+    <h2 id="dlgTitel">Terminanfrage</h2>
+    <p class="dlg-blei">Schreiben Sie kurz, worum es geht — ich melde mich innerhalb eines Werktags.</p>
+
+    <form action="https://formsubmit.co/kontakt@objektor.at" method="POST">
+      <input type="hidden" name="_subject" value="Terminanfrage über objektor.at">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://objektor.at/danke.html">
+      <input type="text" name="_honey" style="display:none">
+
+      <label for="f-name">Name</label>
+      <input id="f-name" type="text" name="Name" required autocomplete="name">
+
+      <label for="f-firma">Firma oder Objekt</label>
+      <input id="f-firma" type="text" name="Firma" autocomplete="organization">
+
+      <label for="f-mail">E-Mail</label>
+      <input id="f-mail" type="email" name="E-Mail" required autocomplete="email">
+
+      <label for="f-tel">Telefon <span class="opt">optional</span></label>
+      <input id="f-tel" type="tel" name="Telefon" autocomplete="tel">
+
+      <label for="f-text">Worum geht es?</label>
+      <textarea id="f-text" name="Nachricht" rows="5" required placeholder="Art des Objekts, welche Bereiche Sie interessieren, was bei Ihnen derzeit hakt."></textarea>
+
+      <label class="zustimmung"><input type="checkbox" required> Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. <a href="datenschutz.html">Datenschutz</a></label>
+
+      <button type="submit" class="knopf knopf-voll dlg-senden">Anfrage senden</button>
+      <p class="dlg-fuss">Lieber direkt schreiben? <span class="mono">kontakt@objektor.at</span></p>
+    </form>
+  </div>
+</div>
 
 <footer>
 <div class="mitte fuss">
@@ -1473,6 +1530,16 @@ document.querySelectorAll('.reiter button').forEach(function(b){
 var nk=document.getElementById('navKnopf'),nv=document.getElementById('nav');
 nk.addEventListener('click',function(){nv.classList.toggle('offen')});
 nv.addEventListener('click',function(e){if(e.target.tagName==='A')nv.classList.remove('offen')});
+var hg=document.getElementById('formularHg');
+document.getElementById('formularAuf').addEventListener('click',function(){
+  hg.classList.add('auf');
+  document.body.style.overflow='hidden';
+  var f=document.getElementById('f-name'); if(f)f.focus();
+});
+function dlgZu(){hg.classList.remove('auf');document.body.style.overflow='';}
+document.getElementById('formularZu').addEventListener('click',dlgZu);
+hg.addEventListener('click',function(e){if(e.target===hg)dlgZu()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&hg.classList.contains('auf'))dlgZu()});
 </script>
 </body>
 </html>
