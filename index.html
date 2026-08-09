@@ -3,179 +3,1474 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Objektor – Betriebsdokumentation für Gebäude und Anlagen</title>
-<meta name="description" content="Objektor ist eine Software für die technische Betriebsdokumentation: Wartungen, Störungen, Pläne, Fremdfirmen und Prüfungen an einem Ort. Installation vor Ort, Daten bleiben im Haus.">
-<link rel="stylesheet" href="stil.css">
+<title>Objektor — Das Anlagenbuch für Ihr Objekt</title>
+<meta name="description" content="Objektor Anlagenbuch: Wartungen, Störungen, Prüfungen, Pläne und Fremdfirmen vollständig dokumentiert. Gewachsen aus dem Betrieb eines großen Einkaufszentrums.">
+<style>
+:root{
+  --bg:#EDF0EF; --flaeche:#FFFFFF; --rand:#DDE3E1; --rand-stark:#C8D1CE;
+  --text:#16211F; --text-leise:#59645F; --text-still:#8A9490;
+  --teal:#0F5757; --teal-hell:#2F9E86; --gelb:#E9B820; --rot:#C0392B;
+  --dunkel:#0E1113; --dunkel-flaeche:#1A1F22; --dunkel-rand:#2C3336;
+  --dunkel-text:#EDF1EF; --dunkel-leise:#A3ADA9; --dunkel-still:#78827E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+.mitte{max-width:1180px;margin:0 auto;padding:0 28px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rand)}
+.kopf{display:flex;align-items:center;justify-content:space-between;height:66px}
+.marke{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.3px;text-decoration:none;color:var(--text)}
+.marke i{width:13px;height:13px;background:var(--teal);border-radius:2px;display:inline-block}
+nav a{margin-left:26px;font-size:14.5px;color:var(--text-leise);text-decoration:none}
+nav a:hover{color:var(--teal)}
+.nav-knopf{display:none;background:none;border:1px solid var(--rand-stark);border-radius:6px;padding:7px 12px;font-size:14px;color:var(--text-leise);cursor:pointer}
+
+.held{padding:82px 0 70px}
+.held-raster{display:grid;grid-template-columns:1fr 1.12fr;gap:48px;align-items:center}
+.kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:2.4px;color:var(--teal);margin-bottom:18px}
+h1{font-size:clamp(34px,4.6vw,54px);line-height:1.1;letter-spacing:-1.4px;font-weight:700;margin-bottom:22px}
+.blei{font-size:17.5px;color:var(--text-leise);max-width:520px;margin-bottom:32px}
+.knopfreihe{display:flex;gap:14px;flex-wrap:wrap}
+.knopf{display:inline-block;padding:14px 26px;border-radius:5px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid transparent}
+.knopf-voll{background:var(--teal);color:#fff}
+.knopf-voll:hover{background:#0b4444}
+.knopf-leer{background:#fff;color:var(--text);border-color:var(--rand-stark)}
+.knopf-leer:hover{border-color:var(--teal);color:var(--teal)}
+
+.held-bild svg{width:100%;height:auto;display:block;overflow:visible}
+.held-schmal{display:none}
+
+section{padding:76px 0}
+.abschnitt-kopf{max-width:620px;margin-bottom:44px}
+h2.gross{font-size:clamp(26px,3.2vw,36px);letter-spacing:-.9px;font-weight:700;margin-bottom:14px}
+.abschnitt-kopf p{font-size:16.5px;color:var(--text-leise)}
+
+.leistung{background:#fff;border-top:1px solid var(--rand);border-bottom:1px solid var(--rand)}
+.karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.karte{border:1px solid var(--rand);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:22px 24px;background:#fff}
+.karte h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.karte p{font-size:14.5px;color:var(--text-leise)}
+
+.einblick{background:var(--dunkel);color:var(--dunkel-text)}
+.einblick .kicker{color:var(--teal-hell)}
+.einblick h2.gross{color:#fff}
+.einblick .abschnitt-kopf p{color:var(--dunkel-leise)}
+.reiter{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px}
+.reiter button{background:var(--dunkel-flaeche);border:1px solid var(--dunkel-rand);color:var(--dunkel-leise);padding:10px 17px;border-radius:20px;font-size:14px;cursor:pointer;font-family:inherit;transition:.15s}
+.reiter button:hover{border-color:var(--teal-hell);color:var(--dunkel-text)}
+.reiter button[aria-selected="true"]{background:var(--teal-hell);border-color:var(--teal-hell);color:#04342C;font-weight:600}
+.tafel{display:none}
+.tafel.aktiv{display:grid;grid-template-columns:1.55fr 1fr;gap:40px;align-items:start}
+.tafel .bild{background:var(--dunkel-flaeche);border:1px solid var(--dunkel-rand);border-radius:12px;padding:14px;overflow:hidden}
+.tafel .bild svg{width:100%;height:auto;display:block;border-radius:6px}
+.tafel h3{font-size:23px;letter-spacing:-.5px;font-weight:700;margin-bottom:14px;color:#fff}
+.tafel .text{font-size:15.5px;color:var(--dunkel-leise);margin-bottom:24px}
+.tafel ul{list-style:none}
+.tafel li{font-size:14.5px;color:var(--dunkel-leise);padding:11px 0 11px 26px;border-top:1px solid var(--dunkel-rand);position:relative}
+.tafel li:before{content:"";position:absolute;left:2px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--teal-hell)}
+
+.zahlen{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px;margin-top:56px;padding-top:44px;border-top:1px solid var(--dunkel-rand)}
+.zahl b{display:block;font-size:30px;color:#fff;letter-spacing:-1px}
+.zahl span{font-size:14px;color:var(--dunkel-still)}
+
+.anpassung{background:var(--bg)}
+.weg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:52px;padding-top:44px;border-top:1px solid var(--rand-stark)}
+.weg-schritt b{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-size:15px;margin-bottom:14px}
+.weg-schritt h4{font-size:17px;font-weight:700;margin-bottom:8px}
+.weg-schritt p{font-size:14.5px;color:var(--text-leise)}
+
+.herkunft{background:#fff;border-bottom:1px solid var(--rand)}
+.referenz{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:start;margin-bottom:44px}
+.ref-text h3{font-size:21px;letter-spacing:-.5px;margin-bottom:14px}
+.ref-text p{font-size:16px;color:var(--text-leise);margin-bottom:14px}
+.ref-kasten{background:#17171A;border-radius:10px;padding:8px 26px 20px}
+.ref-zeile{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid #2A2A2E;font-size:13.5px}
+.ref-zeile:last-child{border-bottom:none}
+.ref-zeile span{color:#8A9490}
+.ref-zeile b{color:#fff;text-align:right;font-weight:600}
+.zitat{font-size:19px;line-height:1.6;color:var(--text);border-left:3px solid var(--teal);padding-left:22px;max-width:760px}
+.zitat cite{display:block;margin-top:14px;font-size:14px;font-style:normal;color:var(--text-still)}
+
+.kontakt-feld{background:#17171A;color:#fff;border-radius:12px;padding:48px 44px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.kontakt-feld h2{font-size:29px;letter-spacing:-.8px;margin-bottom:12px}
+.kontakt-feld p{color:#A3ADA9;font-size:16px}
+.kontakt-feld a.knopf-voll{background:var(--teal-hell);color:#04342C}
+.kontakt-feld a.knopf-voll:hover{background:#3fb69c}
+
+footer{padding:38px 0;font-size:14px;color:var(--text-still)}
+.fuss{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer a{color:var(--text-leise);text-decoration:none;margin-left:20px}
+footer a:hover{color:var(--teal)}
+
+@media(max-width:880px){
+  .held-raster,.tafel.aktiv,.referenz,.kontakt-feld{grid-template-columns:1fr}
+  .held-breit{display:none}
+  .held-schmal{display:block;max-width:400px;margin:0 auto}
+  .held{padding:52px 0 44px}
+  section{padding:54px 0}
+  nav{display:none}
+  nav.offen{display:block;position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--rand);padding:14px 28px}
+  nav.offen a{display:block;margin:0;padding:11px 0;font-size:16px}
+  .nav-knopf{display:block}
+  .mitte{padding:0 20px}
+}
+</style>
 </head>
 <body>
 
-<header class="kopf">
-  <div class="huelle">
-    <a class="wortmarke" href="index.html">Objektor</a>
-    <nav>
-      <a href="#leistung">Leistung</a>
-      <a href="#referenz">Referenz</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </div>
+<header>
+<div class="mitte kopf">
+  <a class="marke" href="#oben"><i></i>Objektor</a>
+  <button class="nav-knopf" id="navKnopf" aria-label="Menü">Menü</button>
+  <nav id="nav">
+    <a href="#leistung">Leistung</a>
+    <a href="#einblick">Einblick</a>
+    <a href="#anpassung">Anpassung</a>
+    <a href="#herkunft">Referenz</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</div>
 </header>
 
-<main>
+<div id="oben"></div>
 
-  <section class="auftakt">
-    <div class="huelle">
-      <div>
-        <p class="eyebrow">Betriebsdokumentation</p>
-        <h1>Das Anlagenbuch für Ihr Objekt.</h1>
-        <p class="vorspann">Wartungen, Störungen, Prüfungen, Pläne und Fremdfirmen – vollständig dokumentiert, jederzeit nachvollziehbar, für jeden Techniker am Handy erreichbar.</p>
-        <a class="knopf" href="#kontakt">Vorführung vereinbaren</a>
-        <a class="knopf leise" href="#leistung">Was das System kann</a>
-      </div>
-
-      <div class="typenschild" aria-label="Beispiel eines Anlagendatensatzes">
-        <div class="ts-titel">Anlagendatensatz</div>
-        <div class="ts-zeile"><span class="ts-feld">ANLAGE</span><span class="ts-wert">Lüftung L-04</span></div>
-        <div class="ts-zeile"><span class="ts-feld">STANDORT</span><span class="ts-wert">Ebene 1 / Technikraum</span></div>
-        <div class="ts-zeile"><span class="ts-feld">LETZTE WARTUNG</span><span class="ts-wert">14.05.2026</span></div>
-        <div class="ts-zeile"><span class="ts-feld">NÄCHSTE PRÜFUNG</span><span class="ts-wert">14.11.2026</span></div>
-        <div class="ts-zeile"><span class="ts-feld">OFFENE TICKETS</span><span class="ts-wert">0</span></div>
-        <div class="ts-status">Betriebsbereit</div>
-      </div>
+<div class="held">
+<div class="mitte held-raster">
+  <div>
+    <div class="kicker">BETRIEBSDOKUMENTATION</div>
+    <h1>Das Anlagenbuch für Ihr Objekt.</h1>
+    <p class="blei">Wartungen, Störungen, Prüfungen, Pläne und Fremdfirmen — vollständig dokumentiert, jederzeit nachvollziehbar, für jeden Techniker am Handy erreichbar.</p>
+    <div class="knopfreihe">
+      <a class="knopf knopf-voll" href="#kontakt">Vorführung vereinbaren</a>
+      <a class="knopf knopf-leer" href="#einblick">Das System ansehen</a>
     </div>
-  </section>
-
-  <section id="leistung">
-    <div class="huelle">
-      <h2>Was das System leistet</h2>
-      <p class="abschnitt-vorspann">Gewachsen aus dem täglichen Betrieb eines großen Einkaufszentrums – nicht am Reißbrett entworfen, sondern über Jahre an echten Anforderungen geschärft.</p>
-
-      <div class="protokoll">
-        <article class="posten">
-          <div class="posten-nr">01</div>
-          <div>
-            <h3>Wartung und Prüfung</h3>
-            <p>Wiederkehrende Termine, fällige Prüfungen, erledigte Arbeiten. Jede Anlage führt ihre eigene Historie – lückenlos und ohne Papierordner.</p>
-          </div>
-        </article>
-
-        <article class="posten">
-          <div class="posten-nr">02</div>
-          <div>
-            <h3>Störungen und Tickets</h3>
-            <p>Eine Meldung entsteht in Sekunden, mit Foto und Ortsangabe. Zuständigkeit, Rückfragen und Erledigung bleiben am Vorgang dokumentiert.</p>
-          </div>
-        </article>
-
-        <article class="posten">
-          <div class="posten-nr">03</div>
-          <div>
-            <h3>Pläne mit Verortung</h3>
-            <p>Geschosspläne mit gesetzten Markierungen. Wer eine Anlage sucht, findet sie am Plan – und von dort direkt ihre Dokumentation.</p>
-          </div>
-        </article>
-
-        <article class="posten">
-          <div class="posten-nr">04</div>
-          <div>
-            <h3>Fremdfirmen</h3>
-            <p>Externe Techniker bekommen über einen QR-Code genau den Zugang, den sie brauchen. Ihre Arbeiten laufen in dieselbe Dokumentation ein.</p>
-          </div>
-        </article>
-
-        <article class="posten">
-          <div class="posten-nr">05</div>
-          <div>
-            <h3>App mit Benachrichtigungen</h3>
-            <p>Dringende Meldungen erreichen die zuständige Person sofort am Telefon – auch außerhalb der Dienstzeit, wenn es sein muss.</p>
-          </div>
-        </article>
-
-        <article class="posten">
-          <div class="posten-nr">06</div>
-          <div>
-            <h3>Anbindung an die Gebäudetechnik</h3>
-            <p>Zählerstände, Sensorwerte und Alarme aus vorhandenen Systemen laufen automatisch ein, statt von Hand abgetippt zu werden.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="referenz" id="referenz">
-    <div class="huelle">
-      <div>
-        <h2>Im echten Betrieb</h2>
-        <p class="referenz-zitat">Täglich im Einsatz bei der Haustechnik der Plus City in Pasching.</p>
-      </div>
-      <div class="kennzahlen">
-        <div class="kennzahl"><span>Objekt</span><span>Einkaufszentrum</span></div>
-        <div class="kennzahl"><span>Standorte</span><span>2</span></div>
-        <div class="kennzahl"><span>Betrieb</span><span>durchgehend</span></div>
-        <div class="kennzahl"><span>Dokumentierte Vorgänge</span><span>laufend</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="huelle">
-      <h2>Installation und Betrieb</h2>
-      <p class="abschnitt-vorspann">Objektor wird auf einem Server in Ihrem Haus eingerichtet. Ihre Daten verlassen das Gebäude nicht, und Sie bleiben unabhängig von der Verfügbarkeit eines fremden Rechenzentrums.</p>
-
-      <div class="protokoll">
-        <article class="posten">
-          <div class="posten-nr">A</div>
-          <div>
-            <h3>Einrichtung vor Ort</h3>
-            <p>Installation, Übernahme Ihrer Anlagenstruktur und Ihrer Pläne, Einschulung Ihrer Mitarbeiter.</p>
-          </div>
-        </article>
-        <article class="posten">
-          <div class="posten-nr">B</div>
-          <div>
-            <h3>Laufende Miete</h3>
-            <p>Ein monatlicher Betrag deckt Nutzung, Aktualisierungen und Unterstützung ab. Keine Anschaffungskosten, keine Bindung an Nutzerlizenzen im Detail.</p>
-          </div>
-        </article>
-        <article class="posten">
-          <div class="posten-nr">C</div>
-          <div>
-            <h3>Anpassung</h3>
-            <p>Jedes Objekt tickt anders. Erweiterungen für Ihre Abläufe werden besprochen und umgesetzt, nicht abgelehnt.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <div class="huelle">
-      <h2>Kontakt</h2>
-      <p class="abschnitt-vorspann">Eine Vorführung dauert etwa eine Stunde und findet gerne bei Ihnen im Objekt statt.</p>
-
-      <div class="kontakt-karte">
-        <dl>
-          <dt>ANSPRECHPARTNER</dt>
-          <dd>Robert Freudenthaler</dd>
-          <dt>E-MAIL</dt>
-          <dd><a href="mailto:office@objektor.at">office@objektor.at</a></dd>
-          <dt>ORT</dt>
-          <dd>Linz, Oberösterreich</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="fuss">
-  <div class="huelle">
-    <div>Objektor – Robert Freudenthaler, Linz</div>
-    <nav>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-    </nav>
   </div>
+  <div class="held-bild held-breit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 620" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<filter id="c1_0" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#16211F" flood-opacity="0.20"/></filter>
+<filter id="c2_0" x="-35%" y="-35%" width="170%" height="170%"><feDropShadow dx="-6" dy="12" stdDeviation="16" flood-color="#16211F" flood-opacity="0.30"/></filter>
+</defs>
+<rect fill="#EDF0EF"/>
+
+<g filter="url(#c1_0)">
+<rect x="24" y="60" width="700" height="452" rx="12" fill="#1A1F22"/>
+<rect x="24" y="60" width="700" height="36" rx="12" fill="#22282B"/>
+<rect x="24" y="84" width="700" height="12" fill="#22282B"/>
+<line x1="24" y1="96" x2="724" y2="96" stroke="#2C3336"/>
+<circle cx="48" cy="78" r="4.5" fill="#3A4245"/><circle cx="64" cy="78" r="4.5" fill="#3A4245"/><circle cx="80" cy="78" r="4.5" fill="#3A4245"/>
+<rect x="102" y="69" width="200" height="17" rx="8" fill="#161A1C"/>
+<text x="114" y="82" font-size="9.5" fill="#78827E">objektor.at / wartung</text>
+
+<rect x="24" y="96" width="150" height="416" fill="#08090A"/>
+<rect x="24" y="500" width="150" height="12" fill="#08090A"/>
+<rect x="44" y="118" width="10" height="10" rx="2" fill="#2F9E86"/>
+<text x="60" y="127" font-size="11.5" font-weight="bold" fill="#FFFFFF">Objektor</text>
+<text x="46" y="162" font-size="10.5" fill="#8A9490">Übersicht</text>
+<text x="46" y="190" font-size="10.5" fill="#8A9490">Pläne</text>
+<text x="46" y="218" font-size="10.5" fill="#8A9490">Anlagen</text>
+<rect x="36" y="230" width="126" height="24" rx="4" fill="#0F5757"/>
+<text x="46" y="246" font-size="10.5" fill="#FFFFFF">Wartung</text>
+<text x="46" y="278" font-size="10.5" fill="#8A9490">Meldungen</text>
+<text x="46" y="306" font-size="10.5" fill="#8A9490">Schichtübergabe</text>
+<text x="46" y="334" font-size="10.5" fill="#8A9490">Fremdfirmen</text>
+<text x="46" y="362" font-size="10.5" fill="#8A9490">Alarme</text>
+<line x1="36" y1="386" x2="162" y2="386" stroke="#22282B"/>
+<text x="46" y="408" font-size="8.5" fill="#68716E" letter-spacing="1.1">GEWERK</text>
+<text x="46" y="430" font-size="10" fill="#EDF1EF">Lüftung</text>
+<text x="46" y="452" font-size="10" fill="#8A9490">Elektro</text>
+<text x="46" y="474" font-size="10" fill="#8A9490">Brandschutz</text>
+
+<text x="198" y="130" font-size="14" font-weight="bold" fill="#EDF1EF">Wartungsplan · August 2026</text>
+
+<rect x="198" y="150" width="118" height="60" rx="7" fill="#2E1A18"/>
+<text x="214" y="172" font-size="9.5" fill="#EF9A92">Überfällig</text>
+<text x="214" y="197" font-size="21" fill="#EF9A92" font-weight="bold">2</text>
+<rect x="326" y="150" width="118" height="60" rx="7" fill="#33280D"/>
+<text x="342" y="172" font-size="9.5" fill="#FAC775">Diese Woche</text>
+<text x="342" y="197" font-size="21" fill="#FAC775" font-weight="bold">7</text>
+<rect x="454" y="150" width="118" height="60" rx="7" fill="#12302A"/>
+<text x="470" y="172" font-size="9.5" fill="#5DCAA5">Erledigt</text>
+<text x="470" y="197" font-size="21" fill="#5DCAA5" font-weight="bold">34</text>
+
+<rect x="198" y="228" width="374" height="50" rx="6" fill="#20262A" stroke="#2C3336"/>
+<rect x="198" y="228" width="3" height="50" fill="#C0392B"/>
+<text x="218" y="249" font-size="11.5" fill="#EDF1EF" font-weight="bold">Brandschutzklappe BSK 12</text>
+<text x="218" y="266" font-size="9.5" fill="#8A9490">Ebene 2 · jährlich</text>
+<text x="556" y="256" font-size="9.5" fill="#EF9A92" text-anchor="end" font-weight="bold">7 Tage über</text>
+
+<rect x="198" y="288" width="374" height="50" rx="6" fill="#20262A" stroke="#2C3336"/>
+<rect x="198" y="288" width="3" height="50" fill="#C0392B"/>
+<text x="218" y="309" font-size="11.5" fill="#EDF1EF" font-weight="bold">Hebeanlage HA 02</text>
+<text x="218" y="326" font-size="9.5" fill="#8A9490">Untergeschoss · halbjährlich</text>
+<text x="556" y="316" font-size="9.5" fill="#EF9A92" text-anchor="end" font-weight="bold">4 Tage über</text>
+
+<rect x="198" y="348" width="374" height="50" rx="6" fill="#20262A" stroke="#2C3336"/>
+<rect x="198" y="348" width="3" height="50" fill="#E9B820"/>
+<text x="218" y="369" font-size="11.5" fill="#EDF1EF" font-weight="bold">Lüftung L-04</text>
+<text x="218" y="386" font-size="9.5" fill="#8A9490">Ebene 1 · 3 Monate</text>
+<text x="556" y="376" font-size="9.5" fill="#FAC775" text-anchor="end" font-weight="bold">heute, 16:00</text>
+
+<rect x="198" y="408" width="374" height="50" rx="6" fill="#20262A" stroke="#2C3336"/>
+<rect x="198" y="408" width="3" height="50" fill="#2F9E86"/>
+<text x="218" y="429" font-size="11.5" fill="#EDF1EF" font-weight="bold">Kälteanlage K-02</text>
+<text x="218" y="446" font-size="9.5" fill="#8A9490">Dach · 2 Monate</text>
+<text x="556" y="436" font-size="9.5" fill="#5DCAA5" text-anchor="end">erledigt 04.08.</text>
+
+<rect x="596" y="150" width="108" height="308" rx="6" fill="#20262A" stroke="#2C3336"/>
+<text x="612" y="172" font-size="8.5" fill="#78827E" letter-spacing="1.1">HEUTE</text>
+<circle cx="618" cy="196" r="4.5" fill="#E9B820"/><text x="630" y="199" font-size="9" fill="#EDF1EF">3 fällig</text>
+<circle cx="618" cy="220" r="4.5" fill="#C0392B"/><text x="630" y="223" font-size="9" fill="#EDF1EF">1 Störung</text>
+<circle cx="618" cy="244" r="4.5" fill="#2F9E86"/><text x="630" y="247" font-size="9" fill="#EDF1EF">2 Firmen</text>
+<line x1="612" y1="266" x2="688" y2="266" stroke="#2C3336"/>
+<text x="612" y="288" font-size="8.5" fill="#78827E" letter-spacing="1.1">RUNDGANG</text>
+<text x="612" y="310" font-size="10" fill="#5DCAA5">5 von 9</text>
+<rect x="612" y="320" width="76" height="5" rx="2.5" fill="#2A3134"/>
+<rect x="612" y="320" width="42" height="5" rx="2.5" fill="#2F9E86"/>
+<line x1="612" y1="346" x2="688" y2="346" stroke="#2C3336"/>
+<text x="612" y="368" font-size="8.5" fill="#78827E" letter-spacing="1.1">ZULUFT</text>
+<text x="612" y="390" font-size="14" fill="#EDF1EF" font-weight="bold">18,9 °C</text>
+<text x="612" y="406" font-size="8.5" fill="#5DCAA5">im Sollbereich</text>
+<line x1="612" y1="422" x2="688" y2="422" stroke="#2C3336"/>
+<text x="612" y="442" font-size="8.5" fill="#78827E">Letzte Meldung</text>
+<text x="612" y="456" font-size="9" fill="#EDF1EF">vor 12 min</text>
+</g>
+
+<g filter="url(#c2_0)">
+<rect x="626" y="222" width="256" height="382" rx="34" fill="#000000"/>
+<rect x="636" y="232" width="236" height="362" rx="26" fill="#16191C"/>
+<rect x="718" y="242" width="72" height="12" rx="6" fill="#000000"/>
+
+<rect x="636" y="266" width="236" height="52" fill="#0F5757"/>
+<text x="658" y="288" font-size="9" fill="#9FC9C0">TICKET · HAUSTECHNIK</text>
+<text x="658" y="307" font-size="13" font-weight="bold" fill="#FFFFFF">Lüftung L-04</text>
+
+<rect x="656" y="336" width="196" height="42" rx="7" fill="#20262A" stroke="#2C3336"/>
+<rect x="656" y="336" width="3" height="42" fill="#E9B820"/>
+<text x="674" y="353" font-size="9" fill="#78827E">Fällig</text><text x="836" y="353" font-size="9" fill="#EDF1EF" text-anchor="end" font-weight="bold">heute, 16:00</text>
+<text x="674" y="370" font-size="9" fill="#78827E">Checkliste</text><text x="836" y="370" font-size="9" fill="#EDF1EF" text-anchor="end">2 von 5</text>
+
+<rect x="656" y="390" width="196" height="42" rx="7" fill="#20262A" stroke="#2C3336"/>
+<rect x="656" y="390" width="3" height="42" fill="#5DCAA5"/>
+<circle cx="680" cy="411" r="8.5" fill="#5DCAA5"/><path d="M675.5 411 l3.5 3.5 l6 -7" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="698" y="408" font-size="10.5" fill="#EDF1EF">Filter geprüft</text>
+<text x="698" y="423" font-size="8.5" fill="#8A9490">09:12 · Foto abgelegt</text>
+
+<rect x="656" y="442" width="196" height="42" rx="7" fill="#20262A" stroke="#2C3336"/>
+<rect x="656" y="442" width="3" height="42" fill="#5DCAA5"/>
+<circle cx="680" cy="463" r="8.5" fill="#5DCAA5"/><path d="M675.5 463 l3.5 3.5 l6 -7" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="698" y="460" font-size="10.5" fill="#EDF1EF">Keilriemen geprüft</text>
+<text x="698" y="475" font-size="8.5" fill="#8A9490">09:26 · Foto abgelegt</text>
+
+<rect x="656" y="494" width="196" height="42" rx="7" fill="#20262A" stroke="#2C3336"/>
+<rect x="656" y="494" width="3" height="42" fill="#C0392B"/>
+<circle cx="680" cy="515" r="8.5" fill="none" stroke="#4C5558" stroke-width="2"/>
+<text x="698" y="512" font-size="10.5" fill="#EDF1EF">Lager schmieren</text>
+<text x="698" y="527" font-size="8.5" fill="#EF9A92">Foto erforderlich</text>
+
+<rect x="656" y="548" width="94" height="32" rx="5" fill="#20262A" stroke="#2F9E86"/>
+<text x="703" y="568" font-size="9.5" fill="#5DCAA5" text-anchor="middle" font-weight="bold">Foto</text>
+<rect x="758" y="548" width="94" height="32" rx="5" fill="#2F9E86"/>
+<text x="805" y="568" font-size="9.5" fill="#04342C" text-anchor="middle" font-weight="bold">Erledigt</text>
+</g>
+
+<g filter="url(#c1_0)">
+<rect x="60" y="516" width="316" height="86" rx="12" fill="#2E1A18" stroke="#C0392B" stroke-width="1.5"/>
+<rect x="80" y="534" width="24" height="24" rx="6" fill="#C0392B"/>
+<text x="92" y="551" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">!</text>
+<text x="114" y="545" font-size="9" fill="#EF9A92" letter-spacing="0.5">OBJEKTOR · KRITISCHER ALARM</text>
+<text x="356" y="545" font-size="8.5" fill="#9E7C77" text-anchor="end">jetzt</text>
+<text x="80" y="576" font-size="12.5" fill="#FFFFFF" font-weight="bold">Brandmeldeanlage BM 214</text>
+<text x="80" y="593" font-size="10" fill="#C9B3B0">Ebene 1 · Ton auch bei stumm</text>
+</g>
+</svg></div>
+  <div class="held-bild held-schmal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 660" font-family="Helvetica, Arial, sans-serif">
+<defs><filter id="m1_1" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#16211F" flood-opacity="0.22"/></filter></defs>
+<rect fill="#EDF0EF"/>
+
+<g filter="url(#m1_1)">
+<rect x="112" y="18" width="290" height="562" rx="40" fill="#000000"/>
+<rect x="124" y="30" width="266" height="538" rx="30" fill="#16191C"/>
+<rect x="216" y="42" width="82" height="14" rx="7" fill="#000000"/>
+
+<rect x="124" y="70" width="266" height="58" fill="#0F5757"/>
+<text x="150" y="94" font-size="10" fill="#9FC9C0">TICKET · HAUSTECHNIK</text>
+<text x="150" y="115" font-size="15" font-weight="bold" fill="#FFFFFF">Lüftung L-04 — Wartung</text>
+
+<rect x="148" y="152" width="218" height="54" rx="8" fill="#20262A" stroke="#2C3336"/>
+<rect x="148" y="152" width="3" height="54" fill="#E9B820"/>
+<text x="168" y="174" font-size="10" fill="#78827E">Fällig</text><text x="346" y="174" font-size="10" fill="#EDF1EF" text-anchor="end" font-weight="bold">heute, 16:00</text>
+<text x="168" y="196" font-size="10" fill="#78827E">Standort</text><text x="346" y="196" font-size="10" fill="#EDF1EF" text-anchor="end">Ebene 1 / Technik</text>
+
+<text x="148" y="236" font-size="9" fill="#78827E" letter-spacing="1.3">CHECKLISTE</text>
+<text x="366" y="236" font-size="9" fill="#78827E" text-anchor="end">2 von 5</text>
+
+<rect x="148" y="248" width="218" height="48" rx="8" fill="#20262A" stroke="#2C3336"/>
+<rect x="148" y="248" width="3" height="48" fill="#5DCAA5"/>
+<circle cx="174" cy="272" r="9.5" fill="#5DCAA5"/><path d="M169 272 l4 4 l6.5 -7.5" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="194" y="269" font-size="11.5" fill="#EDF1EF">Filter geprüft</text>
+<text x="194" y="285" font-size="9" fill="#8A9490">09:12 · Foto abgelegt</text>
+
+<rect x="148" y="306" width="218" height="48" rx="8" fill="#20262A" stroke="#2C3336"/>
+<rect x="148" y="306" width="3" height="48" fill="#5DCAA5"/>
+<circle cx="174" cy="330" r="9.5" fill="#5DCAA5"/><path d="M169 330 l4 4 l6.5 -7.5" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="194" y="327" font-size="11.5" fill="#EDF1EF">Keilriemen geprüft</text>
+<text x="194" y="343" font-size="9" fill="#8A9490">09:26 · Foto abgelegt</text>
+
+<rect x="148" y="364" width="218" height="48" rx="8" fill="#20262A" stroke="#2C3336"/>
+<rect x="148" y="364" width="3" height="48" fill="#C0392B"/>
+<circle cx="174" cy="388" r="9.5" fill="none" stroke="#4C5558" stroke-width="2"/>
+<text x="194" y="385" font-size="11.5" fill="#EDF1EF">Lager schmieren</text>
+<text x="194" y="401" font-size="9" fill="#EF9A92">Foto erforderlich</text>
+
+<rect x="148" y="422" width="218" height="48" rx="8" fill="#20262A" stroke="#2C3336"/>
+<rect x="148" y="422" width="3" height="48" fill="#4C5558"/>
+<circle cx="174" cy="446" r="9.5" fill="none" stroke="#4C5558" stroke-width="2"/>
+<text x="194" y="443" font-size="11.5" fill="#A3ADA9">Volumenstrom messen</text>
+<text x="194" y="459" font-size="9" fill="#78827E">Messwert eintragen</text>
+
+<rect x="148" y="490" width="104" height="38" rx="6" fill="#20262A" stroke="#2F9E86"/>
+<text x="200" y="514" font-size="10.5" fill="#5DCAA5" text-anchor="middle" font-weight="bold">Foto</text>
+<rect x="262" y="490" width="104" height="38" rx="6" fill="#2F9E86"/>
+<text x="314" y="514" font-size="10.5" fill="#04342C" text-anchor="middle" font-weight="bold">Erledigt</text>
+
+<rect x="221" y="544" width="72" height="4" rx="2" fill="#3A4441"/>
+</g>
+
+<g filter="url(#m1_1)">
+<rect x="30" y="548" width="330" height="96" rx="12" fill="#2E1A18" stroke="#C0392B" stroke-width="1.5"/>
+<rect x="52" y="568" width="26" height="26" rx="6" fill="#C0392B"/>
+<text x="65" y="586" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">!</text>
+<text x="88" y="580" font-size="9.5" fill="#EF9A92" letter-spacing="0.5">OBJEKTOR · KRITISCHER ALARM</text>
+<text x="52" y="614" font-size="13" fill="#FFFFFF" font-weight="bold">Brandmeldeanlage BM 214</text>
+<text x="52" y="632" font-size="10.5" fill="#C9B3B0">Ebene 1 · Ton auch bei stumm</text>
+</g>
+</svg></div>
+</div>
+</div>
+
+<section class="leistung" id="leistung">
+<div class="mitte">
+  <div class="abschnitt-kopf">
+    <h2 class="gross">Was das System leistet</h2>
+    <p>Gewachsen aus dem täglichen Betrieb eines großen Einkaufszentrums — nicht am Reißbrett entworfen.</p>
+  </div>
+  <div class="karten">
+    <div class="karte"><h3>Alles an einem Ort</h3><p>Anlagen, Pläne, Wartungen, Störungen und Fremdfirmen liegen zusammen statt in fünf Ordnern und drei Köpfen.</p></div>
+    <div class="karte"><h3>Am Handy bedienbar</h3><p>Der Techniker dokumentiert dort, wo er steht. Kein Zettel, keine Nacherfassung am Abend.</p></div>
+    <div class="karte"><h3>Nichts geht verloren</h3><p>Fristen laufen automatisch mit, Meldungen erreichen die zuständige Abteilung, Übergaben bleiben nachlesbar.</p></div>
+    <div class="karte"><h3>Prüfsicher</h3><p>Jeder Schritt mit Name, Uhrzeit und Foto. Der Nachweis liegt auf Knopfdruck als PDF vor.</p></div>
+    <div class="karte"><h3>Auch ohne Netz</h3><p>Im Keller, in der Tiefgarage, am Dach. Erfasste Daten werden gespeichert und später abgeglichen.</p></div>
+    <div class="karte"><h3>Im eigenen Haus</h3><p>Läuft am eigenen Server. Ihre Betriebsdaten bleiben dort, wo sie hingehören.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="einblick" id="einblick">
+<div class="mitte">
+  <div class="abschnitt-kopf">
+    <div class="kicker">EINBLICK</div>
+    <h2 class="gross">So arbeitet das System</h2>
+    <p>Acht Bereiche aus dem täglichen Betrieb. Wählen Sie einen aus.</p>
+  </div>
+
+  <div class="reiter" role="tablist">
+    <button role="tab" aria-selected="true" data-ziel="plaene">Pläne</button>
+    <button role="tab" aria-selected="false" data-ziel="wartung">Wartung</button>
+    <button role="tab" aria-selected="false" data-ziel="meldung">Meldungen</button>
+    <button role="tab" aria-selected="false" data-ziel="uebergabe">Schichtübergabe</button>
+    <button role="tab" aria-selected="false" data-ziel="wachdienst">Wachdienst</button>
+    <button role="tab" aria-selected="false" data-ziel="firmen">Fremdfirmen</button>
+    <button role="tab" aria-selected="false" data-ziel="push">Alarmierung</button>
+    <button role="tab" aria-selected="false" data-ziel="leittechnik">Anlagenwerte</button>
+  </div>
+
+  <div class="tafel aktiv" id="plaene">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="760" fill="#0E1113"/>
+
+  <rect x="40" y="40" width="1120" height="680" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="40" y="40" width="1120" height="44" rx="10" fill="#22282B"/>
+  <rect x="40" y="70" width="1120" height="14" fill="#22282B"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#2C3336"/>
+  <circle cx="66" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="84" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="102" cy="62" r="5" fill="#3A4245"/>
+  <rect x="128" y="52" width="300" height="20" rx="10" fill="#161A1C"/>
+  <text x="142" y="66" font-size="11" fill="#78827E">objektor.at / plaene</text>
+
+  <rect x="40" y="84" width="230" height="636" fill="#08090A"/>
+  <rect x="40" y="710" width="230" height="10" fill="#08090A"/>
+  <rect x="62" y="110" width="13" height="13" rx="2" fill="#2F9E86"/>
+  <text x="85" y="122" font-size="15" font-weight="bold" fill="#FFFFFF">Objektor</text>
+
+  <text x="72" y="172" font-size="12" fill="#8A9490">Übersicht</text>
+  <rect x="56" y="188" width="198" height="30" rx="5" fill="#0F5757"/>
+  <text x="72" y="208" font-size="12" fill="#FFFFFF">Pläne</text>
+  <text x="72" y="244" font-size="12" fill="#8A9490">Anlagen</text>
+  <text x="72" y="280" font-size="12" fill="#8A9490">Wartung</text>
+  <text x="72" y="316" font-size="12" fill="#8A9490">Meldungen</text>
+  <text x="72" y="352" font-size="12" fill="#8A9490">Schichtübergabe</text>
+  <text x="72" y="388" font-size="12" fill="#8A9490">Fremdfirmen</text>
+  <text x="72" y="424" font-size="12" fill="#8A9490">Alarme</text>
+
+  <line x1="56" y1="452" x2="254" y2="452" stroke="#22282B"/>
+  <text x="72" y="478" font-size="10" fill="#68716E" letter-spacing="1.4">EBENE</text>
+  <rect x="56" y="490" width="60" height="26" rx="4" fill="#0F5757"/>
+  <text x="86" y="507" font-size="11" fill="#FFFFFF" text-anchor="middle">E 1</text>
+  <rect x="124" y="490" width="60" height="26" rx="4" fill="#20262A"/>
+  <text x="154" y="507" font-size="11" fill="#8A9490" text-anchor="middle">E 2</text>
+  <rect x="192" y="490" width="60" height="26" rx="4" fill="#20262A"/>
+  <text x="222" y="507" font-size="11" fill="#8A9490" text-anchor="middle">E 3</text>
+
+  <text x="72" y="558" font-size="10" fill="#68716E" letter-spacing="1.4">GEWERK</text>
+  <text x="72" y="584" font-size="11" fill="#EDF1EF">alle</text>
+  <text x="72" y="610" font-size="11" fill="#8A9490">Lüftung</text>
+  <text x="72" y="636" font-size="11" fill="#8A9490">Elektro</text>
+  <text x="72" y="662" font-size="11" fill="#8A9490">Brandschutz</text>
+
+  <line x1="270" y1="140" x2="1160" y2="140" stroke="#2C3336"/>
+  <text x="300" y="118" font-size="16" font-weight="bold" fill="#EDF1EF">Ebene 1 — Technikbereich Nord</text>
+  <rect x="900" y="99" width="120" height="26" rx="4" fill="#20262A" stroke="#3A4245"/>
+  <text x="916" y="116" font-size="11" fill="#A3ADA9">BM suchen</text>
+  <rect x="1032" y="99" width="98" height="26" rx="4" fill="#2F9E86"/>
+  <text x="1081" y="116" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">Suchen</text>
+
+  <rect x="300" y="170" width="590" height="520" rx="6" fill="#161A1C" stroke="#2C3336"/>
+
+  <g stroke="#3E4749" stroke-width="2" fill="none">
+    <rect x="330" y="200" width="200" height="150"/>
+    <rect x="530" y="200" width="150" height="150"/>
+    <rect x="680" y="200" width="180" height="90"/>
+    <rect x="680" y="290" width="180" height="60"/>
+    <rect x="330" y="350" width="120" height="140"/>
+    <rect x="450" y="350" width="230" height="140"/>
+    <rect x="680" y="350" width="180" height="140"/>
+    <rect x="330" y="490" width="290" height="170"/>
+    <rect x="620" y="490" width="240" height="170"/>
+  </g>
+  <g stroke="#3E4749" stroke-width="6" fill="none" stroke-linecap="round">
+    <line x1="380" y1="350" x2="420" y2="350"/>
+    <line x1="530" y1="270" x2="530" y2="310"/>
+    <line x1="680" y1="410" x2="680" y2="450"/>
+  </g>
+
+  <circle cx="420" cy="270" r="16" fill="#2F9E86"/>
+  <text x="420" y="275" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">L4</text>
+  <circle cx="600" cy="270" r="16" fill="#2F9E86"/>
+  <text x="600" y="275" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">K2</text>
+  <circle cx="770" cy="245" r="16" fill="#E9B820"/>
+  <text x="770" y="250" font-size="11" fill="#412402" text-anchor="middle" font-weight="bold">H1</text>
+  <circle cx="565" cy="420" r="16" fill="#2F9E86"/>
+  <text x="565" y="425" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">S7</text>
+  <circle cx="475" cy="575" r="22" fill="none" stroke="#E2685F" stroke-width="2" opacity="0.45"/>
+  <circle cx="475" cy="575" r="16" fill="#C0392B"/>
+  <text x="475" y="580" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="bold">B3</text>
+  <circle cx="740" cy="575" r="16" fill="#2F9E86"/>
+  <text x="740" y="580" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">E9</text>
+
+  <rect x="700" y="600" width="150" height="52" rx="5" fill="#08090A" stroke="#2F9E86"/>
+  <text x="714" y="620" font-size="10" fill="#68716E" letter-spacing="1">SCHALTKASTEN</text>
+  <text x="714" y="640" font-size="12" fill="#EDF1EF" font-weight="bold">SK-Nord 04</text>
+
+  <rect x="910" y="170" width="220" height="240" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="910" y="170" width="3" height="240" fill="#2F9E86"/>
+  <text x="930" y="200" font-size="10" fill="#78827E" letter-spacing="1.4">ANLAGE</text>
+  <text x="930" y="224" font-size="15" font-weight="bold" fill="#EDF1EF">Lüftung L-04</text>
+  <line x1="930" y1="240" x2="1110" y2="240" stroke="#2C3336"/>
+  <text x="930" y="264" font-size="11" fill="#8A9490">Standort</text>
+  <text x="1110" y="264" font-size="11" fill="#EDF1EF" text-anchor="end">Ebene 1</text>
+  <text x="930" y="292" font-size="11" fill="#8A9490">Letzte Wartung</text>
+  <text x="1110" y="292" font-size="11" fill="#EDF1EF" text-anchor="end">14.05.2026</text>
+  <text x="930" y="320" font-size="11" fill="#8A9490">Nächste Prüfung</text>
+  <text x="1110" y="320" font-size="11" fill="#EDF1EF" text-anchor="end">14.11.2026</text>
+  <text x="930" y="348" font-size="11" fill="#8A9490">Offene Tickets</text>
+  <text x="1110" y="348" font-size="11" fill="#EDF1EF" text-anchor="end">0</text>
+  <rect x="930" y="366" width="180" height="28" rx="4" fill="#E9B820"/>
+  <text x="1020" y="385" font-size="11" fill="#412402" text-anchor="middle" font-weight="bold">BETRIEBSBEREIT</text>
+
+  <rect x="910" y="426" width="220" height="264" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <text x="930" y="456" font-size="10" fill="#78827E" letter-spacing="1.4">LEGENDE</text>
+  <circle cx="938" cy="482" r="7" fill="#2F9E86"/>
+  <text x="954" y="486" font-size="11" fill="#EDF1EF">In Betrieb</text>
+  <circle cx="938" cy="512" r="7" fill="#E9B820"/>
+  <text x="954" y="516" font-size="11" fill="#EDF1EF">Wartung fällig</text>
+  <circle cx="938" cy="542" r="7" fill="#C0392B"/>
+  <text x="954" y="546" font-size="11" fill="#EDF1EF">Störung offen</text>
+  <line x1="930" y1="570" x2="1110" y2="570" stroke="#2C3336"/>
+  <text x="930" y="596" font-size="10" fill="#78827E" letter-spacing="1.4">HEUTE</text>
+  <text x="930" y="622" font-size="11" fill="#EDF1EF">3 Wartungen fällig</text>
+  <text x="930" y="646" font-size="11" fill="#EDF1EF">1 Störung offen</text>
+  <text x="930" y="670" font-size="11" fill="#EDF1EF">2 Firmen im Haus</text>
+</svg></div>
+    <div>
+      <h3>Jede Anlage hat einen Ort</h3>
+      <p class="text">Anlagen sitzen dort am Gebäudeplan, wo sie tatsächlich stehen. Wer hin muss, findet sie — auch wenn er das Haus nicht kennt.</p>
+      <ul>
+        <li>Ebenen und Unterebenen, Filter nach Gewerk</li>
+        <li>Aus der Original-PDF, scharf bis ins Detail</li>
+        <li>Brandmelder direkt über die Nummer suchen</li>
+        <li>Offline verfügbar, auch im Keller</li>
+        <li>Positionen bleiben beim Planaustausch erhalten</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="wartung">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="760" fill="#0E1113"/>
+
+  <rect x="40" y="40" width="1120" height="680" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="40" y="40" width="1120" height="44" rx="10" fill="#22282B"/>
+  <rect x="40" y="70" width="1120" height="14" fill="#22282B"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#2C3336"/>
+  <circle cx="66" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="84" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="102" cy="62" r="5" fill="#3A4245"/>
+  <rect x="128" y="52" width="300" height="20" rx="10" fill="#161A1C"/>
+  <text x="142" y="66" font-size="11" fill="#78827E">objektor.at / wartung</text>
+
+  <rect x="40" y="84" width="210" height="636" fill="#08090A"/>
+  <rect x="40" y="710" width="210" height="10" fill="#08090A"/>
+  <rect x="62" y="110" width="13" height="13" rx="2" fill="#2F9E86"/>
+  <text x="85" y="122" font-size="15" font-weight="bold" fill="#FFFFFF">Objektor</text>
+  <text x="62" y="164" font-size="12" fill="#8A9490">Übersicht</text>
+  <text x="62" y="198" font-size="12" fill="#8A9490">Pläne</text>
+  <text x="62" y="232" font-size="12" fill="#8A9490">Anlagen</text>
+  <rect x="50" y="248" width="190" height="30" rx="5" fill="#0F5757"/>
+  <text x="62" y="268" font-size="12" fill="#FFFFFF">Wartung</text>
+  <text x="62" y="302" font-size="12" fill="#8A9490">Meldungen</text>
+  <text x="62" y="336" font-size="12" fill="#8A9490">Schichtübergabe</text>
+  <text x="62" y="370" font-size="12" fill="#8A9490">Fremdfirmen</text>
+  <text x="62" y="404" font-size="12" fill="#8A9490">Alarme</text>
+
+  <line x1="50" y1="436" x2="240" y2="436" stroke="#22282B"/>
+  <text x="62" y="462" font-size="10" fill="#68716E" letter-spacing="1.4">GEWERK</text>
+  <text x="62" y="490" font-size="11" fill="#EDF1EF">Lüftung</text>
+  <text x="62" y="516" font-size="11" fill="#8A9490">Sanitär</text>
+  <text x="62" y="542" font-size="11" fill="#8A9490">Elektro</text>
+  <text x="62" y="568" font-size="11" fill="#8A9490">Brandschutz</text>
+  <text x="62" y="594" font-size="11" fill="#8A9490">Aufzüge</text>
+  <text x="62" y="620" font-size="11" fill="#8A9490">Kälte</text>
+
+  <text x="282" y="126" font-size="18" font-weight="bold" fill="#EDF1EF">Wartungsplan</text>
+  <text x="282" y="148" font-size="12" fill="#8A9490">August 2026 · alle Gewerke</text>
+
+  <rect x="282" y="172" width="200" height="76" rx="8" fill="#2E1A18"/>
+  <text x="302" y="200" font-size="11" fill="#EF9A92">Überfällig</text>
+  <text x="302" y="232" font-size="26" fill="#EF9A92" font-weight="bold">2</text>
+  <rect x="494" y="172" width="200" height="76" rx="8" fill="#33280D"/>
+  <text x="514" y="200" font-size="11" fill="#FAC775">Diese Woche fällig</text>
+  <text x="514" y="232" font-size="26" fill="#FAC775" font-weight="bold">7</text>
+  <rect x="706" y="172" width="200" height="76" rx="8" fill="#12302A"/>
+  <text x="726" y="200" font-size="11" fill="#5DCAA5">Im Monat erledigt</text>
+  <text x="726" y="232" font-size="26" fill="#5DCAA5" font-weight="bold">34</text>
+  <rect x="918" y="172" width="212" height="76" rx="8" fill="#22282B"/>
+  <text x="938" y="200" font-size="11" fill="#A3ADA9">Anlagen gesamt</text>
+  <text x="938" y="232" font-size="26" fill="#EDF1EF" font-weight="bold">418</text>
+
+  <line x1="282" y1="288" x2="1130" y2="288" stroke="#2C3336"/>
+  <text x="282" y="308" font-size="10" fill="#78827E" letter-spacing="1.2">ANLAGE</text>
+  <text x="620" y="308" font-size="10" fill="#78827E" letter-spacing="1.2">INTERVALL</text>
+  <text x="790" y="308" font-size="10" fill="#78827E" letter-spacing="1.2">FÄLLIG</text>
+  <text x="960" y="308" font-size="10" fill="#78827E" letter-spacing="1.2">STATUS</text>
+  <line x1="282" y1="320" x2="1130" y2="320" stroke="#2C3336"/>
+
+  <rect x="282" y="332" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="332" width="3" height="56" fill="#C0392B"/>
+  <text x="306" y="356" font-size="13" fill="#EDF1EF" font-weight="bold">Brandschutzklappe BSK 12</text>
+  <text x="306" y="375" font-size="11" fill="#8A9490">Ebene 2 · Brandschutz</text>
+  <text x="620" y="366" font-size="11" fill="#EDF1EF">jährlich</text>
+  <text x="790" y="366" font-size="11" fill="#EF9A92" font-weight="bold">02.08.2026</text>
+  <rect x="960" y="348" width="118" height="24" rx="12" fill="#2E1A18"/>
+  <text x="1019" y="364" font-size="11" fill="#EF9A92" text-anchor="middle">7 Tage über</text>
+
+  <rect x="282" y="396" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="396" width="3" height="56" fill="#C0392B"/>
+  <text x="306" y="420" font-size="13" fill="#EDF1EF" font-weight="bold">Hebeanlage HA 02</text>
+  <text x="306" y="439" font-size="11" fill="#8A9490">Untergeschoss · Sanitär</text>
+  <text x="620" y="430" font-size="11" fill="#EDF1EF">halbjährlich</text>
+  <text x="790" y="430" font-size="11" fill="#EF9A92" font-weight="bold">05.08.2026</text>
+  <rect x="960" y="412" width="118" height="24" rx="12" fill="#2E1A18"/>
+  <text x="1019" y="428" font-size="11" fill="#EF9A92" text-anchor="middle">4 Tage über</text>
+
+  <rect x="282" y="460" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="460" width="3" height="56" fill="#E9B820"/>
+  <text x="306" y="484" font-size="13" fill="#EDF1EF" font-weight="bold">Lüftung L-04</text>
+  <text x="306" y="503" font-size="11" fill="#8A9490">Ebene 1 · Lüftung</text>
+  <text x="620" y="494" font-size="11" fill="#EDF1EF">3 Monate</text>
+  <text x="790" y="494" font-size="11" fill="#FAC775" font-weight="bold">heute, 16:00</text>
+  <rect x="960" y="476" width="118" height="24" rx="12" fill="#33280D"/>
+  <text x="1019" y="492" font-size="11" fill="#FAC775" text-anchor="middle">2 von 5 erledigt</text>
+
+  <rect x="282" y="524" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="524" width="3" height="56" fill="#E9B820"/>
+  <text x="306" y="548" font-size="13" fill="#EDF1EF" font-weight="bold">Aufzug A-07 Prüfung</text>
+  <text x="306" y="567" font-size="11" fill="#8A9490">Kern West · Aufzüge</text>
+  <text x="620" y="558" font-size="11" fill="#EDF1EF">jährlich</text>
+  <text x="790" y="558" font-size="11" fill="#FAC775" font-weight="bold">11.08.2026</text>
+  <rect x="960" y="540" width="118" height="24" rx="12" fill="#33280D"/>
+  <text x="1019" y="556" font-size="11" fill="#FAC775" text-anchor="middle">in 2 Tagen</text>
+
+  <rect x="282" y="588" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="588" width="3" height="56" fill="#2F9E86"/>
+  <text x="306" y="612" font-size="13" fill="#EDF1EF" font-weight="bold">Kälteanlage K-02</text>
+  <text x="306" y="631" font-size="11" fill="#8A9490">Dach · Kälte</text>
+  <text x="620" y="622" font-size="11" fill="#EDF1EF">2 Monate</text>
+  <text x="790" y="622" font-size="11" fill="#EDF1EF">04.10.2026</text>
+  <rect x="960" y="604" width="118" height="24" rx="12" fill="#12302A"/>
+  <text x="1019" y="620" font-size="11" fill="#5DCAA5" text-anchor="middle">erledigt 04.08.</text>
+
+  <rect x="282" y="652" width="848" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="282" y="652" width="3" height="56" fill="#2F9E86"/>
+  <text x="306" y="676" font-size="13" fill="#EDF1EF" font-weight="bold">Notbeleuchtung Block C</text>
+  <text x="306" y="695" font-size="11" fill="#8A9490">Ebene 3 · Elektro</text>
+  <text x="620" y="686" font-size="11" fill="#EDF1EF">monatlich</text>
+  <text x="790" y="686" font-size="11" fill="#EDF1EF">01.09.2026</text>
+  <rect x="960" y="668" width="118" height="24" rx="12" fill="#12302A"/>
+  <text x="1019" y="684" font-size="11" fill="#5DCAA5" text-anchor="middle">erledigt 01.08.</text>
+</svg></div>
+    <div>
+      <h3>Termine, die sich selbst melden</h3>
+      <p class="text">Jede Anlage kennt ihr Intervall. Was fällig wird, taucht von allein auf — niemand muss eine Liste im Kopf haben.</p>
+      <ul>
+        <li>Intervalle von monatlich bis jährlich</li>
+        <li>Berechnung ab Ankerdatum, fix oder rollierend</li>
+        <li>Überfällige Arbeiten sofort sichtbar</li>
+        <li>Erledigung mit Pflichtfoto belegt</li>
+        <li>Nachweise und Prüfbuch als PDF</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="meldung">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="700" height="900" fill="#0E1113"/>
+
+  <rect x="40" y="30" width="340" height="840" rx="42" fill="#000000"/>
+  <rect x="52" y="42" width="316" height="816" rx="32" fill="#16191C"/>
+  <rect x="168" y="54" width="84" height="18" rx="9" fill="#000000"/>
+
+  <text x="80" y="102" font-size="11" fill="#78827E">09:41</text>
+  <rect x="310" y="93" width="22" height="10" rx="2" fill="#3A4245"/>
+
+  <rect x="52" y="116" width="316" height="58" fill="#0F5757"/>
+  <text x="80" y="141" font-size="11" fill="#9FC9C0">NEUE MELDUNG</text>
+  <text x="80" y="162" font-size="16" font-weight="bold" fill="#FFFFFF">Was ist passiert?</text>
+
+  <text x="72" y="204" font-size="10" fill="#78827E" letter-spacing="1.4">BESCHREIBUNG</text>
+  <rect x="72" y="214" width="276" height="66" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="88" y="238" font-size="12" fill="#EDF1EF">Wasseraustritt an der Decke,</text>
+  <text x="88" y="258" font-size="12" fill="#EDF1EF">Tropfenbildung über Gang 2</text>
+
+  <text x="72" y="310" font-size="10" fill="#78827E" letter-spacing="1.4">FOTOS</text>
+  <text x="348" y="310" font-size="10" fill="#78827E" text-anchor="end">3 angehängt</text>
+  <rect x="72" y="320" width="84" height="66" rx="6" fill="#2A3134" stroke="#3A4245"/>
+  <circle cx="98" cy="344" r="7" fill="#4C5558"/>
+  <path d="M78 380 l22 -24 l16 16 l12 -12 l22 20 z" fill="#4C5558"/>
+  <rect x="168" y="320" width="84" height="66" rx="6" fill="#2A3134" stroke="#3A4245"/>
+  <circle cx="194" cy="344" r="7" fill="#4C5558"/>
+  <path d="M174 380 l22 -24 l16 16 l12 -12 l22 20 z" fill="#4C5558"/>
+  <rect x="264" y="320" width="84" height="66" rx="6" fill="#20262A" stroke="#2F9E86" stroke-dasharray="4 3"/>
+  <line x1="306" y1="340" x2="306" y2="366" stroke="#2F9E86" stroke-width="2"/>
+  <line x1="293" y1="353" x2="319" y2="353" stroke="#2F9E86" stroke-width="2"/>
+
+  <text x="72" y="418" font-size="10" fill="#78827E" letter-spacing="1.4">ORT AM PLAN</text>
+  <rect x="72" y="428" width="276" height="146" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <g stroke="#454F52" stroke-width="1.5" fill="none">
+    <rect x="90" y="444" width="90" height="56"/>
+    <rect x="180" y="444" width="70" height="56"/>
+    <rect x="250" y="444" width="80" height="56"/>
+    <rect x="90" y="500" width="120" height="58"/>
+    <rect x="210" y="500" width="120" height="58"/>
+  </g>
+  <circle cx="238" cy="472" r="17" fill="none" stroke="#E2685F" stroke-width="2" opacity="0.5"/>
+  <circle cx="238" cy="472" r="11" fill="#C0392B"/>
+  <rect x="90" y="536" width="126" height="22" rx="4" fill="#16191C" stroke="#3A4245"/>
+  <text x="100" y="551" font-size="10" fill="#A3ADA9">Ebene 2 · Gang 2</text>
+
+  <text x="72" y="606" font-size="10" fill="#78827E" letter-spacing="1.4">WEITERLEITEN AN</text>
+  <rect x="72" y="616" width="132" height="34" rx="6" fill="#0F5757"/>
+  <text x="138" y="638" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Haustechnik</text>
+  <rect x="216" y="616" width="132" height="34" rx="6" fill="#20262A" stroke="#3A4245"/>
+  <text x="282" y="638" font-size="12" fill="#A3ADA9" text-anchor="middle">Reinigung</text>
+  <rect x="72" y="658" width="132" height="34" rx="6" fill="#20262A" stroke="#3A4245"/>
+  <text x="138" y="680" font-size="12" fill="#A3ADA9" text-anchor="middle">Wachdienst</text>
+  <rect x="216" y="658" width="132" height="34" rx="6" fill="#20262A" stroke="#3A4245"/>
+  <text x="282" y="680" font-size="12" fill="#A3ADA9" text-anchor="middle">Sanitär</text>
+
+  <rect x="72" y="714" width="276" height="46" rx="6" fill="#2F9E86"/>
+  <text x="210" y="742" font-size="13" fill="#04342C" text-anchor="middle" font-weight="bold">Meldung absenden</text>
+  <text x="210" y="782" font-size="10" fill="#78827E" text-anchor="middle">Ohne Netz gespeichert, sendet automatisch</text>
+
+  <rect x="184" y="826" width="92" height="4" rx="2" fill="#3A4441"/>
+
+  <text x="440" y="128" font-size="10" fill="#78827E" letter-spacing="1.4">WAS DANACH PASSIERT</text>
+
+  <rect x="440" y="146" width="220" height="94" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="440" y="146" width="3" height="94" fill="#2F9E86"/>
+  <circle cx="466" cy="176" r="11" fill="#2F9E86"/>
+  <text x="466" y="181" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">1</text>
+  <text x="488" y="181" font-size="13" fill="#EDF1EF" font-weight="bold">Ticket entsteht</text>
+  <text x="462" y="208" font-size="11" fill="#A3ADA9">Nummer, Zeitstempel und</text>
+  <text x="462" y="226" font-size="11" fill="#A3ADA9">Melder werden festgehalten</text>
+
+  <rect x="440" y="254" width="220" height="94" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="440" y="254" width="3" height="94" fill="#2F9E86"/>
+  <circle cx="466" cy="284" r="11" fill="#2F9E86"/>
+  <text x="466" y="289" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">2</text>
+  <text x="488" y="289" font-size="13" fill="#EDF1EF" font-weight="bold">Abteilung wird alarmiert</text>
+  <text x="462" y="316" font-size="11" fill="#A3ADA9">Push an alle Geräte der</text>
+  <text x="462" y="334" font-size="11" fill="#A3ADA9">zuständigen Empfängerliste</text>
+
+  <rect x="440" y="362" width="220" height="94" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="440" y="362" width="3" height="94" fill="#2F9E86"/>
+  <circle cx="466" cy="392" r="11" fill="#2F9E86"/>
+  <text x="466" y="397" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">3</text>
+  <text x="488" y="397" font-size="13" fill="#EDF1EF" font-weight="bold">Annahme</text>
+  <text x="462" y="424" font-size="11" fill="#A3ADA9">Wer annimmt, steht mit Name</text>
+  <text x="462" y="442" font-size="11" fill="#A3ADA9">und Uhrzeit im Protokoll</text>
+
+  <rect x="440" y="470" width="220" height="94" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="440" y="470" width="3" height="94" fill="#5DCAA5"/>
+  <circle cx="466" cy="500" r="11" fill="#5DCAA5"/>
+  <text x="466" y="505" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">4</text>
+  <text x="488" y="505" font-size="13" fill="#EDF1EF" font-weight="bold">Erledigung</text>
+  <text x="462" y="532" font-size="11" fill="#A3ADA9">Mit Foto belegt, danach als</text>
+  <text x="462" y="550" font-size="11" fill="#A3ADA9">PDF nachvollziehbar</text>
+
+  <rect x="440" y="596" width="220" height="164" rx="8" fill="#08090A" stroke="#22282B"/>
+  <text x="462" y="626" font-size="10" fill="#68716E" letter-spacing="1.4">MELDUNG 2026-1184</text>
+  <text x="462" y="654" font-size="13" fill="#FFFFFF" font-weight="bold">Wasseraustritt Gang 2</text>
+  <line x1="462" y1="670" x2="638" y2="670" stroke="#22282B"/>
+  <text x="462" y="694" font-size="11" fill="#8A9490">Gemeldet</text>
+  <text x="638" y="694" font-size="11" fill="#EDF1EF" text-anchor="end">09:41</text>
+  <text x="462" y="720" font-size="11" fill="#8A9490">Angenommen</text>
+  <text x="638" y="720" font-size="11" fill="#EDF1EF" text-anchor="end">09:44</text>
+  <text x="462" y="746" font-size="11" fill="#8A9490">Erledigt</text>
+  <text x="638" y="746" font-size="11" fill="#E9B820" text-anchor="end">offen</text>
+</svg></div>
+    <div>
+      <h3>Störung melden in zwanzig Sekunden</h3>
+      <p class="text">Foto, Ort am Plan, zuständige Abteilung — abgeschickt. Der Rest läuft von selbst bis zum fertigen Nachweis.</p>
+      <ul>
+        <li>Mehrere Fotos als Beleg</li>
+        <li>Roter Punkt am Plan statt umständlicher Ortsbeschreibung</li>
+        <li>Weiterleitung an Haustechnik, Reinigung, Wachdienst oder Gewerk</li>
+        <li>Wer annimmt, steht mit Name und Uhrzeit im Protokoll</li>
+        <li>Ohne Netz gespeichert, sendet automatisch nach</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="uebergabe">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="780" fill="#0E1113"/>
+
+  <rect x="40" y="40" width="1120" height="700" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="40" y="40" width="1120" height="44" rx="10" fill="#22282B"/>
+  <rect x="40" y="70" width="1120" height="14" fill="#22282B"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#2C3336"/>
+  <circle cx="66" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="84" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="102" cy="62" r="5" fill="#3A4245"/>
+  <rect x="128" y="52" width="300" height="20" rx="10" fill="#161A1C"/>
+  <text x="142" y="66" font-size="11" fill="#78827E">objektor.at / schichtuebergabe</text>
+
+  <line x1="40" y1="152" x2="1160" y2="152" stroke="#2C3336"/>
+  <rect x="70" y="104" width="13" height="13" rx="2" fill="#2F9E86"/>
+  <text x="70" y="142" font-size="17" font-weight="bold" fill="#EDF1EF">Schichtübergabe · Haustechnik</text>
+  <rect x="880" y="112" width="118" height="30" rx="5" fill="#20262A" stroke="#3A4245"/>
+  <text x="939" y="132" font-size="11" fill="#A3ADA9" text-anchor="middle">Verlauf</text>
+  <rect x="1010" y="112" width="120" height="30" rx="5" fill="#2F9E86"/>
+  <text x="1070" y="132" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">Als PDF</text>
+
+  <rect x="70" y="176" width="530" height="70" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="176" width="3" height="70" fill="#4C5558"/>
+  <text x="94" y="202" font-size="10" fill="#78827E" letter-spacing="1.4">ÜBERGEBEN VON</text>
+  <text x="94" y="226" font-size="14" fill="#EDF1EF" font-weight="bold">Nachtschicht · 22:00 – 06:00</text>
+  <text x="580" y="226" font-size="11" fill="#A3ADA9" text-anchor="end">abgeschlossen 06:04</text>
+
+  <rect x="620" y="176" width="510" height="70" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="620" y="176" width="3" height="70" fill="#2F9E86"/>
+  <text x="644" y="202" font-size="10" fill="#78827E" letter-spacing="1.4">ÜBERNOMMEN VON</text>
+  <text x="644" y="226" font-size="14" fill="#EDF1EF" font-weight="bold">Tagschicht · 06:00 – 14:00</text>
+  <text x="1110" y="226" font-size="11" fill="#5DCAA5" text-anchor="end">bestätigt 06:07</text>
+
+  <text x="70" y="286" font-size="10" fill="#78827E" letter-spacing="1.4">PFLICHTPUNKTE</text>
+  <text x="1130" y="286" font-size="10" fill="#78827E" text-anchor="end">6 von 7 erledigt</text>
+
+  <rect x="70" y="300" width="1060" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="300" width="3" height="56" fill="#5DCAA5"/>
+  <circle cx="104" cy="328" r="11" fill="#5DCAA5"/>
+  <path d="M99 328 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="324" font-size="13" fill="#EDF1EF" font-weight="bold">Kontrollgang Technikräume</text>
+  <text x="128" y="343" font-size="11" fill="#8A9490">alle 8 Stunden · Foto erforderlich</text>
+  <rect x="700" y="316" width="52" height="24" rx="4" fill="#2A3134"/>
+  <text x="726" y="332" font-size="10" fill="#A3ADA9" text-anchor="middle">Foto</text>
+  <text x="900" y="334" font-size="11" fill="#A3ADA9">23:14</text>
+  <rect x="1000" y="316" width="112" height="24" rx="12" fill="#12302A"/>
+  <text x="1056" y="332" font-size="11" fill="#5DCAA5" text-anchor="middle">erledigt</text>
+
+  <rect x="70" y="366" width="1060" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="366" width="3" height="56" fill="#5DCAA5"/>
+  <circle cx="104" cy="394" r="11" fill="#5DCAA5"/>
+  <path d="M99 394 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="390" font-size="13" fill="#EDF1EF" font-weight="bold">Zählerstände abgelesen</text>
+  <text x="128" y="409" font-size="11" fill="#8A9490">täglich vor 06:00</text>
+  <rect x="700" y="382" width="52" height="24" rx="4" fill="#2A3134"/>
+  <text x="726" y="398" font-size="10" fill="#A3ADA9" text-anchor="middle">Foto</text>
+  <text x="900" y="400" font-size="11" fill="#A3ADA9">05:41</text>
+  <rect x="1000" y="382" width="112" height="24" rx="12" fill="#12302A"/>
+  <text x="1056" y="398" font-size="11" fill="#5DCAA5" text-anchor="middle">erledigt</text>
+
+  <rect x="70" y="432" width="1060" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="432" width="3" height="56" fill="#C0392B"/>
+  <circle cx="104" cy="460" r="11" fill="none" stroke="#4C5558" stroke-width="2"/>
+  <text x="128" y="456" font-size="13" fill="#EDF1EF" font-weight="bold">Kesselhaus Sichtprüfung</text>
+  <text x="128" y="475" font-size="11" fill="#EF9A92">Frist 06:00 überschritten · Push an Leitung</text>
+  <rect x="700" y="448" width="52" height="24" rx="4" fill="#2A3134"/>
+  <text x="726" y="464" font-size="10" fill="#78827E" text-anchor="middle">Foto</text>
+  <text x="900" y="466" font-size="11" fill="#78827E">—</text>
+  <rect x="1000" y="448" width="112" height="24" rx="12" fill="#2E1A18"/>
+  <text x="1056" y="464" font-size="11" fill="#EF9A92" text-anchor="middle">überfällig</text>
+
+  <rect x="70" y="498" width="1060" height="56" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="498" width="3" height="56" fill="#5DCAA5"/>
+  <circle cx="104" cy="526" r="11" fill="#5DCAA5"/>
+  <path d="M99 526 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="522" font-size="13" fill="#EDF1EF" font-weight="bold">Störmeldungen gesichtet</text>
+  <text x="128" y="541" font-size="11" fill="#8A9490">2 offen an Tagschicht übergeben</text>
+  <text x="900" y="532" font-size="11" fill="#A3ADA9">05:52</text>
+  <rect x="1000" y="514" width="112" height="24" rx="12" fill="#12302A"/>
+  <text x="1056" y="530" font-size="11" fill="#5DCAA5" text-anchor="middle">erledigt</text>
+
+  <text x="70" y="596" font-size="10" fill="#78827E" letter-spacing="1.4">NOTIZ AN DIE NÄCHSTE SCHICHT</text>
+  <rect x="70" y="608" width="700" height="98" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="94" y="636" font-size="12" fill="#EDF1EF">Aufzug A-07 fährt Ebene 3 nicht an, Firma ist verständigt.</text>
+  <text x="94" y="658" font-size="12" fill="#EDF1EF">Sperre bleibt bis Rückmeldung. Schlüssel liegt in der Leitwarte.</text>
+  <text x="94" y="688" font-size="11" fill="#78827E">Eintrag von 05:58 · nach Abschluss schreibgeschützt</text>
+
+  <rect x="790" y="608" width="340" height="98" rx="8" fill="#08090A" stroke="#22282B"/>
+  <text x="814" y="636" font-size="10" fill="#68716E" letter-spacing="1.4">NACHWEIS</text>
+  <text x="814" y="662" font-size="13" fill="#EDF1EF">Protokoll als PDF archiviert</text>
+  <text x="814" y="686" font-size="11" fill="#8A9490">Jede Übergabe bleibt nachlesbar</text>
+</svg></div>
+    <div>
+      <h3>Die Schicht endet, das Wissen bleibt</h3>
+      <p class="text">Was offen ist, steht schwarz auf weiß. Beim Dienstwechsel geht nichts verloren und niemand muss raten, was in der Nacht war.</p>
+      <ul>
+        <li>Pflichtpunkte mit Frist und Wiederholung</li>
+        <li>Bestätigung mit Foto und Uhrzeit</li>
+        <li>Überschrittene Fristen melden sich bei der Leitung</li>
+        <li>Nach Abschluss schreibgeschützt archiviert</li>
+        <li>Jede Übergabe als PDF nachlesbar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="wachdienst">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="780" fill="#0E1113"/>
+
+  <rect x="40" y="70" width="348" height="640" rx="34" fill="#000000"/>
+  <rect x="52" y="82" width="324" height="616" rx="26" fill="#16191C"/>
+
+  <rect x="52" y="82" width="324" height="60" rx="26" fill="#0F5757"/>
+  <rect x="52" y="116" width="324" height="26" fill="#0F5757"/>
+  <text x="78" y="108" font-size="11" fill="#9FC9C0">WACHDIENST</text>
+  <text x="78" y="130" font-size="15" font-weight="bold" fill="#FFFFFF">Rundgang Nacht · 02:00</text>
+
+  <rect x="76" y="164" width="276" height="52" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="96" y="186" font-size="11" fill="#78827E">Fortschritt</text>
+  <text x="332" y="186" font-size="11" fill="#EDF1EF" text-anchor="end" font-weight="bold">5 von 9</text>
+  <rect x="96" y="196" width="236" height="6" rx="3" fill="#2A3134"/>
+  <rect x="96" y="196" width="131" height="6" rx="3" fill="#2F9E86"/>
+
+  <rect x="76" y="230" width="276" height="46" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="76" y="230" width="3" height="46" fill="#5DCAA5"/>
+  <circle cx="106" cy="253" r="10" fill="#5DCAA5"/>
+  <path d="M101 253 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="250" font-size="12" fill="#EDF1EF">Tiefgarage Ebene -1</text>
+  <text x="128" y="267" font-size="10" fill="#8A9490">02:06 · gescannt</text>
+
+  <rect x="76" y="286" width="276" height="46" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="76" y="286" width="3" height="46" fill="#5DCAA5"/>
+  <circle cx="106" cy="309" r="10" fill="#5DCAA5"/>
+  <path d="M101 309 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="306" font-size="12" fill="#EDF1EF">Anlieferung Nord</text>
+  <text x="128" y="323" font-size="10" fill="#8A9490">02:14 · gescannt</text>
+
+  <rect x="76" y="342" width="276" height="46" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="76" y="342" width="3" height="46" fill="#E9B820"/>
+  <circle cx="106" cy="365" r="10" fill="none" stroke="#E9B820" stroke-width="2"/>
+  <text x="128" y="362" font-size="12" fill="#EDF1EF">Notausgang Ost</text>
+  <text x="128" y="379" font-size="10" fill="#FAC775">nächster Punkt</text>
+
+  <rect x="76" y="398" width="276" height="46" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <rect x="76" y="398" width="3" height="46" fill="#4C5558"/>
+  <circle cx="106" cy="421" r="10" fill="none" stroke="#4C5558" stroke-width="2"/>
+  <text x="128" y="418" font-size="12" fill="#A3ADA9">Dachzugang West</text>
+  <text x="128" y="435" font-size="10" fill="#78827E">offen</text>
+
+  <rect x="76" y="466" width="132" height="44" rx="6" fill="#2F9E86"/>
+  <text x="142" y="493" font-size="12" fill="#04342C" text-anchor="middle" font-weight="bold">Punkt scannen</text>
+  <rect x="220" y="466" width="132" height="44" rx="6" fill="#43221E" stroke="#C0392B"/>
+  <text x="286" y="493" font-size="12" fill="#EF9A92" text-anchor="middle" font-weight="bold">Vorfall melden</text>
+
+  <rect x="76" y="528" width="276" height="72" rx="8" fill="#08090A" stroke="#22282B"/>
+  <text x="96" y="552" font-size="10" fill="#68716E" letter-spacing="1.4">OHNE NETZ</text>
+  <text x="96" y="576" font-size="12" fill="#EDF1EF">Scans werden zwischengespeichert</text>
+  <text x="96" y="592" font-size="11" fill="#8A9490">und später automatisch abgeglichen</text>
+
+  <rect x="184" y="664" width="92" height="4" rx="2" fill="#3A4441"/>
+
+  <text x="428" y="98" font-size="17" font-weight="bold" fill="#EDF1EF">Wachdienst — was erfasst wird</text>
+
+  <rect x="428" y="122" width="352" height="140" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="428" y="122" width="3" height="140" fill="#2F9E86"/>
+  <text x="452" y="150" font-size="10" fill="#78827E" letter-spacing="1.4">RUNDGÄNGE</text>
+  <text x="452" y="176" font-size="14" fill="#EDF1EF" font-weight="bold">Kontrollpunkte per QR</text>
+  <text x="452" y="202" font-size="11" fill="#A3ADA9">Jeder Punkt mit Uhrzeit und Person.</text>
+  <text x="452" y="222" font-size="11" fill="#A3ADA9">Ausgelassene Punkte fallen sofort auf,</text>
+  <text x="452" y="242" font-size="11" fill="#A3ADA9">der Rundgang bleibt als Nachweis erhalten.</text>
+
+  <rect x="800" y="122" width="352" height="140" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="800" y="122" width="3" height="140" fill="#C0392B"/>
+  <text x="824" y="150" font-size="10" fill="#78827E" letter-spacing="1.4">VORFÄLLE</text>
+  <text x="824" y="176" font-size="14" fill="#EDF1EF" font-weight="bold">Sofort dokumentiert</text>
+  <text x="824" y="202" font-size="11" fill="#A3ADA9">Foto, Ort am Plan, Uhrzeit.</text>
+  <text x="824" y="222" font-size="11" fill="#A3ADA9">Weiterleitung an Haustechnik oder Leitung,</text>
+  <text x="824" y="242" font-size="11" fill="#A3ADA9">Push geht an die hinterlegte Empfängerliste.</text>
+
+  <text x="428" y="304" font-size="10" fill="#78827E" letter-spacing="1.4">EREIGNISSE DER NACHT</text>
+
+  <rect x="428" y="318" width="724" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="428" y="318" width="3" height="60" fill="#C0392B"/>
+  <rect x="454" y="336" width="26" height="26" rx="6" fill="#C0392B"/>
+  <text x="467" y="354" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">F</text>
+  <text x="494" y="344" font-size="13" fill="#EDF1EF" font-weight="bold">Feuerwehreinsatz · Fehlalarm BM 118</text>
+  <text x="494" y="364" font-size="11" fill="#8A9490">01:22 – 01:58 · Ebene 2 Ost · Bericht abgelegt</text>
+  <rect x="1020" y="336" width="112" height="24" rx="12" fill="#2E1A18"/>
+  <text x="1076" y="352" font-size="11" fill="#EF9A92" text-anchor="middle">abgeschlossen</text>
+
+  <rect x="428" y="388" width="724" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="428" y="388" width="3" height="60" fill="#E9B820"/>
+  <rect x="454" y="406" width="26" height="26" rx="6" fill="#E9B820"/>
+  <text x="467" y="424" font-size="12" fill="#412402" text-anchor="middle" font-weight="bold">V</text>
+  <text x="494" y="414" font-size="13" fill="#EDF1EF" font-weight="bold">Vorfall · Beschädigte Tür Anlieferung</text>
+  <text x="494" y="434" font-size="11" fill="#8A9490">02:41 · 2 Fotos · an Haustechnik weitergeleitet</text>
+  <rect x="1020" y="406" width="112" height="24" rx="12" fill="#33280D"/>
+  <text x="1076" y="422" font-size="11" fill="#FAC775" text-anchor="middle">in Arbeit</text>
+
+  <rect x="428" y="458" width="724" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="428" y="458" width="3" height="60" fill="#4C5558"/>
+  <rect x="454" y="476" width="26" height="26" rx="6" fill="#3A4245"/>
+  <text x="467" y="494" font-size="12" fill="#EDF1EF" text-anchor="middle" font-weight="bold">H</text>
+  <text x="494" y="484" font-size="13" fill="#EDF1EF" font-weight="bold">Hausverbot ausgesprochen</text>
+  <text x="494" y="504" font-size="11" fill="#8A9490">03:15 · Foto und Beschreibung hinterlegt · 2 Jahre</text>
+  <rect x="1020" y="476" width="112" height="24" rx="12" fill="#2A3134"/>
+  <text x="1076" y="492" font-size="11" fill="#A3ADA9" text-anchor="middle">erfasst</text>
+
+  <rect x="428" y="528" width="724" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="428" y="528" width="3" height="60" fill="#2F9E86"/>
+  <rect x="454" y="546" width="26" height="26" rx="6" fill="#2F9E86"/>
+  <text x="467" y="564" font-size="12" fill="#04342C" text-anchor="middle" font-weight="bold">R</text>
+  <text x="494" y="554" font-size="13" fill="#EDF1EF" font-weight="bold">Rundgang 22:00 abgeschlossen</text>
+  <text x="494" y="574" font-size="11" fill="#8A9490">9 von 9 Punkten · 34 Minuten</text>
+  <rect x="1020" y="546" width="112" height="24" rx="12" fill="#12302A"/>
+  <text x="1076" y="562" font-size="11" fill="#5DCAA5" text-anchor="middle">vollständig</text>
+
+  <rect x="428" y="614" width="724" height="96" rx="8" fill="#08090A" stroke="#22282B"/>
+  <text x="452" y="642" font-size="10" fill="#68716E" letter-spacing="1.4">ÜBERGABE AN DIE HAUSTECHNIK</text>
+  <text x="452" y="670" font-size="13" fill="#EDF1EF">Was der Wachdienst in der Nacht aufnimmt, liegt in der Früh</text>
+  <text x="452" y="692" font-size="13" fill="#EDF1EF">als Ticket bei der Haustechnik — ohne Zettel, ohne Telefonat.</text>
+</svg></div>
+    <div>
+      <h3>Rundgänge und Vorfälle</h3>
+      <p class="text">Der Wachdienst dokumentiert unterwegs. Was in der Nacht auffällt, liegt in der Früh als Ticket bei der Haustechnik.</p>
+      <ul>
+        <li>Kontrollpunkte per QR-Code, mit Uhrzeit und Person</li>
+        <li>Ausgelassene Punkte fallen sofort auf</li>
+        <li>Vorfälle mit Foto und Ort am Plan</li>
+        <li>Feuerwehreinsätze mit Bericht und Kalender</li>
+        <li>Hausverbote erfasst und hinterlegt</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="firmen">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="780" fill="#0E1113"/>
+
+  <rect x="40" y="40" width="740" height="700" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="40" y="40" width="740" height="44" rx="10" fill="#22282B"/>
+  <rect x="40" y="70" width="740" height="14" fill="#22282B"/>
+  <line x1="40" y1="84" x2="780" y2="84" stroke="#2C3336"/>
+  <circle cx="66" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="84" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="102" cy="62" r="5" fill="#3A4245"/>
+  <rect x="128" y="52" width="260" height="20" rx="10" fill="#161A1C"/>
+  <text x="142" y="66" font-size="11" fill="#78827E">objektor.at / fremdfirmen</text>
+
+  <line x1="40" y1="150" x2="780" y2="150" stroke="#2C3336"/>
+  <rect x="70" y="102" width="13" height="13" rx="2" fill="#2F9E86"/>
+  <text x="70" y="140" font-size="17" font-weight="bold" fill="#EDF1EF">Fremdfirmen im Haus</text>
+  <text x="750" y="140" font-size="11" fill="#78827E" text-anchor="end">Sonntag, 9. August · 09:41</text>
+
+  <rect x="70" y="174" width="160" height="70" rx="8" fill="#12302A"/>
+  <text x="88" y="200" font-size="11" fill="#5DCAA5">Aktuell anwesend</text>
+  <text x="88" y="230" font-size="24" fill="#5DCAA5" font-weight="bold">7</text>
+  <rect x="246" y="174" width="160" height="70" rx="8" fill="#22282B"/>
+  <text x="264" y="200" font-size="11" fill="#A3ADA9">Firmen heute</text>
+  <text x="264" y="230" font-size="24" fill="#EDF1EF" font-weight="bold">4</text>
+  <rect x="422" y="174" width="160" height="70" rx="8" fill="#33280D"/>
+  <text x="440" y="200" font-size="11" fill="#FAC775">Über 8 Stunden</text>
+  <text x="440" y="230" font-size="24" fill="#FAC775" font-weight="bold">1</text>
+  <rect x="598" y="174" width="152" height="70" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="616" y="200" font-size="11" fill="#8A9490">Auszug</text>
+  <rect x="616" y="210" width="112" height="26" rx="4" fill="#2F9E86"/>
+  <text x="672" y="228" font-size="11" fill="#04342C" text-anchor="middle" font-weight="bold">Als PDF</text>
+
+  <line x1="70" y1="278" x2="750" y2="278" stroke="#2C3336"/>
+  <text x="70" y="298" font-size="10" fill="#78827E" letter-spacing="1.2">PERSON UND FIRMA</text>
+  <text x="380" y="298" font-size="10" fill="#78827E" letter-spacing="1.2">BEREICH</text>
+  <text x="546" y="298" font-size="10" fill="#78827E" letter-spacing="1.2">SEIT</text>
+  <text x="646" y="298" font-size="10" fill="#78827E" letter-spacing="1.2">STATUS</text>
+  <line x1="70" y1="310" x2="750" y2="310" stroke="#2C3336"/>
+
+  <rect x="70" y="322" width="680" height="52" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="322" width="3" height="52" fill="#2F9E86"/>
+  <circle cx="106" cy="348" r="15" fill="#12302A"/>
+  <text x="106" y="353" font-size="11" fill="#5DCAA5" text-anchor="middle" font-weight="bold">MK</text>
+  <text x="132" y="344" font-size="13" fill="#EDF1EF" font-weight="bold">M. Kellner</text>
+  <text x="132" y="362" font-size="11" fill="#8A9490">Elektro Sturm GmbH</text>
+  <text x="380" y="354" font-size="11" fill="#EDF1EF">Ebene 1 Nord</text>
+  <text x="546" y="354" font-size="11" fill="#EDF1EF">07:12</text>
+  <rect x="646" y="336" width="88" height="24" rx="12" fill="#12302A"/>
+  <text x="690" y="352" font-size="11" fill="#5DCAA5" text-anchor="middle">anwesend</text>
+
+  <rect x="70" y="386" width="680" height="52" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="386" width="3" height="52" fill="#2F9E86"/>
+  <circle cx="106" cy="412" r="15" fill="#12302A"/>
+  <text x="106" y="417" font-size="11" fill="#5DCAA5" text-anchor="middle" font-weight="bold">TB</text>
+  <text x="132" y="408" font-size="13" fill="#EDF1EF" font-weight="bold">T. Brunner</text>
+  <text x="132" y="426" font-size="11" fill="#8A9490">Kältetechnik Auer</text>
+  <text x="380" y="418" font-size="11" fill="#EDF1EF">Dach West</text>
+  <text x="546" y="418" font-size="11" fill="#EDF1EF">08:05</text>
+  <rect x="646" y="400" width="88" height="24" rx="12" fill="#12302A"/>
+  <text x="690" y="416" font-size="11" fill="#5DCAA5" text-anchor="middle">anwesend</text>
+
+  <rect x="70" y="450" width="680" height="52" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="450" width="3" height="52" fill="#E9B820"/>
+  <circle cx="106" cy="476" r="15" fill="#33280D"/>
+  <text x="106" y="481" font-size="11" fill="#FAC775" text-anchor="middle" font-weight="bold">RH</text>
+  <text x="132" y="472" font-size="13" fill="#EDF1EF" font-weight="bold">R. Hofer</text>
+  <text x="132" y="490" font-size="11" fill="#8A9490">Aufzugsdienst Nord</text>
+  <text x="380" y="482" font-size="11" fill="#EDF1EF">Kern West</text>
+  <text x="546" y="482" font-size="11" fill="#EDF1EF">23:50</text>
+  <rect x="646" y="464" width="88" height="24" rx="12" fill="#33280D"/>
+  <text x="690" y="480" font-size="11" fill="#FAC775" text-anchor="middle">9 h 51</text>
+
+  <rect x="70" y="514" width="680" height="52" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="514" width="3" height="52" fill="#2F9E86"/>
+  <circle cx="106" cy="540" r="15" fill="#12302A"/>
+  <text x="106" y="545" font-size="11" fill="#5DCAA5" text-anchor="middle" font-weight="bold">SP</text>
+  <text x="132" y="536" font-size="13" fill="#EDF1EF" font-weight="bold">S. Pichler</text>
+  <text x="132" y="554" font-size="11" fill="#8A9490">Elektro Sturm GmbH</text>
+  <text x="380" y="546" font-size="11" fill="#EDF1EF">Ebene 1 Nord</text>
+  <text x="546" y="546" font-size="11" fill="#EDF1EF">07:12</text>
+  <rect x="646" y="528" width="88" height="24" rx="12" fill="#12302A"/>
+  <text x="690" y="544" font-size="11" fill="#5DCAA5" text-anchor="middle">anwesend</text>
+
+  <rect x="70" y="578" width="680" height="52" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="578" width="3" height="52" fill="#4C5558"/>
+  <circle cx="106" cy="604" r="15" fill="#2A3134"/>
+  <text x="106" y="609" font-size="11" fill="#A3ADA9" text-anchor="middle" font-weight="bold">JW</text>
+  <text x="132" y="600" font-size="13" fill="#A3ADA9" font-weight="bold">J. Wallner</text>
+  <text x="132" y="618" font-size="11" fill="#78827E">Malerei Steiner</text>
+  <text x="380" y="610" font-size="11" fill="#78827E">Ebene 3</text>
+  <text x="546" y="610" font-size="11" fill="#78827E">06:30 – 08:55</text>
+  <rect x="646" y="592" width="88" height="24" rx="12" fill="#2A3134"/>
+  <text x="690" y="608" font-size="11" fill="#A3ADA9" text-anchor="middle">abgemeldet</text>
+
+  <rect x="70" y="654" width="680" height="62" rx="6" fill="#08090A" stroke="#22282B"/>
+  <text x="92" y="678" font-size="10" fill="#68716E" letter-spacing="1.4">IM NOTFALL</text>
+  <text x="92" y="702" font-size="13" fill="#EDF1EF">Wer im Haus ist, steht auf Knopfdruck da — auch am Handy</text>
+
+  <rect x="812" y="140" width="348" height="500" rx="34" fill="#000000"/>
+  <rect x="824" y="152" width="324" height="476" rx="26" fill="#16191C"/>
+
+  <rect x="824" y="152" width="324" height="58" rx="26" fill="#0F5757"/>
+  <rect x="824" y="184" width="324" height="26" fill="#0F5757"/>
+  <text x="850" y="178" font-size="11" fill="#9FC9C0">FIRMENZUGANG</text>
+  <text x="850" y="200" font-size="15" font-weight="bold" fill="#FFFFFF">Anmeldung am Tor</text>
+
+  <rect x="884" y="238" width="204" height="204" rx="10" fill="#FFFFFF"/>
+  <g fill="#0E1113">
+    <rect x="904" y="258" width="46" height="46"/><rect x="914" y="268" width="26" height="26" fill="#FFFFFF"/><rect x="922" y="276" width="10" height="10" fill="#0E1113"/>
+    <rect x="1022" y="258" width="46" height="46"/><rect x="1032" y="268" width="26" height="26" fill="#FFFFFF"/><rect x="1040" y="276" width="10" height="10" fill="#0E1113"/>
+    <rect x="904" y="376" width="46" height="46"/><rect x="914" y="386" width="26" height="26" fill="#FFFFFF"/><rect x="922" y="394" width="10" height="10" fill="#0E1113"/>
+    <rect x="962" y="258" width="10" height="10"/><rect x="982" y="258" width="10" height="10"/><rect x="972" y="278" width="10" height="10"/><rect x="992" y="268" width="10" height="10"/>
+    <rect x="962" y="298" width="10" height="10"/><rect x="992" y="298" width="10" height="10"/><rect x="972" y="318" width="10" height="10"/>
+    <rect x="904" y="318" width="10" height="10"/><rect x="924" y="318" width="10" height="10"/><rect x="944" y="338" width="10" height="10"/><rect x="904" y="338" width="10" height="10"/>
+    <rect x="1022" y="318" width="10" height="10"/><rect x="1042" y="328" width="10" height="10"/><rect x="1002" y="338" width="10" height="10"/><rect x="1032" y="348" width="10" height="10"/>
+    <rect x="962" y="358" width="10" height="10"/><rect x="992" y="378" width="10" height="10"/><rect x="1012" y="398" width="10" height="10"/><rect x="1042" y="388" width="10" height="10"/>
+    <rect x="972" y="398" width="10" height="10"/><rect x="1032" y="408" width="10" height="10"/><rect x="1002" y="418" width="10" height="10"/>
+  </g>
+
+  <text x="986" y="472" font-size="13" fill="#EDF1EF" text-anchor="middle" font-weight="bold">Code am Tor scannen</text>
+  <text x="986" y="494" font-size="11" fill="#8A9490" text-anchor="middle">An- und Abmeldung in fünf Sekunden</text>
+
+  <rect x="856" y="516" width="260" height="44" rx="6" fill="#12302A"/>
+  <circle cx="882" cy="538" r="11" fill="#5DCAA5"/>
+  <path d="M877 538 l4 4 l7 -8" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="904" y="536" font-size="12" fill="#5DCAA5" font-weight="bold">Angemeldet 07:12</text>
+  <text x="904" y="552" font-size="10" fill="#5DCAA5">Elektro Sturm GmbH · Ebene 1</text>
+
+  <rect x="856" y="574" width="260" height="38" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <text x="986" y="598" font-size="12" fill="#A3ADA9" text-anchor="middle">Funktioniert auch ohne Netz</text>
+</svg></div>
+    <div>
+      <h3>Wer ist gerade im Haus</h3>
+      <p class="text">Fremdfirmen melden sich per QR-Code an und ab. Im Ernstfall weiß man auf Knopfdruck, wer sich wo aufhält.</p>
+      <ul>
+        <li>An- und Abmeldung in fünf Sekunden</li>
+        <li>Anwesenheitsliste in Echtzeit</li>
+        <li>Anwesenheitskalender je Firma</li>
+        <li>Firmenauszug als PDF für die Abrechnung</li>
+        <li>Läuft offline, gleicht später ab</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="push">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="700" height="900" fill="#0E1113"/>
+
+  <rect x="40" y="30" width="340" height="840" rx="42" fill="#000000"/>
+  <rect x="52" y="42" width="316" height="816" rx="32" fill="#16191C"/>
+  <rect x="168" y="54" width="84" height="18" rx="9" fill="#000000"/>
+
+  <text x="80" y="104" font-size="11" fill="#7A8380">Sonntag, 9. August</text>
+  <text x="340" y="104" font-size="11" fill="#7A8380" text-anchor="end">09:41</text>
+
+  <text x="210" y="176" font-size="58" fill="#FFFFFF" text-anchor="middle" font-weight="200">02:14</text>
+  <text x="210" y="200" font-size="12" fill="#7A8380" text-anchor="middle">Sperrbildschirm</text>
+
+  <rect x="72" y="236" width="276" height="112" rx="14" fill="#2E1A18" stroke="#C0392B" stroke-width="1.5"/>
+  <rect x="88" y="252" width="26" height="26" rx="6" fill="#C0392B"/>
+  <text x="101" y="270" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">!</text>
+  <text x="124" y="264" font-size="11" fill="#EF9A92" letter-spacing="0.6">OBJEKTOR · KRITISCHER ALARM</text>
+  <text x="332" y="264" font-size="10" fill="#9E7C77" text-anchor="end">jetzt</text>
+  <text x="88" y="298" font-size="14" fill="#FFFFFF" font-weight="bold">Brandmeldeanlage BM 214</text>
+  <text x="88" y="320" font-size="12" fill="#D6B8B4">Ebene 1 · Technikbereich Nord</text>
+  <text x="88" y="338" font-size="11" fill="#A88680">Ton auch bei stumm · 3. Erinnerung</text>
+
+  <rect x="72" y="360" width="132" height="36" rx="8" fill="#43221E"/>
+  <text x="138" y="383" font-size="12" fill="#F0A9A2" text-anchor="middle">Am Plan zeigen</text>
+  <rect x="216" y="360" width="132" height="36" rx="8" fill="#C0392B"/>
+  <text x="282" y="383" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Annehmen</text>
+
+  <rect x="72" y="418" width="276" height="92" rx="14" fill="#20262A" stroke="#333B3F"/>
+  <rect x="88" y="434" width="26" height="26" rx="6" fill="#E9B820"/>
+  <text x="101" y="452" font-size="13" fill="#412402" text-anchor="middle" font-weight="bold">W</text>
+  <text x="124" y="446" font-size="11" fill="#A3ADA9" letter-spacing="0.6">OBJEKTOR · WARTUNG</text>
+  <text x="332" y="446" font-size="10" fill="#78827E" text-anchor="end">vor 12 min</text>
+  <text x="88" y="480" font-size="13" fill="#EDF1EF">Lüftung L-04 wird heute fällig</text>
+  <text x="88" y="500" font-size="11" fill="#8A9490">Frist 16:00 · Checkliste 5 Punkte</text>
+
+  <rect x="72" y="522" width="276" height="92" rx="14" fill="#20262A" stroke="#333B3F"/>
+  <rect x="88" y="538" width="26" height="26" rx="6" fill="#2F9E86"/>
+  <text x="101" y="556" font-size="13" fill="#04342C" text-anchor="middle" font-weight="bold">M</text>
+  <text x="124" y="550" font-size="11" fill="#A3ADA9" letter-spacing="0.6">OBJEKTOR · MELDUNG</text>
+  <text x="332" y="550" font-size="10" fill="#78827E" text-anchor="end">vor 40 min</text>
+  <text x="88" y="584" font-size="13" fill="#EDF1EF">Neue Meldung an Haustechnik</text>
+  <text x="88" y="604" font-size="11" fill="#8A9490">Wasseraustritt · Ebene 2 · mit Foto</text>
+
+  <rect x="72" y="626" width="276" height="70" rx="14" fill="#20262A" stroke="#333B3F" opacity="0.6"/>
+  <rect x="88" y="642" width="26" height="26" rx="6" fill="#3A4441"/>
+  <text x="124" y="654" font-size="11" fill="#78827E">OBJEKTOR · SCHICHTÜBERGABE</text>
+  <text x="88" y="684" font-size="12" fill="#8A9490">Übergabe 06:00 abgeschlossen</text>
+
+  <rect x="188" y="836" width="92" height="4" rx="2" fill="#3A4441"/>
+
+  <rect x="440" y="228" width="200" height="238" rx="52" fill="#000000"/>
+  <rect x="632" y="290" width="10" height="34" rx="5" fill="#2A2A2E"/>
+  <rect x="456" y="248" width="168" height="198" rx="38" fill="#16191C"/>
+
+  <text x="540" y="284" font-size="10" fill="#A88680" text-anchor="middle" letter-spacing="0.8">KRITISCHER ALARM</text>
+  <circle cx="540" cy="312" r="17" fill="#C0392B"/>
+  <text x="540" y="318" font-size="17" fill="#FFFFFF" text-anchor="middle" font-weight="bold">!</text>
+  <text x="540" y="352" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">BM 214</text>
+  <text x="540" y="371" font-size="10" fill="#A3ADA9" text-anchor="middle">Ebene 1 Nord</text>
+
+  <rect x="472" y="388" width="64" height="30" rx="8" fill="#43221E"/>
+  <text x="504" y="408" font-size="10" fill="#F0A9A2" text-anchor="middle">Später</text>
+  <rect x="544" y="388" width="64" height="30" rx="8" fill="#C0392B"/>
+  <text x="576" y="408" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Annehmen</text>
+
+  <rect x="440" y="514" width="200" height="196" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="440" y="514" width="3" height="196" fill="#2F9E86"/>
+  <text x="462" y="544" font-size="10" fill="#8A9490" letter-spacing="1.4">ZUSTELLUNG</text>
+  <circle cx="468" cy="574" r="6" fill="#5DCAA5"/>
+  <text x="484" y="578" font-size="11" fill="#EDF1EF">09:41 zugestellt</text>
+  <circle cx="468" cy="604" r="6" fill="#5DCAA5"/>
+  <text x="484" y="608" font-size="11" fill="#EDF1EF">09:41 gelesen</text>
+  <circle cx="468" cy="634" r="6" fill="#E9B820"/>
+  <text x="484" y="638" font-size="11" fill="#EDF1EF">09:43 erinnert</text>
+  <circle cx="468" cy="664" r="6" fill="#4A5350"/>
+  <text x="484" y="668" font-size="11" fill="#8A9490">Annahme offen</text>
+  <text x="462" y="694" font-size="10" fill="#8A9490">Erinnert bis jemand annimmt</text>
+</svg></div>
+    <div>
+      <h3>Alarme, die ankommen</h3>
+      <p class="text">Kritische Meldungen erreichen das Handy auch im Stummmodus — und erinnern so lange, bis jemand die Verantwortung übernimmt.</p>
+      <ul>
+        <li>Eigener Ton für Alarm und Nachricht</li>
+        <li>Zustellung und Lesen nachvollziehbar</li>
+        <li>Erinnerung bis zur Annahme</li>
+        <li>Annahme mit Name und Uhrzeit</li>
+        <li>Aktionstasten auf der Apple Watch</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tafel" id="leittechnik">
+    <div class="bild"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="780" fill="#0E1113"/>
+
+  <rect x="40" y="40" width="1120" height="700" rx="10" fill="#1A1F22" stroke="#2C3336"/>
+  <rect x="40" y="40" width="1120" height="44" rx="10" fill="#22282B"/>
+  <rect x="40" y="70" width="1120" height="14" fill="#22282B"/>
+  <line x1="40" y1="84" x2="1160" y2="84" stroke="#2C3336"/>
+  <circle cx="66" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="84" cy="62" r="5" fill="#3A4245"/>
+  <circle cx="102" cy="62" r="5" fill="#3A4245"/>
+  <rect x="128" y="52" width="300" height="20" rx="10" fill="#161A1C"/>
+  <text x="142" y="66" font-size="11" fill="#78827E">objektor.at / alarme</text>
+
+  <line x1="40" y1="152" x2="1160" y2="152" stroke="#2C3336"/>
+  <rect x="70" y="104" width="13" height="13" rx="2" fill="#2F9E86"/>
+  <text x="70" y="142" font-size="17" font-weight="bold" fill="#EDF1EF">Alarme und Anlagenwerte</text>
+  <circle cx="1052" cy="126" r="5" fill="#5DCAA5"/>
+  <text x="1068" y="131" font-size="11" fill="#8A9490">live · Aktualisierung alle 30 s</text>
+
+  <text x="70" y="188" font-size="10" fill="#78827E" letter-spacing="1.4">OFFENE ALARME</text>
+
+  <rect x="70" y="202" width="700" height="60" rx="6" fill="#20262A" stroke="#C0392B"/>
+  <rect x="70" y="202" width="3" height="60" fill="#C0392B"/>
+  <circle cx="102" cy="232" r="12" fill="#C0392B"/>
+  <text x="102" y="237" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">!</text>
+  <text x="128" y="228" font-size="13" fill="#EDF1EF" font-weight="bold">Sammelstörung Lüftung L-11</text>
+  <text x="128" y="248" font-size="11" fill="#EF9A92">seit 09:12 · Push an Haustechnik · noch nicht angenommen</text>
+  <rect x="640" y="220" width="112" height="24" rx="12" fill="#2E1A18"/>
+  <text x="696" y="236" font-size="11" fill="#EF9A92" text-anchor="middle">offen</text>
+
+  <rect x="70" y="272" width="700" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="272" width="3" height="60" fill="#E9B820"/>
+  <circle cx="102" cy="302" r="12" fill="#E9B820"/>
+  <text x="102" y="307" font-size="13" fill="#412402" text-anchor="middle" font-weight="bold">Ü</text>
+  <text x="128" y="298" font-size="13" fill="#EDF1EF" font-weight="bold">Überfälliger Punkt · Kesselhaus Sichtprüfung</text>
+  <text x="128" y="318" font-size="11" fill="#FAC775">Frist 06:00 · aus der Schichtübergabe</text>
+  <rect x="640" y="290" width="112" height="24" rx="12" fill="#33280D"/>
+  <text x="696" y="306" font-size="11" fill="#FAC775" text-anchor="middle">überfällig</text>
+
+  <rect x="70" y="342" width="700" height="60" rx="6" fill="#20262A" stroke="#2C3336"/>
+  <rect x="70" y="342" width="3" height="60" fill="#2F9E86"/>
+  <circle cx="102" cy="372" r="12" fill="#2F9E86"/>
+  <path d="M96 372 l4 4 l8 -9" stroke="#04342C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="368" font-size="13" fill="#EDF1EF" font-weight="bold">Druckwächter Sprinkler</text>
+  <text x="128" y="388" font-size="11" fill="#8A9490">08:44 angenommen · in Bearbeitung</text>
+  <rect x="640" y="360" width="112" height="24" rx="12" fill="#12302A"/>
+  <text x="696" y="376" font-size="11" fill="#5DCAA5" text-anchor="middle">angenommen</text>
+
+  <text x="70" y="446" font-size="10" fill="#78827E" letter-spacing="1.4">LIVE-WERTE AUS DER GEBÄUDELEITTECHNIK</text>
+
+  <rect x="70" y="460" width="166" height="94" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="90" y="486" font-size="11" fill="#8A9490">Vorlauf Heizung</text>
+  <text x="90" y="522" font-size="24" fill="#EDF1EF" font-weight="bold">62,4 °C</text>
+  <text x="90" y="542" font-size="10" fill="#5DCAA5">im Sollbereich</text>
+
+  <rect x="248" y="460" width="166" height="94" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="268" y="486" font-size="11" fill="#8A9490">Zuluft L-04</text>
+  <text x="268" y="522" font-size="24" fill="#EDF1EF" font-weight="bold">18,9 °C</text>
+  <text x="268" y="542" font-size="10" fill="#5DCAA5">im Sollbereich</text>
+
+  <rect x="426" y="460" width="166" height="94" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="446" y="486" font-size="11" fill="#8A9490">Filterdruck L-11</text>
+  <text x="446" y="522" font-size="24" fill="#FAC775" font-weight="bold">248 Pa</text>
+  <text x="446" y="542" font-size="10" fill="#FAC775">Grenzwert nahe</text>
+
+  <rect x="604" y="460" width="166" height="94" rx="8" fill="#20262A" stroke="#2C3336"/>
+  <text x="624" y="486" font-size="11" fill="#8A9490">Verbrauch heute</text>
+  <text x="624" y="522" font-size="24" fill="#EDF1EF" font-weight="bold">1 842 kWh</text>
+  <text x="624" y="542" font-size="10" fill="#78827E">Vortag 1 910</text>
+
+  <text x="70" y="602" font-size="10" fill="#78827E" letter-spacing="1.4">SCHALTEN MIT FREIGABE</text>
+  <rect x="70" y="616" width="700" height="94" rx="8" fill="#08090A" stroke="#22282B"/>
+  <text x="94" y="646" font-size="13" fill="#EDF1EF">Nur freigegebene Anlagen lassen sich aus dem System schalten.</text>
+  <text x="94" y="670" font-size="13" fill="#EDF1EF">Jeder Schaltvorgang wird mit Name und Uhrzeit protokolliert.</text>
+  <text x="94" y="694" font-size="11" fill="#78827E">Alles andere bleibt reine Anzeige</text>
+
+  <rect x="800" y="176" width="330" height="534" rx="8" fill="#1A1F22" stroke="#2C3336"/>
+  <text x="824" y="206" font-size="10" fill="#78827E" letter-spacing="1.4">ANLAGENBAUM</text>
+
+  <text x="824" y="240" font-size="12" fill="#8A9490">Objekt</text>
+  <text x="866" y="240" font-size="12" fill="#78827E">›</text>
+  <text x="884" y="240" font-size="12" fill="#8A9490">Ebene 1</text>
+  <text x="938" y="240" font-size="12" fill="#78827E">›</text>
+  <text x="956" y="240" font-size="12" fill="#5DCAA5">Lüftung</text>
+
+  <line x1="824" y1="258" x2="1106" y2="258" stroke="#2C3336"/>
+
+  <rect x="824" y="272" width="282" height="42" rx="6" fill="#20262A"/>
+  <circle cx="848" cy="293" r="6" fill="#5DCAA5"/>
+  <text x="868" y="290" font-size="12" fill="#EDF1EF">L-01 Verkaufsfläche</text>
+  <text x="868" y="306" font-size="10" fill="#78827E">in Betrieb · 68 %</text>
+
+  <rect x="824" y="322" width="282" height="42" rx="6" fill="#20262A"/>
+  <circle cx="848" cy="343" r="6" fill="#5DCAA5"/>
+  <text x="868" y="340" font-size="12" fill="#EDF1EF">L-04 Technikbereich</text>
+  <text x="868" y="356" font-size="10" fill="#78827E">in Betrieb · 45 %</text>
+
+  <rect x="824" y="372" width="282" height="42" rx="6" fill="#2E1A18"/>
+  <circle cx="848" cy="393" r="6" fill="#E2685F"/>
+  <text x="868" y="390" font-size="12" fill="#EDF1EF">L-11 Anlieferung</text>
+  <text x="868" y="406" font-size="10" fill="#EF9A92">Sammelstörung</text>
+
+  <rect x="824" y="422" width="282" height="42" rx="6" fill="#20262A"/>
+  <circle cx="848" cy="443" r="6" fill="#4C5558"/>
+  <text x="868" y="440" font-size="12" fill="#A3ADA9">L-12 Lager Ost</text>
+  <text x="868" y="456" font-size="10" fill="#78827E">außer Betrieb</text>
+
+  <line x1="824" y1="488" x2="1106" y2="488" stroke="#2C3336"/>
+  <text x="824" y="516" font-size="10" fill="#78827E" letter-spacing="1.4">L-11 · SCHALTEN</text>
+
+  <rect x="824" y="530" width="134" height="38" rx="6" fill="#20262A" stroke="#3A4245"/>
+  <text x="891" y="554" font-size="12" fill="#A3ADA9" text-anchor="middle">Aus</text>
+  <rect x="972" y="530" width="134" height="38" rx="6" fill="#2F9E86"/>
+  <text x="1039" y="554" font-size="12" fill="#04342C" text-anchor="middle" font-weight="bold">Ein</text>
+
+  <text x="824" y="600" font-size="10" fill="#78827E" letter-spacing="1.4">PROTOKOLL</text>
+  <text x="824" y="626" font-size="11" fill="#A3ADA9">09:31 · L-11 aus · R. F.</text>
+  <text x="824" y="650" font-size="11" fill="#A3ADA9">07:02 · L-04 ein · Automatik</text>
+  <text x="824" y="674" font-size="11" fill="#A3ADA9">06:00 · L-01 ein · Automatik</text>
+</svg></div>
+    <div>
+      <h3>Anlagenwerte im selben Fenster</h3>
+      <p class="text">Temperaturen, Drücke und Verbräuche aus der Gebäudeleittechnik stehen direkt neben den offenen Alarmen.</p>
+      <ul>
+        <li>Anbindung an bestehende Leittechnik</li>
+        <li>Live-Werte mit Grenzwertanzeige</li>
+        <li>Anlagenbaum mit Störungsanzeige</li>
+        <li>Schalten nur für freigegebene Anlagen</li>
+        <li>Jeder Schaltvorgang protokolliert</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="zahlen">
+    <div class="zahl"><b>Seit 2026</b><span>Im laufenden Betrieb eines Einkaufszentrums</span></div>
+    <div class="zahl"><b>iOS + Android</b><span>Eigene App, nicht nur eine Webseite</span></div>
+    <div class="zahl"><b>Eigener Server</b><span>Keine fremde Cloud</span></div>
+  </div>
+</div>
+</section>
+
+<section class="herkunft" id="herkunft">
+<div class="mitte">
+  <div class="abschnitt-kopf">
+    <div class="kicker" style="color:var(--teal)">REFERENZ</div>
+    <h2 class="gross">Aus dem Betrieb, nicht vom Reißbrett</h2>
+    <p>Objektor ist dort entstanden, wo es eingesetzt wird.</p>
+  </div>
+
+  <div class="referenz">
+    <div class="ref-text">
+      <!-- NEUTRALE FASSUNG - aktiv bis die schriftliche Freigabe vorliegt -->
+      <h3>Ein großes österreichisches Einkaufszentrum</h3>
+      <p>Mehrere Ebenen, Tiefgarage, Technikbereiche über das ganze Haus verteilt. Haustechnik und Wachdienst arbeiten im Schichtbetrieb.</p>
+      <p>Jede Funktion in Objektor gibt es, weil sie in diesem Betrieb gefehlt hat — nicht, weil sie sich in einer Merkmalsliste gut liest.</p>
+
+      <!-- FASSUNG MIT NAMENSNENNUNG - erst nach schriftlicher Freigabe des Betreibers einsetzen
+      <h3>Plus City, Pasching</h3>
+      <p>Mehrere Ebenen, Tiefgarage, Technikbereiche über das ganze Haus verteilt. Haustechnik und Wachdienst arbeiten im Schichtbetrieb.</p>
+      <p>Jede Funktion in Objektor gibt es, weil sie in diesem Betrieb gefehlt hat — nicht, weil sie sich in einer Merkmalsliste gut liest.</p>
+      -->
+    </div>
+
+    <div class="ref-kasten">
+      <div class="ref-zeile"><span>Im Einsatz seit</span><b>2026</b></div>
+      <div class="ref-zeile"><span>Bereiche</span><b>Haustechnik, Wachdienst</b></div>
+      <div class="ref-zeile"><span>Betrieb</span><b>durchgehend, im Schichtdienst</b></div>
+      <div class="ref-zeile"><span>Server</span><b>im Haus</b></div>
+    </div>
+  </div>
+
+  <div class="zitat">
+    Wer die Anlagen selbst betreut, weiß, woran Dokumentation scheitert: an Zetteln, an Zuständigkeiten und an Zeit.
+    <cite>Entwickelt von jemandem aus der Haustechnik</cite>
+  </div>
+</div>
+</section>
+
+<section class="anpassung" id="anpassung">
+<div class="mitte">
+  <div class="abschnitt-kopf">
+    <div class="kicker" style="color:var(--teal)">ANPASSUNG</div>
+    <h2 class="gross">Kein Programm von der Stange</h2>
+    <p>Jedes Haus arbeitet anders. Objektor wird auf Ihre Abläufe zugeschnitten — nicht umgekehrt.</p>
+  </div>
+
+  <div class="karten">
+    <div class="karte"><h3>Ihre Abläufe, nicht fremde</h3><p>Formulare, Checklisten, Intervalle und Zuständigkeiten werden so eingerichtet, wie bei Ihnen tatsächlich gearbeitet wird.</p></div>
+    <div class="karte"><h3>Ihre Begriffe</h3><p>Gewerke, Bereiche und Bezeichnungen heißen im System so, wie sie bei Ihnen im Haus heißen.</p></div>
+    <div class="karte"><h3>Bestehende Systeme anbinden</h3><p>Die Gebäudeleittechnik ist bereits angebunden. Was sonst eine offene Schnittstelle hat, lässt sich im Gespräch prüfen.</p></div>
+    <div class="karte"><h3>Neue Funktionen möglich</h3><p>Fehlt etwas, wird es gebaut. Das System ist nicht eingefroren, sondern wächst mit dem Betrieb.</p></div>
+    <div class="karte"><h3>Schrittweise einführbar</h3><p>Sie müssen nicht alles auf einmal umstellen. Ein Bereich zuerst, der Rest folgt, wenn er sich bewährt hat.</p></div>
+    <div class="karte"><h3>Direkter Draht</h3><p>Sie sprechen mit dem, der das System gebaut hat — keine Hotline, kein Ticketsystem dazwischen.</p></div>
+  </div>
+
+  <div class="weg">
+    <div class="weg-schritt"><b>1</b><h4>Termin vereinbaren</h4><p>Ein Anruf oder eine Nachricht genügt. Vor Ort oder online, wie es Ihnen lieber ist.</p></div>
+    <div class="weg-schritt"><b>2</b><h4>Bedarf klären</h4><p>Wir gehen durch, was bei Ihnen hakt, welche Nachweise Sie brauchen und welche Systeme schon vorhanden sind.</p></div>
+    <div class="weg-schritt"><b>3</b><h4>Vorschlag bekommen</h4><p>Sie erhalten einen konkreten Vorschlag, was das System bei Ihnen abdecken würde — und was es kostet.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="kontakt">
+<div class="mitte">
+  <div class="kontakt-feld">
+    <div>
+      <h2>Reden wir über Ihr Objekt</h2>
+      <p>Eine halbe Stunde reicht, um zu klären, welche Bereiche bei Ihnen Sinn ergeben und was angepasst werden müsste. Unverbindlich und ohne Vorbereitung Ihrerseits.</p>
+    </div>
+    <div><a class="knopf knopf-voll" href="mailto:kontakt@objektor.at?subject=Terminanfrage%20Objektor">Termin anfragen</a></div>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="mitte fuss">
+  <div>© 2026 Objektor</div>
+  <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+</div>
 </footer>
 
+<script>
+document.querySelectorAll('.reiter button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.reiter button').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.tafel').forEach(function(t){t.classList.remove('aktiv')});
+    b.setAttribute('aria-selected','true');
+    document.getElementById(b.dataset.ziel).classList.add('aktiv');
+  });
+});
+var nk=document.getElementById('navKnopf'),nv=document.getElementById('nav');
+nk.addEventListener('click',function(){nv.classList.toggle('offen')});
+nv.addEventListener('click',function(e){if(e.target.tagName==='A')nv.classList.remove('offen')});
+</script>
 </body>
 </html>
