@@ -3,35 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Danke — Objektor</title>
+<title>Danke – Objektor</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F5757">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+(function(){try{var t=localStorage.getItem('objektor-modus');if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dunkel':'hell'}document.documentElement.setAttribute('data-modus',t)}catch(e){document.documentElement.setAttribute('data-modus','hell')}
+try{if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-bew')}catch(e){}})();
+</script>
 <style>
-:root{--bg:#EDF0EF;--text:#16211F;--leise:#59645F;--still:#8A9490;--teal:#0F5757;--rand:#DDE3E1;--rand-stark:#C8D1CE}
+:root{
+  --bg:#F2F4F3;--bg2:#E8ECEB;--karte:#FFFFFF;--rand:#D9DFDD;--rand2:#C3CCC9;
+  --text:#14201E;--leise:#55615D;--still:#85908C;
+  --marke:#0F5757;--marke-hell:#2F9E86;
+  --firma:#104B96;--firma-zart:rgba(16,75,150,.08);
+  --heim:#A05A22;--heim-zart:rgba(160,90,34,.09);
+  --rot:#C62828;--gruen:#15803D;--gelb:#8A5A00;
+  --kopf:rgba(255,255,255,.9);--schatten:0 18px 40px rgba(20,32,30,.10);
+}
+html[data-modus="dunkel"]{
+  --bg:#141619;--bg2:#1A1C1F;--karte:#202327;--rand:#2F3338;--rand2:#40444C;
+  --text:#F2F4F6;--leise:#BCC3CB;--still:#8B939C;
+  --marke:#2F9E86;--marke-hell:#4CC2B4;
+  --firma:#438EFF;--firma-zart:rgba(67,142,255,.10);
+  --heim:#E0975C;--heim-zart:rgba(224,151,92,.10);
+  --rot:#EF5C5C;--gruen:#2CC78F;--gelb:#D78A00;
+  --kopf:rgba(20,22,25,.88);--schatten:0 18px 40px rgba(0,0,0,.35);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
-header{background:rgba(255,255,255,.92);border-bottom:1px solid var(--rand)}
-.kopf{max-width:1180px;margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center}
-.marke{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.3px;text-decoration:none;color:var(--text)}
-.marke i{width:13px;height:13px;background:var(--teal);border-radius:2px;display:inline-block}
-main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 28px}
-.kasten{max-width:520px;text-align:center}
-.haken{width:60px;height:60px;border-radius:50%;background:var(--teal);margin:0 auto 26px;display:flex;align-items:center;justify-content:center}
-.haken svg{width:28px;height:28px}
-h1{font-size:32px;letter-spacing:-1px;margin-bottom:14px}
-p{font-size:16.5px;color:var(--leise);margin-bottom:12px}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;color:var(--text);user-select:all}
-.knopf{display:inline-block;margin-top:26px;padding:13px 26px;border-radius:5px;font-size:15px;font-weight:600;text-decoration:none;background:#fff;color:var(--text);border:1px solid var(--rand-stark)}
-.knopf:hover{border-color:var(--teal);color:var(--teal)}
-footer{padding:30px 28px;font-size:14px;color:var(--still);text-align:center}
-footer a{color:var(--leise);text-decoration:none;margin:0 10px}
-footer a:hover{color:var(--teal)}
+a{color:inherit}
+.mitte{max-width:900px;margin:0 auto;padding:0 28px;width:100%}
+header{position:sticky;top:0;z-index:50;background:var(--kopf);backdrop-filter:blur(10px);border-bottom:1px solid var(--rand)}
+.kopf{display:flex;align-items:center;gap:18px;height:64px;max-width:1200px}
+.marke{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.3px;text-decoration:none;margin-right:auto}
+.marke i{width:13px;height:13px;background:var(--marke);border-radius:3px;display:inline-block}
+nav a{margin-left:22px;font-size:14.5px;color:var(--leise);text-decoration:none}nav a:hover{color:var(--text)}
+.modus-knopf{background:var(--karte);border:1px solid var(--rand2);color:var(--text);border-radius:8px;height:36px;padding:0 11px;font:inherit;font-size:14px;cursor:pointer}
+main{flex:1;padding:56px 0 64px}
+.kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:2.4px;color:var(--marke);margin-bottom:10px}
+h1{font-size:40px;line-height:1.15;letter-spacing:-1.2px;margin-bottom:10px}
+.stand{color:var(--still);font-size:14.5px;margin-bottom:30px}
+.block{background:var(--karte);border:1px solid var(--rand);border-radius:14px;padding:22px 24px;margin-bottom:12px}
+.block h2{font-size:17px;margin-bottom:8px}
+.block p,.block li,.block dd{color:var(--leise);font-size:15.5px}
+.block p+p{margin-top:8px}.block ul{margin:8px 0 8px 20px}.block dt{font-weight:600}
+.block a{color:var(--marke);text-decoration:none}.block a:hover{text-decoration:underline}
+footer{padding:30px 0;font-size:14px;color:var(--still);border-top:1px solid var(--rand)}
+.fuss{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;max-width:1200px}
+footer a{color:var(--leise);text-decoration:none;margin-left:20px}footer a:hover{color:var(--text)}
+.js-bew .block,.js-bew .kasten{animation:rein .6s cubic-bezier(.2,.7,.2,1) both}
+.js-bew .block:nth-child(n+4){animation-delay:.08s}
+@keyframes rein{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:760px){h1{font-size:30px}nav a{margin-left:14px}.mitte{padding:0 18px}main{padding:36px 0 44px}}
+main{display:flex;align-items:center}
+.kasten{max-width:520px;margin:0 auto;text-align:center}
+.haken{width:64px;height:64px;border-radius:50%;background:var(--marke);margin:0 auto 26px;display:flex;align-items:center;justify-content:center}
+.haken svg{width:30px;height:30px}
+.kasten p{font-size:16.5px;color:var(--leise);margin-bottom:10px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;color:var(--text)!important;user-select:all}
+.knopf{display:inline-block;margin-top:22px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;background:var(--marke-hell);color:#04342C;transition:transform .2s,box-shadow .2s}
+.knopf:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(47,158,134,.35)}
+.gross{font-size:84px;font-weight:800;letter-spacing:-3px;color:var(--marke);line-height:1}
 </style>
 </head>
 <body>
-
-<header><div class="kopf"><a class="marke" href="index.html"><i></i>Objektor</a></div></header>
-
-<main>
+<header><div class="mitte kopf">
+  <a class="marke" href="index.html"><i></i>Objektor</a>
+  <nav><a href="index.html">Startseite</a></nav>
+  <button class="modus-knopf" id="modusKnopf" aria-label="Hell oder Dunkel">☼</button>
+</div></header>
+<main><div class="mitte">
 <div class="kasten">
   <div class="haken"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 l5.5 5.5 L20 6"/></svg></div>
   <h1>Anfrage ist angekommen</h1>
@@ -40,13 +85,15 @@ footer a:hover{color:var(--teal)}
   <p class="mono">kontakt@objektor.at</p>
   <a class="knopf" href="index.html">Zurück zur Startseite</a>
 </div>
-</main>
-
-<footer>
-  © 2026 Objektor
-  <a href="impressum.html">Impressum</a>
-  <a href="datenschutz.html">Datenschutz</a>
-</footer>
-
+</div></main>
+<footer><div class="mitte fuss">
+  <div>© 2026 Objektor · kontakt@objektor.at</div>
+  <div><a href="index.html">Startseite</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+</div></footer>
+<script>
+(function(){var d=document.documentElement,k=document.getElementById('modusKnopf');
+function setze(m){d.setAttribute('data-modus',m);try{localStorage.setItem('objektor-modus',m)}catch(e){}k.textContent=m==='dunkel'?'☾':'☼'}
+setze(d.getAttribute('data-modus')||'hell');k.onclick=function(){setze(d.getAttribute('data-modus')==='dunkel'?'hell':'dunkel')};})();
+</script>
 </body>
 </html>
