@@ -618,6 +618,78 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .js-bew #formularAuf::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:glanz 3.4s ease-in-out 1s infinite}
 @keyframes glanz{0%{left:-60%}55%,100%{left:130%}}
 @media (prefers-reduced-motion: reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.mk-raster{scroll-behavior:auto}}
+
+/* ===== Licht mit Raumbild zum Schalten (05.11.2026) =====
+   Nachgebaut aus der App: UI/VisuLichtraum.cs (Druck ins Raumbild: an = Startwert, aus = 0;
+   Wert gleitet hin; "x von n ein · Ø %"), UI/VisuLichtraumBlatt.cs (Blatt "Dimmer"),
+   UI/VisuLichtraumBilder.cs (LichtFarben Hell/Dunkel). Auf der Webseite wird nichts gesendet. */
+#lichtDemo,#lrPop{--lr-grund:#1A1C1F;--lr-karte:#2A2D32;--lr-rand:#4E535C;--lr-text:#F2F4F6;--lr-matt:#BCC3CB;--lr-leise:#7D7D7D;
+ --lr-wand:#0B1017;--lr-boden0:#151D28;--lr-boden1:#0D131B;--lr-kante:#263241;--lr-decke:#1A2330;--lr-deckenkante:#2C3A4B;--lr-schiene:#141C27;
+ --lr-strahler:#2A3644;--lr-strahlerrand:#3A495C;--lr-segel:#131B26;--lr-segelrand:#34455A;--lr-trenn:#1C2632;--lr-moebelrand:#3A495C;--lr-glas:#0A0F15;--lr-glasrand:#263241;--lr-griff:#52647A;
+ --lr-l0:#FFD58A;--lr-l1:#F0A126;--lr-band1:#FFCF78;--lr-band2:#FFF1CF;--lr-k0:.9;--lr-k1:.3;--lr-k2:.05;--lr-s0:.85;--lr-s1:.32;--lr-p0:.7;
+ --lr-rtext:#EEF2F6;--lr-rleise:#9FB0C2;--lr-ran:#F3C26B;--lr-rzeile:#0B1017;--lr-sw:1}
+#lichtDemo{position:relative;padding:0 8px;color:var(--lr-text);font-family:Inter,system-ui,sans-serif}
+#appBild[data-app="hell"] #lichtDemo,#appBild[data-app="hell"] #lrPop{--lr-grund:#EEF1F4;--lr-karte:#FFFFFF;--lr-rand:#C9D2DB;--lr-text:#10171F;--lr-matt:#5B6775;--lr-leise:#8793A0;
+ --lr-wand:#5F6E82;--lr-boden0:#48566A;--lr-boden1:#3C495B;--lr-kante:#2E3A4A;--lr-decke:#4B596C;--lr-deckenkante:#2E3A4A;--lr-schiene:#3A4758;
+ --lr-strahler:#232D3A;--lr-strahlerrand:#141B24;--lr-segel:#55647A;--lr-segelrand:#2E3A4A;--lr-trenn:#4E5C70;--lr-moebelrand:#E6ECF2;--lr-glas:#46546A;--lr-glasrand:#C3CDD8;--lr-griff:#E6ECF2;
+ --lr-l0:#FFEEB5;--lr-l1:#FFB01F;--lr-band1:#FFC24D;--lr-band2:#FFF4D6;--lr-k0:1;--lr-k1:.78;--lr-k2:.24;--lr-s0:1;--lr-s1:.7;--lr-p0:1;
+ --lr-rtext:#17212C;--lr-rleise:#627080;--lr-ran:#A85F00;--lr-rzeile:#FFFFFF;--lr-sw:1.1}
+.r-kopf em{position:absolute;right:12px;top:9px;font:600 8.5px/1 Inter,system-ui,sans-serif;font-style:normal;color:#BCC3CB}
+#appBild[data-app="hell"] .r-status,#appBild[data-app="hell"] .r-kopf{color:#10171F}
+#appBild[data-app="hell"] .r-kopf i{background:#FFFFFF;box-shadow:0 2px 6px rgba(16,23,31,.18)}
+#appBild[data-app="hell"] .r-kopf em{color:#5B6775}
+.lr-tz{display:flex;justify-content:space-between;align-items:baseline;margin:2px 2px 4px;font-size:7.5px;letter-spacing:.09em;color:var(--lr-matt)}
+.lr-tz span+span{letter-spacing:0;font-size:8px}
+.lr-teil{border:1px solid var(--lr-rand);border-radius:10px;overflow:hidden;background:var(--lr-rzeile)}
+.lr-buehne{position:relative;line-height:0}
+.lr-buehne svg{display:block;width:100%;height:auto}
+.lr-zonen,.lr-namen{display:grid;grid-template-columns:repeat(3,1fr)}
+.lr-zonen{position:absolute;inset:0}
+.lr-zonen button,.lr-namen button{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lr-zonen button:focus-visible,.lr-namen button:focus-visible,.lr-dimmer button:focus-visible{outline:2px solid #EF5C5C;outline-offset:-2px}
+.lr-namen button{display:flex;flex-direction:column;align-items:center;padding:5px 2px 6px;border-left:1px solid var(--lr-trenn);text-align:center}
+.lr-namen button:first-child{border-left:0}
+.lr-namen b{font-weight:500;font-size:9px;color:var(--lr-rtext);line-height:1.25}
+.lr-namen small{font-size:8px;color:var(--lr-rleise);line-height:1.25}
+.lr-namen small.an{color:var(--lr-ran)}
+.lr-dimmer{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 8px}
+.lr-dimmer button{font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border-radius:9px;border:1px solid var(--lr-rand);background:linear-gradient(180deg,var(--lr-karte),var(--lr-grund));color:var(--lr-text)}
+.lr-dimmer i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--lr-rand)}
+.lr-dimmer svg,.lr-bz svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.lr-dimmer b{font-weight:500;font-size:9px}
+.lr-dimmer small{font-size:7.5px;color:var(--lr-matt)}
+.lr-licht{transition:none}
+/* Das Blatt "Dimmer" (VisuLichtraumBlatt.cs) */
+.lr-pop{position:absolute;inset:0;z-index:5;display:flex;align-items:flex-end;background:rgba(4,7,11,.66);border-radius:29px;overflow:hidden}
+.lr-pop[hidden]{display:none}
+#appBild[data-app="hell"] .lr-pop{background:rgba(40,52,66,.45)}
+.lr-blatt{width:100%;background:var(--lr-karte);border-top:1px solid var(--lr-rand);border-radius:16px 16px 0 0;padding:9px 10px 12px;color:var(--lr-text);font-family:Inter,system-ui,sans-serif;animation:lrHoch .22s ease-out}
+@keyframes lrHoch{from{transform:translateY(40%);opacity:.3}to{transform:none;opacity:1}}
+.lr-bk{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.lr-bk b{display:block;font-size:11px}
+.lr-bk small{font-size:8.5px;color:var(--lr-matt)}
+.lr-blatt button{font:inherit;cursor:pointer;border:1px solid var(--lr-rand);background:var(--lr-grund);color:var(--lr-text);border-radius:8px}
+.lr-bk button{font-size:8.5px;padding:5px 8px}
+.lr-mini{border:1px solid var(--lr-rand);border-radius:9px;overflow:hidden;line-height:0;margin-bottom:7px;background:var(--lr-wand)}
+.lr-mini svg{display:block;width:100%;height:92px}
+.lr-start{border:1px solid var(--lr-rand);border-radius:8px;margin-bottom:7px;font-size:8.5px}
+.lr-start summary{cursor:pointer;padding:5px 7px;display:flex;justify-content:space-between;list-style:none;color:var(--lr-matt)}
+.lr-start summary::-webkit-details-marker{display:none}
+.lr-start summary b{color:var(--lr-text);font-weight:600}
+.lr-start div{padding:0 7px 7px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.lr-start p{margin:0 0 4px;width:100%;font-size:7.5px;line-height:1.35;color:var(--lr-matt)}
+.lr-start button{padding:3px 7px;font-size:8.5px}
+.lr-bz{display:flex;align-items:center;gap:6px;margin-bottom:7px}
+.lr-bz i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:2px solid var(--lr-rand);color:var(--lr-l1)}
+.lr-bz .lr-ea{display:flex;gap:4px;margin-left:auto}
+.lr-ea button{padding:4px 10px;font-size:9px}
+.lr-blatt button.an{background:rgba(239,92,92,.6);border-color:rgba(239,92,92,.9);color:#fff}
+.lr-schritt{display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr 1fr;gap:4px;margin-bottom:6px}
+.lr-schritt button{padding:4px 0;font-size:9px}
+.lr-schritt b{display:grid;place-items:center;font-size:12px;border:1px solid var(--lr-rand);border-radius:8px}
+.lr-blatt input[type=range]{width:100%;margin:2px 0 7px;accent-color:#F0A126}
+.lr-tasten{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.lr-tasten button{padding:5px 0;font-size:8.5px}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#104B96;--heim:#A05A22}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
@@ -625,7 +697,7 @@ section{padding:77px 0}
 @media(max-width:760px){section{padding:55px 0}}</style>
 </head>
 <body>
-<script type="application/json" id="webbank-bewegung">[{"wo":"#appBild > figure:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2)","art":"zoom"},{"wo":"body > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1)","art":"links"},{"wo":"#trennung > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1) > img:nth-of-type(1)","art":"zoom"}]</script>
+<script type="application/json" id="webbank-bewegung">[{"wo":"body > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1)","art":"rein"},{"wo":"#trennung > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1) > img:nth-of-type(1)","art":"zoom"}]</script>
 
 <header>
 <div class="mitte kopf">
@@ -679,12 +751,28 @@ section{padding:77px 0}
       <div class="a-leiste"><span class="an">⌂<i>Start</i></span><span>▦<i>Dienst</i></span><span>▤<i>Anlagen</i></span><span>▭<i>Ticket</i></span><span>◫<i>Symcon</i></span></div>
     </div><figcaption>Firma · Startseite</figcaption></figure>
     <figure class="telefon foto raumbild"><div class="schirm">
-      <div class="app-d">
-        <div class="r-status"><span>19:12</span><span>5G ▮</span></div>
-        <div class="r-kopf"><i>‹</i><b>Licht</b></div>
-        <img src="bilder/app-zuhause-raumbild-vouten.webp" alt="App dunkel: Licht mit Raumbild — TV, Terrasse, Eßzimmer und Voute" width="370" height="566">
-      </div>
-      <div class="app-h"><img src="bilder/app-zuhause-raumbild-hell.webp" alt="App hell: Licht mit Raumbild — Gruppen und Voute" width="585" height="1084"></div>
+      <div class="r-status"><span>19:12</span><span>5G ▮</span></div>
+        <div class="r-kopf"><i>‹</i><b>Licht</b><em id="lrGesamt">4 von 6 ein</em></div>
+        <div id="lichtDemo" aria-label="Licht mit Raumbild – zum Ausprobieren: ins Bild tippen schaltet das Licht">
+          <div class="lr-tz"><span>GRUPPEN</span><span data-lrzahl="g"></span></div>
+          <div class="lr-teil"><div class="lr-buehne" data-art="g"></div><div class="lr-namen" data-art="g"></div></div>
+          <div class="lr-dimmer" data-art="g"></div>
+          <div class="lr-tz"><span>VOUTE</span><span data-lrzahl="v"></span></div>
+          <div class="lr-teil"><div class="lr-buehne" data-art="v"></div><div class="lr-namen" data-art="v"></div></div>
+          <div class="lr-dimmer" data-art="v"></div>
+        </div>
+        <div class="lr-pop" id="lrPop" hidden><div class="lr-blatt" role="dialog" aria-label="Dimmer">
+          <div class="lr-bk"><div><b id="lrPName">TV</b><small id="lrPArt">Gruppe · 25 %</small></div><button type="button" data-lr="zu">Schließen</button></div>
+          <div class="lr-mini" id="lrMini"></div>
+          <details class="lr-start"><summary><span>Startwert</span><b id="lrPStart">55 %</b></summary><div>
+            <p>Mit diesem Wert geht das Licht an, wenn man ins Raumbild tippt.</p>
+            <button type="button" data-st="-5">−</button><button type="button" data-st="5">+</button><button type="button" data-lr="uebernehmen">= jetzige Helligkeit übernehmen</button></div></details>
+          <div class="lr-bz"><i><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></i><span id="lrPWert2" style="font-size:9px"></span>
+            <div class="lr-ea"><button type="button" data-ea="1">Ein</button><button type="button" data-ea="0">Aus</button></div></div>
+          <div class="lr-schritt"><button type="button" data-d="-5">−5</button><button type="button" data-d="-1">−1</button><b id="lrPWert">25 %</b><button type="button" data-d="1">+1</button><button type="button" data-d="5">+5</button></div>
+          <input type="range" min="0" max="100" step="1" id="lrRegler" aria-label="Helligkeit">
+          <div class="lr-tasten" id="lrTasten"></div>
+        </div></div>
       <nav class="app-leiste" aria-label="Menü der App">
         <span><svg viewBox="0 0 24 24"><path d="M12 3 2.5 11.2h2.8V21h5.2v-6h3v6h5.2v-9.8h2.8z"/></svg>Start</span>
         <span class="an"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Symcon</span>
@@ -1370,6 +1458,135 @@ q('.mk-raster').forEach(function(g){
  g.addEventListener('mouseleave',function(){ruhe=false});
  setInterval(function(){if(sicht&&!ruhe&&!document.hidden)weiter(1)},3800);
 });
+})();
+</script>
+<script>
+/* Licht schalten wie in der App (05.11.2026)
+   VisuLichtraum.cs: Druck ins Raumbild -> Setzen(l, Soll>0 ? 0 : Start, sanft); Gleiten(): alle 33 ms
+   gezeigt += (ziel - gezeigt) * 0.24; Zaehler "x von n ein · Ø %"; Kopf "x von n ein".
+   VisuLichtraumBilder.cs: Staerke = (Prozent/100)^0.6, Kegel/Lichtband/Fleck mit LichtFarben.
+   VisuLichtraumBlatt.cs: Blatt Dimmer - Startwert, Ein/Aus, -5 -1 [x %] +1 +5, Schieber, Aus/25/50/75/100.
+   Auf der Webseite: nichts wird gesendet, alles bleibt im Browser. */
+(function(){
+var demo=document.getElementById('lichtDemo');if(!demo)return;
+var NAMEN=['TV','Terrasse','Eßzimmer'],BILD=['tv','tuer','tisch'];
+var L={g:[{w:25,s:55},{w:0,s:50},{w:25,s:50}],v:[{w:25,s:50},{w:0,s:50},{w:25,s:50}]};
+var TASTEN=[0,25,50,75,100];
+['g','v'].forEach(function(a){L[a].forEach(function(l){l.z=l.w})});
+var NS='http://www.w3.org/2000/svg',nr=0;
+function el(n,at,p){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(p)p.appendChild(e);return e}
+function st(w){return w>0.5?Math.pow(Math.min(100,w)/100,.6):0}
+function stop(g,o,farbe,deck){el('stop',{offset:o,style:'stop-color:var(--lr-'+farbe+');stop-opacity:'+deck},g)}
+/* Ein Raumbild: spalten = Liste der Stellen, voute = Lichtband statt Strahler */
+function raumbild(art,spalten){
+  var id='lr'+(++nr),voute=art==='v',W=100*spalten.length,H=125;
+  var s=el('svg',{viewBox:'0 0 '+W+' '+H,'aria-hidden':'true',preserveAspectRatio:'xMidYMid meet'});
+  var d=el('defs',{},s);
+  var k=el('linearGradient',{id:id+'k',x1:0,y1:0,x2:0,y2:1},d);stop(k,0,'l0','var(--lr-k0)');stop(k,.5,'l1','var(--lr-k1)');stop(k,1,'l1','var(--lr-k2)');
+  var f=el('radialGradient',{id:id+'f'},d);stop(f,0,'l0','var(--lr-p0)');stop(f,1,'l1','0');
+  var g=el('radialGradient',{id:id+'s',cx:.5,cy:0,r:1},d);stop(g,0,'l0','var(--lr-s0)');stop(g,.4,'l1','var(--lr-s1)');stop(g,1,'l1','0');
+  var b=el('linearGradient',{id:id+'b',x1:0,y1:0,x2:0,y2:1},d);stop(b,0,'boden0','1');stop(b,1,'boden1','1');
+  var lichter=[];
+  spalten.forEach(function(stelle,i){
+    var x=i*100,cp=el('clipPath',{id:id+'c'+i},d);el('rect',{x:x,y:0,width:100,height:H},cp);
+    var t=el('g',{'clip-path':'url(#'+id+'c'+i+')'},s);
+    el('rect',{x:x,y:0,width:100,height:H,style:'fill:var(--lr-wand)'},t);
+    el('rect',{x:x,y:108,width:100,height:17,fill:'url(#'+id+'b)'},t);
+    el('line',{x1:x,y1:108,x2:x+100,y2:108,style:'stroke:var(--lr-kante)'},t);
+    /* Licht */
+    var l=el('g',{opacity:0},t);lichter.push({g:l,stelle:stelle});
+    if(voute){
+      el('ellipse',{cx:x+50,cy:22,rx:60,ry:70,fill:'url(#'+id+'s)'},l);
+      el('rect',{x:x+12,y:20,width:76,height:2.6,rx:1.3,style:'fill:var(--lr-band1)'},l);
+      el('rect',{x:x+14,y:20.6,width:72,height:1,rx:.5,style:'fill:var(--lr-band2)'},l);
+    }else{
+      [28,50,72].forEach(function(sx){sx+=x;
+        el('polygon',{points:(sx-3)+',17 '+(sx+3)+',17 '+(sx+15)+',108 '+(sx-15)+',108',fill:'url(#'+id+'k)',opacity:.45},l);
+        el('polygon',{points:(sx-2)+',17 '+(sx+2)+',17 '+(sx+8)+',108 '+(sx-8)+',108',fill:'url(#'+id+'k)'},l);
+        el('ellipse',{cx:sx,cy:109,rx:15,ry:4.5,fill:'url(#'+id+'f)'},l);
+      });
+    }
+    /* Moebel - Striche wie im Raumbild der App */
+    var m=el('g',{style:'fill:none;stroke:var(--lr-moebelrand);stroke-width:calc(1px * var(--lr-sw))','stroke-linejoin':'round'},t),bi=BILD[stelle];
+    if(bi==='tv'){el('rect',{x:x+30,y:70,width:40,height:24,rx:1.5},m);el('line',{x1:x+50,y1:94,x2:x+50,y2:97},m);el('rect',{x:x+24,y:97,width:52,height:11,rx:1},m);el('line',{x1:x+41.3,y1:97,x2:x+41.3,y2:108},m);el('line',{x1:x+58.6,y1:97,x2:x+58.6,y2:108},m);}
+    if(bi==='tuer'){el('rect',{x:x+27,y:58,width:46,height:50},m);
+      [30,53].forEach(function(px){el('rect',{x:x+px,y:61,width:17,height:44,style:'fill:var(--lr-glas);stroke:var(--lr-glasrand)'},m);el('line',{x1:x+px+2,y1:70,x2:x+px+10,y2:63,style:'stroke:var(--lr-glasrand)'},m)});
+      el('line',{x1:x+48.5,y1:80,x2:x+48.5,y2:86,style:'stroke:var(--lr-griff)'},m);el('line',{x1:x+51.5,y1:80,x2:x+51.5,y2:86,style:'stroke:var(--lr-griff)'},m);}
+    if(bi==='tisch'){el('rect',{x:x+28,y:88,width:44,height:2},m);el('line',{x1:x+32,y1:90,x2:x+32,y2:108},m);el('line',{x1:x+68,y1:90,x2:x+68,y2:108},m);
+      el('polyline',{points:(x+18)+',76 '+(x+18)+',108'},m);el('polyline',{points:(x+18)+',96 '+(x+26)+',96 '+(x+26)+',108'},m);
+      el('polyline',{points:(x+82)+',76 '+(x+82)+',108'},m);el('polyline',{points:(x+82)+',96 '+(x+74)+',96 '+(x+74)+',108'},m);}
+    /* Decke, Schiene/Segel und Strahler liegen ueber dem Licht */
+    el('rect',{x:x,y:0,width:100,height:10,style:'fill:var(--lr-decke)'},t);
+    el('line',{x1:x,y1:10,x2:x+100,y2:10,style:'stroke:var(--lr-deckenkante)'},t);
+    if(voute){el('line',{x1:x+22,y1:10,x2:x+22,y2:16,style:'stroke:var(--lr-segelrand)'},t);el('line',{x1:x+78,y1:10,x2:x+78,y2:16,style:'stroke:var(--lr-segelrand)'},t);
+      el('rect',{x:x+10,y:16,width:80,height:4,rx:1,style:'fill:var(--lr-segel);stroke:var(--lr-segelrand);stroke-width:.8'},t);}
+    else{el('rect',{x:x+12,y:10,width:76,height:3,style:'fill:var(--lr-schiene)'},t);
+      [28,50,72].forEach(function(sx){el('rect',{x:x+sx-3.5,y:12,width:7,height:5,rx:1,style:'fill:var(--lr-strahler);stroke:var(--lr-strahlerrand);stroke-width:.8'},t)});}
+    if(i>0)el('line',{x1:x,y1:0,x2:x,y2:H,style:'stroke:var(--lr-trenn)'},s);
+  });
+  return {svg:s,art:art,lichter:lichter};
+}
+var bilder=[],namen={},felder={};
+function wertText(w){return w>0?Math.round(w)+' %':'aus'}
+function druck(a,i){var l=L[a][i];l.w=l.w>0?0:l.s;abgleich();uhr()}
+['g','v'].forEach(function(a){
+  var rb=raumbild(a,[0,1,2]);bilder.push(rb);
+  var bu=demo.querySelector('.lr-buehne[data-art="'+a+'"]');bu.appendChild(rb.svg);
+  var zo=document.createElement('div');zo.className='lr-zonen';bu.appendChild(zo);
+  var na=demo.querySelector('.lr-namen[data-art="'+a+'"]'),di=demo.querySelector('.lr-dimmer[data-art="'+a+'"]');
+  namen[a]=[];felder[a]=[];
+  NAMEN.forEach(function(n,i){
+    var z=document.createElement('button');z.type='button';z.setAttribute('aria-label',n+' ein oder aus');z.onclick=function(){druck(a,i)};zo.appendChild(z);
+    var b=document.createElement('button');b.type='button';b.innerHTML='<b>'+n+'</b><small></small>';b.onclick=function(){druck(a,i)};na.appendChild(b);namen[a].push(b.querySelector('small'));
+    var f=document.createElement('button');f.type='button';f.innerHTML='<i><svg viewBox="0 0 24 24"><path d="M6 4v16M12 4v16M18 4v16"/><path d="M4 9h4M10 15h4M16 7h4"/></svg></i><b>Dimmer</b><small></small>';
+    f.onclick=function(){auf(a,i)};di.appendChild(f);felder[a].push(f.querySelector('small'));
+  });
+});
+/* Blatt Dimmer */
+var pop=document.getElementById('lrPop'),offen=null,mini=null,regler=document.getElementById('lrRegler'),tb=document.getElementById('lrTasten');
+TASTEN.forEach(function(t){var b=document.createElement('button');b.type='button';b.dataset.t=t;b.textContent=t===0?'Aus':t+' %';tb.appendChild(b)});
+function auf(a,i){offen={a:a,i:i};var m=document.getElementById('lrMini');m.innerHTML='';mini=raumbild(a,[i]);m.appendChild(mini.svg);pop.hidden=false;abgleich();}
+function zu(){pop.hidden=true;offen=null;mini=null}
+function setze(w,sanft){if(!offen)return;var l=L[offen.a][offen.i];l.w=Math.max(0,Math.min(100,Math.round(w)));if(!sanft)l.z=l.w;abgleich();uhr()}
+pop.addEventListener('click',function(e){
+  if(e.target===pop){zu();return}
+  var b=e.target.closest('button');if(!b||!offen)return;var l=L[offen.a][offen.i];
+  if(b.dataset.lr==='zu')zu();
+  else if(b.dataset.lr==='uebernehmen'){if(l.w>0)l.s=Math.max(5,l.w);abgleich()}
+  else if(b.dataset.st){l.s=Math.max(5,Math.min(100,l.s+ +b.dataset.st));abgleich()}
+  else if(b.dataset.ea)setze(b.dataset.ea==='1'?l.s:0,true);
+  else if(b.dataset.d)setze(l.w+ +b.dataset.d,false);
+  else if(b.dataset.t)setze(+b.dataset.t,true);
+});
+regler.addEventListener('input',function(){setze(+regler.value,false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&offen)zu()});
+function abgleich(){
+  var alle=0,ein=0;
+  ['g','v'].forEach(function(a){var n=0,s=0;
+    L[a].forEach(function(l,i){namen[a][i].textContent=wertText(l.w);namen[a][i].className=l.w>0?'an':'';felder[a][i].textContent='Start '+l.s+' %';if(l.w>0)n++;s+=l.w});
+    alle+=3;ein+=n;demo.querySelector('[data-lrzahl="'+a+'"]').textContent=n+' von 3 ein · Ø '+Math.round(s/3)+' %';});
+  document.getElementById('lrGesamt').textContent=ein+' von '+alle+' ein';
+  if(offen){var l=L[offen.a][offen.i];
+    document.getElementById('lrPName').textContent=NAMEN[offen.i];
+    document.getElementById('lrPArt').textContent=(offen.a==='v'?'Voute':'Gruppe')+' · '+wertText(l.w);
+    document.getElementById('lrPWert').textContent=l.w+' %';document.getElementById('lrPWert2').textContent=l.w>0?'Ein':'Aus';
+    document.getElementById('lrPStart').textContent=l.s+' %';regler.value=l.w;
+    pop.querySelectorAll('[data-ea]').forEach(function(b){b.classList.toggle('an',(b.dataset.ea==='1')===(l.w>0))});
+    tb.querySelectorAll('button').forEach(function(b){b.classList.toggle('an',+b.dataset.t===l.w)});}
+  zeichnen();
+}
+function zeichnen(){
+  bilder.concat(mini?[mini]:[]).forEach(function(rb){rb.lichter.forEach(function(x){x.g.setAttribute('opacity',st(L[rb.art][x.stelle].z).toFixed(3))})});
+}
+var laeuft=false,zuletzt=0;
+function uhr(){if(!laeuft){laeuft=true;zuletzt=0;requestAnimationFrame(gleiten)}}
+function gleiten(t){
+  if(t-zuletzt<33){requestAnimationFrame(gleiten);return}zuletzt=t;
+  var offenNoch=false;
+  ['g','v'].forEach(function(a){L[a].forEach(function(l){var weg=l.w-l.z;if(Math.abs(weg)<0.5)l.z=l.w;else{l.z+=weg*0.24;offenNoch=true}})});
+  zeichnen();if(offenNoch)requestAnimationFrame(gleiten);else laeuft=false;
+}
+abgleich();
 })();
 </script>
 </body>
