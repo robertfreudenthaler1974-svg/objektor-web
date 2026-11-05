@@ -619,7 +619,10 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 @keyframes glanz{0%{left:-60%}55%,100%{left:130%}}
 @media (prefers-reduced-motion: reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.mk-raster{scroll-behavior:auto}}
 </style>
-<style id="webbank-aussehen"></style>
+<style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#104B96;--heim:#A05A22}
+html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
+section{padding:105px 0}
+@media(max-width:760px){section{padding:76px 0}}</style>
 </head>
 <body>
 <script type="application/json" id="webbank-bewegung">[{"wo":"body > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1)","art":"links"}]</script>
