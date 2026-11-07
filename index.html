@@ -353,8 +353,8 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 #hausDemo[data-z="licht"][data-app="dunkel"] .schirm img[data-z="licht"][data-m="dunkel"]{display:block!important}
 #hausDemo[data-z="licht"][data-app="hell"] .schirm img[data-z="licht"][data-m="hell"]{display:block!important}
 #hausDemo[data-z="licht"] figcaption span[data-z="licht"]{display:inline}
-#hausDemo[data-z="alarm"][data-app="dunkel"] .schirm img[data-z="alarm"][data-m="dunkel"]{display:block!important}
-#hausDemo[data-z="alarm"][data-app="hell"] .schirm img[data-z="alarm"][data-m="hell"]{display:block!important}
+.haus-demo .al-demo{display:none}
+#hausDemo[data-z="alarm"] .al-demo{display:block}
 #hausDemo[data-z="alarm"] figcaption span[data-z="alarm"]{display:inline}
 #hausDemo[data-z="bew"][data-app="dunkel"] .schirm img[data-z="bew"][data-m="dunkel"]{display:block!important}
 #hausDemo[data-z="bew"][data-app="hell"] .schirm img[data-z="bew"][data-m="hell"]{display:block!important}
@@ -695,6 +695,69 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .buchst .bu{display:inline-block;visibility:hidden}
 .buchst.los .bu{visibility:visible;transform:translateX(var(--weg,0));animation:buAusWand .8s cubic-bezier(.25,.8,.25,1) forwards}
 @keyframes buAusWand{to{transform:none}}
+/* Im Haus: Alarmanlage zum Antippen (07.11.2026) */
+.hd-tipp{display:none;margin:12px 0 0;font-size:13.5px;color:var(--leise);text-align:center}
+#hausDemo[data-z="alarm"] .hd-tipp{display:block}
+.al-demo{container-type:inline-size;aspect-ratio:585/1200;overflow:hidden;border-radius:29px;
+ --al-grund:#1A1C1F;--al-karte:#2A2D32;--al-rand:#474C54;--al-text:#F2F4F6;--al-matt:#A3ABB4;
+ --al-feld:#0D131B;--al-feldtext:#0F151C;--al-linie:#566679;--al-boden:#18212C;--al-fenster:#0A0F15;
+ --al-gruen:#46C07E;--al-rot:#EF6464;--al-gelb:#F0B23A;
+ --al-kn:#3A2F33;--al-knr:#B45C5E;--al-kna:#B4585B;--al-knar:#E27C7C;--al-knat:#FFFFFF;--al-kng:#22362E;--al-kngr:#4DB37C;--al-leiste:#141517;--al-leisteblau:#4D8EF0;--al-leisteblaugrund:#26282C}
+#hausDemo[data-app="hell"] .al-demo{--al-grund:#EEF1F4;--al-karte:#FFFFFF;--al-rand:#C9D2DB;--al-text:#10171F;--al-matt:#5B6775;
+ --al-feld:#5F6E82;--al-feldtext:#FFFFFF;--al-linie:#F2F5F8;--al-boden:#48566A;--al-fenster:#56657A;
+ --al-gruen:#1E9A5A;--al-rot:#D24343;--al-gelb:#B87A00;
+ --al-kn:#FDEDED;--al-knr:#E79494;--al-kna:#F09C9C;--al-knar:#E07070;--al-knat:#FFFFFF;--al-kng:#E7F6EE;--al-kngr:#5CC08A;--al-leiste:#FFFFFF;--al-leisteblau:#1659A7;--al-leisteblaugrund:#EAEEF4}
+.al-in{position:relative;height:100%;font-size:calc(100cqw / 36.5625);background:var(--al-grund);color:var(--al-text);font-family:Inter,system-ui,sans-serif;line-height:1.25;
+ --al-z:var(--al-gruen)}
+.al-in[data-zustand="zuhause"]{--al-z:var(--al-gelb)}
+.al-in[data-zustand="scharf"],.al-in[data-zustand="alarm"]{--al-z:var(--al-rot)}
+.al-in button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.al-in button:focus-visible{outline:2px solid #EF5C5C;outline-offset:1px}
+.al-stat{display:flex;justify-content:space-between;padding:1.25em 2.1em 0;font-size:1.25em;font-weight:600}
+.al-kopf{position:relative;height:3.6em;display:flex;align-items:center;justify-content:center;margin-top:.15em}
+.al-kopf i{position:absolute;left:.65em;top:.25em;width:3.4em;height:3.4em;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:1em;background:var(--al-karte);border:1px solid var(--al-rand)}
+.al-kopf b{font-size:1.65em}
+.al-karte{position:absolute;left:0;right:0;top:7.9em;bottom:0;background:var(--al-karte);border:1px solid var(--al-rand);border-radius:1.5em 1.5em 0 0;padding:1.3em 1.5em}
+.al-k1{display:flex;justify-content:space-between;align-items:center}
+.al-titel{font-size:1.9em;font-weight:300}
+.al-pille{display:flex;align-items:center;gap:.5em;font-size:1.15em;font-weight:500;color:var(--al-z)}
+.al-pille i{width:.7em;height:.7em;border-radius:50%;background:var(--al-z);box-shadow:0 0 .5em var(--al-z)}
+.al-in[data-zustand="alarm"] .al-pille b{text-transform:uppercase}
+.al-z{display:flex;justify-content:space-between;align-items:baseline;margin:1.05em 0 .7em;color:var(--al-matt)}
+.al-z>span:first-child{font-size:.9em;letter-spacing:.14em}
+.al-z>span+span{font-size:1em}
+.al-z em{font-style:normal;font-weight:600;color:var(--al-rot)}
+.al-knoepfe{display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+.al-kn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35em;height:6.3em;border-radius:1em;border:1px solid var(--al-knr);background:var(--al-kn);transition:background .2s,box-shadow .2s}
+.al-kn svg{width:1.45em;height:1.45em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.al-kn b{font-size:1.25em;font-weight:600}
+.al-kn[aria-pressed="true"]{background:var(--al-kna);border-color:var(--al-knar);color:var(--al-knat);box-shadow:0 .5em 1.6em rgba(224,90,90,.35)}
+.al-kn.gruen{background:var(--al-kng);border-color:var(--al-kngr)}
+.al-feld{border:1px solid var(--al-rand);border-radius:1.3em;overflow:hidden;background:var(--al-feldtext)}
+.al-feld svg,.al-m svg{display:block;width:100%;height:auto}
+.al-ft{text-align:center;padding:1em 0 1.2em;border-top:1px solid var(--al-rand)}
+.al-ft b{display:block;font-size:1.5em;font-weight:400;letter-spacing:.03em}
+.al-ft small{display:block;font-size:1em;color:var(--al-z)}
+.al-glow{transition:opacity .3s}
+.al-in[data-zustand="alarm"] .al-glow,.al-in[data-zustand="alarm"] .al-pille i{animation:alPuls 1.1s ease-in-out infinite}
+@keyframes alPuls{50%{opacity:.3}}
+.al-melder{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--al-rand);border-radius:1.3em;overflow:hidden;background:var(--al-feldtext)}
+.al-m{all:unset;cursor:pointer;display:block;border-left:1px solid var(--al-rand);text-align:center;--m:var(--al-gruen)}
+.al-m:first-child{border-left:0}
+.al-m[data-s="bewegung"]{--m:var(--al-gelb)}
+.al-m[data-s="ausgeloest"]{--m:var(--al-rot)}
+.al-m:focus-visible{outline:2px solid #EF5C5C;outline-offset:-2px}
+.al-m:hover .al-kegel{opacity:1}
+.al-kegel{opacity:.85;transition:opacity .2s}
+.al-m b{display:block;font-size:1.15em;font-weight:400;padding-top:.5em}
+.al-m small{display:block;font-size:1em;color:var(--m);padding-bottom:.6em}
+.al-reihe{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;margin-top:1em}
+.al-reihe span{height:8em;border:1px solid var(--al-rand);border-radius:1em;display:flex;justify-content:center;padding-top:1.3em}
+.al-reihe i{width:3.1em;height:3.1em;border-radius:50%;border:1px solid var(--al-rand);display:grid;place-items:center;font-style:normal;font-size:.8em;color:var(--al-matt)}
+.al-leiste{position:absolute;left:4em;right:4em;bottom:1.7em;height:6.3em;border-radius:3.2em;background:var(--al-leiste);border:1px solid var(--al-rand);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding:0 .45em;box-shadow:0 .5em 1.5em rgba(0,0,0,.35)}
+.al-leiste span{display:flex;flex-direction:column;align-items:center;gap:.25em;font-size:1em;font-weight:600;padding:.75em 0;border-radius:2.6em}
+.al-leiste svg{width:1.6em;height:1.6em;fill:currentColor}
+.al-leiste span.an{color:var(--al-leisteblau);background:var(--al-leisteblaugrund)}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#104B96;--heim:#A05A22}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
@@ -1082,20 +1145,19 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       <figure class="telefon foto"><div class="schirm">
         <img data-z="licht" data-m="dunkel" src="bilder/app-zuhause-licht-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
         <img data-z="licht" data-m="hell" src="bilder/app-zuhause-licht-hell.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="alarm" data-m="dunkel" src="bilder/app-zuhause-alarm-1-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="alarm" data-m="hell" src="bilder/app-zuhause-alarm-1-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="al-demo" data-start="unscharf" aria-label="Alarmanlage zum Ausprobieren"></div>
         <img data-z="bew" data-m="dunkel" src="bilder/app-zuhause-bewaesserung-1-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
         <img data-z="bew" data-m="hell" src="bilder/app-zuhause-bewaesserung-1-hell.webp" alt="" width="585" height="1200" loading="lazy">
-      </div><figcaption><span data-z="licht">Szenen ganz oben, Gruppe Couch</span><span data-z="alarm">Unscharf — alle Melder ruhig</span><span data-z="bew">Hand: Rasen läuft noch 12 min</span></figcaption></figure>
+      </div><figcaption><span data-z="licht">Szenen ganz oben, Gruppe Couch</span><span data-z="alarm" class="al-text">Unscharf — alle Melder ruhig</span><span data-z="bew">Hand: Rasen läuft noch 12 min</span></figcaption></figure>
       <figure class="telefon foto"><div class="schirm">
         <img data-z="licht" data-m="dunkel" src="bilder/app-zuhause-gruppen-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
         <img data-z="licht" data-m="hell" src="bilder/app-zuhause-gruppen-hell.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="alarm" data-m="dunkel" src="bilder/app-zuhause-alarm-2-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="alarm" data-m="hell" src="bilder/app-zuhause-alarm-2-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="al-demo" data-start="alarm" aria-label="Alarmanlage zum Ausprobieren"></div>
         <img data-z="bew" data-m="dunkel" src="bilder/app-zuhause-bewaesserung-2-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
         <img data-z="bew" data-m="hell" src="bilder/app-zuhause-bewaesserung-2-hell.webp" alt="" width="585" height="1200" loading="lazy">
-      </div><figcaption><span data-z="licht">Gruppen und Vouten mit Dimmer</span><span data-z="alarm">Scharf — Terrasse ausgelöst</span><span data-z="bew">Zonen mit Bild, Laufzeit je Zone</span></figcaption></figure>
+      </div><figcaption><span data-z="licht">Gruppen und Vouten mit Dimmer</span><span data-z="alarm" class="al-text">Scharf — Terrasse ausgelöst</span><span data-z="bew">Zonen mit Bild, Laufzeit je Zone</span></figcaption></figure>
       </div>
+      <p class="hd-tipp">Zum Ausprobieren: Schalter oben und Melder unten antippen.</p>
       <div class="app-schalter" role="group" aria-label="App-Ansicht umschalten">
         <span>So sieht die App aus:</span>
         <button type="button" data-wahl="dunkel" aria-pressed="true">☾ Dunkel</button>
@@ -1285,6 +1347,76 @@ b.dataset.app=k.dataset.wahl;document.querySelectorAll('.held-rechts .app-schalt
 (function(){var d=document.getElementById('hausDemo');if(!d)return;
 d.querySelectorAll('.hd-reiter button').forEach(function(b){b.addEventListener('click',function(){d.dataset.z=b.dataset.zeig;d.querySelectorAll('.hd-reiter button').forEach(function(x){x.classList.toggle('an',x===b)})})});
 d.querySelectorAll('.app-schalter button').forEach(function(k){k.addEventListener('click',function(){d.dataset.app=k.dataset.wahl;d.querySelectorAll('.app-schalter button').forEach(function(x){x.setAttribute('aria-pressed',x===k?'true':'false')})})});})();
+</script>
+<script>
+/* Im Haus: Alarmanlage zum Antippen (07.11.2026) */
+(function(){
+var NAMEN={wz:'Wohnzimmer',ein:'Eingang',ter:'Terrasse'},TXT={ruhig:'ruhig',bewegung:'Bewegung',ausgeloest:'ausgelöst'};
+var IC={unscharf:'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/><circle cx="12" cy="16" r="1"/></svg>',
+ zuhause:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/></svg>',
+ scharf:'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1"/></svg>'};
+function haus(id){return '<svg viewBox="0 0 536 200" aria-hidden="true"><defs><radialGradient id="'+id+'g" cx="50%" cy="66%" r="62%"><stop offset="0" style="stop-color:var(--al-z);stop-opacity:.5"/><stop offset=".55" style="stop-color:var(--al-z);stop-opacity:.16"/><stop offset="1" style="stop-color:var(--al-z);stop-opacity:0"/></radialGradient></defs>'+
+ '<rect width="536" height="200" style="fill:var(--al-feld)"/><ellipse class="al-glow" cx="268" cy="130" rx="330" ry="120" fill="url(#'+id+'g)"/>'+
+ '<rect y="175" width="536" height="25" style="fill:var(--al-boden)"/><line x1="0" y1="175" x2="536" y2="175" style="stroke:var(--al-linie)" stroke-width="1"/>'+
+ '<g fill="none" style="stroke:var(--al-linie)" stroke-width="1.6"><path d="M168 87L268 31l100 56"/><path d="M183 79v96M353 79v96"/>'+
+ '<rect x="202" y="101" width="39" height="32" style="fill:var(--al-fenster)"/><path d="M221.5 101v32M202 117h39"/><rect x="295" y="101" width="39" height="32" style="fill:var(--al-fenster)"/><path d="M314.5 101v32M295 117h39"/>'+
+ '<rect x="254" y="123" width="28" height="52" style="fill:var(--al-fenster)"/>'+
+ '<path d="M63 175v-20M134 175v-16M384 175v-20"/><path d="M57 158a6 6 0 0 1 12 0M128 162a6 6 0 0 1 12 0M378 158a6 6 0 0 1 12 0"/></g>'+
+ '<circle cx="276" cy="152" r="1.6" style="fill:var(--al-linie)"/>'+
+ '<path d="M268 59l11 4v8c0 7-5 11-11 13-6-2-11-6-11-13v-8z" style="fill:var(--al-z);fill-opacity:.35;stroke:var(--al-z)" stroke-width="1.6"/></svg>'}
+function moebel(k){if(k==='wz')return '<path d="M47 108h86v20H47zM43 104h8v24h-8zM129 104h8v24h-8zM52 96h76v12"/>';
+ if(k==='ein')return '<rect x="72" y="56" width="34" height="78"/><rect x="79" y="63" width="20" height="18"/><circle cx="100" cy="98" r="1.5"/><path d="M126 80h9v12h-9"/>';
+ return '<rect x="60" y="64" width="57" height="70"/><path d="M88.5 64v70M66 84l7-8M95 84l7-8"/><rect x="64" y="68" width="21" height="62"/><rect x="92" y="68" width="21" height="62"/>'}
+function melder(id,k){return '<button type="button" class="al-m" data-k="'+k+'" data-s="ruhig"><svg viewBox="0 0 178 150" aria-hidden="true"><defs><linearGradient id="'+id+k+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--m);stop-opacity:.85"/><stop offset="1" style="stop-color:var(--m);stop-opacity:.05"/></linearGradient></defs>'+
+ '<rect width="178" height="150" style="fill:var(--al-feld)"/><rect y="132" width="178" height="18" style="fill:var(--al-boden)"/>'+
+ '<path class="al-kegel" d="M89 13L36 134h106z" fill="url(#'+id+k+')"/><ellipse class="al-kegel" cx="89" cy="134" rx="50" ry="5" style="fill:var(--m);fill-opacity:.45"/>'+
+ '<g fill="none" style="stroke:var(--al-linie)" stroke-width="1.4">'+moebel(k)+'</g>'+
+ '<path d="M78 0h22a11 11 0 0 1-22 0z" style="fill:var(--al-karte);stroke:var(--al-linie)" stroke-width="1.2"/><circle cx="89" cy="6" r="2" style="fill:var(--m)"/></svg>'+
+ '<b>'+NAMEN[k]+'</b><small></small></button>'}
+var LEISTE='<span><svg viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3z"/></svg>Start</span><span class="an"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Symcon</span><span><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>Kamera</span><span><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Energie</span>';
+function zwei(n){return (n<10?'0':'')+n}
+function jetzt(){var d=new Date();return zwei(d.getDate())+'.'+zwei(d.getMonth()+1)+'.'+d.getFullYear()+' '+zwei(d.getHours())+':'+zwei(d.getMinutes())+':'+zwei(d.getSeconds())}
+document.querySelectorAll('#hausDemo .al-demo').forEach(function(el,nr){
+ var id='alD'+nr,cap=el.closest('figure').querySelector('.al-text');
+ var st={modus:'unscharf',alarm:false,m:{wz:'ruhig',ein:'ruhig',ter:'ruhig'},letzt:'24.10.2026 21:14:05'};
+ if(el.dataset.start==='alarm'){st.modus='scharf';st.alarm=true;st.m.ter='ausgeloest'}
+ el.innerHTML='<div class="al-in"><div class="al-stat" aria-hidden="true"><span>19:12</span><span>5G ▮</span></div><div class="al-kopf" aria-hidden="true"><i>‹</i><b>Alarmanlage</b></div>'+
+  '<div class="al-karte"><div class="al-k1"><span class="al-titel">Alarmanlage</span><span class="al-pille" aria-live="polite"><i></i><b></b></span></div>'+
+  '<div class="al-z"><span>ANLAGE SCHALTEN</span><span class="al-modus"></span></div>'+
+  '<div class="al-knoepfe"><button type="button" class="al-kn" data-modus="unscharf">'+IC.unscharf+'<b>Unscharf</b></button><button type="button" class="al-kn" data-modus="zuhause">'+IC.zuhause+'<b>Zu Hause</b></button><button type="button" class="al-kn" data-modus="scharf">'+IC.scharf+'<b>Scharf</b></button></div>'+
+  '<div class="al-z"><span>ANLAGE</span><span class="al-letzt"></span></div>'+
+  '<div class="al-feld">'+haus(id)+'<div class="al-ft"><b></b><small></small></div></div>'+
+  '<div class="al-z"><span>MELDER</span><span class="al-anz"></span></div>'+
+  '<div class="al-melder">'+melder(id,'wz')+melder(id,'ein')+melder(id,'ter')+'</div>'+
+  '<div class="al-reihe" aria-hidden="true"><span><i>((•))</i></span><span><i>((•))</i></span><span><i>((•))</i></span></div></div>'+
+  '<div class="al-leiste" aria-hidden="true">'+LEISTE+'</div></div>';
+ var IN=el.firstChild;function $(s){return IN.querySelector(s)}
+ function scharfFuer(k){return st.modus==='scharf'||(st.modus==='zuhause'&&k!=='wz')}
+ function zeichne(){
+  var z=st.alarm?'alarm':st.modus,aus=[],ruhig=0,bew=0;
+  Object.keys(st.m).forEach(function(k){if(st.m[k]==='ausgeloest')aus.push(NAMEN[k]);else if(st.m[k]==='ruhig')ruhig++;else bew++});
+  IN.dataset.zustand=z;
+  var ML={unscharf:'Unscharf',zuhause:'Zu Hause',scharf:'Scharf'};
+  $('.al-pille b').textContent=st.alarm?'Alarm':ML[st.modus];
+  $('.al-modus').textContent=ML[st.modus];
+  IN.querySelectorAll('.al-kn').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.modus===st.modus?'true':'false');b.classList.toggle('gruen',b.dataset.modus==='unscharf'&&st.modus!=='unscharf')});
+  $('.al-letzt').textContent='Letzter Alarm '+st.letzt;
+  var gross={unscharf:'Unscharf',zuhause:'Zu Hause',scharf:'Scharf'}[st.modus],klein={unscharf:'System ist inaktiv',zuhause:'Außen scharf · innen frei',scharf:'Alle Melder überwacht'}[st.modus];
+  if(st.alarm){gross='ALARM';klein='ausgelöst: '+aus.join(', ')}
+  $('.al-ft b').textContent=gross;$('.al-ft small').textContent=klein;
+  $('.al-anz').innerHTML=(aus.length?'<em>'+aus.length+' ausgelöst</em> · ':'')+(bew?bew+' Bewegung · ':'')+ruhig+' von 3 ruhig';
+  IN.querySelectorAll('.al-m').forEach(function(b){var s=st.m[b.dataset.k];b.dataset.s=s;b.querySelector('small').textContent=TXT[s];
+   b.setAttribute('aria-label',NAMEN[b.dataset.k]+': '+TXT[s]+(scharfFuer(b.dataset.k)?' (überwacht, antippen löst Alarm aus)':' (nicht überwacht)'))});
+  if(cap)cap.textContent=st.alarm?'Alarm — '+aus.join(', ')+' ausgelöst':st.modus==='unscharf'?(bew?'Unscharf — Bewegung, aber kein Alarm':'Unscharf — alle Melder ruhig'):st.modus==='zuhause'?'Zu Hause — außen scharf':'Scharf — alle Melder überwacht';
+ }
+ IN.querySelectorAll('.al-kn').forEach(function(b){b.addEventListener('click',function(){st.modus=b.dataset.modus;
+  if(st.modus==='unscharf'){st.alarm=false;Object.keys(st.m).forEach(function(k){if(st.m[k]==='ausgeloest')st.m[k]='ruhig'})}zeichne()})});
+ IN.querySelectorAll('.al-m').forEach(function(b){b.addEventListener('click',function(){var k=b.dataset.k;if(st.m[k]==='ausgeloest')return;
+  if(scharfFuer(k)){st.m[k]='ausgeloest';st.alarm=true;st.letzt=jetzt()}
+  else{st.m[k]='bewegung';setTimeout(function(){if(st.m[k]==='bewegung'){st.m[k]='ruhig';zeichne()}},2500)}zeichne()})});
+ zeichne();
+});
+})();
 </script>
 <script>
 /* Anmerkung 11: Ansichten oeffnen */
