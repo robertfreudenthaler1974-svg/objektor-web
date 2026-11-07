@@ -603,7 +603,6 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .js-bew .rein.da[data-art]{transform:none}
 .js-bew #push .mit{opacity:0;transform:translateY(-34px) scale(.95);transition:opacity .5s ease,transform .8s cubic-bezier(.2,1.35,.4,1);transition-delay:var(--v,0s)}
 .js-bew #push .mit.da{opacity:1;transform:none}
-#appBild{transition:transform .25s ease-out;transform-style:preserve-3d;will-change:transform}
 .mk-raster{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 8px;scrollbar-width:none}
 .mk-raster::-webkit-scrollbar{display:none}
 .mk{flex:0 0 calc((100% - 30px)/4);scroll-snap-align:start;transition:transform .25s ease,box-shadow .25s ease}
@@ -1456,11 +1455,7 @@ else{var io=new IO(function(es){es.forEach(function(e){if(e.isIntersecting){zeig
  ziele.forEach(function(el){io.observe(el)});
  var pio=new IO(function(es){es.forEach(function(e){if(e.isIntersecting){mits.forEach(function(m){m.classList.add('da')});pio.disconnect()}})},{threshold:0.3});
  var sp=document.querySelector('#push .sperr');if(sp)pio.observe(sp);else mits.forEach(function(m){m.classList.add('da')});}
-/* Kippen des App-Bilds mit der Maus */
-var hr=document.querySelector('.held-rechts'),ab=document.getElementById('appBild');
-if(bew&&hr&&ab&&window.matchMedia&&matchMedia('(hover: hover) and (pointer: fine)').matches){
- hr.addEventListener('mousemove',function(e){var r=hr.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ab.style.transform='perspective(1100px) rotateY('+(x*14).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg)'});
- hr.addEventListener('mouseleave',function(){ab.style.transform=''});}
+/* Kippen des App-Bilds mit der Maus: entfernt 07.11.2026 – die zwei Handys bleiben still */
 /* Galerie der Vorlagen: Pfeile und langsames Weiterwischen */
 q('.mk-raster').forEach(function(g){
  var p=document.createElement('div');p.className='galerie-pfeile';p.innerHTML='<button type="button" aria-label="zurück">‹</button><button type="button" aria-label="weiter">›</button>';g.parentNode.insertBefore(p,g);
