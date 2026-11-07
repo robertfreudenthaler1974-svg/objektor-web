@@ -690,6 +690,12 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .lr-blatt input[type=range]{width:100%;margin:2px 0 7px;accent-color:#F0A126}
 .lr-tasten{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .lr-tasten button{padding:5px 0;font-size:8.5px}
+/* Ueberschrift: Buchstaben kommen aus einer unsichtbaren Wand rechts (07.11.2026) */
+.buchst{clip-path:inset(-.4em 0 -.4em -2em)}
+.buchst .wort{display:inline-block;white-space:nowrap}
+.buchst .bu{display:inline-block;visibility:hidden}
+.buchst.los .bu{visibility:visible;transform:translateX(var(--weg,0));animation:buAusWand .8s cubic-bezier(.25,.8,.25,1) forwards}
+@keyframes buAusWand{to{transform:none}}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#104B96;--heim:#A05A22}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
@@ -721,6 +727,15 @@ section{padding:77px 0}
   <div>
     <div class="kicker">BDS · BETRIEBSDOKUMENTATIONSSYSTEM</div>
     <h1>Eine Software, die Ihr Gebäude zusammenführt.</h1>
+    <script>/* Ueberschrift: Buchstaben kommen aus einer unsichtbaren Wand rechts (07.11.2026) */
+(function(){var h=document.currentScript.previousElementSibling;if(!h||!document.documentElement.classList.contains('js-bew'))return;
+var t=h.textContent,bs=[];h.setAttribute('aria-label',t);h.textContent='';
+t.split(' ').forEach(function(w,n){if(n)h.appendChild(document.createTextNode(' '));var ws=document.createElement('span');ws.className='wort';ws.setAttribute('aria-hidden','true');
+Array.prototype.forEach.call(w,function(c){var b=document.createElement('span');b.className='bu';b.textContent=c;ws.appendChild(b);bs.push(b)});h.appendChild(ws)});
+h.classList.add('buchst');var fertig=false;
+function los(){if(fertig)return;fertig=true;var wand=h.getBoundingClientRect().right;
+bs.forEach(function(b,i){var r=b.getBoundingClientRect();b.style.setProperty('--weg',Math.ceil(wand-r.left+2)+'px');b.style.animationDelay=(0.1+i*0.045).toFixed(3)+'s'});h.classList.add('los')}
+try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
     <p class="blei"><b>BDS</b> vereint, was sonst in vielen Programmen steckt: Dokumentation, Meldungen, Pläne, Alarme — und über IP-Symcon die ganze Gebäudetechnik. Am Handy, am Tablet und im Browser.</p>
     <ul class="kann">
       <li><b>Bussysteme</b><span>über IP-Symcon: HomeMatic, KNX und viele mehr</span></li>
