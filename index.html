@@ -622,13 +622,13 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
    Nachgebaut aus der App: UI/VisuLichtraum.cs (Druck ins Raumbild: an = Startwert, aus = 0;
    Wert gleitet hin; "x von n ein · Ø %"), UI/VisuLichtraumBlatt.cs (Blatt "Dimmer"),
    UI/VisuLichtraumBilder.cs (LichtFarben Hell/Dunkel). Auf der Webseite wird nichts gesendet. */
-#lichtDemo,#lrPop{--lr-grund:#1A1C1F;--lr-karte:#2A2D32;--lr-rand:#4E535C;--lr-text:#F2F4F6;--lr-matt:#BCC3CB;--lr-leise:#7D7D7D;
+#lichtDemo,#lrPop,.lx-in{--lr-grund:#1A1C1F;--lr-karte:#2A2D32;--lr-rand:#4E535C;--lr-text:#F2F4F6;--lr-matt:#BCC3CB;--lr-leise:#7D7D7D;
  --lr-wand:#0B1017;--lr-boden0:#151D28;--lr-boden1:#0D131B;--lr-kante:#263241;--lr-decke:#1A2330;--lr-deckenkante:#2C3A4B;--lr-schiene:#141C27;
  --lr-strahler:#2A3644;--lr-strahlerrand:#3A495C;--lr-segel:#131B26;--lr-segelrand:#34455A;--lr-trenn:#1C2632;--lr-moebelrand:#3A495C;--lr-glas:#0A0F15;--lr-glasrand:#263241;--lr-griff:#52647A;
  --lr-l0:#FFD58A;--lr-l1:#F0A126;--lr-band1:#FFCF78;--lr-band2:#FFF1CF;--lr-k0:.9;--lr-k1:.3;--lr-k2:.05;--lr-s0:.85;--lr-s1:.32;--lr-p0:.7;
  --lr-rtext:#EEF2F6;--lr-rleise:#9FB0C2;--lr-ran:#F3C26B;--lr-rzeile:#0B1017;--lr-sw:1}
 #lichtDemo{position:relative;padding:0 8px;color:var(--lr-text);font-family:Inter,system-ui,sans-serif}
-#appBild[data-app="hell"] #lichtDemo,#appBild[data-app="hell"] #lrPop{--lr-grund:#EEF1F4;--lr-karte:#FFFFFF;--lr-rand:#C9D2DB;--lr-text:#10171F;--lr-matt:#5B6775;--lr-leise:#8793A0;
+#appBild[data-app="hell"] #lichtDemo,#appBild[data-app="hell"] #lrPop,#hausDemo[data-app="hell"] .lx-in{--lr-grund:#EEF1F4;--lr-karte:#FFFFFF;--lr-rand:#C9D2DB;--lr-text:#10171F;--lr-matt:#5B6775;--lr-leise:#8793A0;
  --lr-wand:#5F6E82;--lr-boden0:#48566A;--lr-boden1:#3C495B;--lr-kante:#2E3A4A;--lr-decke:#4B596C;--lr-deckenkante:#2E3A4A;--lr-schiene:#3A4758;
  --lr-strahler:#232D3A;--lr-strahlerrand:#141B24;--lr-segel:#55647A;--lr-segelrand:#2E3A4A;--lr-trenn:#4E5C70;--lr-moebelrand:#E6ECF2;--lr-glas:#46546A;--lr-glasrand:#C3CDD8;--lr-griff:#E6ECF2;
  --lr-l0:#FFEEB5;--lr-l1:#FFB01F;--lr-band1:#FFC24D;--lr-band2:#FFF4D6;--lr-k0:1;--lr-k1:.78;--lr-k2:.24;--lr-s0:1;--lr-s1:.7;--lr-p0:1;
@@ -697,7 +697,6 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 @keyframes buAusWand{to{transform:none}}
 /* Im Haus: Alarmanlage zum Antippen (07.11.2026) */
 .hd-tipp{display:none;margin:12px 0 0;font-size:13.5px;color:var(--leise);text-align:center}
-#hausDemo[data-z="alarm"] .hd-tipp{display:block}
 .al-demo{container-type:inline-size;aspect-ratio:585/1200;overflow:hidden;border-radius:29px;
  --al-grund:#1A1C1F;--al-karte:#2A2D32;--al-rand:#474C54;--al-text:#F2F4F6;--al-matt:#A3ABB4;
  --al-feld:#0D131B;--al-feldtext:#0F151C;--al-linie:#566679;--al-boden:#18212C;--al-fenster:#0A0F15;
@@ -758,6 +757,142 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .al-leiste span{display:flex;flex-direction:column;align-items:center;gap:.25em;font-size:1em;font-weight:600;padding:.75em 0;border-radius:2.6em}
 .al-leiste svg{width:1.6em;height:1.6em;fill:currentColor}
 .al-leiste span.an{color:var(--al-leisteblau);background:var(--al-leisteblaugrund)}
+/* Im Haus: Licht und Bewaesserung zum Antippen (07.11.2026)
+   Nachgebaut aus den Bildern app-zuhause-licht/-gruppen/-bewaesserung (V1700). Auf der Webseite wird nichts gesendet. */
+.haus-demo .hx{display:none;container-type:inline-size;aspect-ratio:585/1200;overflow:hidden;border-radius:29px}
+#hausDemo[data-z="licht"] .hx[data-z="licht"],#hausDemo[data-z="bew"] .hx[data-z="bew"]{display:block}
+.hx-in{position:relative;height:100%;font-size:calc(100cqw / 36.5625);font-family:Inter,system-ui,sans-serif;line-height:1.25;overflow:hidden;background:var(--x-grund);color:var(--x-text);
+ --x-grund:#000;--x-karte:#121417;--x-rand:#30343A;--x-text:#F2F4F6;--x-matt:#9AA3AD;--x-leise:#6E7680;--x-kreis:#17191C;
+ --x-gg:#0D261C;--x-gr:#3FA372;--x-rg:#2A1113;--x-rr:#C85A5C;--x-amber:#E9A94A;--x-leiste:#141517;--x-blau:#4D8EF0;--x-blaug:#26282C}
+#hausDemo[data-app="hell"] .hx-in{--x-grund:#F2F4F6;--x-karte:#FFFFFF;--x-rand:#D3DAE1;--x-text:#10171F;--x-matt:#5B6775;--x-leise:#8793A0;--x-kreis:#FFFFFF;
+ --x-gg:#D5EEE3;--x-gr:#5CC08A;--x-rg:#F7DADB;--x-rr:#E07070;--x-amber:#A86A00;--x-leiste:#FFFFFF;--x-blau:#1659A7;--x-blaug:#EAEEF4}
+.hx-in button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hx-in button:focus-visible{outline:2px solid #EF5C5C;outline-offset:1px}
+.hx-stat{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;padding:1.25em 2.3em 0;font-size:1.25em;font-weight:600;z-index:3}
+.hx-kopf{position:absolute;left:0;right:0;top:3.5em;height:4.2em;display:flex;align-items:center;justify-content:center;z-index:3}
+.hx-kopf button{position:absolute;left:1.3em;top:.2em;width:4em;height:4em;border-radius:50%;display:grid;place-items:center;background:var(--x-karte);border:1px solid var(--x-rand);font-size:1em}
+.hx-kopf b{font-size:1.75em}
+.hx-rolle{position:absolute;left:0;right:0;top:8.9em;bottom:0;overflow-y:auto;scrollbar-width:none;padding:0 1em 9em}
+.hx-rolle::-webkit-scrollbar{display:none}
+.hx-z{display:flex;justify-content:space-between;align-items:baseline;margin:1.6em .1em .8em;color:var(--x-matt)}
+.hx-z>span:first-child{font-size:.95em;letter-spacing:.16em}
+.hx-z>span+span{font-size:1.05em}
+.hx-leiste{position:absolute;left:6.4em;right:6.4em;bottom:1.6em;height:5.8em;border-radius:3em;background:var(--x-leiste);border:1px solid var(--x-rand);display:grid;grid-auto-flow:column;grid-auto-columns:1fr;align-items:center;padding:0 .45em;box-shadow:0 .5em 1.5em rgba(0,0,0,.35);z-index:4}
+.hx-leiste span{display:flex;flex-direction:column;align-items:center;gap:.25em;font-size:.95em;font-weight:600;padding:.75em 0;border-radius:2.6em}
+.hx-leiste svg{width:1.6em;height:1.6em;fill:currentColor}
+.hx-leiste span.an{color:var(--x-blau);background:var(--x-blaug)}
+.hx-hinweis{position:absolute;left:3em;right:3em;bottom:9em;z-index:7;background:rgba(16,23,31,.92);color:#fff;border-radius:1.2em;padding:.9em 1.2em;font-size:1.15em;text-align:center;opacity:0;transform:translateY(.6em);transition:opacity .2s,transform .2s;pointer-events:none}
+.hx-hinweis.da{opacity:1;transform:none}
+/* Licht */
+.lx-t{display:flex;justify-content:space-between;align-items:baseline;margin:.4em 0 0}
+.lx-titel{font-size:2em;font-weight:300}
+.lx-zahl{font-size:1.1em;color:var(--x-matt)}
+.lx-szenen{display:grid;grid-template-columns:repeat(3,1fr);gap:.8em}
+.lx-sz{position:relative;height:10em}
+.lx-sz>button:first-child{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15em;border-radius:1.1em;border:1px solid var(--x-rr);background:var(--x-rg);transition:box-shadow .25s,transform .1s}
+.lx-sz.aus>button:first-child{border-color:var(--x-gr);background:var(--x-gg)}
+.lx-sz.dazu>button:first-child{border:1px dashed var(--x-rand);background:transparent;color:var(--x-matt)}
+.lx-sz>button:first-child:active{transform:scale(.97)}
+.lx-sz.an>button:first-child{box-shadow:0 0 0 .2em var(--x-rr),0 .6em 1.8em rgba(224,90,90,.35)}
+.lx-sz.aus.an>button:first-child{box-shadow:0 0 0 .2em var(--x-gr),0 .6em 1.8em rgba(63,163,114,.35)}
+.lx-sz i{display:grid;place-items:center;width:4em;height:4em;border-radius:50%;border:1px solid var(--x-rr);background:var(--x-kreis);margin-bottom:.4em}
+.lx-sz.aus i{border-color:var(--x-gr)}.lx-sz.dazu i{border-color:var(--x-rand);font-style:normal;font-size:1em}
+.lx-sz svg{width:2em;height:2em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.lx-sz b{font-size:1.45em;font-weight:500}
+.lx-sz small{font-size:1.05em;color:var(--x-matt)}
+.lx-stift{position:absolute;right:.5em;top:.5em;width:2.3em;height:2.3em;border-radius:50%;border:1px solid var(--x-rand);background:var(--x-kreis);display:grid;place-items:center;padding:0}
+.lx-stift svg{width:1.1em;height:1.1em}
+.hx-in .lr-teil{border-radius:1.3em;position:relative}
+.hx-in .lr-namen button{padding:1em .3em 1.1em}
+.hx-in .lr-namen b{font-size:1.5em}.hx-in .lr-namen small{font-size:1.25em}
+.hx-in .lr-dimmer{gap:.8em;margin:.9em 0 .4em}
+.hx-in .lr-dimmer button{padding:1.1em .3em;border-radius:1.2em;gap:.3em}
+.hx-in .lr-dimmer i{width:3.4em;height:3.4em}
+.hx-in .lr-dimmer svg,.lx-breit svg{width:1.6em;height:1.6em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.hx-in .lr-dimmer b{font-size:1.5em}.hx-in .lr-dimmer small{font-size:1.2em}
+.lx-cname{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;padding:1em 0 1.1em;width:100%;border-top:1px solid var(--lr-trenn)}
+.lx-cname b{font-weight:500;font-size:1.5em;color:var(--lr-rtext)}.lx-cname small{font-size:1.25em;color:var(--lr-rleise)}.lx-cname small.an{color:var(--lr-ran)}
+.lx-czone{all:unset;cursor:pointer;position:absolute;inset:0}
+.lx-breit{display:flex;align-items:center;gap:1em;width:100%;margin-top:.9em;padding:1em 1.3em;border-radius:1.2em;border:1px solid var(--lr-rand);background:linear-gradient(180deg,var(--lr-karte),var(--lr-grund));color:var(--lr-text);text-align:left}
+.lx-breit i{display:grid;place-items:center;width:3.4em;height:3.4em;border-radius:50%;border:1px solid var(--lr-rand)}
+.lx-breit span{flex:1;display:flex;flex-direction:column}.lx-breit b{font-weight:500;font-size:1.5em}.lx-breit small{font-size:1.2em;color:var(--lr-matt)}
+.lx-breit em{font-style:normal;color:var(--lr-matt);font-size:1.4em}
+.hx-in .lr-pop{border-radius:0}
+.lx-pop{position:absolute;inset:0;z-index:6;display:flex;align-items:flex-end;background:rgba(4,7,11,.62)}
+.lx-pop[hidden]{display:none}
+#hausDemo[data-app="hell"] .lx-pop{background:rgba(40,52,66,.42)}
+.lx-blatt{width:100%;background:var(--lr-karte);border-top:1px solid var(--lr-rand);border-radius:2em 2em 0 0;padding:1.5em 1.6em 2.2em;color:var(--lr-text);animation:lrHoch .22s ease-out}
+.lx-blatt button{border:1px solid var(--lr-rand);background:var(--lr-grund);color:var(--lr-text);border-radius:.9em;font-size:1.3em;padding:.5em .8em}
+.lx-blatt button.an{background:rgba(239,92,92,.6);border-color:rgba(239,92,92,.9);color:#fff}
+.lx-bk{display:flex;justify-content:space-between;align-items:center;margin-bottom:1em}
+.lx-bk b{display:block;font-size:1.7em}.lx-bk small{font-size:1.2em;color:var(--lr-matt)}
+.lx-mini{border:1px solid var(--lr-rand);border-radius:1.2em;overflow:hidden;line-height:0;margin-bottom:1em;background:var(--lr-wand)}
+.lx-mini svg{display:block;width:100%;height:12em}
+.lx-ea{display:flex;gap:.6em;margin-bottom:1em}.lx-ea button{flex:1;padding:.7em}
+.lx-schritt{display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr 1fr;gap:.5em;margin-bottom:.8em}
+.lx-schritt b{display:grid;place-items:center;font-size:1.7em;border:1px solid var(--lr-rand);border-radius:.6em}
+.lx-blatt input[type=range]{width:100%;margin:.3em 0 1em;accent-color:#F0A126}
+.lx-tasten{display:grid;grid-template-columns:repeat(5,1fr);gap:.5em;margin-bottom:1em}.lx-tasten button{padding:.6em 0;font-size:1.15em}
+.lx-start{display:flex;align-items:center;gap:.6em;border:1px solid var(--lr-rand);border-radius:1em;padding:.6em .9em;font-size:1.15em;color:var(--lr-matt)}
+.lx-start span{flex:1}.lx-start b{color:var(--lr-text)}.lx-start button{font-size:1.1em;padding:.3em .9em}
+/* Bewaesserung */
+.bw-in{--x-grund:#1F2124;--b-rahmen:#26292D;--b-karte:#2A2D31;--b-rand:#4A4F57;--b-rg:#5A2E30;--b-rr:#E06A6A;--b-rt:#FF8A8A;--b-gg:#1E3A2F;--b-gr:#3FA372;--b-gt:#7FD9A8;--b-bg:#1E3049;--b-br:#4D8EF0;--b-bt:#9CC3FF;--b-ring:#E85A5A;--b-pill:rgba(30,36,46,.82)}
+#hausDemo[data-app="hell"] .bw-in{--x-grund:#EEF1F4;--b-rahmen:#FFFFFF;--b-karte:#FFFFFF;--b-rand:#C9D2DB;--b-rg:#F8D3D3;--b-rr:#E07070;--b-rt:#C83A3A;--b-gg:#E3F4EC;--b-gr:#5CC08A;--b-gt:#1E7A4A;--b-bg:#E3EEFC;--b-br:#5C93E0;--b-bt:#1659A7}
+.bw-in .hx-kopf{top:3.2em}
+.bw-rolle{top:8em;padding:0 0 9em}
+.bw-rahmen{background:var(--b-rahmen);border:1px solid var(--b-rand);border-radius:2em 2em 0 0;padding:1.4em 1.4em 2em;min-height:100%}
+.bw-karte{border:1px solid var(--b-rand);border-radius:1.6em;padding:1em 1.3em 1.4em;background:var(--b-karte)}
+.bw-reiter{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6em;margin-bottom:1.3em}
+.bw-reiter button{height:3.1em;border-radius:.9em;border:1px solid var(--b-rand);background:transparent;font-weight:600;font-size:1.2em}
+.bw-reiter button.an{background:var(--b-rg);border-color:var(--b-rr)}
+.bw-t{display:flex;justify-content:space-between;align-items:center;margin-bottom:1em}
+.bw-titel{font-size:1.9em;font-weight:300}
+.bw-pille{font-size:1.05em;font-weight:600;padding:.35em .8em;border-radius:2em;border:1px solid var(--b-rr);color:var(--b-rt)}
+.bw-pille.ruhig{border-color:var(--b-gr);color:var(--b-gt)}
+.bw-in .hx-z{margin:.9em 0 .55em}
+.bw-in .hx-z>span+span{letter-spacing:.08em;font-weight:600}
+.bw-zwei{display:grid;grid-template-columns:1fr 1fr;gap:.8em}
+.bw-k{display:flex;align-items:center;gap:1em;text-align:left;padding:.9em 1.2em;border-radius:1.1em;border:1px solid var(--b-rand);background:transparent}
+.bw-k svg{width:2em;height:2em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.bw-k span{display:flex;flex-direction:column}.bw-k b{font-size:1.25em;font-weight:600}.bw-k small{font-size:.95em;color:var(--x-matt)}
+.bw-k[aria-pressed="true"]{background:var(--b-rg);border-color:var(--b-rr)}
+.bw-stop{width:100%;justify-content:center;margin-top:.8em;background:var(--b-rg);border-color:var(--b-rr);padding:1.1em}
+.bw-stop:active{transform:scale(.98)}
+.bw-regen{width:100%;margin-top:.8em;background:var(--b-gg);border-color:var(--b-gr);padding:.75em 1.2em}
+.bw-regen svg{color:var(--b-gt);width:1.7em;height:1.7em}
+.bw-regen.nass{background:var(--b-bg);border-color:var(--b-br)}.bw-regen.nass svg{color:var(--b-bt)}
+.bw-zone{position:relative;display:block;width:100%;padding:0;margin-bottom:.9em;border-radius:1.3em;overflow:hidden;border:1px solid var(--b-gr);background:#4A586E;aspect-ratio:490/215;color:#fff;text-align:left}
+.bw-zone.laeuft{border-color:var(--b-rr)}
+.bw-zone>svg{position:absolute;inset:0;width:100%;height:100%}
+.bw-zone .bw-name{position:absolute;left:1.2em;top:.9em;font-size:1.45em;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.bw-zone .bw-zeit{position:absolute;left:1em;bottom:1.1em;padding:.35em .8em;border-radius:.8em;background:var(--b-pill);border:1px solid rgba(255,255,255,.22);font-size:1.15em}
+.bw-zeit b{font-size:1.25em}
+.bw-uhr{position:absolute;right:1.4em;bottom:1.2em;width:6.2em;height:6.2em}
+.bw-uhr svg{width:100%;height:100%;transform:rotate(-90deg)}
+.bw-uhr span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bw-uhr b{font-size:1.4em;font-weight:700}.bw-uhr small{font-size:.85em;opacity:.85}
+.bw-mond{position:absolute;right:3.6em;top:.9em;width:2.2em;height:2.2em;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.bw-mond i{width:1em;height:1em;border-radius:50%;background:#D8D8D8}
+.bw-zone.laeuft .bw-mond i{background:#7FC4FF;box-shadow:0 0 .6em #7FC4FF}
+.bw-spr{opacity:0;transition:opacity .4s}
+.bw-zone.laeuft .bw-spr{opacity:1}
+.bw-zone.laeuft .bw-spr path{animation:bwSpray .7s linear infinite}
+@keyframes bwSpray{to{stroke-dashoffset:-14}}
+.bw-liste{display:flex;flex-direction:column;gap:.6em}
+.bw-zeile{display:flex;align-items:center;gap:.6em;padding:.8em 1em;border:1px solid var(--b-rand);border-radius:1em}
+.bw-zeile span{flex:1;font-size:1.2em}.bw-zeile b{font-size:1.2em;min-width:4.2em;text-align:center}
+.bw-zeile button{width:2.6em;height:2.6em;border-radius:50%;border:1px solid var(--b-rand);background:transparent;font-size:1.1em;padding:0}
+.bw-tage{display:grid;grid-template-columns:repeat(7,1fr);gap:.4em}
+.bw-tage button{height:2.8em;border-radius:.8em;border:1px solid var(--b-rand);background:transparent;font-size:1.05em;font-weight:600}
+.bw-tage button[aria-pressed="true"]{background:var(--b-gg);border-color:var(--b-gr)}
+.bw-schalt{width:3.6em;height:2em;border-radius:1em;border:1px solid var(--b-rand);background:var(--b-rahmen);position:relative;padding:0}
+.bw-schalt:after{content:"";position:absolute;top:.2em;left:.2em;width:1.5em;height:1.5em;border-radius:50%;background:var(--x-matt);transition:left .2s}
+.bw-schalt[aria-pressed="true"]{background:var(--b-gg);border-color:var(--b-gr)}
+.bw-schalt[aria-pressed="true"]:after{left:1.9em;background:var(--b-gt)}
+.hx-in .bw-text{font-size:1.1em;line-height:1.35;color:var(--x-matt);margin:.2em 0 .6em;max-width:none}
+.hx-in .bw-zone{color:#fff}
+.hd-tipp[data-z]{display:none}
+#hausDemo[data-z="licht"] .hd-tipp[data-z="licht"],#hausDemo[data-z="alarm"] .hd-tipp[data-z="alarm"],#hausDemo[data-z="bew"] .hd-tipp[data-z="bew"]{display:block}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#104B96;--heim:#A05A22}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
@@ -1143,21 +1278,19 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       </div>
       <div class="zuhause-fotos">
       <figure class="telefon foto"><div class="schirm">
-        <img data-z="licht" data-m="dunkel" src="bilder/app-zuhause-licht-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="licht" data-m="hell" src="bilder/app-zuhause-licht-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="hx" data-z="licht"></div>
         <div class="al-demo" data-start="unscharf" aria-label="Alarmanlage zum Ausprobieren"></div>
-        <img data-z="bew" data-m="dunkel" src="bilder/app-zuhause-bewaesserung-1-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="bew" data-m="hell" src="bilder/app-zuhause-bewaesserung-1-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="hx" data-z="bew"></div>
       </div><figcaption><span data-z="licht">Szenen ganz oben, Gruppe Couch</span><span data-z="alarm" class="al-text">Unscharf — alle Melder ruhig</span><span data-z="bew">Hand: Rasen läuft noch 12 min</span></figcaption></figure>
       <figure class="telefon foto"><div class="schirm">
-        <img data-z="licht" data-m="dunkel" src="bilder/app-zuhause-gruppen-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="licht" data-m="hell" src="bilder/app-zuhause-gruppen-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="hx" data-z="licht"></div>
         <div class="al-demo" data-start="alarm" aria-label="Alarmanlage zum Ausprobieren"></div>
-        <img data-z="bew" data-m="dunkel" src="bilder/app-zuhause-bewaesserung-2-dunkel.webp" alt="" width="585" height="1200" loading="lazy">
-        <img data-z="bew" data-m="hell" src="bilder/app-zuhause-bewaesserung-2-hell.webp" alt="" width="585" height="1200" loading="lazy">
+        <div class="hx" data-z="bew"></div>
       </div><figcaption><span data-z="licht">Gruppen und Vouten mit Dimmer</span><span data-z="alarm" class="al-text">Scharf — Terrasse ausgelöst</span><span data-z="bew">Zonen mit Bild, Laufzeit je Zone</span></figcaption></figure>
       </div>
-      <p class="hd-tipp">Zum Ausprobieren: Schalter oben und Melder unten antippen.</p>
+      <p class="hd-tipp" data-z="licht">Zum Ausprobieren: Szenen, Raumbilder und Dimmer antippen – im Handy lässt sich scrollen.</p>
+      <p class="hd-tipp" data-z="alarm">Zum Ausprobieren: Schalter oben und Melder unten antippen.</p>
+      <p class="hd-tipp" data-z="bew">Zum Ausprobieren: Zonen antippen, Auto/Hand, Wasser Stop und Regensensor – oben auch Zeitmodul.</p>
       <div class="app-schalter" role="group" aria-label="App-Ansicht umschalten">
         <span>So sieht die App aus:</span>
         <button type="button" data-wahl="dunkel" aria-pressed="true">☾ Dunkel</button>
@@ -1167,7 +1300,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
     <div>
       <span class="etikett h">IM HAUS</span>
       <h3>Ein Tipp für das ganze Licht. Ein Blick auf das ganze Haus.</h3>
-      <p>Echte Ansichten aus der App — Licht, Alarmanlage und Bewässerung, jeweils mit Raumbild. Oben umschalten, unten Hell oder Dunkel wählen.</p>
+      <p>Ansichten wie in der App — Licht, Alarmanlage und Bewässerung, jeweils mit Raumbild und alles zum Ausprobieren. Oben umschalten, unten Hell oder Dunkel wählen.</p>
       <ul>
         <li>Licht: Szenen ganz oben, Gruppen und Vouten mit Dimmer</li>
         <li>Alarmanlage: Unscharf, Zu Hause, Scharf — das Haus leuchtet in der Farbe des Zustands</li>
@@ -1416,6 +1549,298 @@ document.querySelectorAll('#hausDemo .al-demo').forEach(function(el,nr){
   else{st.m[k]='bewegung';setTimeout(function(){if(st.m[k]==='bewegung'){st.m[k]='ruhig';zeichne()}},2500)}zeichne()})});
  zeichne();
 });
+})();
+</script>
+<script>
+/* Im Haus: Licht und Bewaesserung zum Antippen (07.11.2026)
+   Beide Handys teilen sich einen Zustand: was links geschaltet wird, sieht man rechts sofort.
+   Licht wie VisuLichtraum.cs (Druck ins Raumbild: an = Startwert, aus = 0, Wert gleitet hin).
+   Auf der Webseite wird nichts gesendet, alles bleibt im Browser. */
+(function(){
+var demo=document.getElementById('hausDemo');if(!demo)return;
+var NS='http://www.w3.org/2000/svg',nr=0;
+function el(n,at,p){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(p)p.appendChild(e);return e}
+function q(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+var LEISTE={start:'<span><svg viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3z"/></svg>Start</span>',
+ symcon:'<span class="an"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>Symcon</span>',
+ kamera:'<span><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>Kamera</span>',
+ energie:'<span><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Energie</span>'};
+function rahmen(titel,leiste){return '<div class="hx-stat" aria-hidden="true"><span>19:12</span><span>5G ▮</span></div>'+
+ '<div class="hx-kopf"><button type="button" class="hx-zurueck" aria-label="Zurück">‹</button><b>'+titel+'</b></div>'+
+ '<div class="hx-leiste" aria-hidden="true">'+leiste+'</div><div class="hx-hinweis" aria-live="polite"></div>'}
+function hinweis(IN,t){var h=IN.querySelector('.hx-hinweis');h.textContent=t;h.classList.add('da');clearTimeout(h._t);h._t=setTimeout(function(){h.classList.remove('da')},2200)}
+function verbinde(IN){IN.querySelector('.hx-zurueck').onclick=function(){hinweis(IN,'In der App geht es hier zurück zur Übersicht')}}
+
+/* ================= LICHT ================= */
+var NAMEN=['TV','Terrasse','Eßzimmer'],BILD=['tv','tuer','tisch'];
+var L={c:[{w:60,s:60}],g:[{w:26,s:50},{w:0,s:100},{w:0,s:50}],v:[{w:15,s:50},{w:15,s:50},{w:15,s:50}]};
+Object.keys(L).forEach(function(a){L[a].forEach(function(l){l.z=l.w})});
+var SZENEN=[
+ {k:'aus',n:'Alles aus',u:'alle auf 0 %',w:{c:[0],g:[0,0,0],v:[0,0,0]}},
+ {k:'ein',n:'Alles ein',u:'alle auf 100 %',w:{c:[100],g:[100,100,100],v:[100,100,100]}},
+ {k:'25',n:'Alle 25 %',u:'alle auf 25 %',w:{c:[25],g:[25,25,25],v:[25,25,25]}},
+ {k:'dimm',n:'Szene dimm',u:'6 Lichter einzeln',w:{c:[40],g:[26,null,30],v:[15,15,15]}}];
+var IC={aus:'<svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/><path d="M4 4l16 16"/></svg>',
+ ein:'<svg viewBox="0 0 24 24" style="color:#F0A126"><path d="M9 18h6M10 21h4" /><path d="M12 5a5.5 5.5 0 0 0-3.7 9.6c.7.7.9 1.3.9 2.1h5.6c0-.8.2-1.4.9-2.1A5.5 5.5 0 0 0 12 5z" fill="#F0A126"/><path d="M12 1.5v1.5M4.5 4.5l1 1M19.5 4.5l-1 1M2 11h1.5M20.5 11H22"/></svg>',
+ bulb:'<svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+ stift:'<svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>',
+ dimmer:'<svg viewBox="0 0 24 24"><path d="M6 4v16M12 4v16M18 4v16"/><path d="M4 9h4M10 15h4M16 7h4"/></svg>'};
+function st(w){return w>0.5?Math.pow(Math.min(100,w)/100,.6):0}
+function stop(g,o,farbe,deck){el('stop',{offset:o,style:'stop-color:var(--lr-'+farbe+');stop-opacity:'+deck},g)}
+/* Raumbild wie im Kopf der Seite (Gruppen: Strahler, Voute: Lichtband) */
+function raumbild(art,spalten){
+ var id='hx'+(++nr),voute=art==='v',W=100*spalten.length,H=125;
+ var s=el('svg',{viewBox:'0 0 '+W+' '+H,'aria-hidden':'true',preserveAspectRatio:'xMidYMid meet'}),d=el('defs',{},s);
+ var k=el('linearGradient',{id:id+'k',x1:0,y1:0,x2:0,y2:1},d);stop(k,0,'l0','var(--lr-k0)');stop(k,.5,'l1','var(--lr-k1)');stop(k,1,'l1','var(--lr-k2)');
+ var f=el('radialGradient',{id:id+'f'},d);stop(f,0,'l0','var(--lr-p0)');stop(f,1,'l1','0');
+ var g=el('radialGradient',{id:id+'s',cx:.5,cy:0,r:1},d);stop(g,0,'l0','var(--lr-s0)');stop(g,.4,'l1','var(--lr-s1)');stop(g,1,'l1','0');
+ var b=el('linearGradient',{id:id+'b',x1:0,y1:0,x2:0,y2:1},d);stop(b,0,'boden0','1');stop(b,1,'boden1','1');
+ var lichter=[];
+ spalten.forEach(function(stelle,i){
+  var x=i*100,cp=el('clipPath',{id:id+'c'+i},d);el('rect',{x:x,y:0,width:100,height:H},cp);
+  var t=el('g',{'clip-path':'url(#'+id+'c'+i+')'},s);
+  el('rect',{x:x,y:0,width:100,height:H,style:'fill:var(--lr-wand)'},t);
+  el('rect',{x:x,y:108,width:100,height:17,fill:'url(#'+id+'b)'},t);
+  el('line',{x1:x,y1:108,x2:x+100,y2:108,style:'stroke:var(--lr-kante)'},t);
+  var l=el('g',{opacity:0},t);lichter.push({g:l,a:art,i:stelle});
+  if(voute){el('ellipse',{cx:x+50,cy:22,rx:60,ry:70,fill:'url(#'+id+'s)'},l);
+   el('rect',{x:x+12,y:20,width:76,height:2.6,rx:1.3,style:'fill:var(--lr-band1)'},l);el('rect',{x:x+14,y:20.6,width:72,height:1,rx:.5,style:'fill:var(--lr-band2)'},l);}
+  else{[28,50,72].forEach(function(sx){sx+=x;
+   el('polygon',{points:(sx-3)+',17 '+(sx+3)+',17 '+(sx+15)+',108 '+(sx-15)+',108',fill:'url(#'+id+'k)',opacity:.45},l);
+   el('polygon',{points:(sx-2)+',17 '+(sx+2)+',17 '+(sx+8)+',108 '+(sx-8)+',108',fill:'url(#'+id+'k)'},l);
+   el('ellipse',{cx:sx,cy:109,rx:15,ry:4.5,fill:'url(#'+id+'f)'},l);});}
+  var m=el('g',{style:'fill:none;stroke:var(--lr-moebelrand);stroke-width:calc(1px * var(--lr-sw))','stroke-linejoin':'round'},t),bi=BILD[stelle];
+  if(bi==='tv'){el('rect',{x:x+30,y:70,width:40,height:24,rx:1.5},m);el('line',{x1:x+50,y1:94,x2:x+50,y2:97},m);el('rect',{x:x+24,y:97,width:52,height:11,rx:1},m);el('line',{x1:x+41.3,y1:97,x2:x+41.3,y2:108},m);el('line',{x1:x+58.6,y1:97,x2:x+58.6,y2:108},m);}
+  if(bi==='tuer'){el('rect',{x:x+27,y:58,width:46,height:50},m);
+   [30,53].forEach(function(px){el('rect',{x:x+px,y:61,width:17,height:44,style:'fill:var(--lr-glas);stroke:var(--lr-glasrand)'},m);el('line',{x1:x+px+2,y1:70,x2:x+px+10,y2:63,style:'stroke:var(--lr-glasrand)'},m)});
+   el('line',{x1:x+48.5,y1:80,x2:x+48.5,y2:86,style:'stroke:var(--lr-griff)'},m);el('line',{x1:x+51.5,y1:80,x2:x+51.5,y2:86,style:'stroke:var(--lr-griff)'},m);}
+  if(bi==='tisch'){el('rect',{x:x+28,y:88,width:44,height:2},m);el('line',{x1:x+32,y1:90,x2:x+32,y2:108},m);el('line',{x1:x+68,y1:90,x2:x+68,y2:108},m);
+   el('polyline',{points:(x+18)+',76 '+(x+18)+',108'},m);el('polyline',{points:(x+18)+',96 '+(x+26)+',96 '+(x+26)+',108'},m);
+   el('polyline',{points:(x+82)+',76 '+(x+82)+',108'},m);el('polyline',{points:(x+82)+',96 '+(x+74)+',96 '+(x+74)+',108'},m);}
+  el('rect',{x:x,y:0,width:100,height:10,style:'fill:var(--lr-decke)'},t);
+  el('line',{x1:x,y1:10,x2:x+100,y2:10,style:'stroke:var(--lr-deckenkante)'},t);
+  if(voute){el('line',{x1:x+22,y1:10,x2:x+22,y2:16,style:'stroke:var(--lr-segelrand)'},t);el('line',{x1:x+78,y1:10,x2:x+78,y2:16,style:'stroke:var(--lr-segelrand)'},t);
+   el('rect',{x:x+10,y:16,width:80,height:4,rx:1,style:'fill:var(--lr-segel);stroke:var(--lr-segelrand);stroke-width:.8'},t);}
+  else{el('rect',{x:x+12,y:10,width:76,height:3,style:'fill:var(--lr-schiene)'},t);
+   [28,50,72].forEach(function(sx){el('rect',{x:x+sx-3.5,y:12,width:7,height:5,rx:1,style:'fill:var(--lr-strahler);stroke:var(--lr-strahlerrand);stroke-width:.8'},t)});}
+  if(i>0)el('line',{x1:x,y1:0,x2:x,y2:H,style:'stroke:var(--lr-trenn)'},s);
+ });
+ return {svg:s,lichter:lichter};
+}
+/* Couch: breites Raumbild mit Lichtleiste, Kegel bis zum Boden */
+function couchbild(){
+ var id='hx'+(++nr),W=553,H=230,s=el('svg',{viewBox:'0 0 '+W+' '+H,'aria-hidden':'true',preserveAspectRatio:'xMidYMid slice'}),d=el('defs',{},s);
+ var k=el('linearGradient',{id:id+'k',x1:0,y1:0,x2:0,y2:1},d);stop(k,0,'l0','var(--lr-k0)');stop(k,.55,'l1','var(--lr-k1)');stop(k,1,'l1','var(--lr-k2)');
+ var f=el('radialGradient',{id:id+'f'},d);stop(f,0,'l0','var(--lr-p0)');stop(f,1,'l1','0');
+ var b=el('linearGradient',{id:id+'b',x1:0,y1:0,x2:0,y2:1},d);stop(b,0,'boden0','1');stop(b,1,'boden1','1');
+ el('rect',{width:W,height:H,style:'fill:var(--lr-wand)'},s);
+ el('rect',{y:200,width:W,height:30,fill:'url(#'+id+'b)'},s);el('line',{x1:0,y1:200,x2:W,y2:200,style:'stroke:var(--lr-kante)'},s);
+ var l=el('g',{opacity:0},s);
+ el('polygon',{points:'112,34 441,34 553,200 0,200',fill:'url(#'+id+'k)',opacity:.85},l);
+ el('ellipse',{cx:276,cy:202,rx:240,ry:9,fill:'url(#'+id+'f)'},l);
+ el('rect',{x:112,y:30,width:329,height:3,rx:1.5,style:'fill:var(--lr-band1)'},l);
+ var m=el('g',{style:'fill:none;stroke:var(--lr-moebelrand);stroke-width:calc(1.4px * var(--lr-sw))','stroke-linejoin':'round'},s);
+ el('rect',{x:240,y:128,width:30,height:22},m);el('rect',{x:280,y:131,width:22,height:18},m);
+ el('path',{d:'M185 163h190v-20q0-6-6-6H191q-6 0-6 6z'},m);el('rect',{x:175,y:160,width:210,height:26,rx:5},m);
+ el('rect',{x:168,y:156,width:14,height:30,rx:4},m);el('rect',{x:378,y:156,width:14,height:30,rx:4},m);
+ el('line',{x1:247,y1:160,x2:247,y2:186},m);el('line',{x1:313,y1:160,x2:313,y2:186},m);
+ el('path',{d:'M183 186v8M377 186v8'},m);
+ el('path',{d:'M126 168h20M128 168v26M144 168v26M124 165h24v3h-24z'},m);
+ el('path',{d:'M406 196h22l-3-18h-16z'},m);el('path',{d:'M417 178q-2-18-14-28M417 178q2-20 16-30M417 178q0-16-2-30M417 178q-8-8-20-10M417 178q8-8 20-8'},m);
+ el('rect',{width:W,height:12,style:'fill:var(--lr-decke)'},s);el('line',{x1:0,y1:12,x2:W,y2:12,style:'stroke:var(--lr-deckenkante)'},s);
+ el('line',{x1:158,y1:12,x2:158,y2:28,style:'stroke:var(--lr-segelrand)'},s);el('line',{x1:395,y1:12,x2:395,y2:28,style:'stroke:var(--lr-segelrand)'},s);
+ el('rect',{x:106,y:26,width:341,height:6,rx:2,style:'fill:var(--lr-segel);stroke:var(--lr-segelrand);stroke-width:.8'},s);
+ return {svg:s,lichter:[{g:l,a:'c',i:0}]};
+}
+var bilder=[],lxIns=[],offen=null;
+function wertText(w){return w>0?Math.round(w)+' %':'aus'}
+function art(a){return a==='c'?'Couch':a==='v'?'Voute':'Gruppe'}
+function name(a,i){return a==='c'?'Couch':NAMEN[i]}
+function druck(a,i){var l=L[a][i];l.w=l.w>0?0:l.s;lxAbgleich();uhr()}
+function szene(sz){Object.keys(sz.w).forEach(function(a){sz.w[a].forEach(function(w,i){if(w!==null)L[a][i].w=w})});lxAbgleich();uhr()}
+function passt(sz){return Object.keys(sz.w).every(function(a){return sz.w[a].every(function(w,i){return w===null||L[a][i].w===w})})}
+function lichtBauen(fig){
+ var h=fig.querySelector('.hx[data-z="licht"]');if(!h)return;
+ h.innerHTML='<div class="hx-in lx-in">'+rahmen('Licht',LEISTE.start+LEISTE.symcon+LEISTE.kamera)+'<div class="hx-rolle"></div><div class="lx-pop" hidden></div></div>';
+ var IN=h.firstChild,R=IN.querySelector('.hx-rolle');verbinde(IN);
+ var x='<div class="lx-t"><span class="lx-titel">Licht mit Raumbild</span><span class="lx-zahl"></span></div><div class="hx-z"><span>SZENEN</span></div><div class="lx-szenen">';
+ SZENEN.forEach(function(sz,n){x+='<div class="lx-sz'+(sz.k==='aus'?' aus':'')+'" data-n="'+n+'"><button type="button" aria-pressed="false"><i>'+(sz.k==='aus'?IC.aus:sz.k==='ein'?IC.ein:IC.bulb)+'</i><b>'+sz.n+'</b><small>'+sz.u+'</small></button><button type="button" class="lx-stift" aria-label="Szene bearbeiten">'+IC.stift+'</button></div>'});
+ x+='<div class="lx-sz dazu"><button type="button"><i>+</i><b>Szene dazu</b><small>Lichter und Prozent</small></button></div></div>';
+ x+='<div class="hx-z"><span>COUCH</span><span data-lxz="c"></span></div><div class="lr-teil"><div class="lr-buehne lx-cb"></div><button type="button" class="lx-cname"><b>Couch</b><small></small></button></div>';
+ x+='<button type="button" class="lx-breit" data-dim="c0"><i>'+IC.dimmer+'</i><span><b>Dimmer</b><small data-start="c0"></small></span><em>⛶</em></button>';
+ ['g','v'].forEach(function(a){x+='<div class="hx-z"><span>'+(a==='g'?'GRUPPEN':'VOUTE')+'</span><span data-lxz="'+a+'"></span></div><div class="lr-teil" data-teil="'+a+'"><div class="lr-buehne"></div><div class="lr-namen"></div></div><div class="lr-dimmer">';
+  NAMEN.forEach(function(n,i){x+='<button type="button" data-dim="'+a+i+'"><i>'+IC.dimmer+'</i><b>Dimmer</b><small data-start="'+a+i+'"></small></button>'});x+='</div>'});
+ R.innerHTML=x;
+ var cb=couchbild();bilder.push(cb);var bu=R.querySelector('.lx-cb');bu.appendChild(cb.svg);
+ var cz=document.createElement('button');cz.type='button';cz.className='lx-czone';cz.setAttribute('aria-label','Couch ein oder aus');cz.onclick=function(){druck('c',0)};bu.appendChild(cz);
+ R.querySelector('.lx-cname').onclick=function(){druck('c',0)};
+ ['g','v'].forEach(function(a){var t=R.querySelector('[data-teil="'+a+'"]'),rb=raumbild(a,[0,1,2]);bilder.push(rb);
+  var b2=t.querySelector('.lr-buehne');b2.appendChild(rb.svg);var zo=document.createElement('div');zo.className='lr-zonen';b2.appendChild(zo);
+  NAMEN.forEach(function(n,i){var z=document.createElement('button');z.type='button';z.setAttribute('aria-label',n+' ('+art(a)+') ein oder aus');z.onclick=function(){druck(a,i)};zo.appendChild(z);
+   var nb=document.createElement('button');nb.type='button';nb.dataset.n=a+i;nb.innerHTML='<b>'+n+'</b><small></small>';nb.onclick=function(){druck(a,i)};t.querySelector('.lr-namen').appendChild(nb)})});
+ q('.lx-sz[data-n]',R).forEach(function(d){var sz=SZENEN[+d.dataset.n];d.firstChild.onclick=function(){szene(sz)};d.querySelector('.lx-stift').onclick=function(){hinweis(IN,'„'+sz.n+'“ bearbeiten: in der App Lichter und Prozent wählen')}});
+ R.querySelector('.lx-sz.dazu button').onclick=function(){hinweis(IN,'Neue Szene: in der App Lichter und Prozent wählen')};
+ q('[data-dim]',R).forEach(function(b){b.onclick=function(){auf(IN,b.dataset.dim.charAt(0),+b.dataset.dim.charAt(1))}});
+ lxIns.push(IN);
+}
+/* Blatt Dimmer (VisuLichtraumBlatt.cs) */
+function auf(IN,a,i){
+ var p=IN.querySelector('.lx-pop');offen={IN:IN,a:a,i:i,p:p};
+ p.innerHTML='<div class="lx-blatt" role="dialog" aria-label="Dimmer"><div class="lx-bk"><div><b>'+name(a,i)+'</b><small class="lx-pa"></small></div><button type="button" data-x="zu">Schließen</button></div>'+
+  '<div class="lx-mini"></div><div class="lx-ea"><button type="button" data-ea="1">Ein</button><button type="button" data-ea="0">Aus</button></div>'+
+  '<div class="lx-schritt"><button type="button" data-d="-5">−5</button><button type="button" data-d="-1">−1</button><b class="lx-pv"></b><button type="button" data-d="1">+1</button><button type="button" data-d="5">+5</button></div>'+
+  '<input type="range" min="0" max="100" step="1" aria-label="Helligkeit"><div class="lx-tasten">'+[0,25,50,75,100].map(function(t){return '<button type="button" data-t="'+t+'">'+(t?t+' %':'Aus')+'</button>'}).join('')+'</div>'+
+  '<div class="lx-start"><span>Startwert beim Antippen: <b class="lx-ps"></b></span><button type="button" data-st="-5">−</button><button type="button" data-st="5">+</button></div></div>';
+ var mini=a==='c'?couchbild():raumbild(a,[i]);offen.mini=mini;p.querySelector('.lx-mini').appendChild(mini.svg);
+ var r=p.querySelector('input');r.addEventListener('input',function(){setze(+r.value,false)});
+ p.onclick=function(e){if(e.target===p){zu();return}var b=e.target.closest('button');if(!b||!offen)return;var l=L[a][i];
+  if(b.dataset.x==='zu')zu();else if(b.dataset.st){l.s=Math.max(5,Math.min(100,l.s+ +b.dataset.st));lxAbgleich()}
+  else if(b.dataset.ea)setze(b.dataset.ea==='1'?l.s:0,true);else if(b.dataset.d)setze(l.w+ +b.dataset.d,false);else if(b.dataset.t)setze(+b.dataset.t,true)};
+ p.hidden=false;lxAbgleich();p.querySelector('[data-x="zu"]').focus();
+}
+function zu(){if(!offen)return;offen.p.hidden=true;offen.p.innerHTML='';offen=null}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&offen)zu()});
+function setze(w,sanft){if(!offen)return;var l=L[offen.a][offen.i];l.w=Math.max(0,Math.min(100,Math.round(w)));if(!sanft)l.z=l.w;lxAbgleich();uhr()}
+function lxAbgleich(){
+ var ein=0,z={};Object.keys(L).forEach(function(a){var n=0,s=0;L[a].forEach(function(l){if(l.w>0)n++;s+=l.w});ein+=n;z[a]={n:n,s:s}});
+ lxIns.forEach(function(IN){
+  IN.querySelector('.lx-zahl').textContent=ein+' von 7 ein';
+  IN.querySelector('[data-lxz="c"]').textContent='1 Licht · '+wertText(L.c[0].w);
+  ['g','v'].forEach(function(a){IN.querySelector('[data-lxz="'+a+'"]').textContent=z[a].n+' von 3 ein · Ø '+Math.round(z[a].s/3)+' %'});
+  var cs=IN.querySelector('.lx-cname small');cs.textContent=wertText(L.c[0].w);cs.className=L.c[0].w>0?'an':'';
+  q('.lr-namen button',IN).forEach(function(b){var l=L[b.dataset.n.charAt(0)][+b.dataset.n.charAt(1)],sm=b.querySelector('small');sm.textContent=wertText(l.w);sm.className=l.w>0?'an':''});
+  q('[data-start]',IN).forEach(function(s){s.textContent='Start '+L[s.dataset.start.charAt(0)][+s.dataset.start.charAt(1)].s+' %'});
+  q('.lx-sz[data-n]',IN).forEach(function(d){var ok=passt(SZENEN[+d.dataset.n]);d.classList.toggle('an',ok);d.firstChild.setAttribute('aria-pressed',ok?'true':'false')});
+ });
+ if(offen){var l=L[offen.a][offen.i],p=offen.p;
+  p.querySelector('.lx-pa').textContent=art(offen.a)+' · '+wertText(l.w);p.querySelector('.lx-pv').textContent=l.w+' %';p.querySelector('.lx-ps').textContent=l.s+' %';p.querySelector('input').value=l.w;
+  q('[data-ea]',p).forEach(function(b){b.classList.toggle('an',(b.dataset.ea==='1')===(l.w>0))});q('[data-t]',p).forEach(function(b){b.classList.toggle('an',+b.dataset.t===l.w)})}
+ malen();
+}
+function malen(){bilder.concat(offen&&offen.mini?[offen.mini]:[]).forEach(function(rb){rb.lichter.forEach(function(x){x.g.setAttribute('opacity',st(L[x.a][x.i].z).toFixed(3))})})}
+var laeuft=false,zuletzt=0;
+function uhr(){if(!laeuft){laeuft=true;zuletzt=0;requestAnimationFrame(gleiten)}}
+function gleiten(t){if(t-zuletzt<33){requestAnimationFrame(gleiten);return}zuletzt=t;var weiter=false;
+ Object.keys(L).forEach(function(a){L[a].forEach(function(l){var w=l.w-l.z;if(Math.abs(w)<0.5)l.z=l.w;else{l.z+=w*0.24;weiter=true}})});
+ malen();if(weiter)requestAnimationFrame(gleiten);else laeuft=false}
+
+/* ================= BEWAESSERUNG ================= */
+var Z=[{n:'Rasen',lauf:30,bild:'rasen',rest:732},{n:'Beet',lauf:15,bild:'beet',rest:0},{n:'Terrasse',lauf:10,bild:'terrasse',rest:0},{n:'Böschung',lauf:25,bild:'boeschung',rest:0}];
+var B={modus:'hand',regen:false,reiter:'betrieb',start:330,tage:[1,0,1,0,1,0,1],regenAchten:true,uhr0:19*60+12,t0:Date.now()};
+Z.forEach(function(z){z.aus=z.rest?Math.round(B.uhr0+z.rest/60+0.5):0;z.zahl=z.rest?z.lauf*60:0});
+var bwIns=[];
+function hhmm(m){m=((Math.round(m)%1440)+1440)%1440;return (m/60|0)+':'+('0'+m%60).slice(-2)}
+function jetztMin(){return B.uhr0+(Date.now()-B.t0)/60000}
+function mmss(s){return (s/60|0)+':'+('0'+s%60).slice(-2)}
+function pflanze(p,x,y,h){var g=el('g',{style:'fill:none;stroke:#CFEFE4;stroke-width:1.2;stroke-linecap:round'},p);
+ [-50,-30,-12,0,12,30,50].forEach(function(a){var r=a*Math.PI/180,hx=x+Math.sin(r)*h,hy=y-Math.cos(r)*h;el('path',{d:'M'+x+' '+y+' Q'+(x+Math.sin(r)*h*.3)+' '+(y-h*.6)+' '+hx+' '+hy},g);
+  el('ellipse',{cx:hx,cy:hy,rx:2.6,ry:1.4,transform:'rotate('+(a-90)+' '+hx+' '+hy+')',style:'fill:#BDEBDC;stroke:none;opacity:.8'},g)})}
+function gras(p,x,y){var g=el('g',{style:'fill:none;stroke:#D8E2EE;stroke-width:1;stroke-linecap:round'},p);[-14,-7,0,7,14].forEach(function(a){el('path',{d:'M'+x+' '+y+' l'+(a*.6)+' '+(-14+Math.abs(a)*.3)},g)})}
+function blumen(p,x0,x1,y){for(var x=x0;x<x1;x+=17){el('line',{x1:x,y1:y,x2:x,y2:y-7,style:'stroke:#D8E2EE;stroke-width:.8'},p);el('circle',{cx:x,cy:y-8,r:1.6,style:'fill:'+(x%34<17?'#FFE7A8':'#F2F4F6')},p)}}
+function zonenbild(z){
+ var id='bw'+(++nr),s=el('svg',{viewBox:'0 0 490 215',preserveAspectRatio:'xMidYMid slice','aria-hidden':'true'}),d=el('defs',{},s);
+ var hg=el('linearGradient',{id:id+'h',x1:0,y1:0,x2:0,y2:1},d);el('stop',{offset:0,'stop-color':'#46536A'},hg);el('stop',{offset:1,'stop-color':'#69798F'},hg);
+ var sp=el('radialGradient',{id:id+'s',cx:.5,cy:.85,r:.6},d);el('stop',{offset:0,'stop-color':'#E6F2FF','stop-opacity':.55},sp);el('stop',{offset:1,'stop-color':'#E6F2FF','stop-opacity':0},sp);
+ el('rect',{width:490,height:215,fill:'url(#'+id+'h)'},s);
+ for(var i=0;i<26;i++)el('circle',{cx:(i*137+40)%490,cy:(i*53+12)%130,r:i%3?0.9:1.4,style:'fill:#fff;opacity:'+(i%2?.35:.6)},s);
+ var boden=z.bild==='boeschung'?'M0 190 L490 140 L490 215 L0 215z':'M0 170 H490 V215 H0z';
+ var hy=z.bild==='boeschung'?150:150,hp='M0 '+(hy+20);for(var x=0;x<=490;x+=22)hp+=' q11 -14 22 0';hp+=' V215 H0z';
+ el('path',{d:hp,style:'fill:#56657B;stroke:#71829A;stroke-width:1'},s);
+ el('path',{d:boden,style:'fill:#3F4B5E'},s);el('path',{d:z.bild==='boeschung'?'M0 190 L490 140':'M0 170 H490',style:'stroke:#C9D6E6;stroke-width:1;opacity:.7'},s);
+ var spr=el('g',{'class':'bw-spr'},s),cx=z.bild==='rasen'?245:z.bild==='beet'?300:z.bild==='terrasse'?200:250,cy=z.bild==='boeschung'?166:168;
+ el('ellipse',{cx:cx,cy:cy-30,rx:170,ry:60,fill:'url(#'+id+'s)'},spr);
+ [[-150,-55],[-100,-70],[100,-70],[150,-55]].forEach(function(v){el('path',{d:'M'+cx+' '+(cy-14)+' Q'+(cx+v[0]*.5)+' '+(cy-14+v[1])+' '+(cx+v[0])+' '+(cy-2),style:'fill:none;stroke:#EAF4FF;stroke-width:1.6;stroke-dasharray:2 5;stroke-linecap:round;opacity:.9'},spr)});
+ el('path',{d:'M'+(cx-5)+' '+cy+' h10 l-2 -12 h-6z',style:'fill:#E6ECF2;stroke:#AAB6C4;stroke-width:.8'},s);
+ if(z.bild==='rasen'){for(var g=20;g<470;g+=26)gras(s,g,172);pflanze(s,50,160,24);
+  var bm=el('g',{style:'fill:none;stroke:#CFEFE4;stroke-width:1'},s);el('path',{d:'M395 168v-50'},bm);[[380,95],[395,80],[412,92],[402,110],[385,112],[418,108]].forEach(function(c){el('circle',{cx:c[0],cy:c[1],r:9,style:'fill:#9ED9C5;fill-opacity:.35'},bm)});}
+ if(z.bild==='beet'){pflanze(s,40,166,22);pflanze(s,140,166,16);pflanze(s,235,166,24);gras(s,335,168);blumen(s,280,330,168);blumen(s,90,130,168);}
+ if(z.bild==='terrasse'){pflanze(s,40,166,22);pflanze(s,130,166,20);var tr=el('g',{style:'fill:none;stroke:#E6ECF2;stroke-width:1.2'},s);
+  el('path',{d:'M330 150h50M335 150v20M375 150v20M318 140v30M318 158h10v12M392 140v30M392 158h-10v12'},tr);el('path',{d:'M250 170 L270 160 H490'},tr);pflanze(s,445,166,14);}
+ if(z.bild==='boeschung'){pflanze(s,40,186,20);pflanze(s,150,175,16);pflanze(s,260,163,24);pflanze(s,380,150,20);gras(s,330,160);}
+ return s;
+}
+var IB={uhr:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',hand:'<svg viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5.5a1.5 1.5 0 0 1 3 0V14c0 4-2.5 7-6 7-2.5 0-4-1.5-5.5-4L4 13.5a1.5 1.5 0 0 1 2.6-1.5L8 14"/></svg>',
+ stop:'<svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/><path d="M5 20L19 4"/></svg>',
+ sonne:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+ regen:'<svg viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.5 3.5 0 0 1 17.5 15z"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></svg>'};
+function bewBauen(fig){
+ var h=fig.querySelector('.hx[data-z="bew"]');if(!h)return;
+ h.innerHTML='<div class="hx-in bw-in">'+rahmen('Bewässerung',LEISTE.start+LEISTE.symcon+LEISTE.kamera+LEISTE.energie)+'<div class="hx-rolle bw-rolle"><div class="bw-rahmen"><div class="bw-karte">'+
+  '<div class="bw-reiter"><button type="button" data-r="betrieb">Betrieb</button><button type="button" data-r="zeit">Zeitmodul</button><button type="button" data-r="einr">Einrichten</button></div>'+
+  '<div class="bw-t"><span class="bw-titel">Bewässerung</span><span class="bw-pille"></span></div><div class="bw-seite"></div></div></div></div></div>';
+ var IN=h.firstChild;verbinde(IN);
+ q('.bw-reiter button',IN).forEach(function(b){b.onclick=function(){B.reiter=b.dataset.r;bwAlles()}});
+ bwIns.push({IN:IN,fig:fig,seite:null});
+}
+function laufen(){return Z.filter(function(z){return z.rest>0}).length}
+function zoneSchalten(IN,i){var z=Z[i];
+ if(z.rest>0){z.rest=0;hinweis(IN,z.n+' gestoppt')}
+ else{z.rest=z.lauf*60;z.zahl=z.rest;z.aus=Math.round(jetztMin()+z.lauf);if(B.modus==='auto'){B.modus='hand';hinweis(IN,'Auf Hand umgestellt – '+z.n+' läuft '+z.lauf+' min')}else hinweis(IN,z.n+' läuft '+z.lauf+' min')}
+ bwAlles()}
+function betriebHtml(){
+ var x='<div class="hx-z"><span>STEUERUNG</span><span class="bw-mlabel"></span></div><div class="bw-zwei">'+
+  '<button type="button" class="bw-k" data-m="auto">'+IB.uhr+'<span><b>Auto</b><small>nach Zeitmodul</small></span></button>'+
+  '<button type="button" class="bw-k" data-m="hand">'+IB.hand+'<span><b>Hand</b><small>selbst starten</small></span></button></div>'+
+  '<button type="button" class="bw-k bw-stop">'+IB.stop+'<span><b>Wasser Stop</b><small>alle Zonen aus</small></span></button>'+
+  '<button type="button" class="bw-k bw-regen"><span class="bw-ri"></span><span><b class="bw-rt"></b><small class="bw-ru"></small></span></button>'+
+  '<div class="hx-z"><span>ZONEN</span><span>antippen = Start / Stopp</span></div>';
+ Z.forEach(function(z,i){x+='<button type="button" class="bw-zone" data-i="'+i+'"><span class="bw-name">'+z.n+'</span><span class="bw-mond"><i></i></span><span class="bw-zeit"></span>'+
+  '<span class="bw-uhr"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" style="fill:rgba(28,33,42,.82);stroke:#3E4552;stroke-width:7"/><circle class="bw-ring" cx="50" cy="50" r="44" style="fill:none;stroke:var(--b-ring);stroke-width:7;stroke-linecap:round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><span><b></b><small></small></span></span></button>'});
+ return x}
+function zeitHtml(){var T=['Mo','Di','Mi','Do','Fr','Sa','So'];
+ var x='<div class="hx-z"><span>STARTZEIT</span><span>im Modus Auto</span></div><div class="bw-zeile"><span>Start um</span><button type="button" data-zs="-15">−</button><b class="bw-sz"></b><button type="button" data-zs="15">+</button></div>'+
+  '<div class="hx-z"><span>TAGE</span></div><div class="bw-tage">'+T.map(function(t,i){return '<button type="button" data-tag="'+i+'">'+t+'</button>'}).join('')+'</div>'+
+  '<div class="hx-z"><span>LAUFZEIT JE ZONE</span><span>nacheinander</span></div><div class="bw-liste">';
+ Z.forEach(function(z,i){x+='<div class="bw-zeile"><span>'+z.n+'</span><button type="button" data-lz="'+i+'" data-v="-5">−</button><b data-lzw="'+i+'"></b><button type="button" data-lz="'+i+'" data-v="5">+</button></div>'});
+ return x+'</div><p class="bw-text bw-ende" style="margin-top:.9em"></p>'}
+function einrHtml(){var x='<p class="bw-text">Zonen, Namen und Bilder kommen aus IP-Symcon – hier nur ein Blick darauf.</p><div class="bw-liste">';
+ Z.forEach(function(z,i){x+='<div class="bw-zeile"><span>'+z.n+'<br><small style="font-size:.8em;color:var(--x-matt)">Ventil '+(i+1)+' · Bild „'+z.n+'“</small></span></div>'});
+ return x+'</div><div class="hx-z"><span>REGENSENSOR</span></div><div class="bw-zeile"><span>Bei Regen kein Auto-Start</span><button type="button" class="bw-schalt" aria-label="Regensensor beachten"></button></div>'}
+function bwAlles(){
+ var n=laufen();
+ bwIns.forEach(function(o){var IN=o.IN;
+  q('.bw-reiter button',IN).forEach(function(b){b.classList.toggle('an',b.dataset.r===B.reiter)});
+  var pl=IN.querySelector('.bw-pille');pl.textContent=n?n+' von 4 läuft':'keine läuft';pl.classList.toggle('ruhig',!n);
+  var S=IN.querySelector('.bw-seite');
+  if(o.seite!==B.reiter){o.seite=B.reiter;S.innerHTML=B.reiter==='betrieb'?betriebHtml():B.reiter==='zeit'?zeitHtml():einrHtml();
+   if(B.reiter==='betrieb'){q('.bw-zone',S).forEach(function(z){z.insertBefore(zonenbild(Z[+z.dataset.i]),z.firstChild);z.onclick=function(){zoneSchalten(IN,+z.dataset.i)}});
+    q('[data-m]',S).forEach(function(b){b.onclick=function(){B.modus=b.dataset.m;hinweis(IN,B.modus==='auto'?'Auto: startet nach Zeitmodul um '+hhmm(B.start):'Hand: Zonen selbst starten');bwAlles()}});
+    S.querySelector('.bw-stop').onclick=function(){var w=laufen();Z.forEach(function(z){z.rest=0});hinweis(IN,w?'Wasser Stop – alle Zonen aus':'Wasser Stop – es lief keine Zone');bwAlles()};
+    S.querySelector('.bw-regen').onclick=function(){B.regen=!B.regen;hinweis(IN,B.regen?'Regen gemeldet – Auto startet heute nicht':'Regensensor wieder trocken');bwAlles()};}
+   if(B.reiter==='zeit'){q('[data-zs]',S).forEach(function(b){b.onclick=function(){B.start=(B.start+ +b.dataset.zs+1440)%1440;bwAlles()}});
+    q('[data-tag]',S).forEach(function(b){b.onclick=function(){B.tage[+b.dataset.tag]=B.tage[+b.dataset.tag]?0:1;bwAlles()}});
+    q('[data-lz]',S).forEach(function(b){b.onclick=function(){var z=Z[+b.dataset.lz];z.lauf=Math.max(5,Math.min(60,z.lauf+ +b.dataset.v));bwAlles()}});}
+   if(B.reiter==='einr'){S.querySelector('.bw-schalt').onclick=function(){B.regenAchten=!B.regenAchten;bwAlles()}}}
+  if(B.reiter==='betrieb'){
+   IN.querySelector('.bw-mlabel').textContent=B.modus==='auto'?'Automatik · '+hhmm(B.start):'Handbetrieb';
+   q('[data-m]',S).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===B.modus?'true':'false')});
+   var rg=S.querySelector('.bw-regen');rg.classList.toggle('nass',B.regen);rg.querySelector('.bw-ri').innerHTML=B.regen?IB.regen:IB.sonne;
+   rg.querySelector('.bw-rt').textContent=B.regen?'Regensensor nass':'Regensensor trocken';
+   rg.querySelector('.bw-ru').textContent=B.regen?(B.regenAchten?'Auto pausiert, Hand geht weiter':'Sensor wird nicht beachtet'):'Wetter: heute kein Regen';
+   q('.bw-zone',S).forEach(function(b){var z=Z[+b.dataset.i],an=z.rest>0;b.classList.toggle('laeuft',an);
+    b.setAttribute('aria-label',z.n+': '+(an?'läuft noch '+mmss(z.rest)+' – antippen stoppt':'aus – antippen startet '+z.lauf+' min'));
+    b.querySelector('.bw-zeit').innerHTML=an?'⏱ aus um <b>'+hhmm(z.aus)+'</b>':'⏱ Laufzeit <b>'+z.lauf+' min</b>';
+    b.querySelector('.bw-uhr b').textContent=an?mmss(z.rest):'Start';b.querySelector('.bw-uhr small').textContent=an?'läuft noch':z.lauf+' min';
+    b.querySelector('.bw-ring').setAttribute('stroke-dashoffset',an?(276.5*(1-z.rest/(z.zahl||1))).toFixed(1):'276.5')});}
+  if(B.reiter==='zeit'){S.querySelector('.bw-sz').textContent=hhmm(B.start)+' Uhr';q('[data-tag]',S).forEach(function(b){b.setAttribute('aria-pressed',B.tage[+b.dataset.tag]?'true':'false')});
+   var su=0;Z.forEach(function(z,i){S.querySelector('[data-lzw="'+i+'"]').textContent=z.lauf+' min';su+=z.lauf});
+   S.querySelector('.bw-ende').textContent='Alle Zonen nacheinander: fertig um '+hhmm(B.start+su)+' Uhr ('+su+' min).';}
+  if(B.reiter==='einr')S.querySelector('.bw-schalt').setAttribute('aria-pressed',B.regenAchten?'true':'false');
+  var cap=o.fig.querySelector('figcaption [data-z="bew"]');
+  if(cap&&o.fig===bwIns[0].fig){var l=Z.filter(function(z){return z.rest>0});cap.textContent=l.length?(B.modus==='auto'?'Auto':'Hand')+': '+l.map(function(z){return z.n}).join(', ')+(l.length>1?' laufen':' läuft')+' noch '+Math.ceil(l[0].rest/60)+' min':(B.modus==='auto'?'Auto: Start um '+hhmm(B.start):'Hand: keine Zone läuft');}
+ });
+}
+setInterval(function(){var w=false;Z.forEach(function(z){if(z.rest>0){z.rest--;w=true}});if(w&&!document.hidden)bwAlles()},1000);
+
+var figs=q('.zuhause-fotos figure',demo);
+figs.forEach(function(f){lichtBauen(f);bewBauen(f)});
+lxAbgleich();bwAlles();
+/* Das rechte Handy zeigt den unteren Teil derselben Seite (wie die alten Bilder) */
+function rollen(){var r=figs[1]&&figs[1].querySelector('.hx[data-z="'+demo.dataset.z+'"] .hx-rolle');if(!r||r.dataset.gerollt)return;
+ var ziel=demo.dataset.z==='licht'?r.querySelector('.lx-breit'):r.querySelector('.bw-stop');if(!ziel||!r.clientHeight)return;
+ r.dataset.gerollt='1';r.scrollTop=ziel.getBoundingClientRect().top-r.getBoundingClientRect().top-8}
+rollen();new MutationObserver(function(){requestAnimationFrame(rollen)}).observe(demo,{attributes:true,attributeFilter:['data-z']});
+window.addEventListener('load',rollen);
 })();
 </script>
 <script>
