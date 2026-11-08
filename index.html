@@ -579,6 +579,95 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .z-raster{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .z-raster .z-k{margin:0;min-height:52px}
 .z-hinw{font-size:8.5px;color:var(--lr-matt);text-align:center;margin-top:9px}
+/* Echte Ansichten zum Ausprobieren: Besucher, Parken, WC-Matrix (08.11.2026) */
+.bx{--g:#1A1C1F;--k:#2A2D32;--r:#40444C;--t:#F2F4F6;--l:#BCC3CB;--s:#8B939C;--b:#3B82F6;--o:#E0975C;--gr:#2CC78F;--ge:#E0A030;--ro:#EF5C5C;--z:#33373E;
+ background:var(--g);color:var(--t);font-family:Inter,system-ui,"Segoe UI",sans-serif;font-size:13px;padding:16px;min-height:100%;box-sizing:border-box}
+.bx[data-m="hell"]{--g:#EEF1F4;--k:#FFFFFF;--r:#D2D9E0;--t:#10171F;--l:#4F5B67;--s:#7A8794;--b:#2563EB;--o:#B45309;--gr:#15803D;--ge:#B7791F;--ro:#C62828;--z:#E6EAEF}
+.bx[hidden]{display:none}
+.bx *{box-sizing:border-box}
+.bx button{font:inherit;color:inherit;cursor:pointer}
+.bx-kopf{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:12px}
+.bx-kopf h4{font-size:22px;margin:0 auto 0 0;letter-spacing:-.4px}
+.bx-kopf small{display:block;font-size:12px;color:var(--s);font-weight:400;letter-spacing:0}
+.bx-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bx-chips>span{font-size:12px;color:var(--s);margin:0 2px 0 6px}
+.bx-chip{border:1px solid var(--r);background:var(--k);border-radius:8px;padding:6px 10px;font-size:12.5px}
+.bx-chip.an{background:var(--t);color:var(--g);border-color:var(--t)}
+.bx-chip:hover{border-color:var(--b)}
+.bx-reiter{display:flex;gap:4px;border-bottom:1px solid var(--r);margin-bottom:12px;overflow-x:auto}
+.bx-reiter button{border:0;background:none;padding:8px 12px 9px;color:var(--l);border-bottom:2px solid transparent;white-space:nowrap}
+.bx-reiter button.an{color:var(--b);border-bottom-color:var(--b);font-weight:600}
+.bx-kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.bx-karte{background:var(--k);border:1px solid var(--r);border-radius:12px;padding:12px 14px}
+.bx-kpi .bx-karte small{display:block;color:var(--l);font-size:12px}
+.bx-kpi .bx-karte b{display:block;font-size:24px;letter-spacing:-.5px;margin:2px 0}
+.bx-kpi .bx-karte i{font-style:normal;font-size:11.5px;color:var(--s)}
+.bx-plus{color:var(--gr)}.bx-minus{color:var(--ro)}
+.bx-zwei{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:12px}
+.bx-diag{position:relative}
+.bx-diag svg{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair}
+.bx-tip{position:absolute;pointer-events:none;background:var(--t);color:var(--g);font-size:11.5px;border-radius:7px;padding:5px 8px;white-space:nowrap;transform:translate(-50%,-110%)}
+.bx-tip[hidden]{display:none}
+.bx-leg{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--l);margin-bottom:6px}
+.bx-leg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.bx-zeile{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:9px 0;border-top:1px solid var(--r)}
+.bx-zeile:first-of-type{border-top:0}
+.bx-zeile b{font-size:20px}
+.bx-hinweis{font-size:11.5px;color:var(--s);margin-top:8px}
+.bx-matrix{display:grid;gap:3px;font-size:11px}
+.bx-matrix div{border-radius:4px;padding:6px 0;text-align:center}
+.bx-matrix .k{color:var(--l);text-align:left;padding-left:2px}
+.bx-matrix button{border:0;border-radius:4px;padding:6px 0;font-size:10.5px;color:#10171F}
+/* Parken */
+.bx-park{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;margin-bottom:12px}
+.bx-ring{position:relative;width:150px;height:150px}
+.bx-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.bx-ring div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bx-ring b{font-size:26px}.bx-ring small{font-size:11px;color:var(--l)}
+.bx-gross{font-size:54px;font-weight:700;letter-spacing:-1.5px;line-height:1;color:var(--gr)}
+.bx-warn{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--ge);background:color-mix(in srgb,var(--ge) 12%,transparent);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12.5px}
+.bx-warn i{width:9px;height:9px;border-radius:50%;background:var(--ge);margin-top:4px;flex:0 0 9px}
+.bx-tab{width:100%;border-collapse:collapse;font-size:12.5px}
+.bx-tab th{font-size:10.5px;letter-spacing:.08em;color:var(--s);text-align:left;font-weight:600;padding:8px 6px;border-bottom:1px solid var(--r)}
+.bx-tab td{padding:8px 6px;border-bottom:1px solid var(--r)}
+.bx-tab tr[data-ort]{cursor:pointer}.bx-tab tr[data-ort]:hover td{background:color-mix(in srgb,var(--b) 7%,transparent)}
+.bx-tab .r{text-align:right}
+.bx-bal{height:8px;border-radius:4px;background:var(--z);overflow:hidden;min-width:90px}
+.bx-bal i{display:block;height:100%;border-radius:4px;transition:width .5s}
+.bx-pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:2px 8px}
+.bx-pill.ok{background:color-mix(in srgb,var(--gr) 18%,transparent);color:var(--gr)}
+.bx-pill.ge{background:color-mix(in srgb,var(--ge) 20%,transparent);color:var(--ge)}
+.bx-pill.ro{background:var(--ro);color:#fff}
+.bx-etagen td{background:color-mix(in srgb,var(--b) 5%,transparent)}
+.bx-etagen button{border:1px solid var(--r);background:var(--k);border-radius:7px;padding:3px 8px;font-size:11.5px}
+.bx-etagen button.an{background:var(--b);border-color:var(--b);color:#fff}
+.bx-live{display:inline-flex;align-items:center;gap:6px}
+.bx-live i{width:8px;height:8px;border-radius:50%;background:var(--gr);animation:bxPuls 1.2s ease-in-out infinite}
+.bx-live.aus i{background:var(--s);animation:none}
+@keyframes bxPuls{50%{opacity:.3}}
+/* WC */
+.bx-wcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:12px}
+.bx-wc{border-left:4px solid var(--f)}
+.bx-wc h5{font-size:15px;margin:0;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.bx-wc .u{font-size:11px;color:var(--s);margin:2px 0 6px}
+.bx-wc .n{display:flex;justify-content:space-between;align-items:baseline}
+.bx-wc .n b{font-size:34px;letter-spacing:-1px;color:var(--f);transition:color .3s}
+.bx-wc .n span{font-size:20px;font-weight:700}
+.bx-wc .n small,.bx-wc .s{font-size:11px;color:var(--l)}
+.bx-wc .bx-bal{margin:6px 0}
+.bx-wc .bx-bal i{background:var(--f)}
+.bx-wc .s{display:flex;justify-content:space-between;gap:6px;margin-bottom:8px}
+.bx-wc .dh{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.bx-wc .dh div{border:1px solid var(--r);border-radius:8px;padding:6px 8px;font-size:11px;color:var(--l)}
+.bx-wc .dh b{font-size:15px;color:var(--t);margin-right:4px}
+.bx-putz{width:100%;border:0;border-radius:9px;padding:9px;font-weight:700;background:var(--b);color:#fff!important}
+.bx-putz.frisch{background:var(--gr)}
+.bx-eb{font-size:12px;color:var(--l);margin:10px 0 6px}.bx-eb b{color:var(--t);margin-right:6px}
+.bx-kz{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.bx-kz b{display:block;font-size:20px}.bx-kz small{font-size:11.5px;color:var(--l)}
+.bx-neu{animation:bxNeu .9s ease}
+@keyframes bxNeu{0%{box-shadow:0 0 0 3px var(--gr)}100%{box-shadow:0 0 0 0 transparent}}
+@media(max-width:760px){.bx{padding:12px}.bx-kpi,.bx-kz{grid-template-columns:1fr 1fr}.bx-zwei{grid-template-columns:1fr}.bx-park{grid-template-columns:110px 1fr}.bx-ring{width:110px;height:110px}.bx-gross{font-size:40px}.bx-tab .bx-aus{display:none}}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1199,12 +1288,12 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </ol>
   <div class="bsp-leiste">
     <div class="bsp-leiste-kopf"><h3>Echte Ansichten zum Öffnen</h3><p>So sieht es im BDS aus — mit Beispieldaten, in Hell und Dunkel.</p></div>
-    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Timer, Restzeit, Betriebsstunden</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Tagesverlauf und Vorjahr</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Belegung, freie Plätze, Sensoren</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Besucher seit der Reinigung</small></span><em>Öffnen ›</em></button></div>
+    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Timer, Restzeit, Betriebsstunden</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Selbst ausprobieren: Tage und Verlauf</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Selbst ausprobieren: live und reservieren</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Selbst ausprobieren: Ampel und Reinigung</small></span><em>Ausprobieren ›</em></button></div>
   </div>
   <div class="bsp-fenster" id="bspFenster" hidden>
     <div class="bsp-tafel" role="dialog" aria-modal="true" aria-labelledby="bspTitel">
       <div class="bsp-tafel-kopf"><b id="bspTitel"></b><span class="bsp-umsch"><button type="button" data-m="dunkel">☾ Dunkel</button><button type="button" data-m="hell">☀ Hell</button></span><button type="button" class="bsp-zu" aria-label="Schließen">✕</button></div>
-      <div class="bsp-bild"><img id="bspBild" alt=""></div>
+      <div class="bsp-bild"><img id="bspBild" alt=""><div class="bx" id="bspDemo" hidden></div></div>
       <div class="bsp-quelle" id="bspQuelle"></div>
     </div>
   </div>
@@ -2300,11 +2389,134 @@ window.addEventListener('load',rollen);
 })();
 </script>
 <script>
+/* Echte Ansichten zum Ausprobieren (08.11.2026): Besucherzaehlung, Parken, WC-Reinigungsmatrix.
+   Aufbau wie Pages/Besucher.cshtml, Pages/ParkenUebersicht.cshtml, Pages/MatrixWc.cshtml - mit Beispieldaten, nur im Browser.
+   Wird im Fenster "Echte Ansichten" statt des Bildes gezeigt (window.bspDemos). */
+(function(){
+function fz(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function pz(x){return(x>=0?'+':'−')+Math.abs(x).toFixed(1).replace('.',',')+' %'}
+function zwei(n){return(n<10?'0':'')+n}
+function uhr(m){return zwei(Math.floor(m/60)%24)+':'+zwei(m%60)}
+var D=window.bspDemos={};
+
+/* ---------- Besucherzaehlung ---------- */
+D.bes=function(el){
+ var W=[3,6,8,10,12,13,12,11,10,10,9,7,4,1],H0=8; /* Stunden 8..21 */
+ var TAGE=[['Mo','19.10.2026',12840,12310,12620],['Di','20.10.2026',13210,12880,13050],['Mi','21.10.2026',13950,13300,13610],['Do','22.10.2026',14600,13820,14210],['Fr','23.10.2026',17880,16950,17320],['Sa','24.10.2026',20390,19155,19730]];
+ var LANG={Mo:'Montag',Di:'Dienstag',Mi:'Mittwoch',Do:'Donnerstag',Fr:'Freitag',Sa:'Samstag'};
+ var tag=5,vgl='vj',reiter='ue',hover=-1;
+ function stunden(total,seed){var s=W.reduce(function(a,b){return a+b},0),r=W.map(function(w,i){return total*w/s*(1+Math.sin(i*1.7+seed)*0.06)});var k=total/r.reduce(function(a,b){return a+b},0);var o=r.map(function(x){return Math.round(x*k)});o[5]+=total-o.reduce(function(a,b){return a+b},0);return o}
+ function daten(t){var T=TAGE[t];return{h:stunden(T[2],t),v:stunden(vgl==='vj'?T[3]:T[4],t+3),sum:T[2],ver:vgl==='vj'?T[3]:T[4]}}
+ function kum(a){var s=0;return a.map(function(x){return s+=x})}
+ function diagramm(d){var w=640,h=300,l=44,r=12,o=14,u=60,max=Math.ceil(Math.max(d.sum,d.ver)/5000)*5000,n=d.h.length;
+  function X(i){return l+(w-l-r)*i/n}function Y(v){return o+(h-o-u-30)*(1-v/max)}
+  var kh=kum(d.h),kv=kum(d.v),s='<svg viewBox="0 0 '+w+' '+h+'" data-diag>';
+  for(var g=0;g<=max;g+=5000)s+='<line x1="'+l+'" x2="'+(w-r)+'" y1="'+Y(g)+'" y2="'+Y(g)+'" stroke="var(--r)"/><text x="'+(l-6)+'" y="'+(Y(g)+4)+'" font-size="10" fill="var(--s)" text-anchor="end">'+fz(g)+'</text>';
+  function linie(k,f){var p='M'+X(0)+' '+Y(0);k.forEach(function(v,i){p+=' L'+X(i+1)+' '+Y(v)});return'<path d="'+p+'" fill="none" stroke="'+f+'" stroke-width="2.4"/>'}
+  var fl='M'+X(0)+' '+Y(0);kh.forEach(function(v,i){fl+=' L'+X(i+1)+' '+Y(v)});fl+=' L'+X(n)+' '+Y(0)+'Z';
+  s+='<path d="'+fl+'" fill="var(--b)" opacity=".10"/>'+linie(kv,'var(--o)')+linie(kh,'var(--b)');
+  var mh=Math.max.apply(null,d.h.concat(d.v)),bo=h-30,bh=u-12;
+  d.h.forEach(function(v,i){var bw=(w-l-r)/n,x=X(i)+bw*.2;s+='<rect x="'+(x+bw*.3)+'" y="'+(bo-bh*d.v[i]/mh)+'" width="'+bw*.25+'" height="'+bh*d.v[i]/mh+'" fill="var(--o)" opacity=".45"/><rect x="'+x+'" y="'+(bo-bh*v/mh)+'" width="'+bw*.28+'" height="'+bh*v/mh+'" fill="var(--b)" opacity="'+(i===hover?1:.7)+'"/>'});
+  for(var i=0;i<=n;i+=2)s+='<text x="'+X(i)+'" y="'+(h-12)+'" font-size="10" fill="var(--s)" text-anchor="middle">'+(H0+i)+'</text>';
+  s+='<text x="'+(w-r)+'" y="'+(h-1)+'" font-size="10" fill="var(--s)" text-anchor="end">Uhr</text>';
+  s+='<text x="'+(X(n)-4)+'" y="'+(Y(kh[n-1])-7)+'" font-size="11" font-weight="700" fill="var(--b)" text-anchor="end">'+fz(kh[n-1])+'</text>';
+  if(hover>=0)s+='<line x1="'+X(hover+1)+'" x2="'+X(hover+1)+'" y1="'+o+'" y2="'+bo+'" stroke="var(--t)" stroke-dasharray="3 3" opacity=".5"/><circle cx="'+X(hover+1)+'" cy="'+Y(kh[hover])+'" r="4" fill="var(--b)"/><circle cx="'+X(hover+1)+'" cy="'+Y(kv[hover])+'" r="4" fill="var(--o)"/>';
+  return s+'</svg>'}
+ function bau(){var T=TAGE[tag],d=daten(tag),diff=d.sum-d.ver,sp=d.h.indexOf(Math.max.apply(null,d.h)),vn=vgl==='vj'?'Vorjahr':'4-Wochen-Schnitt',sw=TAGE[tag][4],vj=TAGE[tag][3];
+  var x='<div class="bx-kopf"><h4>Besucher<small>Zähldaten · Beispieldaten · ganze Tage</small></h4><div class="bx-chips"><button class="bx-chip" data-tag="-1" '+(tag?'':'disabled')+'>‹</button><button class="bx-chip an" style="min-width:120px">'+LANG[T[0]]+', '+T[1]+'</button><button class="bx-chip" data-tag="1" '+(tag<5?'':'disabled')+'>›</button></div></div>'+
+  '<div class="bx-reiter"><button data-reiter="ue"'+(reiter==='ue'?' class="an"':'')+'>Übersicht</button><button data-reiter="sm"'+(reiter==='sm'?' class="an"':'')+'>Stundenmatrix</button></div>';
+  if(reiter==='sm'){var mx=Math.max.apply(null,TAGE.map(function(t,i){return Math.max.apply(null,daten(i).h)}));
+   x+='<div class="bx-karte"><div class="bx-matrix" style="grid-template-columns:70px repeat('+W.length+',1fr)"><div></div>'+W.map(function(w,i){return'<div class="k" style="text-align:center">'+(H0+i)+'</div>'}).join('');
+   TAGE.forEach(function(t,ti){x+='<div class="k">'+t[0]+' '+t[1].slice(0,5)+'</div>'+daten(ti).h.map(function(v,hi){var a=v/mx;return'<button data-zelle="'+ti+'" title="'+fz(v)+'" style="background:rgba(59,130,246,'+(0.12+a*0.88).toFixed(2)+');color:'+(a>.55?'#fff':'inherit')+'">'+fz(v)+'</button>'}).join('')});
+   return x+'</div><div class="bx-hinweis">Besucher je Stunde · Zelle antippen öffnet den Tag in der Übersicht</div></div>'}
+  x+='<div class="bx-kpi"><div class="bx-karte"><small>Besucher</small><b>'+fz(d.sum)+'</b><i>'+LANG[T[0]]+', '+T[1]+'</i></div>'+
+   '<div class="bx-karte"><small>gegen 4-Wochen-Schnitt</small><b class="'+(d.sum>=sw?'bx-plus':'bx-minus')+'">'+pz((d.sum/sw-1)*100)+'</b><i>Schnitt · '+fz(sw)+'</i></div>'+
+   '<div class="bx-karte"><small>gegen Vorjahr</small><b class="'+(d.sum>=vj?'bx-plus':'bx-minus')+'">'+pz((d.sum/vj-1)*100)+'</b><i>Vorjahr · '+fz(vj)+'</i></div>'+
+   '<div class="bx-karte"><small>Spitzenstunde</small><b>'+(H0+sp)+'–'+(H0+sp+1)+'</b><i>'+fz(d.h[sp])+' Besucher</i></div></div>'+
+   '<div class="bx-zwei"><div class="bx-karte"><div class="bx-kopf" style="margin-bottom:4px"><b style="margin-right:auto">Tagesverlauf aufsummiert</b><div class="bx-chips"><span>Vergleich</span><button class="bx-chip'+(vgl==='vj'?' an':'')+'" data-vgl="vj">Vorjahr</button><button class="bx-chip'+(vgl==='sw'?' an':'')+'" data-vgl="sw">4-Wochen-Schnitt</button></div></div>'+
+   '<div class="bx-leg"><span><i style="background:var(--b)"></i>heute</span><span><i style="background:var(--o)"></i>'+vn+'</span><span>▮ je Stunde</span></div>'+
+   '<div class="bx-diag">'+diagramm(d)+'<div class="bx-tip" hidden></div></div><div class="bx-hinweis">Mit der Maus über das Diagramm fahren oder antippen: Werte je Stunde.</div></div>'+
+   '<div class="bx-karte"><div class="bx-eb" style="margin-top:0">GANZER TAG</div><div class="bx-zeile"><span>heute</span><b>'+fz(d.sum)+'</b></div><div class="bx-zeile"><span>'+vn+'</span><b style="color:var(--o)">'+fz(d.ver)+'</b></div>'+
+   '<div class="bx-zeile"><span>Unterschied</span><b class="'+(diff>=0?'bx-plus':'bx-minus')+'">'+(diff>=0?'+':'−')+fz(Math.abs(diff))+'</b></div><div class="bx-hinweis">Der Tag ist vollständig – verglichen werden die ganzen Tage.</div></div></div>';
+  return x}
+ function zeichne(){el.innerHTML=bau();var sv=el.querySelector('[data-diag]');if(!sv)return;
+  var tip=el.querySelector('.bx-tip'),d=daten(tag),n=d.h.length;
+  function zeig(e){var r=sv.getBoundingClientRect(),xp=(e.clientX-r.left)/r.width*640,i=Math.floor((xp-44)/((640-56)/n));if(i<0||i>=n){tip.hidden=true;return}
+   if(i!==hover){hover=i;var neu=document.createElement('div');neu.innerHTML=diagramm(d);sv.innerHTML=neu.firstChild.innerHTML}
+   tip.hidden=false;tip.style.left=(e.clientX-r.left)+'px';tip.style.top=(e.clientY-r.top)+'px';
+   tip.textContent=(H0+i)+'–'+(H0+i+1)+' Uhr: '+fz(d.h[i])+' heute · '+fz(d.v[i])+' '+(vgl==='vj'?'Vorjahr':'Schnitt')}
+  sv.addEventListener('pointermove',zeig);sv.addEventListener('pointerdown',zeig);sv.addEventListener('pointerleave',function(){tip.hidden=true;hover=-1})}
+ function klick(e){var b=e.target.closest('button');if(!b||!el.contains(b))return;var d=b.dataset;
+  if(d.tag){tag=Math.max(0,Math.min(5,tag+(+d.tag)))}else if(d.vgl){vgl=d.vgl}else if(d.reiter){reiter=d.reiter}else if(d.zelle){tag=+d.zelle;reiter='ue'}else return;hover=-1;zeichne()}
+ el.addEventListener('click',klick);zeichne();
+ return function(){el.removeEventListener('click',klick)}};
+
+/* ---------- Parken ---------- */
+D.pu=function(el){
+ var O=[{n:'Parkhaus A',art:'h',k:700,b:588,st:3,E:4},{n:'Parkhaus B',art:'h',k:700,b:532,st:0,E:4},{n:'Parkhaus C',art:'h',k:524,b:303,st:6,E:3},{n:'Freifläche Nord',art:'f',k:140,b:66,st:0},{n:'Freifläche Süd',art:'f',k:76,b:24,st:0}];
+ O.forEach(function(o){if(o.E){o.et=[];for(var i=0;i<o.E;i++)o.et.push({res:false,f:0.4+0.2*i})}});
+ var live=true,offen=-1,verl=false,min=11*60+20,timer;
+ function farbe(p){return p>=85?'var(--ro)':p>=70?'var(--o)':'var(--gr)'}
+ function frei(o){var res=o.et?o.et.filter(function(e){return e.res}).length*Math.round(o.k/o.E):0;return Math.max(0,o.k-o.b-res)}
+ function bau(){var k=0,b=0,st=0,f=0;O.forEach(function(o){k+=o.k;f+=frei(o);st+=o.st});b=k-f;var p=Math.round(b/k*100),fz2=verl?f-st:f,U=2*Math.PI*62;
+  var x='<div class="bx-kopf"><h4>Parken<small>Übersicht · Stand '+uhr(min)+' · Beispieldaten</small></h4><div class="bx-chips"><span class="bx-live'+(live?'':' aus')+'"><i></i>'+(live?'live':'angehalten')+'</span><button class="bx-chip" data-live>'+(live?'⏸ Anhalten':'▶ Weiter')+'</button><button class="bx-chip'+(verl?' an':'')+'" data-verl>Gestörte Sensoren als belegt zählen</button></div></div>'+
+  '<div class="bx-karte"><div class="bx-park"><div class="bx-ring"><svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="62" fill="none" stroke="var(--z)" stroke-width="13"/><circle cx="75" cy="75" r="62" fill="none" stroke="'+farbe(p)+'" stroke-width="13" stroke-linecap="round" stroke-dasharray="'+(U*p/100).toFixed(1)+' '+U.toFixed(1)+'" style="transition:stroke-dasharray .5s"/></svg><div><b>'+p+' %</b><small>belegt</small></div></div>'+
+  '<div><div class="bx-gross">'+fz(fz2)+'</div><div>'+(verl?'verlässlich freie Plätze von ':'freie Plätze von ')+fz(k)+'</div><div style="color:var(--l);margin-top:4px">'+fz(b)+' belegt · <b>'+st+'</b> Sensoren gestört</div></div></div>'+
+  (st?'<div class="bx-warn"><i></i><div><b>'+st+' Stellplatzsensoren melden einen ungültigen Zustand</b><br>Diese Plätze zählt das Parkleitsystem als frei. Verlässlich frei sind '+fz(f-st)+'.</div></div>':'')+
+  '<table class="bx-tab"><tr><th>PARKHÄUSER</th><th class="bx-aus"></th><th class="r">BELEGT</th><th class="r">FREI</th><th class="r">SENSOREN</th></tr>';
+  O.forEach(function(o,i){if(i===3)x+='<tr><th>FREIFLÄCHEN</th><th class="bx-aus"></th><th class="r">BELEGT</th><th class="r">FREI</th><th class="r">SENSOREN</th></tr>';
+   var q=Math.round((o.k-frei(o))/o.k*100);
+   x+='<tr'+(o.et?' data-ort="'+i+'"':'')+'><td>'+(o.et?(offen===i?'▾ ':'▸ '):'')+o.n+'</td><td class="bx-aus"><div class="bx-bal"><i style="width:'+q+'%;background:'+farbe(q)+'"></i></div></td><td class="r">'+q+' %</td><td class="r" style="color:var(--gr)">'+fz(frei(o))+' frei</td><td class="r"><span class="bx-pill '+(o.st?'ge':'ok')+'">'+o.st+' gestört</span></td></tr>';
+   if(offen===i&&o.et){var je=Math.round(o.k/o.E);o.et.forEach(function(e,j){var q2=e.res?100:Math.round(Math.min(1,(o.b/o.k)*(0.7+e.f*0.6))*100);
+    x+='<tr class="bx-etagen"><td style="padding-left:22px">Ebene '+j+(e.res?' · 🔒 reserviert bis 18:00':'')+'</td><td class="bx-aus"><div class="bx-bal"><i style="width:'+q2+'%;background:'+(e.res?'var(--b)':farbe(q2))+'"></i></div></td><td class="r">'+q2+' %</td><td class="r">'+je+' Plätze</td><td class="r"><button data-res="'+i+'-'+j+'"'+(e.res?' class="an"':'')+'>'+(e.res?'Freigeben':'Reservieren')+'</button></td></tr>'})}});
+  return x+'</table><div class="bx-hinweis">Parkhaus antippen: Ebenen ansehen und reservieren (z. B. für eine Veranstaltung) – reservierte Ebenen zählen nicht mehr als frei.</div></div>'}
+ function zeichne(){el.innerHTML=bau()}
+ function tick(){if(!live)return;min++;O.forEach(function(o){var d=Math.round((Math.random()-.45)*o.k*0.012);o.b=Math.max(Math.round(o.k*.15),Math.min(o.k-2,o.b+d))});if(Math.random()<.08){var o=O[Math.floor(Math.random()*3)];o.st=Math.max(0,o.st+(Math.random()<.5?-1:1))}zeichne()}
+ function klick(e){var t=e.target.closest('button,tr[data-ort]');if(!t||!el.contains(t))return;var d=t.dataset;
+  if('live' in d)live=!live;else if('verl' in d)verl=!verl;else if(d.res){var a=d.res.split('-');var et=O[+a[0]].et[+a[1]];et.res=!et.res}else if(d.ort!=null){offen=offen===+d.ort?-1:+d.ort}else return;zeichne()}
+ el.addEventListener('click',klick);zeichne();timer=setInterval(tick,1500);
+ return function(){clearInterval(timer);el.removeEventListener('click',klick)}};
+
+/* ---------- WC-Reinigungsmatrix ---------- */
+D.mw=function(el){
+ var G=[{n:'WC Eingang Nord',e:'EG',d:'#101',h:'#102',s:[274,237],t:[119,104],r:'10:25',w:1.3},{n:'WC Halle',e:'EG',d:'#103',h:'#104',s:[258,214],t:[102,82],r:'10:45',w:1.1},
+  {n:'WC Gastronomie',e:'1. OG',d:'#105',h:'#106',s:[370,302],t:[172,140],r:'10:25',w:1.5},{n:'WC Büro',e:'1. OG',d:'#107',h:'#108',s:[90,52],t:[44,35],r:'10:05',w:.4},{n:'WC Parkdeck',e:'UG',d:'#109',h:'#110',s:[114,45],t:[74,61],r:'10:25',w:.6}];
+ var filt='alle',ord='ebene',tempo=1,min=11*60+20,putz=20,timer,frisch=-1;
+ function sum(a){return a[0]+a[1]}
+ function stufe(g){var n=sum(g.s);return n>300?'ro':n>=150?'ge':'ok'}
+ function F(st){return st==='ro'?'var(--ro)':st==='ge'?'var(--ge)':'var(--gr)'}
+ function bau(){var z={ro:0,ge:0,ok:0};G.forEach(function(g){z[stufe(g)]++});
+  var L=G.map(function(g,i){return i}).filter(function(i){return filt==='alle'||stufe(G[i])===filt});
+  if(ord==='dring')L.sort(function(a,b){return sum(G[b].s)-sum(G[a].s)});
+  var x='<div class="bx-kopf"><h4>WC-Gruppen<small>jetzt '+uhr(min)+' · Ampel: gelb ab 150 · rot über 300 Besucher seit der letzten Reinigung</small></h4><div class="bx-chips"><span>Tempo</span><button class="bx-chip'+(tempo===1?' an':'')+'" data-tempo="1">×1</button><button class="bx-chip'+(tempo===10?' an':'')+'" data-tempo="10">×10</button></div></div>'+
+  '<div class="bx-chips" style="margin-bottom:10px"><button class="bx-chip'+(filt==='alle'?' an':'')+'" data-filt="alle">Alle '+G.length+'</button><button class="bx-chip'+(filt==='ro'?' an':'')+'" data-filt="ro">Rot '+z.ro+'</button><button class="bx-chip'+(filt==='ge'?' an':'')+'" data-filt="ge">Gelb '+z.ge+'</button><button class="bx-chip'+(filt==='ok'?' an':'')+'" data-filt="ok">Grün '+z.ok+'</button>'+
+  '<span>Reihenfolge</span><button class="bx-chip'+(ord==='ebene'?' an':'')+'" data-ord="ebene">nach Ebene</button><button class="bx-chip'+(ord==='dring'?' an':'')+'" data-ord="dring">dringendste zuerst</button></div><div class="bx-wcs">';
+  var eb='';
+  L.forEach(function(i){var g=G[i],st=stufe(g),n=sum(g.s),t=sum(g.t);
+   if(ord==='ebene'&&g.e!==eb){eb=g.e;x+='</div><div class="bx-eb"><b>'+g.e+'</b>'+(function(c){return c===1?'1 Gruppe':c+' Gruppen'})(G.filter(function(h){return h.e===eb}).length)+'</div><div class="bx-wcs">'}
+   x+='<div class="bx-karte bx-wc'+(frisch===i?' bx-neu':'')+'" style="--f:'+F(st)+'"><h5>'+g.n+'<span class="bx-pill '+st+'">'+(st==='ro'?'Reinigung fällig':st==='ge'?'bald fällig':'OK')+'</span></h5><div class="u">'+g.e+' · 2 WC · Damen '+g.d+' · Herren '+g.h+'</div>'+
+   '<div class="n"><b>'+fz(n)+'</b><span>'+fz(t)+'</span></div><div class="s"><small>Besucher seit der letzten Reinigung ('+g.r+')</small><small>heute bis '+uhr(min)+'</small></div>'+
+   '<div class="bx-bal"><i style="width:'+Math.min(100,n/3)+'%"></i></div>'+
+   '<div class="dh"><div><b>'+g.s[0]+'</b>Damen</div><div><b>'+g.s[1]+'</b>Herren</div></div>'+
+   '<button class="bx-putz'+(frisch===i?' frisch':'')+'" data-putz="'+i+'">'+(frisch===i?'✓ Gereinigt um '+g.r:'✓ Gereinigt (QR-Scan)')+'</button></div>'});
+  x+='</div>';
+  var hb=G.reduce(function(a,g){return a+sum(g.t)},0),mx=G.slice().sort(function(a,b){return sum(b.t)-sum(a.t)})[0],al=G.slice().sort(function(a,b){return sum(b.s)-sum(a.s)})[0];
+  x+='<div class="bx-karte"><div class="bx-eb" style="margin-top:0"><b>Kennzahlen</b></div><div class="bx-kz"><div><b>'+fz(hb)+'</b><small>Besucher heute bis '+uhr(min)+'</small></div><div><b>'+putz+'</b><small>Reinigungen heute (QR)</small></div><div><b>'+mx.n+'</b><small>meiste Besucher heute</small></div><div><b>'+al.n+'</b><small>am längsten nicht gereinigt</small></div></div>'+
+   '<div class="bx-hinweis">„Gereinigt (QR-Scan)“ antippen = so, als hätte die Reinigung den QR-Code am WC gescannt: die Zahl fängt wieder bei 0 an.</div></div>';
+  return x}
+ function zeichne(){el.innerHTML=bau()}
+ function tick(){for(var k=0;k<tempo;k++){min++;G.forEach(function(g){for(var j=0;j<2;j++){var n=Math.random()<g.w*0.55?Math.ceil(Math.random()*2*g.w):0;g.s[j]+=n;g.t[j]+=n}})}zeichne()}
+ function klick(e){var b=e.target.closest('button');if(!b||!el.contains(b))return;var d=b.dataset;
+  if(d.filt)filt=d.filt;else if(d.ord)ord=d.ord;else if(d.tempo)tempo=+d.tempo;else if(d.putz){var g=G[+d.putz];g.s=[0,0];g.r=uhr(min);putz++;frisch=+d.putz;setTimeout(function(){frisch=-1},2500)}else return;zeichne()}
+ el.addEventListener('click',klick);zeichne();timer=setInterval(tick,1000);
+ return function(){clearInterval(timer);el.removeEventListener('click',klick)}};
+})();
 /* Anmerkung 11: Ansichten oeffnen */
 (function(){var f=document.getElementById('bspFenster');if(!f)return;var bild=document.getElementById('bspBild'),ti=document.getElementById('bspTitel'),qu=document.getElementById('bspQuelle'),akt=null,mo='dunkel';
-function zeig(){bild.src='bilder/bsp-'+akt+'-'+mo+'.webp';bild.parentNode.style.background=mo==='hell'?'#EEF1F4':'#1A1C1F';f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.classList.toggle('an',b.dataset.m===mo)})}
+var demo=document.getElementById('bspDemo'),laeuft=null,halt=null;
+function zeig(){var B=window.bspDemos&&window.bspDemos[akt];bild.hidden=!!B;demo.hidden=!B;if(B){demo.dataset.m=mo;if(laeuft!==akt){if(halt)halt();laeuft=akt;demo.scrollTop=0;halt=B(demo)}}else{if(halt)halt();halt=null;laeuft=null;bild.src='bilder/bsp-'+akt+'-'+mo+'.webp'}bild.parentNode.style.background=mo==='hell'?'#EEF1F4':'#1A1C1F';f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.classList.toggle('an',b.dataset.m===mo)})}
 document.querySelectorAll('.bsp-karte').forEach(function(k){k.addEventListener('click',function(){var ziel={tk:'planDemo',kam:'kamDemo'}[k.dataset.bsp];if(ziel){var pd=document.getElementById(ziel);pd.scrollIntoView({behavior:'smooth',block:'center'});pd.classList.add('pd-blitz');setTimeout(function(){pd.classList.remove('pd-blitz')},1600);return}akt=k.dataset.bsp;mo=document.documentElement.getAttribute('data-modus')==='dunkel'?'dunkel':'hell';ti.textContent=k.dataset.titel;qu.textContent='Aus dem echten BDS-Code: '+k.dataset.quelle+' · mit Beispieldaten';zeig();f.hidden=false;document.body.style.overflow='hidden';f.querySelector('.bsp-zu').focus()})});
-function zu(){f.hidden=true;document.body.style.overflow=''}
+function zu(){f.hidden=true;document.body.style.overflow='';if(halt)halt();halt=null;laeuft=null}
 f.querySelector('.bsp-zu').addEventListener('click',zu);f.addEventListener('click',function(e){if(e.target===f)zu()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!f.hidden)zu()});
 f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.addEventListener('click',function(){mo=b.dataset.m;zeig()})});})();
 </script>
