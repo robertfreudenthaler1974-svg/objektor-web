@@ -668,6 +668,38 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .bx-neu{animation:bxNeu .9s ease}
 @keyframes bxNeu{0%{box-shadow:0 0 0 3px var(--gr)}100%{box-shadow:0 0 0 0 transparent}}
 @media(max-width:760px){.bx{padding:12px}.bx-kpi,.bx-kz{grid-template-columns:1fr 1fr}.bx-zwei{grid-template-columns:1fr}.bx-park{grid-template-columns:110px 1fr}.bx-ring{width:110px;height:110px}.bx-gross{font-size:40px}.bx-tab .bx-aus{display:none}}
+/* Flaechenheizung zum Ausprobieren (08.11.2026) */
+.fh-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.fh-h{border:2px solid var(--gr);border-radius:12px;padding:12px;background:var(--k)}
+.fh-h.ein{border-color:var(--ro)}
+.fh-k{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.fh-k i{font-style:normal;font-size:30px;font-weight:300;line-height:1;color:var(--l)}
+.fh-k b{font-size:15px;display:block}.fh-k small{font-size:11px;color:var(--s)}
+.fh-k .bx-pill{margin-left:auto}
+.fh-z{display:flex;justify-content:space-between;border:1px solid var(--r);border-radius:10px;padding:9px 11px;margin-bottom:8px;background:var(--g)}
+.fh-z small{display:block;font-size:11.5px;color:var(--l)}
+.fh-z b{font-size:30px;font-weight:400;letter-spacing:.5px;color:var(--gr)}
+.fh-h.ein .fh-z b{color:var(--ro)}
+.fh-z .r{text-align:right}.fh-z .r b{font-size:19px;color:var(--t)!important}
+.fh-t{font-size:11.5px;color:var(--l);margin:4px 0 5px}
+.fh-tk{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:8px}
+.fh-tk button{border:1px solid var(--r);background:var(--g);border-radius:8px;padding:8px 2px;font-weight:700;font-size:12.5px}
+.fh-tk button.an{background:var(--ro);border-color:var(--ro);color:#fff}
+.fh-tk button.an.aus{background:var(--gr);border-color:var(--gr)}
+.fh-lauf{border:1px solid var(--ro);border-radius:10px;padding:8px 11px;margin-bottom:8px;background:color-mix(in srgb,var(--ro) 8%,transparent)}
+.fh-lauf .o{display:flex;justify-content:space-between;align-items:baseline}
+.fh-lauf .o b{font-size:28px;font-weight:400;font-variant-numeric:tabular-nums}
+.fh-lauf .bx-bal i{background:var(--ro)}
+.fh-lauf .u{display:flex;justify-content:space-between;font-size:11px;color:var(--l);margin-top:4px}
+.fh-err{font-size:12px;margin-bottom:8px}.fh-err i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gr);margin-right:6px}
+.fh-st{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.fh-st div{border:1px solid var(--r);border-radius:8px;padding:5px 7px;font-size:10.5px;color:var(--l)}
+.fh-st b{display:block;font-size:16px;font-weight:500;color:var(--t)}
+.fh-ges{font-size:11px;color:var(--s);margin-top:6px}
+.fh-unten{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px}
+.fh-rang div{display:grid;grid-template-columns:90px 1fr 50px;gap:8px;align-items:center;font-size:12px;margin-bottom:6px}
+.fh-rang .bx-bal i{background:var(--ro)}
+@media(max-width:860px){.fh-drei,.fh-unten{grid-template-columns:1fr}}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1288,7 +1320,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </ol>
   <div class="bsp-leiste">
     <div class="bsp-leiste-kopf"><h3>Echte Ansichten zum Öffnen</h3><p>So sieht es im BDS aus — mit Beispieldaten, in Hell und Dunkel.</p></div>
-    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Timer, Restzeit, Betriebsstunden</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Selbst ausprobieren: Tage und Verlauf</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Selbst ausprobieren: live und reservieren</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Selbst ausprobieren: Ampel und Reinigung</small></span><em>Ausprobieren ›</em></button></div>
+    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Selbst ausprobieren: Timer und Stunden</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Selbst ausprobieren: Tage und Verlauf</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Selbst ausprobieren: live und reservieren</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Selbst ausprobieren: Ampel und Reinigung</small></span><em>Ausprobieren ›</em></button></div>
   </div>
   <div class="bsp-fenster" id="bspFenster" hidden>
     <div class="bsp-tafel" role="dialog" aria-modal="true" aria-labelledby="bspTitel">
@@ -2508,6 +2540,47 @@ D.mw=function(el){
  function tick(){for(var k=0;k<tempo;k++){min++;G.forEach(function(g){for(var j=0;j<2;j++){var n=Math.random()<g.w*0.55?Math.ceil(Math.random()*2*g.w):0;g.s[j]+=n;g.t[j]+=n}})}zeichne()}
  function klick(e){var b=e.target.closest('button');if(!b||!el.contains(b))return;var d=b.dataset;
   if(d.filt)filt=d.filt;else if(d.ord)ord=d.ord;else if(d.tempo)tempo=+d.tempo;else if(d.putz){var g=G[+d.putz];g.s=[0,0];g.r=uhr(min);putz++;frisch=+d.putz;setTimeout(function(){frisch=-1},2500)}else return;zeichne()}
+ el.addEventListener('click',klick);zeichne();timer=setInterval(tick,1000);
+ return function(){clearInterval(timer);el.removeEventListener('click',klick)}};
+})();
+/* Flaechenheizung zum Ausprobieren (08.11.2026) - wie wwwroot/visu-freiheizung.js: Timer Aus/3/6/12 Std, Restzeit, Betriebsstunden. Beispieldaten. */
+(function(){if(!window.bspDemos)return;
+function zwei(n){return(n<10?'0':'')+n}
+function hms(s){s=Math.max(0,Math.round(s));return zwei(Math.floor(s/3600))+':'+zwei(Math.floor(s/60)%60)+':'+zwei(s%60)}
+function hz(x){return x.toFixed(1).replace('.',',')+' h'}
+window.bspDemos.fh=function(el){
+ var H=[{n:'Rampe Nord',st:6,rest:4*3600+1798,heute:5.5,seit:90,t7:31,t30:118,sa:126,ges:912},{n:'Zufahrt',st:0,rest:0,heute:3.9,seit:0,t7:22,t30:83,sa:88,ges:638},{n:'Gehweg Ost',st:3,rest:3600+1798,heute:4.7,seit:90,t7:26,t30:100,sa:107,ges:775}];
+ var TAGE=['20.10.','21.10.','22.10.','23.10.','24.10.','25.10.','26.10.'],PRO=[[8,3,7,6,5,8,2],[6,2,5,4,4,6,1],[6.5,3.3,6.6,5.5,4,6,2]];
+ var bereich='7',wahl='alle',tempo=1,timer;
+ function auswert(){var tage=bereich==='heute'?['heute']:bereich==='7'?TAGE:null;
+  var je=H.map(function(h,i){return bereich==='heute'?h.heute:bereich==='7'?PRO[i].reduce(function(a,b){return a+b},0)+h.heute-PRO[i][6]:bereich==='30'?h.t30:h.sa});
+  return{tage:tage,je:je}}
+ function diag(){var w=600,hh=230,l=34,o=10,u=26,A=auswert(),daten;
+  if(bereich==='7'){daten=TAGE.map(function(t,d){return H.reduce(function(s,h,i){return s+((wahl==='alle'||+wahl===i+1)?(d===6?H[i].heute:PRO[i][d]):0)},0)})}
+  else{daten=H.map(function(h,i){return(wahl==='alle'||+wahl===i+1)?A.je[i]:0})}
+  var lab=bereich==='7'?TAGE:H.map(function(h){return h.n}),roh=Math.max(1,Math.max.apply(null,daten)/5),schritt=[1,2,5,10,20,25,50,100,200].filter(function(x){return x>=roh})[0]||200,max=Math.ceil(Math.max.apply(null,daten)/schritt)*schritt||5,n=daten.length,s='<svg viewBox="0 0 '+w+' '+hh+'" style="width:100%;height:auto;display:block">';
+  for(var g=0;g<=max;g+=schritt)s+='<line x1="'+l+'" x2="'+w+'" y1="'+(o+(hh-o-u)*(1-g/max))+'" y2="'+(o+(hh-o-u)*(1-g/max))+'" stroke="var(--r)"/><text x="'+(l-5)+'" y="'+(o+(hh-o-u)*(1-g/max)+4)+'" font-size="10" fill="var(--s)" text-anchor="end">'+Math.round(g)+' h</text>';
+  daten.forEach(function(v,i){var bw=(w-l)/n,x=l+bw*i+bw*.15,y=o+(hh-o-u)*(1-v/max);s+='<rect x="'+x+'" y="'+y+'" width="'+bw*.7+'" height="'+(hh-u-y)+'" rx="3" fill="var(--ro)" opacity=".85"><title>'+hz(v)+'</title></rect><text x="'+(x+bw*.35)+'" y="'+(hh-9)+'" font-size="10.5" fill="var(--l)" text-anchor="middle">'+lab[i]+'</text>'});
+  return s+'</svg>'}
+ function bau(){var ein=H.filter(function(h){return h.st}).length,heute=H.reduce(function(a,h){return a+h.heute},0),sa=H.reduce(function(a,h){return a+h.sa},0),ges=H.reduce(function(a,h){return a+h.ges},0),jetzt=new Date();
+  var x='<div class="bx-kopf"><h4>Heizung Freiflächen<small>mit Timer · Beispieldaten</small></h4><div class="bx-chips"><span class="bx-pill '+(ein?'ro':'ok')+'" style="font-size:12px;padding:5px 10px">'+ein+' von 3 ein</span><span class="bx-chip">heute '+hz(heute)+'</span><span class="bx-chip">Saison 2026/27 '+Math.round(sa)+' h</span><span class="bx-chip">Gesamt '+Math.round(ges)+' h</span><span>Tempo</span><button class="bx-chip'+(tempo===1?' an':'')+'" data-tempo="1">×1</button><button class="bx-chip'+(tempo===60?' an':'')+'" data-tempo="60">×60</button></div></div><div class="fh-drei">';
+  H.forEach(function(h,i){var aus=new Date(jetzt.getTime()+h.rest*1000/1);
+   x+='<div class="fh-h'+(h.st?' ein':'')+'"><div class="fh-k"><i>'+(i+1)+'</i><div><b>'+h.n+'</b><small>mit Timer</small></div><span class="bx-pill ok">OK</span></div>'+
+   '<div class="fh-z"><div><small>Heizung</small><b>'+(h.st?'EIN':'AUS')+'</b></div><div class="r"><small>heute</small><b>'+hz(h.heute)+'</b>'+(h.st?'<small>ein seit '+Math.floor(h.seit/60)+' h '+Math.floor(h.seit%60)+' min</small>':'')+'</div></div>'+
+   '<div class="fh-t">Timer – schaltet nach der Zeit selbst aus</div><div class="fh-tk">'+[0,3,6,12].map(function(t){return'<button data-h="'+i+'" data-t="'+t+'" class="'+(h.st===t?'an'+(t?'':' aus'):'')+'">'+(t?t+' Std':'Aus')+'</button>'}).join('')+'</div>'+
+   (h.st?'<div class="fh-lauf"><div class="o"><small>läuft noch</small><b>'+hms(h.rest)+'</b></div><div class="bx-bal"><i style="width:'+(h.rest/(h.st*3600)*100).toFixed(1)+'%"></i></div><div class="u"><span>von '+h.st+' Std</span><span>aus um '+zwei(aus.getHours())+':'+zwei(aus.getMinutes())+' Uhr</span></div></div>':'')+
+   '<div class="fh-err"><i></i>erreichbar</div><div class="fh-st"><div>7 Tage<b>'+Math.round(h.t7)+' h</b></div><div>30 Tage<b>'+Math.round(h.t30)+' h</b></div><div>Saison 2026/27<b>'+Math.round(h.sa)+' h</b></div></div><div class="fh-ges">Gesamt seit 01.10.2025: '+Math.round(h.ges)+' h</div></div>'});
+  var A=auswert(),rang=H.map(function(h,i){return[h.n,A.je[i]]}).sort(function(a,b){return b[1]-a[1]}),mx=rang[0][1]||1,summe=A.je.reduce(function(a,b){return a+b},0);
+  x+='</div><div class="bx-karte"><div class="bx-kopf" style="margin-bottom:6px"><b style="margin-right:auto;font-size:15px">Betriebsstunden · alle Heizungen</b><div class="bx-chips">'+[['heute','Heute'],['7','7 Tage'],['30','30 Tage'],['saison','Saison 2026/27']].map(function(b){return'<button class="bx-chip'+(bereich===b[0]?' an':'')+'" data-bereich="'+b[0]+'">'+b[1]+'</button>'}).join('')+'</div></div>'+
+   '<div class="bx-chips" style="margin-bottom:8px">'+['alle','1','2','3'].map(function(w){return'<button class="bx-chip'+(wahl===w?' an':'')+'" data-wahl="'+w+'">'+(w==='alle'?'Alle':w)+'</button>'}).join('')+'</div>'+
+   '<div class="fh-unten"><div><div class="bx-hinweis" style="margin:0 0 4px">'+(bereich==='7'?'Stunden je Tag':'Stunden je Heizung')+'</div>'+diag()+'</div><div><div class="bx-hinweis" style="margin:0 0 8px">Je Heizung im Zeitraum – wer läuft am meisten</div><div class="fh-rang">'+
+   rang.map(function(r){return'<div><span>'+r[0]+'</span><div class="bx-bal"><i style="width:'+(r[1]/mx*100).toFixed(0)+'%"></i></div><b style="text-align:right">'+hz(r[1])+'</b></div>'}).join('')+'</div><div class="bx-hinweis">Summe aller Heizungen im Zeitraum: '+hz(summe)+'</div></div></div>'+
+   '<div class="bx-hinweis">Timer antippen schaltet die Heizung ein – nach der Zeit geht sie von selbst aus. Gezählt wird jede Minute, solange die Rückmeldung EIN ist.</div></div>';
+  return x}
+ function zeichne(){el.innerHTML=bau()}
+ function tick(){var dt=tempo;H.forEach(function(h){if(!h.st)return;var lauf=Math.min(dt,h.rest);h.rest-=lauf;var std=lauf/3600;h.heute+=std;h.t7+=std;h.t30+=std;h.sa+=std;h.ges+=std;h.seit+=lauf/60;if(h.rest<=0){h.st=0;h.rest=0;h.seit=0}});zeichne()}
+ function klick(e){var b=e.target.closest('button');if(!b||!el.contains(b))return;var d=b.dataset;
+  if(d.h!=null){var h=H[+d.h],t=+d.t;if(t&&!h.st)h.seit=0;h.st=t;h.rest=t*3600}else if(d.bereich)bereich=d.bereich;else if(d.wahl)wahl=d.wahl;else if(d.tempo)tempo=+d.tempo;else return;zeichne()}
  el.addEventListener('click',klick);zeichne();timer=setInterval(tick,1000);
  return function(){clearInterval(timer);el.removeEventListener('click',klick)}};
 })();
