@@ -700,6 +700,71 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .fh-rang div{display:grid;grid-template-columns:90px 1fr 50px;gap:8px;align-items:center;font-size:12px;margin-bottom:6px}
 .fh-rang .bx-bal i{background:var(--ro)}
 @media(max-width:860px){.fh-drei,.fh-unten{grid-template-columns:1fr}}
+/* Symcon-Visu zum Antippen (08.11.2026) */
+#vsDemo .vk2{cursor:pointer;transition:transform .12s,box-shadow .12s}
+#vsDemo .vk2:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+#vsDemo .vs-reiter2 span{cursor:pointer}
+#vsDemo .schalt2{cursor:pointer;border:0;font-family:inherit}
+#vsDemo .schalt2.rot{background:#b23a3a}
+#vsDemo .vk2.stoerk.ok{background:linear-gradient(160deg,#eaf8ef 0%,var(--bf-panel) 62%);border-color:#a9d9b8;color:#1d6b3a}
+#vsDemo .vk2.stoerk.ok .sk-marke,#vsDemo .vk2.stoerk.ok .sk-zahl{color:#1d8a4a}
+html[data-modus="dunkel"] #vsDemo .vk2.stoerk.ok{background:linear-gradient(160deg,#13241a 0%,var(--bf-panel) 62%);border-color:#2a5d3c;color:#bff0cf}
+html[data-modus="dunkel"] #vsDemo .vk2.stoerk.ok .sk-marke,html[data-modus="dunkel"] #vsDemo .vk2.stoerk.ok .sk-zahl{color:#6fe08c}
+.vs-liste{display:flex;flex-direction:column;gap:6px;height:430px;overflow-y:auto;padding-right:2px}
+.vs-z{display:flex;align-items:center;gap:10px;background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:10px;padding:9px 12px;font-size:13px}
+.vs-z>i{width:9px;height:9px;border-radius:50%;flex:0 0 9px;background:#1D9E75}
+.vs-z>i.r{background:#d74350}.vs-z>i.o{background:#E0A030}.vs-z>i.a{background:#8B939C}
+.vs-z b{font-weight:600}.vs-z small{display:block;font-size:11.5px;color:var(--bf-leise)}
+.vs-z .t{flex:1;min-width:0}
+.vs-z button,.vs-zurueck{font:600 12px/1 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-bg);border:1px solid var(--bf-rand);border-radius:8px;padding:7px 10px;cursor:pointer;white-space:nowrap}
+.vs-z button:hover,.vs-zurueck:hover{border-color:#2f6fef}
+.vs-z button.an{background:#1D9E75;border-color:#1D9E75;color:#fff}
+.vs-z button.rot{background:#d74350;border-color:#d74350;color:#fff}
+.vs-dkopf{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.vs-dkopf b{font-size:15px}
+.vs-leer{text-align:center;padding:40px 10px;color:var(--bf-leise)}
+.vs-leer b{display:block;font-size:20px;color:#1D9E75;margin-bottom:4px}
+.vs-toast{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#1D9E75;color:#fff;font-weight:700;font-size:12.5px;border-radius:10px;padding:9px 14px;box-shadow:0 8px 20px rgba(0,0,0,.3);z-index:5;animation:aToast 2.6s ease forwards;white-space:nowrap}
+.vs-tipp{font-size:11.5px;color:var(--bf-leise);margin-top:8px;text-align:center}
+@media(max-width:620px){.vs-z{flex-wrap:wrap}.vs-z .t{flex-basis:70%}}
+/* Zuhause-Vorfuehrung: Leiste unten zum Antippen (08.11.2026) */
+#hausDemo .hx-leiste span,#hausDemo .al-leiste span{cursor:pointer}
+#hausDemo .hx-leiste span:hover,#hausDemo .al-leiste span:hover{filter:brightness(1.25)}
+#hausDemo .al-leiste{z-index:4}
+.hz-ov{position:absolute;left:0;right:0;top:3.4em;bottom:0;z-index:3;background:var(--x-grund,var(--al-grund));color:var(--x-text,var(--al-text));overflow-y:auto;scrollbar-width:none;padding:1em 1.6em 10em;font-family:Inter,system-ui,sans-serif}
+.hz-ov::-webkit-scrollbar{display:none}
+.hz-ov h6{font-size:2em;margin:.3em 0 .1em;font-weight:700;letter-spacing:-.02em}
+.hz-ov>small{display:block;font-size:1.15em;color:var(--x-matt,var(--al-matt));margin-bottom:1em}
+.hz-k{background:var(--x-karte,var(--al-karte));border:1px solid var(--x-rand,var(--al-rand));border-radius:1.4em;padding:1.1em 1.3em;margin-bottom:.8em;cursor:pointer;display:block}
+.hz-k:hover{border-color:#E0975C}
+.hz-k b{display:block;font-size:1.45em}.hz-k small{display:block;font-size:1.15em;color:var(--x-matt,var(--al-matt));margin-top:.2em}
+.hz-k .p{display:inline-block;width:.9em;height:.9em;border-radius:50%;margin-right:.5em}
+.hz-k .r{float:right;font-size:1.5em;color:var(--x-matt,var(--al-matt))}
+.hz-kam{position:relative;display:block;border-radius:1.2em;overflow:hidden;aspect-ratio:16/9;background:#5C6168;margin-bottom:.8em;cursor:pointer}
+.hz-kam.gross{aspect-ratio:3/4}
+.hz-kam svg{position:absolute;inset:0;width:100%;height:100%}
+.hz-kam .kd-live{left:.8em;top:.8em;font-size:1em;padding:.35em .6em .35em 1.5em}.hz-kam .kd-live:before{left:.6em;width:.5em;height:.5em;margin-top:-.25em}
+.hz-kam .kd-zeit{font-size:1em;right:.8em;top:.8em}.hz-kam .kd-name{font-size:1.2em;left:.9em;bottom:.6em}
+.hz-zahl{display:grid;grid-template-columns:1fr 1fr;gap:.8em;margin-bottom:.8em}
+.hz-zahl .hz-k{margin:0;cursor:default}.hz-zahl .hz-k b{font-size:2em}
+.hz-bal{height:.7em;border-radius:.35em;background:var(--x-rand,var(--al-rand));overflow:hidden;margin-top:.6em}.hz-bal i{display:block;height:100%;background:#2CC78F}
+.hz-tipp{font-size:1.1em;color:var(--x-matt,var(--al-matt));text-align:center;margin-top:.6em}
+/* Push-Sperrbildschirm zum Antippen (08.11.2026) */
+#push .sperr-in{position:relative;overflow:hidden}
+#push .mit{cursor:pointer}
+#push .mit-knoepfe span{cursor:pointer}
+#push .mit-knoepfe span:hover{filter:brightness(1.2)}
+#push .mit.ok{background:rgba(24,60,40,.9);border:1.5px solid #2CC78F}
+#push .mit.ok .mit-kopf{color:#9fdcbc}
+#push .mit.weg{opacity:0!important;transform:translateX(60px)!important;transition:opacity .35s,transform .35s;transition-delay:0s!important}
+.sperr.klingelt{animation:aRuettel .5s linear 4}
+.pu-ton{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:rgba(0,0,0,.55);border-radius:999px;padding:4px 10px;font-size:10.5px;white-space:nowrap;z-index:2;animation:aToast 2.6s ease forwards}
+.pu-steuer{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px;max-width:320px}
+.pu-steuer button{font:600 12.5px/1 inherit;font-family:inherit;border:1px solid var(--rand2,#C3CCC9);background:var(--karte);color:var(--text);border-radius:9px;padding:8px 11px;cursor:pointer}
+.pu-steuer button.an{background:#C0392B;border-color:#C0392B;color:#fff}
+.pu-steuer button:hover{border-color:#EF5C5C}
+.pu-tipp{font-size:12px;color:var(--leise);text-align:center;margin-top:8px;max-width:320px}
+#push .schau-bild.hell{flex-direction:column;align-items:center}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1643,7 +1708,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
 
   <!-- Schaufenster: Symcon Visu (Anmerkung 6, aus Pages/Visu.cshtml + wwwroot/visu-sammlung V1700) -->
   <div class="schau breit um">
-    <div class="schau-bild bds-fenster">
+    <div class="schau-bild bds-fenster" id="vsDemo">
       <div class="vs-kopf2"><span class="vs-brot2">Symcon › Visu › <b>Haustechnik</b></span><span class="vs-stand2"><i></i>verbunden</span></div>
       <div class="vs-reiter2"><span class="an">Übersicht</span><span>Lüftung</span><span>Licht</span><span class="stoer"><i></i>Störungen <em>1</em></span></div>
       <div class="vs-gitter2">
@@ -2583,6 +2648,149 @@ window.bspDemos.fh=function(el){
   if(d.h!=null){var h=H[+d.h],t=+d.t;if(t&&!h.st)h.seit=0;h.st=t;h.rest=t*3600}else if(d.bereich)bereich=d.bereich;else if(d.wahl)wahl=d.wahl;else if(d.tempo)tempo=+d.tempo;else return;zeichne()}
  el.addEventListener('click',klick);zeichne();timer=setInterval(tick,1000);
  return function(){clearInterval(timer);el.removeEventListener('click',klick)}};
+})();
+/* Symcon-Visu zum Antippen (08.11.2026) - wie Pages/Visu.cshtml: Kacheln, Reiter, Störkachel zählt alles, Alarmanlage an der Kachel,
+   Störungen auf Zeit unterdrücken, aus jeder Störung ein Ticket. Beispieldaten, nur im Browser. */
+(function(){var V=document.getElementById('vsDemo');if(!V)return;
+var reiter='ue',detail=null,ticketNr=4711;
+var L=[];for(var i=1;i<=12;i++)L.push({n:'Lüftung L-'+(i<10?'0':'')+i,o:['Mall','Food Court','Lager','Büro','Tiefgarage','Technik'][i%6],st:i===4?'r':'g',txt:i===4?'Filter verschmutzt':'läuft',tk:0,un:false});
+var LI=[['Halle EG',6,6],['Halle 1. OG',6,5],['Food Court',4,4],['Außen Parkplatz',4,0],['Außen Zufahrt',2,2],['Werbung Fassade',2,1]].map(function(a){return{n:a[0],ges:a[1],ein:a[2]}});
+var alarm=false;
+var DT=['Eingang Nord','Eingang Süd','Eingang Ost','Eingang West'].map(function(n){return{n:n,st:'g',tk:0}});
+var BW={zonen:[{n:'Zone 1 · Rasen',an:false},{n:'Zone 2 · Beet',an:true,rest:12},{n:'Zone 3 · Böschung',an:false}],auto:true};
+var FH={an:true,vl:42.5};
+var SR=['Schranke Einfahrt','Schranke Ausfahrt','Schranke Lieferzone'].map(function(n){return{n:n,zu:true}});
+var RT=[];for(var j=1;j<=6;j++)RT.push({n:'Rolltreppe '+j,st:j===3?'o':'g',tk:0});
+function stoerungen(){var s=[];
+ L.forEach(function(x){if(x.st==='r'&&!x.un)s.push({art:'l',o:x,n:x.n,t:x.txt})});
+ DT.forEach(function(x){if(x.st==='r')s.push({art:'d',o:x,n:'Drehtür '+x.n,t:'Not-Aus ausgelöst'})});
+ RT.forEach(function(x){if(x.st==='r')s.push({art:'r',o:x,n:x.n,t:'Störung'})});
+ return s}
+function z(n,t){return'<span class="'+t+'">'+n+'</span>'}
+function kachel(k,bild,b,s,kz,extra){return'<div class="vk2" data-k="'+k+'" style="--b:url(bilder/'+bild+'.webp)"><b>'+b+'</b><small>'+s+'</small><span class="kz">'+kz+'</span>'+(extra||'')+'</div>'}
+function uebersicht(){var S=stoerungen(),lOk=L.filter(function(x){return x.st==='g'||x.un}).length,lR=L.length-lOk,ein=LI.reduce(function(a,x){return a+x.ein},0),ges=LI.reduce(function(a,x){return a+x.ges},0),
+ dOk=DT.filter(function(x){return x.st==='g'}).length,zu=SR.filter(function(x){return x.zu}).length,rOk=RT.filter(function(x){return x.st==='g'}).length,rU=RT.filter(function(x){return x.st==='o'}).length,rR=RT.filter(function(x){return x.st==='r'}).length,lauf=BW.zonen.filter(function(x){return x.an})[0];
+ return'<div class="vs-gitter2">'+
+ (S.length?'<div class="vk2 stoerk" data-k="stoer"><span class="sk-marke">● Störung</span><span class="sk-zahl">'+S.length+'</span><b>Störungen</b><small>aus allen Ordnern dieser Ebene</small></div>':'<div class="vk2 stoerk ok" data-k="stoer"><span class="sk-marke">● OK</span><span class="sk-zahl">OK</span><b>Keine Störungen</b><small>aus allen Ordnern dieser Ebene</small></div>')+
+ kachel('lueft','visu-lueftungen','Lüftungen','12 Zentralen',z(lOk+' OK','g')+(lR?z(lR+(lR===1?' Störung':' Störungen'),'r'):''))+
+ kachel('licht','visu-licht-ueberwachung','Licht','Halle und Außen',z(ein+' ein','g')+z((ges-ein)+' aus','a'))+
+ kachel('alarm','visu-alarmanlage','Alarmanlage','Lager Ost',alarm?z('scharf','o'):z('unscharf','g'),'<button type="button" class="schalt2'+(alarm?' rot':'')+'" data-alarm>'+(alarm?'Unscharf schalten':'Scharf schalten')+'</button>')+
+ kachel('dreh','visu-drehtueren','Drehtüren','Eingänge',z(dOk+' OK','g')+(dOk<4?z((4-dOk)+(4-dOk===1?' Störung':' Störungen'),'r'):''))+
+ kachel('bew','visu-bewaesserung','Bewässerung',(lauf?lauf.n.split(' · ')[0]:'Alle Zonen')+' · '+(BW.auto?'Automatik':'Hand'),lauf?z('läuft · noch '+lauf.rest+' min','g'):z('keine läuft','a'))+
+ kachel('fh','visu-flaechenheizung','Flächenheizung','Freiflächen',FH.an?z('Vorlauf '+FH.vl.toFixed(1).replace('.',',')+' °C','w'):z('aus','a'))+
+ kachel('schr','visu-schranken','Schranken','Zufahrt',z(zu+' geschlossen','g')+(zu<3?z((3-zu)+' offen','o'):''))+
+ kachel('rt','visu-rolltreppen','Rolltreppen',rU?'Wartung':'Betrieb',z(rOk+' OK','g')+(rU?z(rU+' unterdrückt','o'):'')+(rR?z(rR+(rR===1?' Störung':' Störungen'),'r'):''))+
+ '</div><div class="vs-tipp">Kacheln antippen – Alarmanlage direkt an der Kachel schalten</div>'}
+function zeile(punkt,b,s,knoepfe){return'<div class="vs-z"><i class="'+punkt+'"></i><div class="t"><b>'+b+'</b><small>'+s+'</small></div>'+(knoepfe||'')+'</div>'}
+function tk(o){return o.tk?'<button disabled>Ticket #'+o.tk+'</button>':'<button data-ticket>🛠 Ticket</button>'}
+function liste(){var x='';
+ if(reiter==='lueft'){L.forEach(function(o,i){x+=zeile(o.st==='r'?(o.un?'o':'r'):'g',o.n,o.o+' · '+(o.un?'unterdrückt für 2 Std':o.txt),o.st==='r'?tk(o).replace('data-ticket','data-ticket="l'+i+'"')+(o.un?'<button data-un="l'+i+'">Aufheben</button>':'<button data-un="l'+i+'">2 Std unterdrücken</button>'):'')});return x}
+ if(reiter==='licht'){LI.forEach(function(o,i){x+=zeile(o.ein?'g':'a',o.n,o.ein+' von '+o.ges+' ein','<button data-li="'+i+'" data-w="0">Aus</button><button data-li="'+i+'" data-w="1" class="'+(o.ein===o.ges?'an':'')+'">Alle ein</button>')});return x}
+ var S=stoerungen();if(!S.length)return'<div class="vs-leer"><b>✓ OK</b>Keine Störungen – alles in Ordnung.</div>';
+ S.forEach(function(s,i){x+=zeile('r',s.n,s.t+(s.o.tk?' · Ticket #'+s.o.tk:''),tk(s.o).replace('data-ticket','data-sticket="'+i+'"')+(s.art==='l'?'<button data-un="l'+L.indexOf(s.o)+'">2 Std unterdrücken</button>':s.art==='d'?'<button data-dfix="'+DT.indexOf(s.o)+'">Beheben</button>':'<button data-rfix="'+RT.indexOf(s.o)+'">Beheben</button>'))});return x}
+function det(){var x='<div class="vs-dkopf"><button class="vs-zurueck" data-zurueck>‹ Übersicht</button><b>'+{dreh:'Drehtüren · Eingänge',bew:'Bewässerung',fh:'Flächenheizung · Freiflächen',schr:'Schranken · Zufahrt',rt:'Rolltreppen',alarm:'Alarmanlage · Lager Ost'}[detail]+'</b></div><div class="vs-liste">';
+ if(detail==='dreh')DT.forEach(function(o,i){x+=zeile(o.st==='r'?'r':'g',o.n,o.st==='r'?'Not-Aus ausgelöst':'dreht · Automatik',o.st==='r'?'<button data-dfix="'+i+'">Beheben</button>':'<button data-dstoer="'+i+'">Störung simulieren</button>')});
+ if(detail==='bew'){x+=zeile(BW.auto?'g':'a','Betriebsart',BW.auto?'Automatik nach Zeitplan':'Hand','<button data-bwauto class="'+(BW.auto?'an':'')+'">Auto</button><button data-bwstop class="rot">Wasser Stop</button>');
+  BW.zonen.forEach(function(o,i){x+=zeile(o.an?'g':'a',o.n,o.an?'läuft · noch '+o.rest+' min':'aus','<button data-zone="'+i+'" class="'+(o.an?'an':'')+'">'+(o.an?'Stopp':'Start 15 min')+'</button>')})}
+ if(detail==='fh')x+=zeile(FH.an?'g':'a','Heizkreis Freiflächen',FH.an?'Vorlauf '+FH.vl.toFixed(1).replace('.',',')+' °C · Außen 1 °C':'aus','<button data-fh class="'+(FH.an?'an':'')+'">'+(FH.an?'Ausschalten':'Einschalten')+'</button>')+zeile('g','Weitere Ansicht','Timer, Restzeit, Betriebsstunden','<button data-fhgross>Öffnen ›</button>');
+ if(detail==='schr')SR.forEach(function(o,i){x+=zeile(o.zu?'g':'o',o.n,o.zu?'geschlossen':'offen','<button data-sr="'+i+'">'+(o.zu?'Öffnen':'Schließen')+'</button>')});
+ if(detail==='rt')RT.forEach(function(o,i){x+=zeile(o.st,o.n,o.st==='o'?'Wartung · Störung unterdrückt bis 18:00':o.st==='r'?'Störung':'läuft',o.st==='o'?'<button data-rauf="'+i+'">Unterdrückung aufheben</button>':o.st==='r'?tk(o).replace('data-ticket','data-rticket="'+i+'"')+'<button data-rfix="'+i+'">Beheben</button>':'<button data-rwart="'+i+'">Wartung: unterdrücken</button>')});
+ return x+'</div>'}
+function zeichne(){var S=stoerungen();
+ var x='<div class="vs-kopf2"><span class="vs-brot2">Symcon › Visu › <b>Haustechnik</b></span><span class="vs-stand2"><i></i>verbunden</span></div>'+
+  '<div class="vs-reiter2">'+[['ue','Übersicht'],['lueft','Lüftung'],['licht','Licht']].map(function(r){return'<span data-r="'+r[0]+'"'+(reiter===r[0]&&!detail?' class="an"':'')+'>'+r[1]+'</span>'}).join('')+
+  '<span data-r="stoer" class="stoer'+(reiter==='stoer'&&!detail?' an':'')+'"><i></i>Störungen'+(S.length?' <em>'+S.length+'</em>':'')+'</span></div>';
+ x+=detail?det():reiter==='ue'?uebersicht():'<div class="vs-liste">'+liste()+'</div>';
+ var alt=V.querySelector('.vs-toast');V.innerHTML=x;if(alt)V.appendChild(alt)}
+function toast(t){var a=V.querySelector('.vs-toast');if(a)a.remove();a=document.createElement('div');a.className='vs-toast';a.textContent=t;V.appendChild(a);setTimeout(function(){a.remove()},2700)}
+function ticket(o){if(o.tk)return;o.tk=++ticketNr;toast('✓ Ticket #'+o.tk+' angelegt – Haustechnik')}
+V.addEventListener('click',function(e){var t=e.target.closest('[data-r],[data-k],button');if(!t||!V.contains(t))return;var d=t.dataset;
+ if(d.r){reiter=d.r;detail=null}
+ else if('alarm' in d){alarm=!alarm;toast(alarm?'Alarmanlage Lager Ost: scharf':'Alarmanlage Lager Ost: unscharf')}
+ else if(d.k){var k=d.k;if(k==='stoer'||k==='lueft'||k==='licht'){reiter=k;detail=null}else detail=k}
+ else if('zurueck' in d){detail=null;reiter='ue'}
+ else if(d.ticket){ticket(L[+d.ticket.slice(1)])}
+ else if(d.sticket!=null){ticket(stoerungen()[+d.sticket].o)}
+ else if(d.rticket!=null){ticket(RT[+d.rticket])}
+ else if(d.un){var o=L[+d.un.slice(1)];o.un=!o.un;if(o.un)toast(o.n+': 2 Std unterdrückt')}
+ else if(d.li!=null){LI[+d.li].ein=+d.w?LI[+d.li].ges:0}
+ else if(d.dstoer!=null)DT[+d.dstoer].st='r';else if(d.dfix!=null)DT[+d.dfix].st='g';
+ else if('bwauto' in d)BW.auto=!BW.auto;
+ else if('bwstop' in d){BW.zonen.forEach(function(z){z.an=false});toast('Wasser Stop – alle Zonen aus')}
+ else if(d.zone!=null){var zz=BW.zonen[+d.zone];if(zz.an)zz.an=false;else{BW.zonen.forEach(function(z){z.an=false});zz.an=true;zz.rest=15}}
+ else if('fh' in d)FH.an=!FH.an;
+ else if('fhgross' in d){var k2=document.querySelector('.bsp-karte[data-bsp=fh]');if(k2)k2.click();return}
+ else if(d.sr!=null)SR[+d.sr].zu=!SR[+d.sr].zu;
+ else if(d.rauf!=null)RT[+d.rauf].st='r';else if(d.rfix!=null){RT[+d.rfix].st='g';RT[+d.rfix].tk=0}else if(d.rwart!=null)RT[+d.rwart].st='o';
+ else return;zeichne()});
+setInterval(function(){FH.vl=Math.max(40,Math.min(45,FH.vl+(Math.random()-.5)*.4));var l=BW.zonen.filter(function(z){return z.an})[0];if(l&&Math.random()<.25){l.rest--;if(l.rest<=0)l.an=false}
+ if(!detail&&reiter==='ue'||detail==='fh'||detail==='bew'){if(!V.matches(':hover'))zeichne()}},4000);
+zeichne();})();
+/* Zuhause-Vorfuehrung (Licht, Alarmanlage, Bewaesserung): Leiste unten zum Antippen (08.11.2026).
+   Start = Uebersicht, Symcon = die Ansicht selbst, Kamera = Livebilder (Beispielbilder aus der Kamerawand), Energie. */
+(function(){var D=document.getElementById('hausDemo');if(!D)return;
+var KAMS=[['Eingang Nord','Haustür'],['Freifläche','Garten'],['Garage Einfahrt','Garage']],pv=3.6,akku=64;
+function zwei(n){return(n<10?'0':'')+n}function jetzt(){var t=new Date();return zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
+function zahl(x){return x.toFixed(1).replace('.',',')}
+function alarmZustand(){var a=D.querySelector('.al-in');var z=a?a.getAttribute('data-zustand'):'unscharf';return z||'unscharf'}
+var ALT={unscharf:['#2E9E6A','Unscharf'],zuhause:['#D78A00','Zu Hause'],scharf:['#C0392B','Scharf'],alarm:['#C0392B','Alarm']};
+function kam(i,gross){var s=document.querySelector('#kamDemo .kd-kachel[data-name="'+KAMS[i][0]+'"] svg');return'<span class="hz-kam kd'+(gross?' gross':'')+'" data-hzkam="'+i+'">'+(s?s.outerHTML:'')+'<i class="kd-live">LIVE</i><i class="kd-zeit">'+jetzt()+'</i><i class="kd-name">'+KAMS[i][1]+'</i></span>'}
+var V={
+ start:function(){var a=ALT[alarmZustand()]||ALT.unscharf;return'<h6>Zu Hause</h6><small>Familie Muster</small>'+
+  '<a class="hz-k" data-tab="alarm"><span class="r">›</span><b><span class="p" style="background:'+a[0]+'"></span>Alarmanlage</b><small>'+a[1]+'</small></a>'+
+  '<a class="hz-k" data-tab="licht"><span class="r">›</span><b>Licht</b><small>Szenen, Gruppen und Vouten</small></a>'+
+  '<a class="hz-k" data-tab="bew"><span class="r">›</span><b>Bewässerung</b><small>Zonen, Zeitmodul, Regensensor</small></a>'+
+  '<a class="hz-k" data-ziel="kamera"><span class="r">›</span><b>Kameras</b><small>3 Kameras live</small></a>'+
+  '<div class="hz-tipp">Karte antippen öffnet die Ansicht</div>'},
+ kamera:function(g){return'<h6>Kameras</h6><small>3 Kameras live</small>'+(g!=null?kam(g,true)+'<div class="hz-tipp">Bild antippen: zurück zu allen</div>':KAMS.map(function(k,i){return kam(i)}).join('')+'<div class="hz-tipp">Bild antippen zeigt es groß</div>')},
+ energie:function(){var haus=1.1;return'<h6>Energie</h6><small>jetzt</small><div class="hz-zahl"><div class="hz-k"><small>Solar</small><b>'+zahl(pv)+' kW</b></div><div class="hz-k"><small>Haus</small><b>'+zahl(haus)+' kW</b></div><div class="hz-k"><small>Einspeisung</small><b>'+zahl(Math.max(0,pv-haus-.4))+' kW</b></div><div class="hz-k"><small>Akku</small><b>'+Math.round(akku)+' %</b></div></div>'+
+  '<div class="hz-k" style="cursor:default"><b>Akku</b><small>'+Math.round(akku)+' % · wird geladen</small><div class="hz-bal"><i style="width:'+Math.round(akku)+'%"></i></div></div>'}};
+function leiste(IN){return IN.querySelector('.hx-leiste,.al-leiste')}
+function zu(IN){var o=IN.querySelector('.hz-ov');if(o)o.remove();[].forEach.call(leiste(IN).children,function(s){s.classList.toggle('an',/Symcon/.test(s.textContent)||s.dataset.hz==='symcon')})}
+function auf(IN,was,arg){var o=IN.querySelector('.hz-ov');if(!o){o=document.createElement('div');o.className='hz-ov';IN.insertBefore(o,leiste(IN))}
+ o.dataset.was=was;o.dataset.arg=arg==null?'':arg;o.innerHTML=V[was](arg);o.scrollTop=0;
+ [].forEach.call(leiste(IN).children,function(s){s.classList.toggle('an',s.dataset.hz===was)})}
+function vorbereiten(){D.querySelectorAll('.hx-leiste,.al-leiste').forEach(function(l){if(l.dataset.hzOk)return;l.dataset.hzOk=1;l.removeAttribute('aria-hidden');
+ [].forEach.call(l.children,function(s,i){s.dataset.hz=['start','symcon','kamera','energie'][i];s.setAttribute('role','button');s.tabIndex=0})})}
+vorbereiten();new MutationObserver(vorbereiten).observe(D,{childList:true,subtree:true});
+D.addEventListener('click',function(e){var s=e.target.closest('[data-hz]');var IN=e.target.closest('.hx-in,.al-in');if(!IN)return;
+ if(s&&s.parentNode&&(s.parentNode.classList.contains('hx-leiste')||s.parentNode.classList.contains('al-leiste'))){if(s.dataset.hz==='symcon')zu(IN);else auf(IN,s.dataset.hz);return}
+ var t=e.target.closest('[data-tab],[data-ziel],[data-hzkam]');if(!t||!IN.contains(t))return;
+ if(t.dataset.tab){var b=D.querySelector('.hd-reiter [data-zeig="'+t.dataset.tab+'"]');D.querySelectorAll('.hz-ov').forEach(function(o){zu(o.parentNode)});if(b)b.click();return}
+ if(t.dataset.ziel){auf(IN,t.dataset.ziel);return}
+ if(t.dataset.hzkam!=null){var o=IN.querySelector('.hz-ov');auf(IN,'kamera',o&&o.dataset.arg!==''?null:+t.dataset.hzkam)}});
+D.addEventListener('keydown',function(e){var s=e.target.closest&&e.target.closest('[data-hz]');if(s&&(e.key==='Enter'||e.key===' ')){e.preventDefault();s.click()}});
+setInterval(function(){pv=Math.max(2.4,Math.min(5,pv+(Math.random()-.5)*.3));if(akku<100)akku+=.2;
+ D.querySelectorAll('.hz-ov').forEach(function(o){if(o.dataset.was==='kamera')o.querySelectorAll('.kd-zeit').forEach(function(z){z.textContent=jetzt()});else if(o.dataset.was==='energie')o.innerHTML=V.energie()})},2000);
+})();
+/* Push-Sperrbildschirm zum Antippen (08.11.2026): Annehmen, Später (kommt nach 5 min wieder – hier nach 5 s),
+   Testalarm/Meldung senden, iPhone stumm (kritische Alarme klingeln trotzdem), Push stumm (dann kommt nichts). */
+(function(){var P=document.getElementById('push');if(!P)return;var sp=P.querySelector('.sperr'),IN=P.querySelector('.sperr-in');if(!sp||!IN)return;
+IN.querySelectorAll('.mit-knoepfe span').forEach(function(x){x.dataset.a=x.classList.contains('voll')?'an':'spaeter'});
+var uhr=IN.querySelector('.uhr'),stumm=false,pstumm=false,nr=0;
+var st=document.createElement('div');st.className='pu-steuer';st.innerHTML='<button type="button" data-p="alarm">🔔 Alarm senden</button><button type="button" data-p="meld">✉ Meldung senden</button><button type="button" data-p="stumm">🔕 iPhone stumm</button><button type="button" data-p="pstumm">Push stumm</button>';
+sp.parentNode.appendChild(st);var tp=document.createElement('div');tp.className='pu-tipp';tp.textContent='Zum Ausprobieren: „Annehmen“ oder „Später“ antippen, Alarm oder Meldung senden.';sp.parentNode.appendChild(tp);
+function zwei(n){return(n<10?'0':'')+n}
+var t0=Date.now();setInterval(function(){var m=14+Math.floor((Date.now()-t0)/60000);uhr.textContent='02:'+zwei(m%60)},5000);
+function ton(t){var a=IN.querySelector('.pu-ton');if(a)a.remove();a=document.createElement('div');a.className='pu-ton';a.textContent=t;IN.appendChild(a);setTimeout(function(){a.remove()},2700)}
+function klingeln(krit){sp.classList.remove('klingelt');void sp.offsetWidth;sp.classList.add('klingelt');ton(krit?(stumm?'🔔 Kritischer Alarm – klingelt trotz stumm':'🔔 Kritischer Alarm'):(stumm?'🔕 lautlos zugestellt':'🔔 Ton'))}
+function karte(krit,kopf,zeit,b,s,knoepfe){var d=document.createElement('div');d.className='mit'+(krit?' krit':'');d.style.setProperty('--v','0s');
+ d.innerHTML='<div class="mit-kopf"><span>'+kopf+'</span><span>'+zeit+'</span></div><b>'+b+'</b><small>'+s+'</small>'+(knoepfe?'<div class="mit-knoepfe"><span data-a="spaeter">Später</span><span class="voll" data-a="an">Annehmen</span></div>':'');return d}
+function rein(d){var vor=IN.querySelector('.mit');IN.insertBefore(d,vor);requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('da')})});
+ var alle=IN.querySelectorAll('.mit');if(alle.length>5)alle[alle.length-1].remove()}
+function annehmen(m){var b=m.querySelector('b').textContent;m.className='mit ok da';m.innerHTML='<div class="mit-kopf"><span>OBJEKTOR · ANGENOMMEN</span><span>jetzt</span></div><b>'+b+'</b><small>Von Ihnen angenommen – keine weitere Erinnerung</small>'}
+function spaeter(m){var b=m.querySelector('b').textContent,s=m.querySelector('small').textContent;m.classList.add('weg');setTimeout(function(){m.remove()},350);ton('Erinnerung in 5 min');
+ setTimeout(function(){if(pstumm)return;var mm=/(\d+)\. Erinnerung/.exec(s),n=(m.dataset.n?+m.dataset.n:(mm?+mm[1]:1))+1;var d=karte(true,'OBJEKTOR · KRITISCHER ALARM','jetzt',b,s.split(' · ')[0]+' · '+n+'. Erinnerung',true);d.dataset.n=n;rein(d);klingeln(true)},5000)}
+IN.addEventListener('click',function(e){var a=e.target.closest('[data-a]'),m=e.target.closest('.mit');if(!m)return;
+ if(a){if(a.dataset.a==='an')annehmen(m);else spaeter(m);return}
+ if(m.classList.contains('krit')&&!m.querySelector('.mit-knoepfe')){var k=document.createElement('div');k.className='mit-knoepfe';k.innerHTML='<span data-a="spaeter">Später</span><span class="voll" data-a="an">Annehmen</span>';m.appendChild(k);return}
+ if(!m.classList.contains('krit')&&!m.classList.contains('ok')){ton('Öffnet die Meldung in BDS')}});
+st.addEventListener('click',function(e){var b=e.target.closest('[data-p]');if(!b)return;var p=b.dataset.p;
+ if(p==='stumm'){stumm=!stumm;b.classList.toggle('an',stumm);ton(stumm?'🔕 iPhone ist stumm':'🔔 Ton an');return}
+ if(p==='pstumm'){pstumm=!pstumm;b.classList.toggle('an',pstumm);ton(pstumm?'Push stumm – es kommt nichts':'Push wieder an');return}
+ if(pstumm){ton('Push stumm – nichts zugestellt');return}
+ nr++;if(p==='alarm'){var A=[['Alarmanlage Haus','Bewegung Terrasse · Ton auch bei stumm'],['Brandmeldeanlage BM 214','Ebene 2 · Melder 2/11'],['Alarmanlage Lager Ost','Tür Lager geöffnet']][nr%3];var d=karte(true,'OBJEKTOR · KRITISCHER ALARM','jetzt',A[0],A[1],true);rein(d);klingeln(true)}
+ else{var M=[['Neue Meldung an Haustechnik','Licht defekt · Shop 03'],['Neue Meldung an Reinigung','Mülleimer voll · Food Court'],['Ticket erledigt','Wasseraustritt Ebene 2 · mit Foto']][nr%3];rein(karte(false,'OBJEKTOR · MELDUNG','jetzt',M[0],M[1],false));klingeln(false)}});
 })();
 /* Anmerkung 11: Ansichten oeffnen */
 (function(){var f=document.getElementById('bspFenster');if(!f)return;var bild=document.getElementById('bspBild'),ti=document.getElementById('bspTitel'),qu=document.getElementById('bspQuelle'),akt=null,mo='dunkel';
