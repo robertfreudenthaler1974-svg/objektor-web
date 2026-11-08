@@ -1,4 +1,4 @@
-/* Sprachen der Webseite (08.11.2026) - Flaggen oben rechts: Deutsch, English, Italiano, Čeština.
+/* Sprachen der Webseite (08.11.2026) - Flaggen oben rechts: Deutsch, English, Italiano, Čeština, Magyar, Srpski (08.11.2026: + hu, sr).
    Die Seite selbst bleibt deutsch. Ist eine andere Sprache gewaehlt, laedt dieses Skript sprache-<kk>.js
    und tauscht die Texte aus: genau gleicher Text -> Woerterbuch, Texte mit Zahlen -> Regeln,
    Texte mit " · " -> Stueck fuer Stueck. Was nicht im Woerterbuch steht, bleibt deutsch.
@@ -11,7 +11,9 @@ var SPR=[
  {k:'de',n:'Deutsch',f:'<svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#C8102E"/><rect y=".667" width="3" height=".667" fill="#fff"/></svg>'},
  {k:'en',n:'English',f:'<svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2.4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg>'},
  {k:'it',n:'Italiano',f:'<svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg>'},
- {k:'cs',n:'Čeština',f:'<svg viewBox="0 0 6 4"><rect width="6" height="4" fill="#D7141A"/><rect width="6" height="2" fill="#fff"/><path d="M0 0L3 2L0 4z" fill="#11457E"/></svg>'}];
+ {k:'cs',n:'Čeština',f:'<svg viewBox="0 0 6 4"><rect width="6" height="4" fill="#D7141A"/><rect width="6" height="2" fill="#fff"/><path d="M0 0L3 2L0 4z" fill="#11457E"/></svg>'},
+ {k:'hu',n:'Magyar',f:'<svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#477050"/><rect width="3" height="1.333" fill="#fff"/><rect width="3" height=".667" fill="#CE2939"/></svg>'},
+ {k:'sr',n:'Srpski',f:'<svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1.333" fill="#0C4076"/><rect width="3" height=".667" fill="#C6363C"/></svg>'}];
 var KEYS=SPR.map(function(s){return s.k});
 var basis=(function(){var s=D.currentScript&&D.currentScript.src||'';return s.replace(/sprache\.js(\?.*)?$/,'')})();
 function gewuenscht(){var k=null;try{var m=/[?&]lang=([a-z]{2})/.exec(location.search);if(m)k=m[1]}catch(e){}
@@ -29,8 +31,13 @@ var st=D.createElement('style');st.textContent='html.spr-warte body{opacity:0}'+
 '.sprachwahl button:hover,.sprachwahl button:focus-visible{opacity:1;border-color:var(--rand2,#C3CCC9)}'+
 '.sprachwahl button[aria-pressed="true"]{opacity:1;border-color:var(--marke,#0F5757)}'+
 '.sprachwahl svg{width:22px;height:15px;display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.15)}'+
-'@media(max-width:760px){.sprachwahl{gap:1px}.sprachwahl button{width:26px}.sprachwahl svg{width:19px;height:13px}}'+
-'@media(max-width:420px){header .kopf{gap:9px}.sprachwahl{gap:0}.sprachwahl button{width:22px;height:22px}.sprachwahl svg{width:17px;height:12px}}';
+'.spr-akt{display:none!important}.spr-alle{display:flex;gap:4px;align-items:center}.spr-alle .spr-n{display:none}'+
+'.sprachwahl .spr-akt i{font-style:normal;font-size:10px;margin-left:3px;opacity:.7}'+
+'@media(max-width:1599px){.sprachwahl{position:relative}.spr-akt{display:inline-flex!important;width:auto!important;padding:0 6px;opacity:1!important;border-color:var(--rand2,#C3CCC9)!important}'+
+'.spr-alle{display:none;position:absolute;right:0;top:calc(100% + 6px);z-index:300;flex-direction:column;align-items:stretch;gap:2px;background:var(--karte,#fff);border:1px solid var(--rand,#D9DFDD);border-radius:10px;padding:5px;box-shadow:0 12px 28px rgba(0,0,0,.18)}'+
+'.sprachwahl.offen .spr-alle{display:flex}.spr-alle button{width:auto!important;height:auto!important;justify-content:flex-start!important;gap:9px;padding:7px 10px!important;opacity:1!important;font:500 14px/1 inherit;font-family:inherit;color:var(--text,#14211F);white-space:nowrap}'+
+'.spr-alle button:hover{background:var(--bg2,#EEF2F0)}.spr-alle .spr-n{display:inline}}'+
+'@media(max-width:420px){header .kopf{gap:9px}}';
 (D.head||H).appendChild(st);
 
 function norm(t){return t.replace(/\s+/g,' ').trim()}
@@ -79,11 +86,16 @@ function holen(k,fertig){if(k==='de'||(window.objektorSprache&&window.objektorSp
  if(laden[k]){laden[k].push(fertig);return}laden[k]=[fertig];var s=D.createElement('script');s.src=basis+'sprache-'+k+'.js';
  s.onload=function(){laden[k].forEach(function(f){f()});delete laden[k]};s.onerror=function(){delete laden[k];H.classList.remove('spr-warte')};(D.head||H).appendChild(s)}
 function waehlen(k){try{localStorage.setItem(MERK,k)}catch(e){}akt=k;knoepfe();holen(k,anwenden)}
-function knoepfe(){D.querySelectorAll('.sprachwahl button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===akt?'true':'false')})}
+function knoepfe(){D.querySelectorAll('.spr-alle button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===akt?'true':'false')});var a=SPR.filter(function(x){return x.k===akt})[0]||SPR[0];D.querySelectorAll('.spr-akt').forEach(function(t){t.innerHTML=a.f+'<i>▾</i>';t.title=a.n})}
 function leiste(){var kopf=D.querySelector('header .kopf');if(!kopf||kopf.querySelector('.sprachwahl'))return;
  var w=D.createElement('div');w.className='sprachwahl';w.setAttribute('role','group');w.setAttribute('aria-label','Sprache · Language');
- SPR.forEach(function(s){var b=D.createElement('button');b.type='button';b.dataset.k=s.k;b.title=s.n;b.setAttribute('aria-label',s.n);b.setAttribute('lang',s.k);b.innerHTML=s.f;
-  b.addEventListener('click',function(){if(akt!==s.k)waehlen(s.k)});w.appendChild(b)});
+ var t=D.createElement('button');t.type='button';t.className='spr-akt';t.setAttribute('aria-haspopup','true');t.setAttribute('aria-label','Sprache · Language');w.appendChild(t);
+ var alle=D.createElement('div');alle.className='spr-alle';w.appendChild(alle);
+ t.addEventListener('click',function(e){e.stopPropagation();w.classList.toggle('offen')});
+ D.addEventListener('click',function(e){if(!w.contains(e.target))w.classList.remove('offen')});
+ D.addEventListener('keydown',function(e){if(e.key==='Escape')w.classList.remove('offen')});
+ SPR.forEach(function(s){var b=D.createElement('button');b.type='button';b.dataset.k=s.k;b.title=s.n;b.setAttribute('aria-label',s.n);b.setAttribute('lang',s.k);b.innerHTML=s.f+'<span class="spr-n">'+s.n+'</span>';
+  b.addEventListener('click',function(){w.classList.remove('offen');if(akt!==s.k)waehlen(s.k)});alle.appendChild(b)});
  var vor=kopf.querySelector('.modus-knopf');kopf.insertBefore(w,vor||null)}
 akt=start;holen(start,function(){if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',anwenden);else anwenden()});
 function los(){leiste();knoepfe()}
