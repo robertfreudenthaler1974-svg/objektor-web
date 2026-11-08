@@ -765,6 +765,27 @@ html[data-modus="dunkel"] #vsDemo .vk2.stoerk.ok .sk-marke,html[data-modus="dunk
 .pu-steuer button:hover{border-color:#EF5C5C}
 .pu-tipp{font-size:12px;color:var(--leise);text-align:center;margin-top:8px;max-width:320px}
 #push .schau-bild.hell{flex-direction:column;align-items:center}
+/* Kamera gross: Zeitleiste mit Aufzeichnung (08.11.2026) */
+.kd-zl{display:flex;flex-direction:column;gap:4px;margin:2px 0 4px}
+.kd-zl-oben{display:flex;align-items:center;gap:6px}
+.kd-zl-oben button{font:600 12px/1 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:8px;padding:7px 9px;cursor:pointer;white-space:nowrap}
+.kd-zl-oben button:hover{border-color:#2F6FEF}
+.kd-zl-oben button.kd-golive{color:#fff;background:#C0262D;border-color:#C0262D}
+.kd-zl-oben button.kd-golive[disabled]{opacity:.45;cursor:default}
+.kd-zl-bahn{position:relative;flex:1;min-width:0;height:34px}
+.kd-zl-marken{position:absolute;left:8px;right:8px;top:0;height:12px}
+.kd-zl-marken button{position:absolute;top:0;width:8px;height:12px;margin-left:-4px;border:0;border-radius:3px;background:#E0A030;cursor:pointer;padding:0}
+.kd-zl-marken button.fz{background:#2F6FEF}.kd-zl-marken button.ps{background:#2CC78F}
+.kd-zl-marken button:hover{transform:scaleY(1.3)}
+.kd-regler{position:absolute;left:0;right:0;bottom:0;width:100%;margin:0;accent-color:#C0262D;cursor:pointer}
+.kd-zl.rec .kd-regler{accent-color:#2F6FEF}
+.kd-zl-skala{display:flex;justify-content:space-between;font-size:10.5px;color:var(--bf-leise);padding:0 6px}
+.kd-zl-tipp{font-size:11px;color:var(--bf-leise)}
+.kd-gbild .kd-live.rec{background:#2F6FEF}.kd-gbild .kd-live.rec:before{animation:none;border-radius:1px}
+.kd-gbild.nacht svg{filter:grayscale(1) brightness(.78) contrast(1.15)}
+.kd-gbild .kd-ir{position:absolute;left:10px;bottom:10px;z-index:2;font:600 10.5px/1 system-ui,sans-serif;font-style:normal;color:#fff;background:rgba(0,0,0,.5);border-radius:5px;padding:4px 7px;display:none}
+.kd-gbild.nacht .kd-ir{display:block}
+@media(max-width:760px){.kd-zl-oben{flex-wrap:wrap}.kd-zl-bahn{flex-basis:100%;order:5}}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1696,7 +1717,8 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
           <b id="kdGName"></b>
           <span class="kd-blaettern"><button type="button" id="kdVor" aria-label="Vorige Kamera">‹</button><button type="button" id="kdNach" aria-label="Nächste Kamera">›</button></span>
         </div>
-        <div class="kd-gbild" id="kdGBild"><i class="kd-live" id="kdGLive">LIVE</i><i class="kd-zeit" id="kdGZeit"></i><i class="kd-zoomhinweis" id="kdZoomHinweis">Ins Bild tippen = Zoom</i></div>
+        <div class="kd-gbild" id="kdGBild"><i class="kd-live" id="kdGLive">LIVE</i><i class="kd-zeit" id="kdGZeit"></i><i class="kd-zoomhinweis" id="kdZoomHinweis">Ins Bild tippen = Zoom</i><i class="kd-ir">IR-Nachtbild</i></div>
+        <div class="kd-zl" id="kdZl"><div class="kd-zl-oben"><button type="button" data-spr="-30" aria-label="30 Sekunden zurück">⏪ 30 s</button><div class="kd-zl-bahn"><div class="kd-zl-marken" id="kdMarken"></div><input type="range" class="kd-regler" id="kdRegler" min="-86400" max="0" step="5" value="0" aria-label="Zeit in der Aufzeichnung"></div><button type="button" data-spr="30" aria-label="30 Sekunden vor">30 s ⏩</button><button type="button" class="kd-golive" id="kdGoLive" disabled>● Live</button></div><div class="kd-zl-skala"><span>−24 h</span><span>−18 h</span><span>−12 h</span><span>−6 h</span><span>jetzt</span></div><div class="kd-zl-tipp">Regler ziehen = in die Aufzeichnung springen · Markierung antippen = zur Bewegung</div></div>
         <div class="kd-gleiste">
           <button type="button" id="kdStand">⏸ Standbild</button>
           <span class="kd-weg" role="group" aria-label="Weg"><button type="button" data-weg="webrtc" class="an">WebRTC</button><button type="button" data-weg="tcp">TCP</button></span>
@@ -2808,7 +2830,8 @@ f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.addEventListener('
 (function(){var d=document.getElementById('kamDemo');if(!d)return;
 var MERK='objektor-kam-zu',ordner=[].slice.call(d.querySelectorAll('.kd-ordner')),kacheln=[].slice.call(d.querySelectorAll('.kd-kachel'));
 var gross=document.getElementById('kdGross'),gb=document.getElementById('kdGBild'),gname=document.getElementById('kdGName'),gfuss=document.getElementById('kdGFuss'),gzeit=document.getElementById('kdGZeit'),glive=document.getElementById('kdGLive'),stand=document.getElementById('kdStand');
-var akt=-1,steht=false,weg={},standZeit='';
+var akt=-1,steht=false,weg={},standZeit='',versatz=0,standAbs=0,ziehen=false;
+var zl=document.getElementById('kdZl'),regler=document.getElementById('kdRegler'),marken=document.getElementById('kdMarken'),goLive=document.getElementById('kdGoLive');
 function lesen(){try{return JSON.parse(localStorage.getItem(MERK)||'[]')}catch(e){return[]}}
 function merken(){try{localStorage.setItem(MERK,JSON.stringify(ordner.filter(function(o){return o.classList.contains('zu')}).map(function(o){return o.dataset.o})))}catch(e){}}
 function setze(o,zu){o.classList.toggle('zu',zu);o.querySelector('.kd-leiste').setAttribute('aria-expanded',zu?'false':'true')}
@@ -2816,14 +2839,23 @@ var zuListe=lesen();ordner.forEach(function(o){setze(o,zuListe.indexOf(o.dataset
 document.getElementById('kdAlleAuf').addEventListener('click',function(){ordner.forEach(function(o){setze(o,false)});merken()});
 document.getElementById('kdAlleZu').addEventListener('click',function(){ordner.forEach(function(o){setze(o,true)});merken()});
 function zwei(n){return(n<10?'0':'')+n}
-function jetzt(){var t=new Date();return zwei(t.getDate())+'.'+zwei(t.getMonth()+1)+'.'+t.getFullYear()+' '+zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
-function ticken(){var z=jetzt();d.querySelectorAll('.kd-raster .kd-zeit').forEach(function(e){e.textContent=z});gzeit.textContent=steht?standZeit:z}
-ticken();setInterval(ticken,1000);
+function zeitText(t){return zwei(t.getDate())+'.'+zwei(t.getMonth()+1)+'.'+t.getFullYear()+' '+zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
+function jetzt(){return zeitText(new Date())}
+function absNun(){return steht?standAbs:Date.now()/1000+versatz}
+function ticken(){var z=jetzt();if(steht)versatz=Math.min(0,standAbs-Date.now()/1000);var rec=versatz<-3,abs=absNun(),h=new Date(abs*1000).getHours();gb.classList.toggle('nacht',h<6||h>=18);glive.classList.toggle('rec',rec);glive.textContent=rec?'AUFZEICHNUNG':steht?'STANDBILD':'LIVE';zl.classList.toggle('rec',rec);goLive.disabled=!rec&&!steht;if(!ziehen)regler.value=Math.round(versatz);gzeit.textContent=zeitText(new Date(abs*1000));fuss();d.querySelectorAll('.kd-raster .kd-zeit').forEach(function(e){e.textContent=z});}
+setInterval(ticken,1000);
 function fuss(){var w=weg[akt]||'webrtc';d.querySelectorAll('.kd-weg button').forEach(function(b){b.classList.toggle('an',b.dataset.weg===w)});
- gfuss.textContent=steht?'Standbild · '+standZeit+' · Beispielbild':(w==='tcp'?'live · TCP über BDS · ca. 1 s später · Beispielbild':'live · WebRTC · Beispielbild · 1920 × 1080')}
+ var rec=versatz<-3;gfuss.textContent=rec?'Aufzeichnung · '+zeitText(new Date(absNun()*1000))+(steht?' · angehalten':'')+' · Beispielbild':steht?'Standbild · '+standZeit+' · Beispielbild':(w==='tcp'?'live · TCP über BDS · ca. 1 s später · Beispielbild':'live · WebRTC · Beispielbild · 1920 × 1080')}
 function zeigen(i){akt=(i+kacheln.length)%kacheln.length;var k=kacheln[akt];
  var alt=gb.querySelector('svg');if(alt)gb.removeChild(alt);gb.insertBefore(k.querySelector('svg').cloneNode(true),gb.firstChild);
- gname.textContent=k.dataset.name;steht=false;gb.classList.remove('steht','zoom','holt');glive.textContent='LIVE';stand.textContent='⏸ Standbild';fuss();ticken()}
+ gname.textContent=k.dataset.name;steht=false;versatz=0;gb.classList.remove('steht','zoom','holt','nacht');stand.textContent='⏸ Standbild';markenBauen();ticken()}
+function zufall(n){var x=Math.sin(n*9301+49297)*233280;return x-Math.floor(x)}
+function ereignisse(){var k=kacheln[akt],art=/Schranke|Garage|Freifl/.test(k.dataset.name)?'fz':'ps',L=[];for(var j=0;j<11;j++){var t=-Math.round(600+zufall(akt*31+j)*85000);L.push({t:t,a:j%4===3?'bw':art})}return L}
+function markenBauen(){marken.innerHTML='';ereignisse().forEach(function(e){var b=document.createElement('button');b.type='button';b.className=e.a;b.style.left=((e.t+86400)/86400*100).toFixed(2)+'%';b.title=({fz:'Fahrzeug',ps:'Person',bw:'Bewegung'})[e.a]+' · '+zeitText(new Date((Date.now()/1000+e.t)*1000)).slice(11,16);b.setAttribute('aria-label',b.title);b.addEventListener('click',function(){springen(e.t-5,true)});marken.appendChild(b)})}
+function springen(v,spielen){versatz=Math.max(-86400,Math.min(0,v));if(spielen&&steht){steht=false;gb.classList.remove('steht');stand.textContent='⏸ Standbild'}if(steht)standAbs=Date.now()/1000+versatz;var s=gb.querySelector('svg'),ms=Math.round((Date.now()/1000+versatz)*1000);if(s&&s.getAnimations)s.getAnimations({subtree:true}).forEach(function(a){try{a.currentTime=ms%3600000}catch(x){}});gb.classList.remove('holt');void gb.offsetWidth;ticken()}
+regler.addEventListener('input',function(){ziehen=true;springen(+regler.value)});regler.addEventListener('change',function(){ziehen=false;springen(+regler.value)});
+zl.querySelectorAll('[data-spr]').forEach(function(b){b.addEventListener('click',function(){springen(versatz+(+b.dataset.spr))})});
+goLive.addEventListener('click',function(){steht=false;gb.classList.remove('steht');stand.textContent='⏸ Standbild';springen(0)});
 function oeffnen(i){zeigen(i);d.classList.add('gross-an');gross.hidden=false;document.getElementById('kdZurueck').focus({preventScroll:true});
  if(d.getBoundingClientRect().top<0)d.scrollIntoView({behavior:'smooth',block:'start'})}
 function schliessen(){gross.hidden=true;d.classList.remove('gross-an');var a=gb.querySelector('svg');if(a)gb.removeChild(a);if(kacheln[akt])kacheln[akt].focus({preventScroll:true})}
@@ -2832,7 +2864,7 @@ document.getElementById('kdZurueck').addEventListener('click',schliessen);
 document.getElementById('kdVor').addEventListener('click',function(){zeigen(akt-1)});
 document.getElementById('kdNach').addEventListener('click',function(){zeigen(akt+1)});
 document.addEventListener('keydown',function(e){if(gross.hidden)return;if(e.key==='Escape')schliessen();else if(e.key==='ArrowLeft')zeigen(akt-1);else if(e.key==='ArrowRight')zeigen(akt+1)});
-stand.addEventListener('click',function(){steht=!steht;if(steht)standZeit=jetzt();gb.classList.toggle('steht',steht);glive.textContent=steht?'STANDBILD':'LIVE';stand.textContent=steht?'▶ Live':'⏸ Standbild';fuss();ticken()});
+stand.addEventListener('click',function(){steht=!steht;if(steht){standAbs=Date.now()/1000+versatz;standZeit=zeitText(new Date(standAbs*1000))}gb.classList.toggle('steht',steht);stand.textContent=steht?'▶ Weiter':'⏸ Standbild';ticken()});
 d.querySelectorAll('.kd-weg button').forEach(function(b){b.addEventListener('click',function(){if((weg[akt]||'webrtc')===b.dataset.weg)return;weg[akt]=b.dataset.weg;fuss();gb.classList.add('holt');setTimeout(function(){gb.classList.remove('holt')},b.dataset.weg==='tcp'?1100:600)})});
 gb.addEventListener('click',function(e){var s=gb.querySelector('svg');if(!s)return;if(gb.classList.contains('zoom')){gb.classList.remove('zoom');return}
  var r=gb.getBoundingClientRect();s.style.transformOrigin=((e.clientX-r.left)/r.width*100).toFixed(1)+'% '+((e.clientY-r.top)/r.height*100).toFixed(1)+'%';gb.classList.add('zoom')});
