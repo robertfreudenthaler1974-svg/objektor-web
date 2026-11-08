@@ -487,6 +487,55 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .kd-weg button.an{background:#2F6FEF!important;color:#fff!important}
 @media(max-width:760px){.kd-raster{grid-template-columns:1fr 1fr}.kd-kopf{flex-direction:column}.kd-gleiste small{margin-left:0;flex-basis:100%}}
 @media(max-width:420px){.kd-raster{gap:8px}.kd-name{font-size:10.5px}.kd-raster .kd-zeit{display:none}.kd-fuss{font-size:10.5px}}
+/* Firma-Startseite zum Antippen (08.11.2026) */
+.schirm.app [data-ap]{cursor:pointer;transition:filter .12s,transform .12s}
+.schirm.app [data-ap]:hover{filter:brightness(1.18)}
+.schirm.app [data-ap]:active{transform:scale(.97)}
+#appBild[data-app="hell"] .schirm.app [data-ap]:hover{filter:brightness(.96)}
+.a-seite{position:absolute;left:0;right:0;top:29px;bottom:50px;z-index:3;background:#1A1C1F;display:flex;flex-direction:column;overflow:hidden}
+.a-seite[hidden]{display:none}
+#appBild[data-app="hell"] .a-seite{background:#EEF1F4}
+.a-skopf{display:flex;align-items:center;gap:8px;padding:6px 12px 10px}
+.a-skopf button{all:unset;cursor:pointer;width:26px;height:26px;border-radius:50%;background:#2A2D32;text-align:center;font-size:15px;line-height:25px}
+#appBild[data-app="hell"] .a-skopf button{background:#FFFFFF;box-shadow:0 1px 4px rgba(16,23,31,.2)}
+.a-skopf b{font-size:14px}
+.a-sinhalt{flex:1;overflow-y:auto;padding-bottom:10px;scrollbar-width:none}
+.a-sinhalt::-webkit-scrollbar{display:none}
+.a-lab{padding:4px 14px 5px;font-size:9px;letter-spacing:1.2px;color:#8B939C}
+.a-chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 12px 9px}
+.a-chip{all:unset;cursor:pointer;font-size:10.5px;padding:6px 9px;border-radius:999px;background:#2A2D32;border:1px solid #4E535C}
+.a-chip.an{background:#1F6FD6;border-color:#1F6FD6;color:#fff}
+#appBild[data-app="hell"] .a-chip{background:#FFFFFF;border-color:#B9C3CE}
+#appBild[data-app="hell"] .a-chip.an{background:#104B96;border-color:#104B96;color:#fff}
+.a-gross{all:unset;box-sizing:border-box;cursor:pointer;display:block;margin:4px 12px 8px;width:calc(100% - 24px);text-align:center;font-weight:700;font-size:12.5px;padding:11px 4px;border-radius:11px;color:#fff;background:#C0392B}
+.a-gross.blau{background:#1F6FD6}.a-gross.grau{background:#40444C}
+.a-gross[disabled]{opacity:.45;cursor:default}
+.a-karte .a-st{float:right;font-size:9px;font-weight:700;border-radius:8px;padding:2px 7px;margin-left:6px}
+.st-offen{background:#EF5C5C;color:#fff}.st-arbeit{background:#D78A00;color:#1A1C1F}.st-erledigt{background:#2CC78F;color:#0E2A20}
+.a-karte.alarm{background:rgba(239,92,92,.18);border-color:#EF5C5C}
+.a-karte.alarm b{color:#FFB3B3}
+#appBild[data-app="hell"] .a-karte.alarm{background:#FDECEC;border-color:#E24B4A}
+#appBild[data-app="hell"] .a-karte.alarm b{color:#A32020}
+.a-karte small.orange{color:#F0B23A}
+#appBild[data-app="hell"] .a-karte small.orange{color:#8A5A00}
+.a-msg{margin:0 12px 7px;max-width:78%;padding:7px 9px;border-radius:11px;background:#2A2D32;border:1px solid #4E535C;font-size:10.5px}
+.a-msg small{display:block;font-size:8.5px;color:#8B939C;margin-bottom:2px}
+.a-msg.ich{margin-left:auto;background:#1F6FD6;border-color:#1F6FD6;color:#fff}
+.a-msg.ich small{color:#CFE0FA}
+#appBild[data-app="hell"] .a-msg{background:#FFFFFF;border-color:#B9C3CE}
+#appBild[data-app="hell"] .a-msg.ich{background:#104B96;border-color:#104B96;color:#fff}
+.a-sucher{position:relative;margin:4px 12px 10px;aspect-ratio:1;border-radius:14px;background:radial-gradient(circle at 50% 45%,#3a4148,#14181b);overflow:hidden}
+.a-sucher:before{content:"";position:absolute;inset:22%;border:2px solid rgba(255,255,255,.8);border-radius:12px}
+.a-sucher i{position:absolute;left:22%;right:22%;top:24%;height:2px;background:#2CC78F;box-shadow:0 0 8px #2CC78F;animation:aScan 1.4s ease-in-out infinite alternate}
+.a-sucher em{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-style:normal;font-size:10px;color:#fff}
+@keyframes aScan{to{top:74%}}
+.a-toast{position:absolute;left:12px;right:12px;bottom:58px;z-index:5;background:#2CC78F;color:#0E2A20;font-weight:700;font-size:10.5px;border-radius:10px;padding:8px 10px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.35);animation:aToast 2.6s ease forwards}
+@keyframes aToast{0%{opacity:0;transform:translateY(8px)}10%,80%{opacity:1;transform:none}100%{opacity:0}}
+.telefon.ruettelt{animation:aRuettel .5s linear 3}
+@keyframes aRuettel{0%,100%{transform:none}25%{transform:translateX(-3px) rotate(-.6deg)}75%{transform:translateX(3px) rotate(.6deg)}}
+.a-leiste span{cursor:pointer}
+.a-tipp{font-size:12px;color:var(--leise);text-align:center;margin-top:4px}
+.a-hinweis{padding:2px 16px 8px;font-size:9.5px;color:#8B939C;text-align:center}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1043,7 +1092,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       <div class="a-karte"><b>Tagestickets</b><small class="gruen">✓ Keine offenen Tagestickets</small></div>
       <div class="a-karte"><b>Mein Bereich</b><small>Rückmeldung zu meinen Meldungen und Tickets</small></div>
       <div class="a-leiste"><span class="an">⌂<i>Start</i></span><span>▦<i>Dienst</i></span><span>▤<i>Anlagen</i></span><span>▭<i>Ticket</i></span><span>◫<i>Symcon</i></span></div>
-    </div><figcaption>Firma · Startseite</figcaption></figure>
+    </div><figcaption>Firma · Startseite · zum Antippen</figcaption></figure>
     <figure class="telefon foto raumbild"><div class="schirm">
       <div class="r-status"><span>19:12</span><span>5G ▮</span></div>
         <div class="r-kopf"><i>‹</i><b>Licht</b><em id="lrGesamt">4 von 6 ein</em></div>
@@ -1684,6 +1733,90 @@ zeichne();
 (function(){var b=document.getElementById('appBild');if(!b)return;
 document.querySelectorAll('.held-rechts .app-schalter button').forEach(function(k){k.addEventListener('click',function(){
 b.dataset.app=k.dataset.wahl;document.querySelectorAll('.held-rechts .app-schalter button').forEach(function(x){x.setAttribute('aria-pressed',x===k?'true':'false')});});});})();
+</script>
+<script>
+/* Firma-Startseite zum Antippen (08.11.2026) - Ablauf wie die App (DashboardPage):
+   Meldung -> Tagesticket, Chat, Pläne, Alle Alarme (Probealarm), Global, Mein Bereich, QR-Scan, Leiste unten.
+   Alles nur im Browser, mit Beispieldaten. */
+(function(){var B=document.getElementById('appBild');if(!B)return;var S=B.querySelector('.schirm.app');if(!S)return;
+var tel=S.parentNode;
+function q(s,r){return(r||S).querySelector(s)}function qa(s,r){return[].slice.call((r||S).querySelectorAll(s))}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+/* Zustand */
+var T=[],alarm=false,anlagen=[{n:'Lüftungen',w:'12 Zentralen',s:'ok'},{n:'Rolltreppen',w:'1 Störung',s:'rot'},{n:'Drehtüren',w:'Status je Eingang',s:'ok'},{n:'Schranken',w:'offen / geschlossen',s:'ok'},{n:'Brandschutz',w:'Brandmeldeanlage BM 214',s:'ok'}];
+var chat=[{v:'Wachdienst',t:'Rundgang Erdgeschoß erledigt, alles ruhig.'},{v:'Haustechnik',t:'Filterwechsel Lüftung L-04 heute um 14 Uhr.'}];
+var M={wohin:'Haustechnik',was:'',dringend:false};
+var objekt='Muster GmbH';
+/* Seite fuer Unterseiten */
+var seite=document.createElement('div');seite.className='a-seite';seite.hidden=true;
+seite.innerHTML='<div class="a-skopf"><button type="button" aria-label="Zurück">‹</button><b></b></div><div class="a-sinhalt"></div>';
+S.insertBefore(seite,q('.a-leiste'));
+var sTitel=q('.a-skopf b',seite),sIn=q('.a-sinhalt',seite);q('.a-skopf button',seite).onclick=function(){zeige(null)};
+var akt=null;
+function karte(b,s,cls,extra){return'<div class="a-karte'+(cls?' '+cls:'')+'"'+(extra||'')+'>'+'<b>'+b+'</b>'+(s?'<small>'+s+'</small>':'')+'</div>'}
+function stat(t){return'<span class="a-st '+(t.st==='Offen'?'st-offen':t.st==='In Arbeit'?'st-arbeit':'st-erledigt')+'">'+t.st+'</span>'}
+var SEITEN={
+ meldung:['Neue Meldung',function(){var w=['Haustechnik','Wachdienst','Reinigung'],a=['Wasser am Boden','Licht defekt','Tür klemmt','Mülleimer voll'];
+  return'<div class="a-lab">WOHIN?</div><div class="a-chips">'+w.map(function(x){return'<button type="button" class="a-chip'+(M.wohin===x?' an':'')+'" data-wohin="'+x+'">'+x+'</button>'}).join('')+'</div>'+
+  '<div class="a-lab">WAS IST ZU TUN?</div><div class="a-chips">'+a.map(function(x){return'<button type="button" class="a-chip'+(M.was===x?' an':'')+'" data-was="'+x+'">'+x+'</button>'}).join('')+'</div>'+
+  '<div class="a-chips"><button type="button" class="a-chip'+(M.dringend?' an':'')+'" data-dringend>⚡ Dringend mit Push</button></div>'+
+  '<button type="button" class="a-gross" data-senden'+(M.was?'':' disabled')+'>Senden</button>'+(M.was?'':'<div class="a-hinweis">Erst antippen, was zu tun ist.</div>')}],
+ tickets:['Tagestickets',function(){if(!T.length)return karte('✓ Keine offenen Tagestickets','Über „Meldung“ entsteht ein neues Tagesticket.');
+  return T.map(function(t,i){return'<div class="a-karte" data-ticket="'+i+'">'+stat(t)+'<b>'+esc(t.was)+'</b><small>'+t.wohin+(t.dringend?' · dringend':'')+' · '+(t.st==='Erledigt'?'erledigt':'gerade eben')+'</small></div>'}).join('')+
+  '<div class="a-hinweis">Ticket antippen: Offen › In Arbeit › Erledigt</div>'}],
+ bereich:['Mein Bereich',function(){var m=T.filter(function(t){return t.vonMir});if(!m.length)return karte('Noch keine eigenen Meldungen','Hier sehen Sie, was aus Ihren Meldungen geworden ist.');
+  return m.map(function(t){return'<div class="a-karte">'+stat(t)+'<b>'+esc(t.was)+'</b><small>'+t.wohin+(t.st==='Erledigt'?' · ✓ Rückmeldung: erledigt':' · noch offen')+'</small></div>'}).join('')}],
+ chat:['Chat',function(){return chat.map(function(c){return'<div class="a-msg'+(c.ich?' ich':'')+'"><small>'+(c.ich?'Ich':c.v)+'</small>'+esc(c.t)+'</div>'}).join('')+
+  '<div class="a-chips" style="margin-top:6px">'+['👍 Danke','Bin unterwegs','Foto folgt'].map(function(x){return'<button type="button" class="a-chip" data-sag="'+x+'">'+x+'</button>'}).join('')+'</div>'}],
+ alarme:['Alle Alarme',function(){return(alarm?'<div class="a-karte alarm"><b>🔥 Brandmeldeanlage BM 214</b><small>Ebene 1 · Melder 1/07 · gerade eben</small></div><button type="button" class="a-gross blau" data-bestaetigen>Alarm bestätigen</button>':
+  karte('✓ Keine Alarme','Derzeit sind keine unbestätigten Alarme offen.')+'<button type="button" class="a-gross" data-probe>Probealarm auslösen</button><div class="a-hinweis">Im echten Betrieb kommt dazu ein Push – auch bei stummem iPhone.</div>')}],
+ global:['Global',function(){return'<div class="a-lab">ANLAGEN</div>'+anlagen.map(function(a,i){return'<div class="a-karte" data-anlage="'+i+'"><span class="a-st '+(a.s==='rot'?'st-offen':a.s==='gelb'?'st-arbeit':'st-erledigt')+'">'+(a.s==='rot'?'Störung':a.s==='gelb'?'unterdrückt':'OK')+'</span><b>'+a.n+'</b><small>'+a.w+'</small></div>'}).join('')+
+  '<div class="a-hinweis">Störung antippen: auf Zeit unterdrücken</div>'}],
+ plaene:['Pläne',function(){return'<div class="a-karte" data-zumplan><b>Gebäude A — Erdgeschoß</b><small>Plan · 6 Tickets</small></div>'+karte('Gebäude A — 1. OG','Plan · 2 Tickets')+karte('Tiefgarage','Plan · 1 Ticket')+
+  '<button type="button" class="a-gross blau" data-zumplan>Großen Plan ausprobieren ›</button>'}],
+ qr:['QR-Code scannen',function(){return'<div class="a-sucher"><i></i><em>Kamera auf den QR-Code halten …</em></div>'}],
+ dienst:['Dienstplan',function(){return'<div class="a-lab">HEUTE</div>'+karte('Haustechnik','06:00 – 14:00 · 2 im Dienst')+karte('Haustechnik','14:00 – 22:00 · 1 im Dienst')+karte('Wachdienst','Rund um die Uhr · 2 im Dienst')+karte('Reinigung','05:00 – 12:00 · 4 im Dienst')}],
+ symcon:['Symcon',function(){return'<div class="a-lab">SYMCON › VISU</div>'+karte('Lüftung','12 Zentralen · OK')+karte('Heizung','Vorlauf 42,5 °C')+karte('Licht Mall',lichtMall?'Alles ein':'Alles aus','',' data-mall')+
+  '<div class="a-hinweis">„Licht Mall“ antippen schaltet</div>'}],
+ objekt:['Objekt wählen',function(){return['Muster GmbH','Einkaufszentrum Nord','Bürohaus West'].map(function(o){return'<div class="a-karte" data-objekt="'+o+'"><b>'+(o===objekt?'✓ ':'')+o+'</b></div>'}).join('')}]};
+var lichtMall=true;
+function zeige(k,ohneLeiste){akt=k;if(!k){seite.hidden=true;start();leiste('start');return}
+ var s=SEITEN[k];sTitel.textContent=s[0];sIn.innerHTML=s[1]();seite.hidden=false;sIn.scrollTop=0;
+ if(!ohneLeiste)leiste({tickets:'ticket',global:'anlagen',dienst:'dienst',symcon:'symcon'}[k]||'');
+ if(k==='qr')setTimeout(function(){if(akt!=='qr')return;sIn.innerHTML='<div class="a-karte"><b>✓ Lüftung L-04 erkannt</b><small>Anlage mit Nummer, QR und Wartung</small></div>'+karte('Filterwechsel fällig','Wartung am Donnerstag')+'<button type="button" class="a-gross" data-qrticket>Ticket anlegen</button>'},1800)}
+function neu(){if(akt)zeige(akt,true);start()}
+function toast(t){var a=q('.a-toast');if(a)a.remove();a=document.createElement('div');a.className='a-toast';a.textContent=t;S.appendChild(a);setTimeout(function(){a.remove()},2700)}
+/* Startseite */
+var kAlarm=q('.a-karte'),kTicket=qa('.a-karte')[2],kBereich=qa('.a-karte')[3];
+function start(){var offen=T.filter(function(t){return t.st!=='Erledigt'}).length;
+ if(alarm){kAlarm.className='a-karte alarm';kAlarm.innerHTML='<b>🔥 1 Alarm – bitte bestätigen</b><small>Brandmeldeanlage BM 214 · Ebene 1</small>'}
+ else{kAlarm.className='a-karte';kAlarm.innerHTML='<b>✓ Keine Alarme</b><small>Derzeit sind keine unbestätigten Alarme offen.</small>'}
+ var s=kTicket.querySelector('small');if(offen){s.className='orange';s.textContent=offen===1?'1 offenes Tagesticket':offen+' offene Tagestickets'}else{s.className='gruen';s.textContent='✓ Keine offenen Tagestickets'}
+ var m=T.filter(function(t){return t.vonMir}),mo=m.filter(function(t){return t.st!=='Erledigt'}).length;
+ kBereich.querySelector('small').textContent=!m.length?'Rückmeldung zu meinen Meldungen und Tickets':mo?(mo===1?'1 Meldung in Bearbeitung':mo+' Meldungen in Bearbeitung'):'✓ Alle meine Meldungen erledigt';
+ q('.a-marke small').textContent=objekt}
+function leiste(k){qa('.a-leiste span').forEach(function(s){s.classList.toggle('an',s.dataset.ap===k)})}
+/* antippbar machen */
+function an(el,k){if(!el)return;el.dataset.ap=k;el.setAttribute('role','button');el.tabIndex=0;el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}})}
+var z=qa('.a-zwei div');an(z[0],'alarme');an(z[1],'global');an(kAlarm,'alarme');an(q('.a-knoepfe .rot'),'meldung');an(q('.a-knoepfe .blau'),'chat');
+an(q('.a-karte.mitte'),'plaene');an(kTicket,'tickets');an(kBereich,'bereich');an(q('.a-qr'),'qr');an(q('.a-rad'),'hellDunkel');an(q('.a-marke'),'objekt');
+var L=qa('.a-leiste span'),LK=['start','dienst','anlagen','ticket','symcon'];L.forEach(function(s,i){an(s,LK[i])});
+var LZ={start:null,dienst:'dienst',anlagen:'global',ticket:'tickets',symcon:'symcon'};
+S.addEventListener('click',function(e){var t=e.target.closest('[data-ap],button,[data-ticket],[data-anlage],[data-zumplan],[data-objekt],[data-mall]');if(!t||!S.contains(t))return;var d=t.dataset;
+ if(d.ap){if(d.ap==='hellDunkel'){var w=B.dataset.app==='hell'?'dunkel':'hell';var k=document.querySelector('.held-rechts .app-schalter button[data-wahl="'+w+'"]');if(k)k.click();return}
+  if(t.parentNode.classList.contains('a-leiste')){zeige(LZ[d.ap]);return}zeige(d.ap);return}
+ if(d.wohin){M.wohin=d.wohin;neu()}else if(d.was){M.was=d.was;neu()}else if('dringend' in d){M.dringend=!M.dringend;neu()}
+ else if('senden' in d){if(!M.was)return;T.unshift({was:M.was,wohin:M.wohin,dringend:M.dringend,st:'Offen',vonMir:true});toast('✓ Gesendet – '+M.wohin+' · Tagesticket');M={wohin:'Haustechnik',was:'',dringend:false};zeige(null)}
+ else if(d.ticket){var x=T[+d.ticket];x.st=x.st==='Offen'?'In Arbeit':x.st==='In Arbeit'?'Erledigt':'Offen';neu()}
+ else if(d.sag){chat.push({ich:true,t:d.sag});neu();sIn.scrollTop=9999;setTimeout(function(){chat.push({v:'Haustechnik',t:'Alles klar, danke!'});if(akt==='chat'){neu();sIn.scrollTop=9999}},1200)}
+ else if('probe' in d){alarm=true;neu();tel.classList.remove('ruettelt');void tel.offsetWidth;tel.classList.add('ruettelt')}
+ else if('bestaetigen' in d){alarm=false;toast('✓ Alarm bestätigt');zeige(null)}
+ else if(d.anlage){var a=anlagen[+d.anlage];if(a.s==='rot'){a.s='gelb';a.w='1 unterdrückt'}else if(a.s==='gelb'){a.s='rot';a.w='1 Störung'}neu()}
+ else if('zumplan' in d){var p=document.getElementById('planDemo');if(p){p.scrollIntoView({behavior:'smooth',block:'center'});p.classList.add('pd-blitz');setTimeout(function(){p.classList.remove('pd-blitz')},1600)}}
+ else if('qrticket' in d){T.unshift({was:'Filterwechsel Lüftung L-04',wohin:'Haustechnik',dringend:false,st:'Offen',vonMir:true});toast('✓ Gesendet – Haustechnik · Tagesticket');zeige(null)}
+ else if(d.objekt){objekt=d.objekt;zeige(null)}
+ else if('mall' in d){lichtMall=!lichtMall;neu()}});
+start();})();
 </script>
 <script>
 /* Anmerkung 8: Im Haus - Reiter und Hell/Dunkel */
