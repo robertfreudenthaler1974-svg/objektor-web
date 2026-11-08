@@ -1274,6 +1274,44 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .hx-in .bw-zone{color:#fff}
 .hd-tipp[data-z]{display:none}
 #hausDemo[data-z="licht"] .hd-tipp[data-z="licht"],#hausDemo[data-z="alarm"] .hd-tipp[data-z="alarm"],#hausDemo[data-z="bew"] .hd-tipp[data-z="bew"]{display:block}
+
+/* Sicherheit + Sicherheitsbank (08.11.2026) */
+.si-weg{background:var(--karte);border:1px solid var(--rand);border-radius:16px;padding:26px;margin-bottom:20px}
+.si-reihe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px}
+.si-station{border:1px solid var(--rand);border-radius:12px;padding:16px;text-align:center;background:var(--bg)}
+.si-station small{display:block;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:1.6px;color:var(--still);margin-bottom:4px}
+.si-station b{display:block;font-size:16px}
+.si-station span{display:block;font-size:13px;color:var(--leise);margin-top:4px}
+.si-station.haus{border:2px solid var(--marke);background:var(--karte)}
+.si-station.haus small{color:var(--marke)}
+.si-pfeil{display:flex;flex-direction:column;align-items:center;font-size:11.5px;color:var(--marke);font-weight:600;white-space:nowrap}
+.si-pfeil svg{width:64px;height:16px}
+.si-fuss{margin-top:16px;font-size:14px;color:var(--leise);text-align:center}
+.si-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.si-karte{background:var(--karte);border:1px solid var(--rand);border-radius:14px;padding:22px}
+.si-sym{width:38px;height:38px;flex:0 0 38px;border-radius:10px;background:var(--firma-zart);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.si-sym svg{width:20px;height:20px;stroke:var(--marke);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.si-karte h3{font-size:17px;margin-bottom:6px;letter-spacing:-.2px}
+.si-karte p{font-size:14.5px;color:var(--leise)}
+.si-wache{margin-top:16px;background:var(--karte);border:1px solid var(--rand);border-top:4px solid var(--marke);border-radius:14px;padding:24px}
+.si-wache-kopf{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.si-wache-kopf .si-sym{width:44px;height:44px;flex-basis:44px;margin:0}
+.si-wache small{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:1.8px;color:var(--marke)}
+.si-wache h3{font-size:20px;letter-spacing:-.3px;line-height:1.25}
+.si-wache p{font-size:15px;color:var(--leise);max-width:820px}
+.si-takt{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin:16px 0}
+.si-takt div{border:1px solid var(--rand);border-radius:11px;padding:14px 16px;background:var(--bg)}
+.si-takt b{display:block;font-size:16px;margin-bottom:2px}
+.si-takt span{font-size:14px;color:var(--leise)}
+.si-takt .gross{border-color:var(--marke)}
+.si-takt .gross b{color:var(--marke)}
+.si-wache p.si-beleg{font-size:14px;font-style:italic}
+.si-bericht{margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border:1px solid var(--rand);border-left:4px solid var(--marke);border-radius:12px;padding:20px 22px;background:var(--karte)}
+.si-bericht b{display:block;font-size:16px;margin-bottom:2px}
+.si-bericht span{font-size:14px;color:var(--leise)}
+.si-knopf{display:inline-block;background:var(--marke);color:#fff;border-radius:9px;padding:11px 18px;font-size:14.5px;font-weight:600;text-decoration:none}
+@media(max-width:900px){.si-raster{grid-template-columns:1fr 1fr}.si-reihe{grid-template-columns:1fr}.si-pfeil{flex-direction:row;justify-content:center;gap:6px;margin:2px 0}.si-pfeil svg{width:28px;transform:rotate(90deg)}}
+@media(max-width:620px){.si-raster,.si-takt{grid-template-columns:1fr}}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#1e805f;--heim:#991515}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
@@ -1292,6 +1330,7 @@ section{padding:77px 0}
     <a href="#push">Push &amp; Alarm</a>
     <a href="#darstellung">Hell &amp; Dunkel</a>
     <a href="#betrieb">Vor Ort oder Cloud</a>
+    <a href="#sicherheit">Sicherheit</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
   <button class="modus-knopf" id="modusKnopf" aria-label="Hell oder Dunkel">☼</button>
@@ -1890,6 +1929,51 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       <ul><li>Die Daten bleiben im Haus</li><li>Direkt neben IP-Symcon</li><li>Kameras, Parkleitsystem, Besucherzählung</li><li>Updates kommen zentral, ohne Aufwand für Sie</li></ul></div>
     <div class="bk"><small>CLOUD</small><h3>Rechenzentrum in Deutschland</h3><p>Für Dienstleister und kleinere Objekte — ohne eigenen Server.</p>
       <ul><li>Kunden, Angebote, Aufträge mit Unterschrift</li><li>Zeiterfassung per QR-Schild am Arbeitsort</li><li>Kunden-QR: Ihr Kunde meldet ohne App</li><li>Jeder Kunde streng getrennt von allen anderen</li></ul></div>
+  </div>
+</div>
+</section>
+
+<!-- SICHERHEIT (08.11.2026) -->
+<section id="sicherheit">
+<div class="mitte">
+  <div class="kopfzeile">
+    <div class="kicker">SICHERHEIT</div>
+    <h2>Ihre Daten bleiben bei Ihnen.</h2>
+    <p>Bei der Vor-Ort-Anlage liegen Tickets, Pläne, Fotos und Benutzerkonten nur auf dem BDS-Rechner in Ihrem Haus. Der Zugriff von unterwegs ist durchgehend verschlüsselt und wird erst bei Ihnen geöffnet.</p>
+  </div>
+  <div class="si-weg">
+    <div class="si-reihe">
+      <div class="si-station"><small>UNTERWEGS</small><b>App oder Browser</b><span>Anmeldung mit zweitem Faktor</span></div>
+      <div class="si-pfeil"><svg viewBox="0 0 64 16" aria-hidden="true"><path d="M2 8h56M52 3l6 5-6 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span>verschlüsselt</span></div>
+      <div class="si-station"><small>RECHENZENTRUM DE</small><b>Nur Durchgang</b><span>reicht weiter, kann nicht mitlesen</span></div>
+      <div class="si-pfeil"><svg viewBox="0 0 64 16" aria-hidden="true"><path d="M2 8h56M52 3l6 5-6 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span>zweifach verschlüsselt</span></div>
+      <div class="si-station haus"><small>IHR HAUS</small><b>BDS-Rechner</b><span>erst hier wird entschlüsselt</span></div>
+    </div>
+    <p class="si-fuss">Ihre Anlage baut die Verbindung selbst nach außen auf. In Ihrer Firewall muss kein Port geöffnet werden.</p>
+  </div>
+  <div class="si-raster">
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div><h3>Daten nur im Haus</h3><p>Auch die Sicherungen bleiben bei Ihnen. Im Rechenzentrum liegen keine Inhalte Ihrer Anlage.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Verschlüsselt bis zu Ihnen</h3><p>Eigenes Zertifikat für Ihre Anlage, darunter ein eigener verschlüsselter Tunnel. Bewertung von SSL Labs: A+.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Zweiter Faktor für jedes Konto</h3><p>Anmeldung mit Code aus der Authenticator-App oder Link per E-Mail. Nach mehreren Fehlversuchen wird gesperrt.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg></div><h3>Gebäudetechnik abgeschottet</h3><p>Die Schnittstellen zu IP-Symcon sind von außen gesperrt. Schalten geht nur nach Anmeldung und mit dem passenden Recht.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div><h3>Nur unterschriebene Updates</h3><p>Ihre Anlage nimmt nur digital unterschriebene Programmstände an, keine älteren, und spielt sie erst auf Knopfdruck ein.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M12 12v8"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3>Läuft auch ohne Internet</h3><p>Fällt die Leitung aus, arbeitet BDS im Haus weiter. Es fehlt nur der Zugriff von unterwegs.</p></div>
+  </div>
+  <div class="si-wache">
+    <div class="si-wache-kopf">
+      <div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/><path d="M8.5 11l1.8 1.8 3.4-3.4"/></svg></div>
+      <div><small>BDS-SICHERHEITSBANK</small><h3>Wir suchen selbst nach Schwachstellen, jeden Tag.</h3></div>
+    </div>
+    <p>Unsere Sicherheitsbank prüft das System automatisch von außen, so wie ein Angreifer es sehen würde. Jeder Lauf wird protokolliert. Was sie findet, wird innerhalb fester Fristen behoben.</p>
+    <div class="si-takt">
+      <div><b>Täglich</b><span>Suche nach Schwachstellen: offene Zugänge, Zertifikate und Verschlüsselung, bekannte Lücken in den verwendeten Programmbibliotheken</span></div>
+      <div class="gross"><b>Jeden Sonntag</b><span>Großer Scan des gesamten Systems</span></div>
+    </div>
+    <p class="si-beleg">Ein Beispiel aus der Praxis: Die Sicherheitsbank hat eine öffentlich bekannte Lücke in einer Programmbibliothek gefunden. Wir haben sie behoben, bevor sie zum Problem werden konnte.</p>
+  </div>
+  <div class="si-bericht">
+    <div><b>Für Ihre IT: der ausführliche Prüfbericht</b><span>Aufbau, Verbindungen und Schutzmaßnahmen mit Beleg zu jedem Punkt, auch den bekannten Grenzen. Auf Anfrage und vertraulich.</span></div>
+    <a class="si-knopf" href="#kontakt">Prüfbericht anfragen</a>
   </div>
 </div>
 </section>
