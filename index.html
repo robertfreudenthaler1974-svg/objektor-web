@@ -405,6 +405,87 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .schau.voll>div:last-child ul{columns:2;column-gap:30px}
 .schau.voll>div:last-child li{break-inside:avoid}
 @media(max-width:760px){.schau.voll>div:last-child ul{columns:1}}
+/* Kameras zum Ausprobieren (08.11.2026) - wie Pages/KameraLive.cshtml */
+.kd{position:relative;overflow:hidden}
+.kd-defs{position:absolute;width:0;height:0;overflow:hidden}
+.kd-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.kd-kopf .bf-titel b{font-size:17px}
+.kd-alle{display:flex;gap:6px;flex-shrink:0}
+.kd-alle button,.kd-gleiste button,.kd-zurueck,.kd-blaettern button{font:600 12.5px/1 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:8px;padding:8px 11px;cursor:pointer}
+.kd-alle button:hover,.kd-gleiste button:hover,.kd-zurueck:hover,.kd-blaettern button:hover{border-color:#2F6FEF}
+.kd-ordner{margin-bottom:10px}
+.kd-leiste{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;gap:10px;cursor:pointer;background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:11px;padding:9px 14px;font-size:13px;color:var(--bf-text)}
+.kd-leiste:hover,.kd-leiste:focus-visible{border-color:#2F6FEF}
+.kd-leiste b{letter-spacing:.6px;font-size:13px}
+.kd-leiste em{font-style:normal;font-size:11.5px;border:1px solid var(--bf-rand);border-radius:999px;padding:1px 8px;color:var(--bf-leise)}
+.kd-pfeil{display:inline-block;width:14px;text-align:center;font-size:16px;line-height:1;transform:translateY(-3px);transition:transform .2s}
+.kd-sym{display:inline-flex;width:24px;height:24px;border-radius:6px;background:var(--bf-bg);border:1px solid var(--bf-rand);align-items:center;justify-content:center}
+.kd-sym svg{width:15px;height:15px;fill:none;stroke:var(--bf-leise);stroke-width:1.8;stroke-linejoin:round}
+.kd-aus{display:none;margin-left:auto;font-size:12px;color:var(--bf-leise)}
+.kd-ordner.zu .kd-aus{display:inline}
+.kd-ordner.zu .kd-pfeil{transform:rotate(-90deg) translateX(3px)}
+.kd-ordner.zu .kd-raster{display:none}
+.kd-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.kd-kachel{all:unset;box-sizing:border-box;cursor:pointer;display:block;min-width:0}
+.kd-kachel:focus-visible .kd-bild,.kd-kachel:hover .kd-bild{outline:2px solid #2F6FEF;outline-offset:1px}
+.kd-bild{position:relative;display:block;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#5C6168}
+.kd-bild svg,.kd-gbild svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.kd-fuss{display:block;font-size:11.5px;color:var(--bf-leise);padding:5px 1px 0}
+.kd-live{position:absolute;left:7px;top:7px;z-index:2;font:700 10px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.5px;color:#fff;background:#C0262D;border-radius:4px;padding:4px 6px 4px 15px}
+.kd-live:before{content:"";position:absolute;left:6px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:#fff;animation:kdPuls 1.4s ease-in-out infinite}
+.kd-zeit{position:absolute;right:7px;top:7px;z-index:2;font:600 10px/1 ui-monospace,Menlo,monospace;font-style:normal;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.7)}
+.kd-name{position:absolute;left:8px;bottom:6px;z-index:2;font-style:normal;font-size:11.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.75)}
+@keyframes kdPuls{50%{opacity:.25}}
+/* Bildinhalt */
+.kd svg .kd-l,.kd svg .kd-l path,.kd svg .kd-l ellipse,.kd svg .kd-l rect{fill:none;stroke:#E4E8EC;stroke-width:1.6;stroke-linecap:round}
+.kd-fluegel path{stroke:#F2F4F6;stroke-width:2.4;fill:none;opacity:.95;animation:kdDreh 4.5s ease-in-out infinite alternate}
+.kd-fluegel .kd-f2{animation-delay:-1.5s;opacity:.7}.kd-fluegel .kd-f3{animation-delay:-3s;opacity:.55}
+@keyframes kdDreh{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+.kd-mensch{fill:#D8DDE2;opacity:.85}
+.kd-m1{animation:kdGeh1 17s linear infinite}
+@keyframes kdGeh1{0%{transform:translate(200px,196px) scale(.5);opacity:0}8%{opacity:.85}60%{transform:translate(200px,290px) scale(1.7);opacity:.85}61%,100%{transform:translate(200px,290px) scale(1.7);opacity:0}}
+.kd-m2{animation:kdGeh2 15s linear infinite}
+@keyframes kdGeh2{from{transform:translate(-30px,225px)}to{transform:translate(430px,225px)}}
+.kd-kegel{animation:kdFlacker 5s ease-in-out infinite}
+.kd-kegel.k2{animation-delay:-1.7s}.kd-kegel.k3{animation-delay:-3.1s}.kd-kegel.k4{animation-delay:-.8s}
+@keyframes kdFlacker{0%,100%{opacity:1}50%{opacity:.82}}
+.kd-arm{transform-box:view-box;transform-origin:275px 159.5px;animation:kdArm 11s ease-in-out infinite}
+@keyframes kdArm{0%,30%{transform:rotate(0)}38%,74%{transform:rotate(-78deg)}83%,100%{transform:rotate(0)}}
+.kd-a1{animation:kdAuto1 11s ease-in-out infinite}
+@keyframes kdAuto1{0%,12%{transform:translateX(430px)}30%,40%{transform:translateX(300px)}72%,100%{transform:translateX(-200px)}}
+.kd-tor{animation:kdTor 13s ease-in-out infinite}
+@keyframes kdTor{0%,35%{transform:translateY(0)}50%,72%{transform:translateY(-150px)}88%,100%{transform:translateY(0)}}
+.kd-schein{animation:kdFlacker 2.2s ease-in-out infinite}
+.kd-stufen{animation:kdStufen .9s linear infinite}
+@keyframes kdStufen{to{stroke-dashoffset:-12.5}}
+.kd-p{fill:none;stroke:#E4E8EC;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;animation:kdPfeil 6s linear infinite}
+.kd-p2{animation-delay:-2s}.kd-p3{animation-delay:-4s}
+@keyframes kdPfeil{0%{transform:translate(70px,198px) rotate(57deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate(250px,80px) rotate(57deg);opacity:0}}
+.kd-a2{animation:kdAuto2 14s linear infinite;animation-delay:-3s}
+@keyframes kdAuto2{0%{transform:translateX(-170px)}55%,100%{transform:translateX(430px)}}
+/* gross */
+.kd-gross{display:flex;flex-direction:column;gap:10px}
+.kd.gross-an .kd-wand,.kd.gross-an .kd-kopf{display:none}
+.kd-gross[hidden]{display:none}
+.kd-gkopf{display:flex;align-items:center;gap:10px}
+.kd-gkopf b{font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kd-blaettern{display:flex;gap:6px}.kd-blaettern button{font-size:16px;padding:6px 12px}
+.kd-gbild{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#5C6168;cursor:zoom-in}
+.kd-gbild svg{transition:transform .35s ease}
+.kd-gbild.zoom{cursor:zoom-out}.kd-gbild.zoom svg{transform:scale(2.2)}
+.kd-gbild .kd-live{left:10px;top:10px;font-size:11px}.kd-gbild .kd-zeit{right:10px;top:10px;font-size:12px}
+.kd-zoomhinweis{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:2;font-style:normal;font-size:12px;color:#fff;background:rgba(0,0,0,.45);border-radius:999px;padding:5px 11px;pointer-events:none;transition:opacity .4s}
+.kd-gbild.zoom .kd-zoomhinweis{opacity:0}
+.kd-gbild.steht svg *{animation-play-state:paused!important}
+.kd-gbild.steht .kd-live{background:#5A6672}.kd-gbild.steht .kd-live:before{animation:none;border-radius:1px}
+.kd-gbild.holt:after{content:"Bild wird geholt …";position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:rgba(20,24,28,.82);color:#fff;font-size:13px}
+.kd-gleiste{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.kd-gleiste small{color:var(--bf-leise);font-size:12px;margin-left:auto}
+.kd-weg{display:inline-flex;background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:9px;padding:2px}
+.kd-weg button{border:0!important;background:transparent!important;padding:6px 10px!important;border-radius:7px!important;color:var(--bf-leise)!important}
+.kd-weg button.an{background:#2F6FEF!important;color:#fff!important}
+@media(max-width:760px){.kd-raster{grid-template-columns:1fr 1fr}.kd-kopf{flex-direction:column}.kd-gleiste small{margin-left:0;flex-basis:100%}}
+@media(max-width:420px){.kd-raster{gap:8px}.kd-name{font-size:10.5px}.kd-raster .kd-zeit{display:none}.kd-fuss{font-size:10.5px}}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1025,7 +1106,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </ol>
   <div class="bsp-leiste">
     <div class="bsp-leiste-kopf"><h3>Echte Ansichten zum Öffnen</h3><p>So sieht es im BDS aus — mit Beispieldaten, in Hell und Dunkel.</p></div>
-    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Kamerawand mit Livebildern</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Timer, Restzeit, Betriebsstunden</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Tagesverlauf und Vorjahr</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Belegung, freie Plätze, Sensoren</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Besucher seit der Reinigung</small></span><em>Öffnen ›</em></button></div>
+    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Timer, Restzeit, Betriebsstunden</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Tagesverlauf und Vorjahr</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Belegung, freie Plätze, Sensoren</small></span><em>Öffnen ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Besucher seit der Reinigung</small></span><em>Öffnen ›</em></button></div>
   </div>
   <div class="bsp-fenster" id="bspFenster" hidden>
     <div class="bsp-tafel" role="dialog" aria-modal="true" aria-labelledby="bspTitel">
@@ -1215,6 +1296,134 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       </div>
       <div class="ticketfenster" id="ticketFenster" hidden></div>
       <div class="pd-ovl" id="pdOvl" hidden><div class="pd-box" id="pdBox" role="dialog" aria-modal="true"></div></div>
+    </div>
+  </div>
+
+  <!-- Schaufenster: Kameras, zum Ausprobieren (Bild 1 vom 08.11.2026, Ablauf aus Pages/KameraLive.cshtml + wwwroot/visu-livebild.js, Mitteilung 2026-10-24-kameras) -->
+  <div class="schau voll">
+    <div>
+      <span class="etikett f">KAMERAS</span>
+      <h3>Alle freigegebenen Kameras auf einer Seite</h3>
+      <p>Probieren Sie es aus: eine <b>Ordnerleiste</b> antippen schaltet die Livebilder aus oder an, ein <b>Bild</b> antippen zeigt es groß. Genau so läuft es im BDS.</p>
+      <ul>
+        <li>Je freigegebenem Ordner eine Leiste, darunter die Livebilder</li>
+        <li>Ordner zu heißt „Livebilder aus“ — der Browser merkt sich, was zu ist</li>
+        <li>„Alle auf“ / „Alle zu“ für alle Ordner auf einmal</li>
+        <li>Bild antippen: groß, mit Standbild und Zoom ins Bild</li>
+        <li>Je Kamera WebRTC oder TCP — kommt in 8 s kein Bild, schaltet es selbst auf TCP</li>
+        <li>Welche Ordner hier stehen, legt Symcon › Kameras fest: Schalter „frei“</li>
+      </ul>
+    </div>
+    <div class="schau-bild bds-fenster kd" id="kamDemo">
+      <svg class="kd-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+        <linearGradient id="kdHg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E737B"/><stop offset="1" stop-color="#565B62"/></linearGradient>
+        <linearGradient id="kdNacht" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4F57"/><stop offset="1" stop-color="#5E636A"/></linearGradient>
+        <linearGradient id="kdKegel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE9B7" stop-opacity=".85"/><stop offset="1" stop-color="#FBE9B7" stop-opacity="0"/></linearGradient>
+        <filter id="kdWeich" x="-30%" y="-10%" width="160%" height="130%"><feGaussianBlur stdDeviation="3.2"/></filter>
+        <filter id="kdGlut" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2"/></filter>
+      </defs></svg>
+      <div class="kd-kopf">
+        <div class="bf-titel"><b>Kameras</b><small>Freigegeben wird unter Symcon › Kameras — dort trägt jeder Ordner den Schalter <b style="display:inline;font-size:inherit">frei</b>.</small></div>
+        <div class="kd-alle"><button type="button" id="kdAlleAuf">Alle auf</button><button type="button" id="kdAlleZu">Alle zu</button></div>
+      </div>
+      <div class="kd-wand" id="kdWand">
+
+        <div class="kd-ordner" data-o="eingang">
+          <button type="button" class="kd-leiste" aria-expanded="true"><span class="kd-pfeil">⌄</span><span class="kd-sym"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><b>EINGÄNGE UND ZUFAHRT</b><em>3</em><small class="kd-aus">Livebilder aus</small></button>
+          <div class="kd-raster">
+
+            <button type="button" class="kd-kachel" data-name="Eingang Nord"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdHg)"/>
+              <g class="kd-l"><path d="M0 18H400M0 30H400"/><path d="M20 30V225M380 30V225"/><path d="M345 70l18 30" opacity=".5"/></g>
+              <circle cx="200" cy="36" r="4" fill="#7FE0A8" filter="url(#kdGlut)"/>
+              <rect x="105" y="58" width="190" height="167" fill="#8E949C" opacity=".25"/>
+              <g class="kd-l"><ellipse cx="200" cy="58" rx="95" ry="13"/><ellipse cx="200" cy="58" rx="82" ry="8" opacity=".6"/><path d="M105 58V225M295 58V225"/></g>
+              <g class="kd-fluegel"><path class="kd-f1" d="M200 66V225"/><path class="kd-f2" d="M200 66V225"/><path class="kd-f3" d="M200 66V225"/></g>
+              <path class="kd-l" d="M150 200q50 14 100 0" opacity=".7"/><path d="M250 200l-9-4m9 4l-8 5" class="kd-l" opacity=".7"/>
+              <g class="kd-l kd-farn" opacity=".85"><path d="M45 225V180M45 192l-12-8M45 192l12-8M45 202l-14-8M45 202l14-8M45 212l-15-7M45 212l15-7M45 184l-9-7M45 184l9-7"/><path d="M355 225V180M355 192l-12-8M355 192l12-8M355 202l-14-8M355 202l14-8M355 212l-15-7M355 212l15-7M355 184l-9-7M355 184l9-7"/></g>
+              <g class="kd-mensch kd-m1"><circle cx="0" cy="-48" r="7"/><path d="M-8-38h16l3 26h-22z"/><path d="M-6-12v12M6-12v12" stroke="#D8DDE2" stroke-width="5" stroke-linecap="round"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Eingang Nord</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+            <button type="button" class="kd-kachel" data-name="Zufahrt Schranke"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdHg)"/>
+              <rect x="40" y="0" width="330" height="5" fill="#2E3238"/><rect x="104" y="5" width="14" height="5" fill="#2E3238"/><rect x="293" y="5" width="14" height="5" fill="#2E3238"/>
+              <path class="kd-kegel" d="M104 10h14l46 215H58z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k2" d="M293 10h14l46 215H247z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <g class="kd-auto kd-a1"><path d="M0 214v-20q2-8 12-9l24-3 18-14q6-4 14-4h44q8 0 14 5l14 13 22 3q10 1 10 10v19z" fill="#4A4F57" stroke="#E4E8EC" stroke-width="1.5"/><path d="M56 182l14-12h40l14 12z" fill="#7A818A" stroke="#E4E8EC" stroke-width="1"/><circle cx="36" cy="214" r="11" fill="#2E3238" stroke="#E4E8EC" stroke-width="1.5"/><circle cx="136" cy="214" r="11" fill="#2E3238" stroke="#E4E8EC" stroke-width="1.5"/><rect x="0" y="194" width="8" height="5" fill="#FFF4C8" filter="url(#kdGlut)"/></g>
+              <g><rect x="62" y="118" width="38" height="107" rx="4" fill="#5D626A" stroke="#E4E8EC" stroke-width="1.5"/><rect x="69" y="128" width="24" height="16" rx="2" fill="#3A3F46" stroke="#E4E8EC"/><rect x="74" y="152" width="14" height="4" rx="1" fill="#E4E8EC"/><circle cx="81" cy="170" r="5" fill="none" stroke="#E4E8EC" stroke-width="1.5"/></g>
+              <g><rect x="246" y="138" width="34" height="87" rx="4" fill="#5D626A" stroke="#E4E8EC" stroke-width="1.5"/><circle cx="263" cy="160" r="6" fill="#2E3238" stroke="#E4E8EC"/></g>
+              <g class="kd-arm"><rect x="270" y="155" width="170" height="9" rx="2" fill="#F2F2F2"/><path d="M286 159.5H440" stroke="#C9625D" stroke-width="9" stroke-dasharray="22 18"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Zufahrt Schranke</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+            <button type="button" class="kd-kachel" data-name="Garage Einfahrt"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdHg)"/>
+              <g class="kd-l"><path d="M18 225V14H382V225"/><path d="M38 225V40H362V225"/></g>
+              <rect x="40" y="42" width="320" height="183" fill="#3E4248"/>
+              <g class="kd-tor"><rect x="40" y="42" width="320" height="183" fill="#5B6067"/><g class="kd-l" opacity=".9"><path d="M40 72H360M40 102H360M40 132H360M40 162H360M40 192H360"/><rect x="52" y="49" width="64" height="16" rx="2"/><rect x="130" y="49" width="64" height="16" rx="2"/><rect x="208" y="49" width="64" height="16" rx="2"/><rect x="286" y="49" width="64" height="16" rx="2"/><rect x="52" y="79" width="64" height="16" rx="2"/><rect x="130" y="79" width="64" height="16" rx="2"/><rect x="208" y="79" width="64" height="16" rx="2"/><rect x="286" y="79" width="64" height="16" rx="2"/><rect x="52" y="109" width="64" height="16" rx="2"/><rect x="130" y="109" width="64" height="16" rx="2"/><rect x="208" y="109" width="64" height="16" rx="2"/><rect x="286" y="109" width="64" height="16" rx="2"/></g></g>
+              <rect x="0" y="0" width="400" height="41" fill="#6C7178"/><g class="kd-l"><path d="M18 41V14H382V41M38 41V40H362V41"/></g>
+              <rect x="182" y="24" width="36" height="7" rx="3" fill="#2E3238"/><circle cx="200" cy="10" r="2" fill="#E4E8EC"/>
+              <path class="kd-kegel" d="M190 31h20l80 194H110z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <g><path d="M100 225v-38q0-12 14-14l20-28q4-5 12-5h108q8 0 12 5l20 28q14 2 14 14v38z" fill="#4C5158" stroke="#E4E8EC" stroke-width="2"/><path d="M146 146h108l14 24H132z" fill="#6E747C" stroke="#E4E8EC" stroke-width="1.2"/><rect class="kd-schein" x="112" y="190" width="38" height="10" rx="4" fill="#FFF6D8" filter="url(#kdGlut)"/><rect class="kd-schein" x="250" y="190" width="38" height="10" rx="4" fill="#FFF6D8" filter="url(#kdGlut)"/><rect x="170" y="196" width="60" height="12" rx="2" fill="none" stroke="#E4E8EC"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Garage Einfahrt</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+          </div>
+        </div>
+
+        <div class="kd-ordner" data-o="halle">
+          <button type="button" class="kd-leiste" aria-expanded="true"><span class="kd-pfeil">⌄</span><span class="kd-sym"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></span><b>HALLE UND AUSSEN</b><em>3</em><small class="kd-aus">Livebilder aus</small></button>
+          <div class="kd-raster">
+
+            <button type="button" class="kd-kachel" data-name="Rolltreppe Halle"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdHg)"/>
+              <path d="M0 225L250 60H330V100H262L60 225z" fill="#7A8088" opacity=".45"/>
+              <path class="kd-stufen" d="M30 225L262 72" stroke="#E4E8EC" stroke-width="22" stroke-dasharray="1.5 11" opacity=".55" fill="none"/>
+              <g class="kd-l"><path d="M0 205L250 40H330"/><path d="M0 214L254 48H330" opacity=".6"/><path d="M60 225L262 92H330"/><path d="M330 40v60"/><path d="M330 60H400M330 92H400M380 60v40"/></g>
+              <path d="M250 40h75q9 0 9 9" stroke="#2E3238" stroke-width="5" fill="none"/><path d="M0 205L250 40" stroke="#2E3238" stroke-width="3" fill="none" opacity=".7"/>
+              <g class="kd-pfeile"><path class="kd-p kd-p1" d="M-6 4l6-8 6 8"/><path class="kd-p kd-p2" d="M-6 4l6-8 6 8"/><path class="kd-p kd-p3" d="M-6 4l6-8 6 8"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Rolltreppe Halle</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+            <button type="button" class="kd-kachel" data-name="Halle Licht"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdHg)"/>
+              <g class="kd-l"><path d="M10 0V58M130 0V58M250 0V58M370 0V58"/></g>
+              <path class="kd-kegel" d="M-6 66h32l60 159H-66z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k2" d="M114 66h32l60 159H54z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k3" d="M234 66h32l60 159H174z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k4" d="M354 66h32l60 159H294z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <g fill="#3A3F46" stroke="#E4E8EC" stroke-width="1.5"><path d="M-6 66l8-10h16l8 10z"/><path d="M114 66l8-10h16l8 10z"/><path d="M234 66l8-10h16l8 10z"/><path d="M354 66l8-10h16l8 10z"/></g>
+              <g fill="#FFF8DC" filter="url(#kdGlut)"><rect x="-2" y="64" width="24" height="4" rx="2"/><rect x="118" y="64" width="24" height="4" rx="2"/><rect x="238" y="64" width="24" height="4" rx="2"/><rect x="358" y="64" width="24" height="4" rx="2"/></g>
+              <g class="kd-mensch kd-m2"><circle cx="0" cy="-52" r="7"/><path d="M-8-42h16l3 28h-22z"/><path d="M-5-14l-4 14M5-14l4 14" stroke="#D8DDE2" stroke-width="5" stroke-linecap="round"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Halle Licht</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+            <button type="button" class="kd-kachel" data-name="Freifläche"><span class="kd-bild"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="225" fill="url(#kdNacht)"/>
+              <g fill="#E4E8EC"><circle cx="30" cy="40" r="1"/><circle cx="160" cy="22" r="1"/><circle cx="300" cy="50" r="1.2"/><circle cx="370" cy="18" r="1"/><circle cx="240" cy="30" r=".8"/></g>
+              <path class="kd-kegel" d="M108 58h28l50 167H58z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k2" d="M208 58h28l50 167H158z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <path class="kd-kegel k3" d="M368 58h28l50 167H318z" fill="url(#kdKegel)" filter="url(#kdWeich)"/>
+              <g class="kd-l"><path d="M105 225V54q0-6 6-6h14M205 225V54q0-6 6-6h14M365 225V54q0-6 6-6h14"/></g>
+              <g fill="#3A3F46" stroke="#E4E8EC" stroke-width="1.2"><rect x="110" y="50" width="26" height="8" rx="2"/><rect x="210" y="50" width="26" height="8" rx="2"/><rect x="370" y="50" width="26" height="8" rx="2"/></g>
+              <g><rect x="250" y="176" width="26" height="49" rx="3" fill="#5D626A" stroke="#E4E8EC" stroke-width="1.2"/><rect x="255" y="182" width="16" height="9" rx="1" fill="#3A3F46" stroke="#E4E8EC" stroke-width=".8"/><circle cx="258" cy="198" r="1.5" fill="#E4E8EC"/><circle cx="263" cy="198" r="1.5" fill="#E4E8EC"/><circle cx="268" cy="198" r="1.5" fill="#E4E8EC"/></g>
+              <g transform="translate(300 0)"><path d="M0 225v-18q2-7 11-8l20-3 15-11q5-3 12-3h36q7 0 12 4l11 10 18 3q8 1 8 9v17z" fill="#4A4F57" stroke="#E4E8EC" stroke-width="1.5"/><path d="M48 197l11-10h33l11 10z" fill="#7A818A" stroke="#E4E8EC"/></g>
+              <g class="kd-auto kd-a2"><path d="M0 222v-18q2-7 11-8l20-3 15-11q5-3 12-3h36q7 0 12 4l11 10 18 3q8 1 8 9v17z" fill="#565B62" stroke="#E4E8EC" stroke-width="1.5"/><path d="M48 194l11-10h33l11 10z" fill="#7A818A" stroke="#E4E8EC"/><rect x="134" y="203" width="9" height="5" fill="#FFF4C8" filter="url(#kdGlut)"/><circle cx="30" cy="222" r="9" fill="#2E3238" stroke="#E4E8EC" stroke-width="1.5"/><circle cx="114" cy="222" r="9" fill="#2E3238" stroke="#E4E8EC" stroke-width="1.5"/></g>
+            </svg><i class="kd-live">LIVE</i><i class="kd-zeit"></i><i class="kd-name">Freifläche</i></span><small class="kd-fuss">live · WebRTC · Beispielbild</small></button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="kd-gross" id="kdGross" hidden role="dialog" aria-modal="true" aria-label="Kamera groß">
+        <div class="kd-gkopf">
+          <button type="button" class="kd-zurueck" id="kdZurueck">‹ Alle Kameras</button>
+          <b id="kdGName"></b>
+          <span class="kd-blaettern"><button type="button" id="kdVor" aria-label="Vorige Kamera">‹</button><button type="button" id="kdNach" aria-label="Nächste Kamera">›</button></span>
+        </div>
+        <div class="kd-gbild" id="kdGBild"><i class="kd-live" id="kdGLive">LIVE</i><i class="kd-zeit" id="kdGZeit"></i><i class="kd-zoomhinweis" id="kdZoomHinweis">Ins Bild tippen = Zoom</i></div>
+        <div class="kd-gleiste">
+          <button type="button" id="kdStand">⏸ Standbild</button>
+          <span class="kd-weg" role="group" aria-label="Weg"><button type="button" data-weg="webrtc" class="an">WebRTC</button><button type="button" data-weg="tcp">TCP</button></span>
+          <small id="kdGFuss">live · WebRTC · Beispielbild · 1920 × 1080</small>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1847,10 +2056,47 @@ window.addEventListener('load',rollen);
 /* Anmerkung 11: Ansichten oeffnen */
 (function(){var f=document.getElementById('bspFenster');if(!f)return;var bild=document.getElementById('bspBild'),ti=document.getElementById('bspTitel'),qu=document.getElementById('bspQuelle'),akt=null,mo='dunkel';
 function zeig(){bild.src='bilder/bsp-'+akt+'-'+mo+'.webp';bild.parentNode.style.background=mo==='hell'?'#EEF1F4':'#1A1C1F';f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.classList.toggle('an',b.dataset.m===mo)})}
-document.querySelectorAll('.bsp-karte').forEach(function(k){k.addEventListener('click',function(){if(k.dataset.bsp==='tk'){var pd=document.getElementById('planDemo');pd.scrollIntoView({behavior:'smooth',block:'center'});pd.classList.add('pd-blitz');setTimeout(function(){pd.classList.remove('pd-blitz')},1600);return}akt=k.dataset.bsp;mo=document.documentElement.getAttribute('data-modus')==='dunkel'?'dunkel':'hell';ti.textContent=k.dataset.titel;qu.textContent='Aus dem echten BDS-Code: '+k.dataset.quelle+' · mit Beispieldaten';zeig();f.hidden=false;document.body.style.overflow='hidden';f.querySelector('.bsp-zu').focus()})});
+document.querySelectorAll('.bsp-karte').forEach(function(k){k.addEventListener('click',function(){var ziel={tk:'planDemo',kam:'kamDemo'}[k.dataset.bsp];if(ziel){var pd=document.getElementById(ziel);pd.scrollIntoView({behavior:'smooth',block:'center'});pd.classList.add('pd-blitz');setTimeout(function(){pd.classList.remove('pd-blitz')},1600);return}akt=k.dataset.bsp;mo=document.documentElement.getAttribute('data-modus')==='dunkel'?'dunkel':'hell';ti.textContent=k.dataset.titel;qu.textContent='Aus dem echten BDS-Code: '+k.dataset.quelle+' · mit Beispieldaten';zeig();f.hidden=false;document.body.style.overflow='hidden';f.querySelector('.bsp-zu').focus()})});
 function zu(){f.hidden=true;document.body.style.overflow=''}
 f.querySelector('.bsp-zu').addEventListener('click',zu);f.addEventListener('click',function(e){if(e.target===f)zu()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!f.hidden)zu()});
 f.querySelectorAll('.bsp-umsch button').forEach(function(b){b.addEventListener('click',function(){mo=b.dataset.m;zeig()})});})();
+</script>
+<script>
+/* Kameras zum Ausprobieren (08.11.2026) - Ablauf wie Pages/KameraLive.cshtml:
+   Leiste = Ordner auf/zu (zu = Livebilder aus, der Browser merkt es sich), Alle auf/zu,
+   Bild antippen = gross; je Kamera WebRTC oder TCP (visu-livebild.js). Bilder sind Beispielbilder. */
+(function(){var d=document.getElementById('kamDemo');if(!d)return;
+var MERK='objektor-kam-zu',ordner=[].slice.call(d.querySelectorAll('.kd-ordner')),kacheln=[].slice.call(d.querySelectorAll('.kd-kachel'));
+var gross=document.getElementById('kdGross'),gb=document.getElementById('kdGBild'),gname=document.getElementById('kdGName'),gfuss=document.getElementById('kdGFuss'),gzeit=document.getElementById('kdGZeit'),glive=document.getElementById('kdGLive'),stand=document.getElementById('kdStand');
+var akt=-1,steht=false,weg={},standZeit='';
+function lesen(){try{return JSON.parse(localStorage.getItem(MERK)||'[]')}catch(e){return[]}}
+function merken(){try{localStorage.setItem(MERK,JSON.stringify(ordner.filter(function(o){return o.classList.contains('zu')}).map(function(o){return o.dataset.o})))}catch(e){}}
+function setze(o,zu){o.classList.toggle('zu',zu);o.querySelector('.kd-leiste').setAttribute('aria-expanded',zu?'false':'true')}
+var zuListe=lesen();ordner.forEach(function(o){setze(o,zuListe.indexOf(o.dataset.o)>=0);o.querySelector('.kd-leiste').addEventListener('click',function(){setze(o,!o.classList.contains('zu'));merken()})});
+document.getElementById('kdAlleAuf').addEventListener('click',function(){ordner.forEach(function(o){setze(o,false)});merken()});
+document.getElementById('kdAlleZu').addEventListener('click',function(){ordner.forEach(function(o){setze(o,true)});merken()});
+function zwei(n){return(n<10?'0':'')+n}
+function jetzt(){var t=new Date();return zwei(t.getDate())+'.'+zwei(t.getMonth()+1)+'.'+t.getFullYear()+' '+zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
+function ticken(){var z=jetzt();d.querySelectorAll('.kd-raster .kd-zeit').forEach(function(e){e.textContent=z});gzeit.textContent=steht?standZeit:z}
+ticken();setInterval(ticken,1000);
+function fuss(){var w=weg[akt]||'webrtc';d.querySelectorAll('.kd-weg button').forEach(function(b){b.classList.toggle('an',b.dataset.weg===w)});
+ gfuss.textContent=steht?'Standbild · '+standZeit+' · Beispielbild':(w==='tcp'?'live · TCP über BDS · ca. 1 s später · Beispielbild':'live · WebRTC · Beispielbild · 1920 × 1080')}
+function zeigen(i){akt=(i+kacheln.length)%kacheln.length;var k=kacheln[akt];
+ var alt=gb.querySelector('svg');if(alt)gb.removeChild(alt);gb.insertBefore(k.querySelector('svg').cloneNode(true),gb.firstChild);
+ gname.textContent=k.dataset.name;steht=false;gb.classList.remove('steht','zoom','holt');glive.textContent='LIVE';stand.textContent='⏸ Standbild';fuss();ticken()}
+function oeffnen(i){zeigen(i);d.classList.add('gross-an');gross.hidden=false;document.getElementById('kdZurueck').focus({preventScroll:true});
+ if(d.getBoundingClientRect().top<0)d.scrollIntoView({behavior:'smooth',block:'start'})}
+function schliessen(){gross.hidden=true;d.classList.remove('gross-an');var a=gb.querySelector('svg');if(a)gb.removeChild(a);if(kacheln[akt])kacheln[akt].focus({preventScroll:true})}
+kacheln.forEach(function(k,i){k.addEventListener('click',function(){oeffnen(i)})});
+document.getElementById('kdZurueck').addEventListener('click',schliessen);
+document.getElementById('kdVor').addEventListener('click',function(){zeigen(akt-1)});
+document.getElementById('kdNach').addEventListener('click',function(){zeigen(akt+1)});
+document.addEventListener('keydown',function(e){if(gross.hidden)return;if(e.key==='Escape')schliessen();else if(e.key==='ArrowLeft')zeigen(akt-1);else if(e.key==='ArrowRight')zeigen(akt+1)});
+stand.addEventListener('click',function(){steht=!steht;if(steht)standZeit=jetzt();gb.classList.toggle('steht',steht);glive.textContent=steht?'STANDBILD':'LIVE';stand.textContent=steht?'▶ Live':'⏸ Standbild';fuss();ticken()});
+d.querySelectorAll('.kd-weg button').forEach(function(b){b.addEventListener('click',function(){if((weg[akt]||'webrtc')===b.dataset.weg)return;weg[akt]=b.dataset.weg;fuss();gb.classList.add('holt');setTimeout(function(){gb.classList.remove('holt')},b.dataset.weg==='tcp'?1100:600)})});
+gb.addEventListener('click',function(e){var s=gb.querySelector('svg');if(!s)return;if(gb.classList.contains('zoom')){gb.classList.remove('zoom');return}
+ var r=gb.getBoundingClientRect();s.style.transformOrigin=((e.clientX-r.left)/r.width*100).toFixed(1)+'% '+((e.clientY-r.top)/r.height*100).toFixed(1)+'%';gb.classList.add('zoom')});
+})();
 </script>
 <script>
 /* Anmerkung 12: Plan klickbar - Ablauf wie Pages/Ebene.cshtml (Setzen: "Was soll hier entstehen?" Meldung/Ticket)
