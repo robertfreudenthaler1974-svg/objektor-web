@@ -536,6 +536,49 @@ html[data-modus="dunkel"] .sk-marke,html[data-modus="dunkel"] .sk-zahl{color:#ff
 .a-leiste span{cursor:pointer}
 .a-tipp{font-size:12px;color:var(--leise);text-align:center;margin-top:4px}
 .a-hinweis{padding:2px 16px 8px;font-size:9.5px;color:#8B939C;text-align:center}
+/* Zuhause-Handy: Leiste unten zum Antippen (08.11.2026) */
+.z-ans{--lr-karte:#2A2D32;--lr-rand:#4E535C;--lr-text:#F2F4F6;--lr-matt:#BCC3CB;padding:0 10px;color:var(--lr-text);font-family:Inter,system-ui,sans-serif;font-size:10.5px;overflow:hidden}
+#appBild[data-app="hell"] .z-ans{--lr-karte:#FFFFFF;--lr-rand:#C9D2DB;--lr-text:#10171F;--lr-matt:#5B6775}
+.z-ans[hidden]{display:none}
+.telefon.raumbild .app-leiste span{cursor:pointer}
+.telefon.raumbild .app-leiste span:hover{filter:brightness(1.25)}
+.telefon.raumbild .r-kopf i{cursor:pointer}
+.z-titel{display:flex;justify-content:space-between;align-items:flex-end;padding:6px 2px 10px}
+.z-titel b{font-size:18px;letter-spacing:-.3px}.z-titel small{font-size:8.5px;color:var(--lr-matt)}
+.z-k{background:var(--lr-karte);border:1px solid var(--lr-rand);border-radius:11px;padding:8px 9px;margin-bottom:7px}
+.z-k[data-z]{cursor:pointer}.z-k[data-z]:hover{border-color:#E0975C}
+.z-k b{display:block;font-size:11px}.z-k small{display:block;font-size:8.5px;color:var(--lr-matt);margin-top:2px}
+.z-k .z-r{float:right;font-size:11px;font-weight:700}
+.z-lab{font-size:7.5px;letter-spacing:.09em;color:var(--lr-matt);margin:2px 2px 4px}
+.z-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:7px}
+.z-seg button{all:unset;cursor:pointer;text-align:center;font-size:9px;font-weight:700;padding:6px 2px;border-radius:8px;border:1px solid var(--lr-rand);color:var(--lr-matt)}
+.z-seg button.an{color:#fff;border-color:transparent}
+.z-seg button.an[data-al="unscharf"]{background:#2E9E6A}.z-seg button.an[data-al="zuhause"]{background:#D78A00}.z-seg button.an[data-al="scharf"]{background:#C0392B}
+.z-punkt{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.z-zwei{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.z-zwei .z-k{margin-bottom:0}
+.z-kams{display:grid;gap:7px}
+.z-kam{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#5C6168;cursor:pointer;display:block}
+.z-kam svg{position:absolute;inset:0;width:100%;height:100%}
+.z-kam .kd-live{left:6px;top:6px;font-size:8px;padding:3px 5px 3px 12px}.z-kam .kd-live:before{left:5px;width:4px;height:4px;margin-top:-2px}
+.z-kam .kd-name{font-size:9.5px;left:7px;bottom:5px}
+.z-kam .kd-zeit{font-size:8px;right:6px;top:6px}
+.z-gross .z-kam{aspect-ratio:3/4}
+.z-gross.steht svg *{animation-play-state:paused!important}
+.z-knopf{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;text-align:center;font-weight:700;font-size:10.5px;padding:9px 4px;border-radius:10px;background:#E0975C;color:#1A1C1F;margin-top:7px}
+.z-knopf.grau{background:var(--lr-karte);border:1px solid var(--lr-rand);color:var(--lr-text)}
+.z-fluss{position:relative;height:150px;margin-bottom:7px}
+.z-fluss svg{width:100%;height:100%}
+.z-fluss .z-linie{fill:none;stroke-width:2.2;stroke-dasharray:4 5;animation:zFluss 1s linear infinite}
+@keyframes zFluss{to{stroke-dashoffset:-9}}
+.z-balken{height:6px;border-radius:3px;background:var(--lr-rand);overflow:hidden;margin-top:5px}
+.z-balken i{display:block;height:100%;background:#2CC78F;border-radius:3px;transition:width .6s}
+.z-schalter{float:right;width:30px;height:17px;border-radius:9px;background:var(--lr-rand);position:relative;transition:background .2s}
+.z-schalter:after{content:"";position:absolute;left:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .2s}
+.z-schalter.an{background:#2CC78F}.z-schalter.an:after{left:15px}
+.z-raster{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.z-raster .z-k{margin:0;min-height:52px}
+.z-hinw{font-size:8.5px;color:var(--lr-matt);text-align:center;margin-top:9px}
 .pd-blitz{box-shadow:0 0 0 4px #2f6fef,var(--schatten)!important;transition:box-shadow .3s}
 .pd-plan{position:relative;aspect-ratio:1000/560;border-radius:10px;overflow:hidden;border:1px solid var(--bf-rand);background:#FBFCFD;user-select:none;-webkit-user-select:none}
 .pd-grund{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -1122,7 +1165,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
         <span><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="M17 10.5 22 7v10l-5-3.5z"/></svg>Kamera</span>
         <span><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.8h-6.6z"/></svg>Energie</span>
       </nav>
-    </div><figcaption>Zuhause · Licht mit Raumbild</figcaption></figure>
+    </div><figcaption>Zuhause · zum Antippen</figcaption></figure>
   </div>
   <div class="app-schalter" role="group" aria-label="App-Ansicht umschalten">
     <span>So sieht die App aus:</span>
@@ -1817,6 +1860,76 @@ S.addEventListener('click',function(e){var t=e.target.closest('[data-ap],button,
  else if(d.objekt){objekt=d.objekt;zeige(null)}
  else if('mall' in d){lichtMall=!lichtMall;neu()}});
 start();})();
+</script>
+<script>
+/* Zuhause-Handy: Leiste unten zum Antippen (08.11.2026) - Start, Symcon (Licht), Kamera, Energie.
+   Kamerabilder sind die Beispielbilder aus der Kamerawand weiter unten. Alles nur im Browser. */
+(function(){var tel=document.querySelector('#appBild .telefon.raumbild');if(!tel)return;var S=tel.querySelector('.schirm');
+var kopf=S.querySelector('.r-kopf'),licht=document.getElementById('lichtDemo'),pop=document.getElementById('lrPop'),nav=S.querySelector('.app-leiste');if(!kopf||!licht||!nav)return;
+var tabs=[].slice.call(nav.querySelectorAll('span')),NAMEN=['start','symcon','kamera','energie'];
+var P=document.createElement('div');P.className='z-ans';P.hidden=true;S.insertBefore(P,nav);
+var akt='licht',alarm='unscharf',rollos=true,kamAkt=-1,steht=false,wallbox=false,pv=3.8,akku=76,heute=18.4,verbr=11.2;
+var KAMS=[['Eingang Nord','Haustür'],['Garage Einfahrt','Garage'],['Freifläche','Einfahrt']];
+function zahl(x){return x.toFixed(1).replace('.',',')}
+function zwei(n){return(n<10?'0':'')+n}
+function jetzt(){var t=new Date();return zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
+function lichtText(){var e=document.getElementById('lrGesamt');return e?e.textContent:''}
+var AL={unscharf:['#2E9E6A','Unscharf — alle Melder ruhig'],zuhause:['#D78A00','Zu Hause — außen scharf'],scharf:['#C0392B','Scharf — alle Melder überwacht']};
+function knoten(x,y,f,ic,w){return'<circle cx="'+x+'" cy="'+y+'" r="19" fill="'+f+'" fill-opacity=".22" stroke="'+f+'" stroke-width="1.2"/><text x="'+x+'" y="'+(y-3)+'" font-size="10">'+ic+'</text><text x="'+x+'" y="'+(y+9)+'" font-size="8.5" font-weight="700">'+w+'</text>'}
+function titel(b,s){return'<div class="z-titel"><b>'+b+'</b>'+(s?'<small>'+s+'</small>':'')+'</div>'}
+function kopfZurueck(t){return'<div class="r-kopf" style="padding-top:2px"><i data-zurueck>‹</i><b>'+t+'</b></div>'}
+function alarmKarte(){return'<div class="z-k"><b><span class="z-punkt" style="background:'+AL[alarm][0]+'"></span>Alarmanlage</b><small>'+AL[alarm][1]+'</small><div class="z-seg">'+
+ [['unscharf','Unscharf'],['zuhause','Zu Hause'],['scharf','Scharf']].map(function(a){return'<button type="button" data-al="'+a[0]+'"'+(alarm===a[0]?' class="an"':'')+'>'+a[1]+'</button>'}).join('')+'</div></div>'}
+function kamBild(i,gross){var src=document.querySelector('#kamDemo .kd-kachel[data-name="'+KAMS[i][0]+'"] svg');
+ return'<span class="z-kam" data-kam="'+i+'">'+(src?src.outerHTML:'')+'<i class="kd-live">LIVE</i><i class="kd-zeit">'+jetzt()+'</i><i class="kd-name">'+KAMS[i][1]+'</i></span>'}
+var V={
+ start:function(){return titel('Zu Hause','Familie Muster')+alarmKarte()+
+  '<div class="z-k" data-z="licht"><span class="z-r">›</span><b>Licht</b><small>'+lichtText()+'</small></div>'+
+  '<div class="z-zwei"><div class="z-k" data-z="kamera"><b>Kameras</b><small>3 Kameras live</small></div><div class="z-k" data-z="energie"><b>Energie</b><small>Solar '+zahl(pv)+' kW</small></div></div>'+
+  '<div class="z-lab" style="margin-top:9px">HEUTE</div><div class="z-k"><b>Wetter: heute kein Regen</b><small>14 °C · Bewässerung Auto: Start um 05:30</small></div>'},
+ symcon:function(){return titel('Symcon','Zuhause · Visu')+'<div class="z-raster">'+
+  '<div class="z-k" data-z="licht"><b>Licht</b><small>'+lichtText()+'</small></div>'+
+  '<div class="z-k" data-z="start"><b>Alarmanlage</b><small><span class="z-punkt" style="background:'+AL[alarm][0]+'"></span>'+({unscharf:'Unscharf',zuhause:'Zu Hause',scharf:'Scharf'})[alarm]+'</small></div>'+
+  '<div class="z-k" data-rollo><b>Rollos</b><small>'+(rollos?'offen':'geschlossen')+'</small></div>'+
+  '<div class="z-k" data-z="hausdemo"><b>Bewässerung</b><small>Auto: Start um 05:30</small></div>'+
+  '<div class="z-k"><b>Heizung</b><small>21,5 °C</small></div>'+
+  '<div class="z-k" data-z="kamera"><b>Kameras</b><small>3 Kameras live</small></div></div>'+
+  '<div class="z-hinw">Rollos antippen: auf oder zu</div>'},
+ kamera:function(){return titel('Kameras','3 Kameras live')+'<div class="z-kams kd">'+KAMS.map(function(k,i){return kamBild(i)}).join('')+'</div>'},
+ kamgross:function(){return kopfZurueck(KAMS[kamAkt][1])+'<div class="z-gross kd'+(steht?' steht':'')+'">'+kamBild(kamAkt,true)+'</div>'+
+  '<button type="button" class="z-knopf" data-tuer>'+(kamAkt===0?'🔓 Tür öffnen':'💡 Licht ein')+'</button><button type="button" class="z-knopf grau" data-steht>'+(steht?'▶ Live':'⏸ Standbild')+'</button>'},
+ energie:function(){var haus=1.2+(wallbox?3.7:0),netz=pv-haus-(akku<100?0.4:0),zumAkku=akku<100?0.4:0;
+  return titel('Energie','jetzt')+
+  '<div class="z-fluss"><svg viewBox="0 0 220 150"><g font-family="Inter,system-ui,sans-serif" text-anchor="middle" fill="currentColor">'+
+  '<path class="z-linie" d="M58 38 L92 62" stroke="#F0B23A"/>'+(netz>=0?'<path class="z-linie" d="M128 62 L162 38" stroke="#2CC78F"/>':'<path class="z-linie" d="M162 38 L128 62" stroke="#EF5C5C"/>')+(zumAkku?'<path class="z-linie" d="M110 92 L110 108" stroke="#3B7DD8"/>':'')+
+  knoten(40,26,'#F0B23A','☀',zahl(pv)+' kW')+knoten(180,26,netz>=0?'#2CC78F':'#EF5C5C',netz>=0?'↑':'↓',zahl(Math.abs(netz))+' kW')+knoten(110,72,'#E0975C','⌂',zahl(haus)+' kW')+knoten(110,124,'#3B7DD8','▮',Math.round(akku)+' %')+
+  '<text x="40" y="62" font-size="8" opacity=".7">Solar</text><text x="180" y="62" font-size="8" opacity=".7">'+(netz>=0?'Einspeisung':'Netzbezug')+'</text><text x="148" y="76" font-size="8" opacity=".7" text-anchor="start">Haus</text><text x="140" y="128" font-size="8" opacity=".7" text-anchor="start">Akku</text>'+
+  '</g></svg></div>'+
+  '<div class="z-k"><b>Akku</b><small>'+Math.round(akku)+' % · '+(zumAkku?'wird geladen':'voll')+'</small><div class="z-balken"><i style="width:'+Math.round(akku)+'%"></i></div></div>'+
+  '<div class="z-k" data-wallbox><span class="z-schalter'+(wallbox?' an':'')+'"></span><b>Wallbox</b><small>'+(wallbox?'lädt mit 3,7 kW':'Auto laden: antippen')+'</small></div>'+
+  '<div class="z-k"><b>Heute</b><small>Erzeugt '+zahl(heute)+' kWh · Verbraucht '+zahl(verbr)+' kWh</small></div>'}};
+function zeige(v){akt=v;var l=v==='licht';kopf.hidden=!l;licht.hidden=!l;if(!l&&pop)pop.hidden=true;
+ tabs.forEach(function(t,i){t.classList.toggle('an',NAMEN[i]===(l?'symcon':v==='kamgross'?'kamera':v))});
+ if(l){P.hidden=true;return}P.style.minHeight=hoehe+'px';P.innerHTML=V[v]();P.hidden=false}
+var hoehe=0;function messen(){if(!licht.hidden)hoehe=kopf.offsetHeight+licht.offsetHeight}
+messen();window.addEventListener('resize',messen);
+tabs.forEach(function(t,i){t.setAttribute('role','button');t.tabIndex=0;t.addEventListener('click',function(){messen();var n=NAMEN[i];zeige(n==='symcon'?(akt==='licht'?'symcon':'licht'):n)});
+ t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t.click()}})});
+var zur=kopf.querySelector('i');if(zur){zur.setAttribute('role','button');zur.setAttribute('aria-label','Zurück');zur.addEventListener('click',function(){messen();zeige('symcon')})}
+P.addEventListener('click',function(e){var t=e.target.closest('[data-z],[data-al],[data-kam],[data-zurueck],[data-tuer],[data-steht],[data-rollo],[data-wallbox]');if(!t)return;var d=t.dataset;
+ if(d.z==='hausdemo'){var h=document.getElementById('zuhause');if(h)h.scrollIntoView({behavior:'smooth',block:'start'});return}
+ if(d.z){zeige(d.z);return}
+ if(d.al){alarm=d.al;zeige(akt);return}
+ if(d.kam&&akt==='kamera'){kamAkt=+d.kam;steht=false;zeige('kamgross');return}
+ if('zurueck' in d){zeige('kamera');return}
+ if('steht' in d){steht=!steht;zeige('kamgross');return}
+ if('tuer' in d){t.textContent=kamAkt===0?'✓ Tür 5 s offen':'✓ Licht ist an';t.disabled=true;setTimeout(function(){if(akt==='kamgross')zeige('kamgross')},2500);return}
+ if('rollo' in d){rollos=!rollos;zeige(akt);return}
+ if('wallbox' in d){wallbox=!wallbox;zeige(akt);return}});
+setInterval(function(){if(P.hidden)return;
+ if(akt==='kamera'||(akt==='kamgross'&&!steht))P.querySelectorAll('.kd-zeit').forEach(function(z){z.textContent=jetzt()});
+ if(akt==='energie'){pv=Math.max(2.4,Math.min(5.2,pv+(Math.random()-.5)*.3));if(akku<100)akku=Math.min(100,akku+.2);heute+=pv/1800;verbr+=(1.2+(wallbox?3.7:0))/1800;P.innerHTML=V.energie()}},2000);
+})();
 </script>
 <script>
 /* Anmerkung 8: Im Haus - Reiter und Hell/Dunkel */
