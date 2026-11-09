@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Objektor — BDS, die Software für Ihr Gebäude</title>
-<meta name="description" content="Objektor: eine App für Gebäude. Für Firmen: Tickets, Pläne zeichnen, Wartung, Wachdienst, Reinigung, Kameras, Parken und Energie. Für Zuhause: Alarmanlage, Licht, Kameras und Push über IP-Symcon. Vor Ort oder in der Cloud.">
+<title>BDS – Facility-Management-Software &amp; IP-Symcon App | Objektor</title>
+<meta name="description" content="BDS von Objektor: Facility-Management-Software mit Tickets am Plan, Wartung, Kameras und Energie – plus IP-Symcon App für Zuhause. Vor Ort oder Cloud.">
 <meta name="theme-color" content="#0F5757">
 <link rel="canonical" href="https://objektor.at/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -21,6 +21,9 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Objektor","url":"https://objektor.at/","logo":"https://objektor.at/apple-touch-icon.png","email":"kontakt@objektor.at","description":"BDS — Software für Gebäude: Dokumentation, Meldungen, Pläne, Alarme und Gebäudetechnik über IP-Symcon, für Firmen und Zuhause.","address":{"@type":"PostalAddress","streetAddress":"Wimhölzelstraße 33","postalCode":"4020","addressLocality":"Linz","addressCountry":"AT"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "BDS", "alternateName": "Betriebsdokumentationssystem", "applicationCategory": "BusinessApplication", "applicationSubCategory": "Facility-Management-Software (CAFM)", "operatingSystem": "Web-Browser, Smartphone, Tablet", "url": "https://objektor.at/", "publisher": {"@type": "Organization", "name": "Objektor", "url": "https://objektor.at/"}, "description": "Software für Gebäude: Tickets am Gebäudeplan, Wartung und Prüfnachweise, Wachdienst, Reinigung, Kameras, Parken und Energie – für Zuhause Licht, Alarmanlage, Kameras und Push über IP-Symcon. Vor Ort oder in der Cloud (Rechenzentrum in Deutschland)."}</script>
+<!-- FAQPage: gleiche Fragen wie im Abschnitt #fragen. Aendert sich dort etwas, hier mit aendern. (08.11.2026) -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Kann ich meine bestehenden Anlagen anbinden?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, über IP-Symcon: KNX, HomeMatic und viele weitere Bussysteme. Was Symcon kennt, steuern und überwachen Sie in BDS. Kameras gehen auch ohne Symcon."}}, {"@type": "Question", "name": "Brauche ich einen eigenen Server?", "acceptedAnswer": {"@type": "Answer", "text": "Nicht unbedingt. Große Objekte nehmen meist den Server im eigenen Haus, Dienstleister und kleinere Objekte die Cloud in Deutschland. Bedient wird beides gleich."}}, {"@type": "Question", "name": "Müssen alle Mitarbeiter die App installieren?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Reinigung, Fremdfirmen und Kunden melden auch per QR-Code ohne App, in 6 Sprachen."}}, {"@type": "Question", "name": "Mir fehlt eine Funktion. Was dann?", "acceptedAnswer": {"@type": "Answer", "text": "Dann bauen wir das Modul mit Ihnen: zuerst ein Entwurf zum Durchklicken, dann abstimmen, dann einbauen, in App und Browser."}}]}</script>
 <script>
 (function(){try{var t=localStorage.getItem('objektor-modus');if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dunkel':'hell'}document.documentElement.setAttribute('data-modus',t)}catch(e){document.documentElement.setAttribute('data-modus','hell')}})();
 </script>
@@ -1312,15 +1315,69 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .si-knopf{display:inline-block;background:var(--marke);color:#fff;border-radius:9px;padding:11px 18px;font-size:14.5px;font-weight:600;text-decoration:none}
 @media(max-width:900px){.si-raster{grid-template-columns:1fr 1fr}.si-reihe{grid-template-columns:1fr}.si-pfeil{flex-direction:row;justify-content:center;gap:6px;margin:2px 0}.si-pfeil svg{width:28px;transform:rotate(90deg)}}
 @media(max-width:620px){.si-raster,.si-takt{grid-template-columns:1fr}}
+
+/* Zum Inhalt springen (08.11.2026) */
+.zum-inhalt{position:absolute;left:-9999px;top:8px;z-index:10000;background:#0F5757;color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;text-decoration:none}
+.zum-inhalt:focus{left:16px}
+main:focus{outline:none}
+.nx-cta{margin:28px 0 0;text-align:center}
+.h .nx-cta .nx-voll{background:var(--heim);color:#fff}
+[data-modus="dunkel"] .h .nx-cta .nx-voll{color:#1A1C1F}
 </style>
 <style id="webbank-aussehen">:root{--marke:#0F5757;--marke-hell:#2F9E86;--firma:#1e805f;--heim:#991515}
 html[data-modus="dunkel"]{--marke:#2F9E86;--marke-hell:#4CC2B4;--firma:#438EFF;--heim:#E0975C}
 section{padding:77px 0}
 @media(max-width:760px){section{padding:55px 0}}</style>
+<style>
+/* Startseite neu (08.11.2026): Nutzen, Sicherheit, Fragen */
+.nx-knoepfe{display:flex;gap:12px;flex-wrap:wrap;margin:-6px 0 20px}
+.nx-knopf{display:inline-block;padding:13px 24px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;border:1px solid transparent}
+.nx-voll{background:var(--marke);color:#fff}
+html[data-modus="dunkel"] .nx-voll{background:var(--marke-hell);color:#04342C}
+.nx-voll:hover{filter:brightness(1.1)}
+.nx-rand{background:var(--karte);border-color:var(--rand2);color:var(--text)}
+.nx-rand:hover{border-color:var(--marke);color:var(--marke)}
+.nx-klein{padding:9px 16px;font-size:14px}
+.nx-herkunft{font-size:14.5px;color:var(--leise);display:flex;gap:10px;max-width:540px;margin-bottom:26px}
+.nx-herkunft:before{content:"";flex:none;width:8px;height:8px;margin-top:8px;border-radius:50%;background:var(--marke-hell)}
+.nx-drei{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.nx-vorteil{background:var(--karte);border:1px solid var(--rand);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.nx-bild{aspect-ratio:16/10;background:var(--bg2);border-bottom:1px solid var(--rand);overflow:hidden}
+.nx-bild img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.nx-push{background:linear-gradient(160deg,#1b2a3a,#0d1418);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px}
+.nx-pn{background:rgba(255,255,255,.88);color:#14201E;border-radius:14px;padding:10px 14px;font-size:13px;line-height:1.35;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.nx-pn small{display:flex;justify-content:space-between;gap:8px;font-size:10px;letter-spacing:.8px;color:#C62828;font-weight:700;margin-bottom:2px}
+.nx-pn b{display:block}.nx-pn span{color:#55615D}
+.nx-pn2{opacity:.7;transform:scale(.95)}
+.nx-inhalt{padding:22px 22px 20px;display:flex;flex-direction:column;flex:1}
+.nx-vorher{font-size:14px;color:var(--still);font-style:italic;margin-bottom:8px}
+.nx-vorteil h3{font-size:19px;line-height:1.3;margin-bottom:8px}
+.nx-vorteil p{color:var(--leise);font-size:15px;margin-bottom:14px}
+.nx-vorteil ul{list-style:none;margin-top:auto;border-top:1px solid var(--rand);padding-top:12px;font-size:14px;display:grid;gap:5px}
+.nx-vorteil li:before{content:"✓ ";color:var(--gruen);font-weight:700}
+.nx-faq{max-width:820px;border-top:1px solid var(--rand)}
+.nx-faq details{border-bottom:1px solid var(--rand)}
+.nx-faq summary{cursor:pointer;list-style:none;padding:18px 34px 18px 0;font-weight:600;font-size:17px;position:relative}
+.nx-faq summary::-webkit-details-marker{display:none}
+.nx-faq summary:after{content:"+";position:absolute;right:4px;top:13px;font-size:22px;color:var(--marke);font-weight:400}
+.nx-faq details[open] summary:after{content:"–"}
+.nx-faq details p{padding:0 0 20px;color:var(--leise);max-width:68ch}
+.nx-wartung{padding:14px 18px;display:flex;flex-direction:column;gap:5px;font-size:13px}
+.nx-wk{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}.nx-wk b{font-size:15px}.nx-wk span{font-size:11px;color:var(--still)}
+.nx-wz{display:grid;grid-template-columns:10px 1fr auto;gap:9px;align-items:center;background:var(--karte);border:1px solid var(--rand);border-radius:8px;padding:6px 10px}
+.nx-wz i{width:9px;height:9px;border-radius:50%}
+.nx-wz span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nx-wz em{font-style:normal;font-size:11px;font-weight:700;padding:1px 8px;border-radius:20px}
+.nx-wartung .g{background:#15803D;color:#fff}.nx-wartung .y{background:#D78A00;color:#fff}.nx-wartung .o{background:#E26A1B;color:#fff}.nx-wartung .r{background:#C62828;color:#fff}
+.nx-wf{margin-top:auto;align-self:flex-start;font-size:12px;font-weight:700;color:var(--marke)}
+@media(max-width:900px){.nx-drei{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
-<script type="application/json" id="webbank-bewegung">[{"wo":"body > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1)","art":"rein"},{"wo":"#trennung > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1) > img:nth-of-type(1)","art":"zoom"}]</script>
+<script type="application/json" id="webbank-bewegung">[{"wo":"#inhalt > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1)","art":"rein"},{"wo":"#trennung > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1) > img:nth-of-type(1)","art":"zoom"}]</script>
 
+<a class="zum-inhalt" href="#inhalt">Zum Inhalt springen</a>
 <header>
 <div class="mitte kopf">
   <a class="marke" href="#oben"><i></i>Objektor</a>
@@ -1337,13 +1394,14 @@ section{padding:77px 0}
   <button class="nav-knopf" id="navKnopf" aria-label="Menü">Menü</button>
 </div>
 </header>
+<main id="inhalt" tabindex="-1">
 <div id="oben"></div>
 
 <div class="held">
 <div class="mitte held-raster">
   <div>
     <div class="kicker">BDS · BETRIEBSDOKUMENTATIONSSYSTEM</div>
-    <h1>Eine Software, die Ihr Gebäude zusammenführt.</h1>
+    <h1>Ihr Gebäude. Ihre Abläufe. Eine App.</h1>
     <script>/* Ueberschrift: Buchstaben kommen aus einer unsichtbaren Wand rechts (07.11.2026) */
 (function(){var h=document.currentScript.previousElementSibling;if(!h||!document.documentElement.classList.contains('js-bew'))return;
 var t=h.textContent,bs=[];h.setAttribute('aria-label',t);h.textContent='';
@@ -1353,7 +1411,9 @@ h.classList.add('buchst');var fertig=false;
 function los(){if(fertig)return;fertig=true;var wand=h.getBoundingClientRect().right;
 bs.forEach(function(b,i){var r=b.getBoundingClientRect();b.style.setProperty('--weg',Math.ceil(wand-r.left+2)+'px');b.style.animationDelay=(0.1+i*0.045).toFixed(3)+'s'});h.classList.add('los')}
 try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
-    <p class="blei"><b>BDS</b> vereint, was sonst in vielen Programmen steckt: Dokumentation, Meldungen, Pläne, Alarme — und über IP-Symcon die ganze Gebäudetechnik. Am Handy, am Tablet und im Browser.</p>
+    <p class="blei">Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.</p>
+    <div class="nx-knoepfe"><a class="nx-knopf nx-voll" href="#kontakt">Demo-Termin vereinbaren</a><a class="nx-knopf nx-rand" href="#trennung">Selbst ausprobieren</a></div>
+    <p class="nx-herkunft">Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.</p>
     <ul class="kann">
       <li><b>Bussysteme</b><span>über IP-Symcon: HomeMatic, KNX und viele mehr</span></li>
       <li><b>Daten</b><span>Solar, Energie und Wasser, Besucherzählung, Parkzählung</span></li>
@@ -1429,6 +1489,56 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   <div><b data-zahl="2">2</b><span>Wege: vor Ort oder Cloud</span></div>
 </div></div>
 
+<!-- Nutzen: drei Probleme (08.11.2026) -->
+<section class="nx-nutzen" id="nutzen">
+<div class="mitte">
+  <div class="kopfzeile">
+    <div class="kicker">WAS SICH ÄNDERT</div>
+    <h2>Drei Probleme, die BDS im Alltag löst</h2>
+    <p>Nicht noch eine Funktionsliste, sondern was danach anders ist.</p>
+  </div>
+  <div class="nx-drei">
+    <article class="nx-vorteil">
+      <div class="nx-bild"><img src="bilder/bsp-tk-hell.webp" alt="Tickets am Gebäudeplan" loading="lazy" width="448" height="252"></div>
+      <div class="nx-inhalt">
+        <div class="nx-vorher">„Wo genau? Wer kümmert sich? Gibt’s ein Foto?“</div>
+        <h3>Störung gemeldet, Ort klar, Zuständige informiert</h3>
+        <p>Foto machen, Punkt am Plan setzen, absenden. Das Ticket geht an das richtige Gewerk, und alle sehen den Stand.</p>
+        <ul><li>Meldung mit Foto oder Video</li><li>Ort als Punkt am Gebäudeplan</li><li>Wartungsfirma antwortet im Ticket-Chat</li></ul>
+      </div>
+    </article>
+    <article class="nx-vorteil">
+      <div class="nx-bild nx-push" aria-hidden="true">
+        <div class="nx-pn"><small><span>OBJEKTOR · KRITISCHER ALARM</span> <span>jetzt</span></small><b>Brandmeldeanlage BM 214</b><span>Ebene 1 · Ton auch bei stumm</span></div>
+        <div class="nx-pn nx-pn2"><small><span>OBJEKTOR · KRITISCHER ALARM</span> <span>vor 5 min</span></small><b>Brandmeldeanlage BM 214</b><span>2. Erinnerung</span></div>
+      </div>
+      <div class="nx-inhalt">
+        <div class="nx-vorher">„Den Alarm hat in der Nacht niemand gehört.“</div>
+        <h3>Kein Alarm geht verloren, auch nachts</h3>
+        <p>Kritische Alarme klingeln auch bei stummem iPhone und wiederholen sich, bis jemand reagiert. Verteilt nach Dienstplan.</p>
+        <ul><li>Brandmelder, Alarmanlage, Störungen</li><li>Erinnerung alle 5 Minuten</li><li>Sichtbar, wer Push aktiv hat</li></ul>
+      </div>
+    </article>
+    <article class="nx-vorteil">
+      <div class="nx-bild nx-wartung" aria-hidden="true">
+        <div class="nx-wk"><b>Wartung</b><span>Beispieldaten</span></div>
+        <div class="nx-wz"><i class="g"></i><span>Lüftung L-04 · Filterwechsel</span><em class="g">pünktlich</em></div>
+        <div class="nx-wz"><i class="y"></i><span>Brandschutzklappen Ebene 1</span><em class="y">fällig</em></div>
+        <div class="nx-wz"><i class="o"></i><span>Drehtür Eingang Nord</span><em class="o">verspätet</em></div>
+        <div class="nx-wz"><i class="r"></i><span>Notbeleuchtung Parkdeck</span><em class="r">versäumt</em></div>
+        <div class="nx-wf">⤓ Prüfnachweis als PDF</div>
+      </div>
+      <div class="nx-inhalt">
+        <div class="nx-vorher">„Wann wurde der Filter zuletzt getauscht?“</div>
+        <h3>Wartung und Prüfungen jederzeit nachweisbar</h3>
+        <p>Fällige, verspätete und erledigte Wartungen auf einen Blick, mit Prüfnachweis als PDF, wenn Behörde oder Versicherung fragt.</p>
+        <ul><li>Wartung: pünktlich, verspätet, fällig</li><li>Prüfnachweise als PDF</li><li>Wasser und Energie mit Vorjahr</li></ul>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
 <!-- Angepasst (Anmerkung 5) -->
 <section class="trennung" id="trennung">
 <div class="mitte">
@@ -1445,7 +1555,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </ol>
   <div class="bsp-leiste">
     <div class="bsp-leiste-kopf"><h3>Echte Ansichten zum Öffnen</h3><p>So sieht es im BDS aus — mit Beispieldaten, in Hell und Dunkel.</p></div>
-    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Selbst ausprobieren: Timer und Stunden</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Selbst ausprobieren: Tage und Verlauf</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Selbst ausprobieren: live und reservieren</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Selbst ausprobieren: Ampel und Reinigung</small></span><em>Ausprobieren ›</em></button></div>
+    <div class="bsp-raster"><button type="button" class="bsp-karte" data-bsp="tk" data-titel="Tickets am Plan" data-quelle="Pages/Ebene.cshtml"><img src="bilder/bsp-tk-klein.webp" alt="Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung" loading="lazy" width="448" height="252"><span><b>Tickets am Plan</b><small>Selbst ausprobieren: setzen und zeichnen</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="kam" data-titel="Kameras" data-quelle="Pages/ParkenKamera.cshtml · visu-livebild.js — Beispielbilder"><img src="bilder/bsp-kam-klein.webp" alt="Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich" loading="lazy" width="448" height="252"><span><b>Kameras</b><small>Selbst ausprobieren: Ordner und groß</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="fh" data-titel="Flächenheizung" data-quelle="wwwroot/visu-freiheizung.js"><img src="bilder/bsp-fh-klein.webp" alt="Freiflächenheizung: drei Zonen mit Status, Timer und Betriebsstunden" loading="lazy" width="448" height="252"><span><b>Flächenheizung</b><small>Selbst ausprobieren: Timer und Stunden</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="bes" data-titel="Besucherzählung" data-quelle="Pages/Besucher.cshtml · besucher-kurve.js"><img src="bilder/bsp-bes-klein.webp" alt="Besucherzählung mit Tageskurve und Vergleich zu Vorwoche und Vorjahr" loading="lazy" width="448" height="252"><span><b>Besucherzählung</b><small>Selbst ausprobieren: Tage und Verlauf</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="pu" data-titel="Parken" data-quelle="Pages/ParkenUebersicht.cshtml"><img src="bilder/bsp-pu-klein.webp" alt="Parken-Übersicht: Belegung in Prozent, freie Plätze je Parkhaus und gestörte Sensoren" loading="lazy" width="448" height="252"><span><b>Parken</b><small>Selbst ausprobieren: live und reservieren</small></span><em>Ausprobieren ›</em></button><button type="button" class="bsp-karte" data-bsp="mw" data-titel="WC-Reinigungsmatrix" data-quelle="Pages/MatrixWc.cshtml · matrix-wc.js"><img src="bilder/bsp-mw-klein.webp" alt="WC-Reinigungsmatrix mit Besucherzahl und fälligen Reinigungen je WC-Anlage" loading="lazy" width="448" height="252"><span><b>WC-Reinigungsmatrix</b><small>Selbst ausprobieren: Ampel und Reinigung</small></span><em>Ausprobieren ›</em></button></div>
   </div>
   <div class="bsp-fenster" id="bspFenster" hidden>
     <div class="bsp-tafel" role="dialog" aria-modal="true" aria-labelledby="bspTitel">
@@ -1797,6 +1907,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       </ul>
     </div>
   </div>
+<p class="nx-cta"><a class="nx-knopf nx-voll" href="#kontakt">Ihr Objekt besprechen — unverbindlich</a></p>
 </div>
 </section>
 
@@ -1859,6 +1970,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       </ul>
     </div>
   </div>
+<p class="nx-cta"><a class="nx-knopf nx-voll" href="#kontakt">Ihr Zuhause besprechen — unverbindlich</a></p>
 </div>
 </section>
 
@@ -1979,6 +2091,22 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
 </section>
 
 <!-- KONTAKT -->
+<!-- Häufige Fragen (08.11.2026) -->
+<section class="nx-fragen" id="fragen">
+<div class="mitte">
+  <div class="kopfzeile">
+    <div class="kicker">HÄUFIGE FRAGEN</div>
+    <h2>Was Kunden vorher wissen wollen</h2>
+  </div>
+  <div class="nx-faq">
+    <details open><summary>Kann ich meine bestehenden Anlagen anbinden?</summary><p>Ja, über IP-Symcon: KNX, HomeMatic und viele weitere Bussysteme. Was Symcon kennt, steuern und überwachen Sie in BDS. Kameras gehen auch ohne Symcon.</p></details>
+    <details><summary>Brauche ich einen eigenen Server?</summary><p>Nicht unbedingt. Große Objekte nehmen meist den Server im eigenen Haus, Dienstleister und kleinere Objekte die Cloud in Deutschland. Bedient wird beides gleich.</p></details>
+    <details><summary>Müssen alle Mitarbeiter die App installieren?</summary><p>Nein. Reinigung, Fremdfirmen und Kunden melden auch per QR-Code ohne App, in 6 Sprachen.</p></details>
+    <details><summary>Mir fehlt eine Funktion. Was dann?</summary><p>Dann bauen wir das Modul mit Ihnen: zuerst ein Entwurf zum Durchklicken, dann abstimmen, dann einbauen, in App und Browser.</p></details>
+  </div>
+</div>
+</section>
+
 <section id="kontakt">
 <div class="mitte">
   <div class="kontakt-feld">
@@ -1991,6 +2119,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </div>
 </div>
 </section>
+</main>
 
 <div class="hg" id="formularHg">
   <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlgTitel">
