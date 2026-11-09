@@ -2064,7 +2064,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
   </div>
   <div class="si-raster">
     <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div><h3>Daten nur im Haus</h3><p>Auch die Sicherungen bleiben bei Ihnen. Im Rechenzentrum liegen keine Inhalte Ihrer Anlage.</p></div>
-    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Verschlüsselt bis zu Ihnen</h3><p>Eigenes Zertifikat für Ihre Anlage, darunter ein eigener verschlüsselter Tunnel. Bewertung von SSL Labs: A+.</p></div>
+    <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Verschlüsselt bis zu Ihnen</h3><p>Eigenes Zertifikat für Ihre Anlage, darunter ein eigener verschlüsselter Tunnel. Ihre Anlage erreicht bei SSL Labs die Bestnote A+.</p></div>
     <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Zweiter Faktor für jedes Konto</h3><p>Anmeldung mit Code aus der Authenticator-App oder Link per E-Mail. Nach mehreren Fehlversuchen wird gesperrt.</p></div>
     <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg></div><h3>Gebäudetechnik abgeschottet</h3><p>Die Schnittstellen zu IP-Symcon sind von außen gesperrt. Schalten geht nur nach Anmeldung und mit dem passenden Recht.</p></div>
     <div class="si-karte"><div class="si-sym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div><h3>Nur unterschriebene Updates</h3><p>Ihre Anlage nimmt nur digital unterschriebene Programmstände an, keine älteren, und spielt sie erst auf Knopfdruck ein.</p></div>
@@ -2125,11 +2125,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
     <button class="dlg-zu" id="formularZu" aria-label="Schließen">&times;</button>
     <h2 id="dlgTitel">Terminanfrage</h2>
     <p class="dlg-blei">Schreiben Sie kurz, worum es geht — ich melde mich innerhalb eines Werktags.</p>
-    <form action="https://formsubmit.co/kontakt@objektor.at" method="POST">
-      <input type="hidden" name="_subject" value="Terminanfrage über objektor.at">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://objektor.at/danke.html">
-      <input type="text" name="_honey" style="display:none">
+    <form id="anfrageForm" action="mailto:kontakt@objektor.at?subject=Terminanfrage%20%C3%BCber%20objektor.at" method="POST" enctype="text/plain">
       <label for="f-art">Wofür?</label>
       <select id="f-art" name="Art" style="width:100%;padding:11px 13px;border:1px solid #C8D1CE;border-radius:7px;font-size:15px;font-family:inherit;background:#fff;color:#16211F"><option>Firma / Objekt</option><option>Zuhause</option></select>
       <label for="f-name">Name</label>
@@ -2142,8 +2138,9 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       <input id="f-tel" type="tel" name="Telefon" autocomplete="tel">
       <label for="f-text">Worum geht es?</label>
       <textarea id="f-text" name="Nachricht" rows="5" required placeholder="Art des Objekts oder Hauses, was Sie interessiert, was vorhanden ist (z. B. Symcon, Alarmanlage, Kameras)."></textarea>
-      <label class="zustimmung"><input type="checkbox" required> Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. <a href="datenschutz.html">Datenschutz</a></label>
+      <p class="dlg-blei" style="margin:14px 0 0;font-size:13px">Beim Senden öffnet sich Ihr E-Mail-Programm mit der fertigen Nachricht. Sie geht direkt an uns, ohne fremden Dienst dazwischen. <a href="datenschutz.html">Datenschutz</a></p>
       <button type="submit" class="knopf knopf-voll dlg-senden">Anfrage senden</button>
+      <p id="anfrageOffen" class="dlg-blei" role="status" style="display:none;margin:12px 0 0;font-weight:600">Ihr E-Mail-Programm sollte sich jetzt geöffnet haben. Bitte dort auf „Senden“ drücken.</p>
       <p class="dlg-fuss">Lieber direkt schreiben? kontakt@objektor.at</p>
     </form>
   </div>
@@ -2171,6 +2168,17 @@ document.getElementById('formularAuf').onclick=function(){hg.classList.add('auf'
 document.getElementById('formularZu').onclick=zu;
 hg.onclick=function(e){if(e.target===hg)zu()};
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&hg.classList.contains('auf'))zu()});
+/* Terminanfrage (09.11.2026): kein fremder Dienst - die Nachricht wird im E-Mail-Programm des Besuchers fertig vorbereitet */
+var af=document.getElementById('anfrageForm');
+if(af)af.addEventListener('submit',function(e){e.preventDefault();
+ function w(id){var x=document.getElementById(id);return x?x.value.trim():''}
+ var z=['Wofür: '+w('f-art'),'Name: '+w('f-name')];
+ if(w('f-firma'))z.push('Firma / Objekt: '+w('f-firma'));
+ z.push('E-Mail: '+w('f-mail'));
+ if(w('f-tel'))z.push('Telefon: '+w('f-tel'));
+ z.push('','Worum geht es?',w('f-text'));
+ location.href='mailto:kontakt@objektor.at?subject='+encodeURIComponent('Terminanfrage über objektor.at')+'&body='+encodeURIComponent(z.join('\r\n'));
+ var o=document.getElementById('anfrageOffen');if(o)o.style.display='block'});
 
 /* Hell/Dunkel-Stufen - Werte wie in der App (app-shell.css) */
 var S={
