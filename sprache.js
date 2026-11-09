@@ -4,7 +4,11 @@
    Texte mit " · " -> Stueck fuer Stueck. Was nicht im Woerterbuch steht, bleibt deutsch.
    Texte, die die Seite spaeter selbst schreibt (Vorfuehrungen), werden laufend mit uebersetzt.
    Die Wahl merkt sich der Browser (objektor-sprache); ?lang=en usw. geht auch.
-   Neuer oder geaenderter deutscher Text -> in sprache-en.js / -it.js / -cs.js nachtragen. */
+   Neuer oder geaenderter deutscher Text -> in sprache-en.js / -it.js / -cs.js nachtragen.
+   09.11.2026 Eigene Adressen fuer Google: Steht im Kopf <link rel="alternate" hreflang="en" ...>,
+   hat diese Sprache eine eigene fertige Seite (z. B. /en/, gebaut von werkzeuge/sprachseiten.js).
+   Die Flagge springt dann dorthin statt umzuschalten; auf /en/ gilt immer Englisch.
+   Suchmaschinen bekommen die Startseite immer deutsch (keine Umschaltung nach Browsersprache). */
 (function(){
 var D=document,H=D.documentElement,MERK='objektor-sprache';
 var SPR=[
@@ -16,15 +20,27 @@ var SPR=[
  {k:'sr',n:'Srpski',f:'<svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1.333" fill="#0C4076"/><rect width="3" height=".667" fill="#C6363C"/></svg>'}];
 var KEYS=SPR.map(function(s){return s.k});
 var basis=(function(){var s=D.currentScript&&D.currentScript.src||'';return s.replace(/sprache\.js(\?.*)?$/,'')})();
-function gewuenscht(){var k=null;try{var m=/[?&]lang=([a-z]{2})/.exec(location.search);if(m)k=m[1]}catch(e){}
- if(!k){try{k=localStorage.getItem(MERK)}catch(e){}}
- if(!k){var n=(navigator.languages&&navigator.languages[0]||navigator.language||'de').slice(0,2).toLowerCase();k=n}
+/* Sprachen mit eigener Seite (aus den hreflang-Verweisen im Kopf) und Sprache dieser Seite */
+var EIGEN={},SEITE=(H.getAttribute('lang')||'de').slice(0,2).toLowerCase();
+try{D.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function(l){var k=l.getAttribute('hreflang');if(KEYS.indexOf(k)>=0)EIGEN[k]=l.getAttribute('href')})}catch(e){}
+if(!EIGEN[SEITE])EIGEN={};
+var BOT=/bot|crawl|spider|slurp|lighthouse|headless|preview|facebookexternalhit/i.test(navigator.userAgent||'');
+function adresse(k){var h=EIGEN[k];if(!h)return null;try{var p=new URL(h,location.href).pathname.replace(/^\//,'');
+ var z=new URL(p,new URL(basis||'./',location.href).href);if(z.protocol==='file:'&&/\/$/.test(z.pathname))z.pathname+='index.html';return z.href}catch(e){return h}}
+/* zur Seite der Sprache k springen; true = es wird gesprungen */
+function springen(k,ersetzen){if(BOT||!EIGEN[SEITE]||k===SEITE)return false;var z=adresse(k);
+ if(!z){if(SEITE==='de')return false;z=adresse('de');if(!z)return false;z+=(z.indexOf('?')<0?'?':'&')+'lang='+k}
+ z+=location.hash||'';H.classList.add('spr-warte');if(ersetzen)location.replace(z);else location.href=z;return true}
+function gewuenscht(){var k=null;try{var m=/[?&]lang=([a-z]{2})/.exec(location.search);if(m){k=m[1];if(KEYS.indexOf(k)>=0)try{localStorage.setItem(MERK,k)}catch(e){}}}catch(e){}
+ if(!k&&EIGEN[SEITE]&&SEITE!=='de')return SEITE;
+ if(!k&&!BOT){try{k=localStorage.getItem(MERK)}catch(e){}}
+ if(!k&&!BOT){var n=(navigator.languages&&navigator.languages[0]||navigator.language||'de').slice(0,2).toLowerCase();k=n}
  return KEYS.indexOf(k)>=0?k:'de'}
 var benutzt=false,akt='de',W=null,R=[],ORIG=new WeakMap(),beob=null,laden={};
 var ATTR=['aria-label','alt','title','placeholder'];
 /* bis die Sprache da ist, Seite kurz verdecken (hoechstens 1,5 s) */
 var start=gewuenscht();
-if(start!=='de'){H.classList.add('spr-warte');setTimeout(function(){H.classList.remove('spr-warte')},1500)}
+if(start!==SEITE){H.classList.add('spr-warte');setTimeout(function(){H.classList.remove('spr-warte')},1500)}
 var st=D.createElement('style');st.textContent='html.spr-warte body{opacity:0}'+
 '.sprachwahl{display:flex;gap:4px;align-items:center}'+
 '.sprachwahl button{all:unset;box-sizing:border-box;cursor:pointer;width:30px;height:24px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid transparent;opacity:.55;transition:opacity .15s,border-color .15s}'+
@@ -85,7 +101,7 @@ function anwenden(){var d=akt==='de'?null:window.objektorSprache&&window.objekto
 function holen(k,fertig){if(k==='de'||(window.objektorSprache&&window.objektorSprache[k]))return fertig();
  if(laden[k]){laden[k].push(fertig);return}laden[k]=[fertig];var s=D.createElement('script');s.src=basis+'sprache-'+k+'.js';
  s.onload=function(){laden[k].forEach(function(f){f()});delete laden[k]};s.onerror=function(){delete laden[k];H.classList.remove('spr-warte')};(D.head||H).appendChild(s)}
-function waehlen(k){try{localStorage.setItem(MERK,k)}catch(e){}akt=k;knoepfe();holen(k,anwenden)}
+function waehlen(k){try{localStorage.setItem(MERK,k)}catch(e){}if(springen(k,false))return;akt=k;knoepfe();holen(k,anwenden)}
 function knoepfe(){D.querySelectorAll('.spr-alle button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===akt?'true':'false')});var a=SPR.filter(function(x){return x.k===akt})[0]||SPR[0];D.querySelectorAll('.spr-akt').forEach(function(t){t.innerHTML=a.f+'<i>▾</i>';t.title=a.n})}
 function leiste(){var kopf=D.querySelector('header .kopf');if(!kopf||kopf.querySelector('.sprachwahl'))return;
  var w=D.createElement('div');w.className='sprachwahl';w.setAttribute('role','group');w.setAttribute('aria-label','Sprache · Language');
@@ -97,6 +113,7 @@ function leiste(){var kopf=D.querySelector('header .kopf');if(!kopf||kopf.queryS
  SPR.forEach(function(s){var b=D.createElement('button');b.type='button';b.dataset.k=s.k;b.title=s.n;b.setAttribute('aria-label',s.n);b.setAttribute('lang',s.k);b.innerHTML=s.f+'<span class="spr-n">'+s.n+'</span>';
   b.addEventListener('click',function(){w.classList.remove('offen');if(akt!==s.k)waehlen(s.k)});alle.appendChild(b)});
  var vor=kopf.querySelector('.modus-knopf');kopf.insertBefore(w,vor||null)}
+if(springen(start,true))return;
 akt=start;holen(start,function(){if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',anwenden);else anwenden()});
 function los(){leiste();knoepfe()}
 if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',los);else los();
