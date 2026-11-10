@@ -3112,7 +3112,7 @@ function lLang(){return tag0(lT0+108000)-lT0}
 function lKlemmen(wer){var g=Math.min(lT0+lLang(),Date.now()/1000);
  if(wer==='von'){lVon=Math.max(lT0,Math.min(lVon,g-L_MIN));lBis=Math.min(g,Math.max(lBis,lVon+L_MIN))}
  else{lBis=Math.min(g,Math.max(lBis,lT0+L_MIN));lVon=Math.max(lT0,Math.min(lVon,lBis-L_MIN))}}
-function lStandard(){var nun=Date.now()/1000,pos=absNun(),live=versatz>-3&&!steht;lBis=live?nun:Math.min(nun,pos+600);lVon=lBis-600;lT0=tag0(lBis-1);lKlemmen('bis')}
+function lStandard(){var nun=Date.now()/1000,pos=absNun(),live=versatz>-3&&!steht;lBis=live?nun:Math.min(nun,pos+3600);lVon=lBis-3600;lT0=tag0(lBis-1);lKlemmen('bis')}
 function lMarken(){lMk.innerHTML='';var L=lLang(),nun=Date.now()/1000;ereignisse().forEach(function(e){var a=nun+e.t;if(a<lT0||a>lT0+L)return;var i=document.createElement('i');i.className=e.a;i.style.left=((a-lT0)/L*100).toFixed(2)+'%';lMk.appendChild(i)})}
 function lMalen(){var L=lLang(),nun=Date.now()/1000,g=Math.min(L,nun-lT0),pa=(lVon-lT0)/L*100,pb=(lBis-lT0)/L*100;
  lA.max=lB.max=L;lA.value=Math.round(lVon-lT0);lB.value=Math.round(lBis-lT0);
