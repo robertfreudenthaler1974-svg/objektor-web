@@ -662,7 +662,7 @@ window.objektorSprache.en={t:{
 "Wartung: pünktlich, verspätet, fällig, versäumt": "Maintenance: on time, late, due, missed",
 "Das Modul kommt in Ihr BDS — in App und Browser.": "The module goes into your BDS — in app and browser.",
 "Foto, Galerie oder Video — Foto gleich markieren": "Photo, gallery or video — mark the photo right away",
-"Jeder Melder als Raum: grün ruhig, rot ausgelöst": "Every detector as a room: green quiet, red triggered",
+"Jeder Melder als Raum: grün unscharf, orange Zu Hause, rot scharf": "Every detector as a room: green disarmed, orange home, red armed",
 "Ticket setzen, zeichnen, senden — direkt am Plan": "Place, draw, send a ticket — right on the plan",
 "Wer für Daten in der Software verantwortlich ist": "Who is responsible for data in the software",
 "Für große Objekte und Häuser mit eigener Technik.": "For large properties and houses with their own technology.",

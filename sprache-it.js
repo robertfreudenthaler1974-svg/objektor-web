@@ -662,7 +662,7 @@ window.objektorSprache.it={t:{
 "Wartung: pünktlich, verspätet, fällig, versäumt": "Manutenzione: puntuale, in ritardo, scaduta, saltata",
 "Das Modul kommt in Ihr BDS — in App und Browser.": "Il modulo entra nel suo BDS — in app e browser.",
 "Foto, Galerie oder Video — Foto gleich markieren": "Foto, galleria o video — marcare subito la foto",
-"Jeder Melder als Raum: grün ruhig, rot ausgelöst": "Ogni rilevatore come stanza: verde tranquillo, rosso scattato",
+"Jeder Melder als Raum: grün unscharf, orange Zu Hause, rot scharf": "Ogni rilevatore come stanza: verde disinserito, arancione in casa, rosso inserito",
 "Ticket setzen, zeichnen, senden — direkt am Plan": "Posizionare, disegnare, inviare un ticket — direttamente sulla pianta",
 "Wer für Daten in der Software verantwortlich ist": "Chi è responsabile dei dati nel software",
 "Für große Objekte und Häuser mit eigener Technik.": "Per grandi strutture e case con tecnica propria.",

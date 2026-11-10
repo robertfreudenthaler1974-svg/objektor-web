@@ -662,7 +662,7 @@ window.objektorSprache.cs={t:{
 "Wartung: pünktlich, verspätet, fällig, versäumt": "Údržba: včas, pozdě, splatná, zmeškaná",
 "Das Modul kommt in Ihr BDS — in App und Browser.": "Modul přijde do vašeho BDS — v aplikaci i prohlížeči.",
 "Foto, Galerie oder Video — Foto gleich markieren": "Fotka, galerie nebo video — fotku hned označit",
-"Jeder Melder als Raum: grün ruhig, rot ausgelöst": "Každé čidlo jako místnost: zelená klid, červená spuštěno",
+"Jeder Melder als Raum: grün unscharf, orange Zu Hause, rot scharf": "Každé čidlo jako místnost: zelená odjištěno, oranžová doma, červená zajištěno",
 "Ticket setzen, zeichnen, senden — direkt am Plan": "Umístit, nakreslit, odeslat tiket — přímo v plánu",
 "Wer für Daten in der Software verantwortlich ist": "Kdo odpovídá za data v softwaru",
 "Für große Objekte und Häuser mit eigener Technik.": "Pro velké objekty a domy s vlastní technikou.",

@@ -945,7 +945,7 @@ window.objektorSprache.hu={t:{
 "Wartung: pünktlich, verspätet, fällig, versäumt": "Karbantartás: időben, késve, esedékes, elmulasztva",
 "Das Modul kommt in Ihr BDS — in App und Browser.": "A modul bekerül a BDS-be — appban és böngészőben.",
 "Foto, Galerie oder Video — Foto gleich markieren": "Fotó, galéria vagy videó — a fotó azonnal megjelölhető",
-"Jeder Melder als Raum: grün ruhig, rot ausgelöst": "Minden érzékelő helyiségként: zöld nyugalmi, piros riasztott",
+"Jeder Melder als Raum: grün unscharf, orange Zu Hause, rot scharf": "Minden érzékelő helyiségként: zöld hatástalanítva, narancs otthon, piros élesítve",
 "Ticket setzen, zeichnen, senden — direkt am Plan": "Jegy elhelyezése, rajzolás, küldés — közvetlenül az alaprajzon",
 "Wer für Daten in der Software verantwortlich ist": "Ki felel a szoftverben lévő adatokért",
 "rot über 300 Besucher seit der letzten Reinigung": "piros 300 látogató felett az utolsó takarítás óta",

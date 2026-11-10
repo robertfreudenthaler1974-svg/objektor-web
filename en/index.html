@@ -1121,11 +1121,11 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .al-demo{container-type:inline-size;aspect-ratio:585/1200;overflow:hidden;border-radius:29px;
  --al-grund:#1A1C1F;--al-karte:#2A2D32;--al-rand:#474C54;--al-text:#F2F4F6;--al-matt:#A3ABB4;
  --al-feld:#0D131B;--al-feldtext:#0F151C;--al-linie:#566679;--al-boden:#18212C;--al-fenster:#0A0F15;
- --al-gruen:#46C07E;--al-rot:#EF6464;--al-gelb:#F0B23A;
+ --al-gruen:#46C07E;--al-rot:#EF6464;--al-gelb:#F0B23A;--al-orange:#F5923E;
  --al-kn:#3A2F33;--al-knr:#B45C5E;--al-kna:#B4585B;--al-knar:#E27C7C;--al-knat:#FFFFFF;--al-kng:#22362E;--al-kngr:#4DB37C;--al-kgna:#3E9A6C;--al-kgnar:#6FD39C;--al-leiste:#141517;--al-leisteblau:#4D8EF0;--al-leisteblaugrund:#26282C}
 #hausDemo[data-app="hell"] .al-demo{--al-grund:#EEF1F4;--al-karte:#FFFFFF;--al-rand:#C9D2DB;--al-text:#10171F;--al-matt:#5B6775;
  --al-feld:#5F6E82;--al-feldtext:#FFFFFF;--al-linie:#F2F5F8;--al-boden:#48566A;--al-fenster:#56657A;
- --al-gruen:#1E9A5A;--al-rot:#D24343;--al-gelb:#B87A00;
+ --al-gruen:#1E9A5A;--al-rot:#D24343;--al-gelb:#B87A00;--al-orange:#D2691E;
  --al-kn:#FDEDED;--al-knr:#E79494;--al-kna:#F09C9C;--al-knar:#E07070;--al-knat:#FFFFFF;--al-kng:#E7F6EE;--al-kngr:#5CC08A;--al-kgna:#7FCDA0;--al-kgnar:#4DB37C;--al-leiste:#FFFFFF;--al-leisteblau:#1659A7;--al-leisteblaugrund:#EAEEF4}
 .al-in{position:relative;height:100%;font-size:calc(100cqw / 36.5625);background:var(--al-grund);color:var(--al-text);font-family:Inter,system-ui,sans-serif;line-height:1.25;
  --al-z:var(--al-gruen)}
@@ -1165,8 +1165,12 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .al-melder{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--al-rand);border-radius:1.3em;overflow:hidden;background:var(--al-feldtext)}
 .al-m{all:unset;cursor:pointer;display:block;border-left:1px solid var(--al-rand);text-align:center;--m:var(--al-gruen)}
 .al-m:first-child{border-left:0}
+/* Melderfarbe nach Zustand (10.11.2026): gruen unscharf, orange Zu Hause und scharf, rot scharf; ausgeloest blinkt */
+.al-m[data-w="zuhause"]{--m:var(--al-orange)}
+.al-m[data-w="scharf"]{--m:var(--al-rot)}
 .al-m[data-s="bewegung"]{--m:var(--al-gelb)}
 .al-m[data-s="ausgeloest"]{--m:var(--al-rot)}
+.al-m[data-s="ausgeloest"] .al-kegel{animation:alPuls 1.1s ease-in-out infinite}
 .al-m:focus-visible{outline:2px solid #EF5C5C;outline-offset:-2px}
 .al-m:hover .al-kegel{opacity:1}
 .al-kegel{opacity:.85;transition:opacity .2s}
@@ -2001,7 +2005,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
       <ul>
         <li>Light: scenes at the top, groups and coves with dimmer</li>
         <li>Alarm system: disarmed, home, armed — the house glows in the colour of the state</li>
-        <li>Every detector as a room: green quiet, red triggered</li>
+        <li>Every detector as a room: green disarmed, orange home, red armed</li>
         <li>Irrigation: auto or manual, water stop, rain sensor, time left per zone</li>
         <li>Alarms come through even on a muted iPhone — every 5 minutes until it is off</li>
       </ul>
@@ -2460,7 +2464,7 @@ document.querySelectorAll('#hausDemo .al-demo').forEach(function(el,nr){
   if(st.alarm){gross='ALARM';klein='ausgelöst: '+aus.join(', ')}
   $('.al-ft b').textContent=gross;$('.al-ft small').textContent=klein;
   $('.al-anz').innerHTML=(aus.length?'<em>'+aus.length+' ausgelöst</em> · ':'')+(bew?bew+' Bewegung · ':'')+ruhig+' von 3 ruhig';
-  IN.querySelectorAll('.al-m').forEach(function(b){var s=st.m[b.dataset.k];b.dataset.s=s;b.querySelector('small').textContent=TXT[s];
+  IN.querySelectorAll('.al-m').forEach(function(b){var s=st.m[b.dataset.k];b.dataset.s=s;b.dataset.w=scharfFuer(b.dataset.k)?st.modus:'frei';b.querySelector('small').textContent=TXT[s];
    b.setAttribute('aria-label',NAMEN[b.dataset.k]+': '+TXT[s]+(scharfFuer(b.dataset.k)?' (überwacht, antippen löst Alarm aus)':' (nicht überwacht)'))});
   if(cap)cap.textContent=st.alarm?'Alarm — '+aus.join(', ')+' ausgelöst':st.modus==='unscharf'?(bew?'Unscharf — Bewegung, aber kein Alarm':'Unscharf — alle Melder ruhig'):st.modus==='zuhause'?'Zu Hause — außen scharf':'Scharf — alle Melder überwacht';
  }

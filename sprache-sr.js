@@ -945,7 +945,7 @@ window.objektorSprache.sr={t:{
 "Wartung: pünktlich, verspätet, fällig, versäumt": "Održavanje: na vreme, sa kašnjenjem, dospelo, propušteno",
 "Das Modul kommt in Ihr BDS — in App und Browser.": "Modul dolazi u vaš BDS — u aplikaciji i pregledaču.",
 "Foto, Galerie oder Video — Foto gleich markieren": "Fotografija, galerija ili video — fotografiju odmah označiti",
-"Jeder Melder als Raum: grün ruhig, rot ausgelöst": "Svaki javljač kao prostorija: zeleno mirno, crveno aktivirano",
+"Jeder Melder als Raum: grün unscharf, orange Zu Hause, rot scharf": "Svaki javljač kao prostorija: zeleno isključeno, narandžasto kod kuće, crveno uključeno",
 "Ticket setzen, zeichnen, senden — direkt am Plan": "Postavite tiket, crtajte, pošaljite — direktno na planu",
 "Wer für Daten in der Software verantwortlich ist": "Ko je odgovoran za podatke u softveru",
 "rot über 300 Besucher seit der letzten Reinigung": "crveno preko 300 posetilaca od poslednjeg čišćenja",
