@@ -802,10 +802,27 @@ html[data-modus="dunkel"] #vsDemo .vk2.stoerk.ok .sk-marke,html[data-modus="dunk
 .kd-lkopf{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--bf-text)}
 .kd-lzu{border:0;background:none;color:var(--bf-leise);font-size:15px;cursor:pointer;padding:2px 6px;border-radius:6px}.kd-lzu:hover{color:var(--bf-text)}
 .kd-lzeile{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--bf-leise)}
-.kd-lname{font-weight:600;color:var(--bf-text)}.kd-lzeit b{color:var(--bf-text);font-weight:600}
+.kd-lname{font-weight:600;color:var(--bf-text)}
+.kd-lein{display:inline-flex;align-items:center;gap:5px}
+.kd-lein input{font:600 12px/1.2 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:8px;padding:5px 7px;color-scheme:light}
+html[data-modus="dunkel"] .kd-lein input{color-scheme:dark}
+.kd-lein input:focus{outline:none;border-color:#2F6FEF;box-shadow:0 0 0 3px rgba(47,111,239,.2)}
+.kd-llaenge b{color:var(--bf-text)}
+.kd-lbereich{position:relative;height:30px}
+.kd-lbahn{position:absolute;left:9px;right:9px;top:10px;height:10px;border-radius:5px;background:var(--bf-bg);border:1px solid var(--bf-rand);overflow:hidden}
+.kd-lwahl{position:absolute;top:0;bottom:0;background:rgba(47,111,239,.55)}
+.kd-lzukunft{position:absolute;top:0;bottom:0;right:0;background:repeating-linear-gradient(45deg,transparent 0 4px,rgba(127,127,127,.3) 4px 8px)}
+.kd-lmarken i{position:absolute;top:0;bottom:0;width:3px;margin-left:-1px;background:#E0A030}.kd-lmarken i.fz{background:#2F6FEF}.kd-lmarken i.ps{background:#2CC78F}
+.kd-lgriff{position:absolute;left:0;top:0;width:100%;height:30px;margin:0;padding:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none;z-index:2}
+.kd-lgriff::-webkit-slider-runnable-track{background:none;height:30px;border:0}
+.kd-lgriff::-moz-range-track{background:none;border:0}
+.kd-lgriff::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;pointer-events:auto;width:18px;height:28px;margin-top:1px;border-radius:6px;background:#fff;border:2px solid #2F6FEF;box-shadow:0 1px 3px rgba(0,0,0,.3);cursor:ew-resize}
+.kd-lgriff::-moz-range-thumb{pointer-events:auto;box-sizing:border-box;width:18px;height:28px;border-radius:6px;background:#fff;border:2px solid #2F6FEF;box-shadow:0 1px 3px rgba(0,0,0,.3);cursor:ew-resize}
+.kd-lgriff:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(47,111,239,.35)}.kd-lgriff:focus-visible::-moz-range-thumb{box-shadow:0 0 0 4px rgba(47,111,239,.35)}
+.kd-lskala{display:flex;justify-content:space-between;font-size:10.5px;color:var(--bf-leise);padding:0 2px;margin-top:-4px}
+.kd-ltipp{font-size:11px}
 .kd-llaenge{display:inline-flex;align-items:center;gap:6px}
-.kd-llaenge button,.kd-lspeichern{font:600 12px/1 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:8px;padding:7px 10px;cursor:pointer}
-.kd-llaenge button:hover{border-color:#2F6FEF}.kd-llaenge button.an{border-color:#2F6FEF;color:#2F6FEF;background:rgba(47,111,239,.08)}
+.kd-lspeichern{font:600 12px/1 inherit;font-family:inherit;color:var(--bf-text);background:var(--bf-panel);border:1px solid var(--bf-rand);border-radius:8px;padding:7px 10px;cursor:pointer}
 .kd-lspeichern{margin-left:auto;color:#fff;background:#2F6FEF;border-color:#2F6FEF}.kd-lspeichern:hover{background:#2560D6}
 .kd-lfeld .kd-lmeld{margin:0;font-size:12px;line-height:1.45;color:var(--bf-leise)}.kd-lfeld .kd-lmeld b{color:var(--bf-text);word-break:break-all}
 @media(max-width:760px){.kd-lspeichern{margin-left:0;flex-basis:100%}}
@@ -1886,7 +1903,7 @@ try{document.fonts.ready.then(los)}catch(e){}setTimeout(los,1200)})();</script>
           <span class="kd-blaettern"><button type="button" id="kdVor" aria-label="Previous camera">‹</button><button type="button" id="kdNach" aria-label="Next camera">›</button></span>
         </div>
         <div class="kd-gbild" id="kdGBild"><i class="kd-live" id="kdGLive">LIVE</i><i class="kd-zeit" id="kdGZeit"></i><i class="kd-zoomhinweis" id="kdZoomHinweis">Tap the image = zoom</i><i class="kd-ir">IR night view</i></div>
-        <div class="kd-zl" id="kdZl"><div class="kd-zl-oben"><button type="button" data-spr="-30" aria-label="30 seconds back">⏪ 30 s</button><div class="kd-zl-bahn"><div class="kd-zl-marken" id="kdMarken"></div><input type="range" class="kd-regler" id="kdRegler" min="-86400" max="0" step="5" value="0" aria-label="Time in the recording"></div><button type="button" data-spr="30" aria-label="30 seconds forward">30 s ⏩</button><button type="button" class="kd-golive" id="kdGoLive" disabled>● Live</button><button type="button" class="kd-laden" id="kdLaden" aria-expanded="false" aria-controls="kdLFeld" aria-label="Download recording as a file">⬇ Download</button></div><div class="kd-zl-skala"><span>−24 h</span><span>−18 h</span><span>−12 h</span><span>−6 h</span><span>now</span></div><div class="kd-zl-tipp">Drag the slider = jump into the recording · Tap a marker = go to the motion</div><div class="kd-lfeld" id="kdLFeld" hidden><div class="kd-lkopf"><b>Download recording</b><button type="button" class="kd-lzu" id="kdLZu" aria-label="Close">✕</button></div><div class="kd-lzeile"><span class="kd-lname" id="kdLName"></span><span class="kd-lzeit"><span>From</span> <b id="kdLVon"></b> <span>to</span> <b id="kdLBis"></b></span></div><div class="kd-lzeile"><span class="kd-llaenge" role="group" aria-label="Length"><span>Length</span><button type="button" data-dauer="30" class="an">30 s</button><button type="button" data-dauer="120">2 min</button><button type="button" data-dauer="600">10 min</button></span><button type="button" class="kd-lspeichern" id="kdLSpeichern">⬇ Save as MP4</button></div><p class="kd-lmeld" id="kdLMeld" hidden><span>Example – the real BDS now saves this file:</span> <b id="kdLDatei"></b></p></div></div>
+        <div class="kd-zl" id="kdZl"><div class="kd-zl-oben"><button type="button" data-spr="-30" aria-label="30 seconds back">⏪ 30 s</button><div class="kd-zl-bahn"><div class="kd-zl-marken" id="kdMarken"></div><input type="range" class="kd-regler" id="kdRegler" min="-86400" max="0" step="5" value="0" aria-label="Time in the recording"></div><button type="button" data-spr="30" aria-label="30 seconds forward">30 s ⏩</button><button type="button" class="kd-golive" id="kdGoLive" disabled>● Live</button><button type="button" class="kd-laden" id="kdLaden" aria-expanded="false" aria-controls="kdLFeld" aria-label="Download recording as a file">⬇ Download</button></div><div class="kd-zl-skala"><span>−24 h</span><span>−18 h</span><span>−12 h</span><span>−6 h</span><span>now</span></div><div class="kd-zl-tipp">Drag the slider = jump into the recording · Tap a marker = go to the motion</div><div class="kd-lfeld" id="kdLFeld" hidden><div class="kd-lkopf"><b>Download recording</b><button type="button" class="kd-lzu" id="kdLZu" aria-label="Close">✕</button></div><div class="kd-lzeile"><span class="kd-lname" id="kdLName"></span><label class="kd-lein"><span>Day</span> <input type="date" id="kdLTag"></label><label class="kd-lein"><span>From</span> <input type="time" step="1" id="kdLVon"></label><label class="kd-lein"><span>to</span> <input type="time" step="1" id="kdLBis"></label><span class="kd-llaenge"><span>Length</span> <b id="kdLLaenge"></b></span></div><div class="kd-lbereich"><div class="kd-lbahn"><div class="kd-lmarken" id="kdLMarken"></div><div class="kd-lwahl" id="kdLWahl"></div><div class="kd-lzukunft" id="kdLZukunft"></div></div><input type="range" class="kd-lgriff" id="kdLGriffA" min="0" max="86400" step="1" aria-label="Start"><input type="range" class="kd-lgriff" id="kdLGriffB" min="0" max="86400" step="1" aria-label="End"></div><div class="kd-lskala"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div><div class="kd-lzeile"><span class="kd-ltipp">Drag both ends of the slider · pick the day in the calendar</span><button type="button" class="kd-lspeichern" id="kdLSpeichern">⬇ Save as MP4</button></div><p class="kd-lmeld" id="kdLMeld" hidden><span>Example – the real BDS now saves this file:</span> <b id="kdLDatei"></b></p></div></div>
         <div class="kd-gleiste">
           <button type="button" id="kdStand">⏸ Freeze frame</button>
           <span class="kd-weg" role="group" aria-label="Route"><button type="button" data-weg="webrtc" class="an">WebRTC</button><button type="button" data-weg="tcp">TCP</button></span>
@@ -3082,14 +3099,44 @@ function zwei(n){return(n<10?'0':'')+n}
 function zeitText(t){return zwei(t.getDate())+'.'+zwei(t.getMonth()+1)+'.'+t.getFullYear()+' '+zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
 function jetzt(){return zeitText(new Date())}
 function absNun(){return steht?standAbs:Date.now()/1000+versatz}
-var lKnopf=document.getElementById('kdLaden'),lFeld=document.getElementById('kdLFeld'),lDauer=30,lMeld=document.getElementById('kdLMeld');
-function lBereich(){var nun=Date.now()/1000,pos=absNun(),live=versatz>-3&&!steht,bis=live?nun:Math.min(nun,pos+lDauer),von=bis-lDauer;return[von,bis]}
-function lZeigen(){if(lFeld.hidden||akt<0)return;var b=lBereich();document.getElementById('kdLName').textContent=kacheln[akt].dataset.name;document.getElementById('kdLVon').textContent=zeitText(new Date(b[0]*1000));document.getElementById('kdLBis').textContent=zeitText(new Date(b[1]*1000)).slice(11)}
-function lAuf(an){lFeld.hidden=!an;lKnopf.setAttribute('aria-expanded',an?'true':'false');lMeld.hidden=true;lZeigen()}
+/* Herunterladen (10.11.2026): Tag im Kalender, Bereich mit Regler (zwei Griffe) oder Uhrzeit */
+var lKnopf=document.getElementById('kdLaden'),lFeld=document.getElementById('kdLFeld'),lFuer=-1,lMeld=document.getElementById('kdLMeld'),
+ lTag=document.getElementById('kdLTag'),lVonE=document.getElementById('kdLVon'),lBisE=document.getElementById('kdLBis'),lA=document.getElementById('kdLGriffA'),lB=document.getElementById('kdLGriffB'),
+ lWahl=document.getElementById('kdLWahl'),lZuk=document.getElementById('kdLZukunft'),lMk=document.getElementById('kdLMarken'),lLaenge=document.getElementById('kdLLaenge'),
+ lT0=0,lVon=0,lBis=0,lEigen=false,L_TAGE=7,L_MIN=10;
+function tag0(abs){var t=new Date(abs*1000);t.setHours(0,0,0,0);return t.getTime()/1000}
+function datWert(abs){var t=new Date(abs*1000);return t.getFullYear()+'-'+zwei(t.getMonth()+1)+'-'+zwei(t.getDate())}
+function uhr(abs){var t=new Date(abs*1000);return zwei(t.getHours())+':'+zwei(t.getMinutes())+':'+zwei(t.getSeconds())}
+function dauerText(x){x=Math.round(x);var h=Math.floor(x/3600),m=Math.floor(x%3600/60),r=x%60,a=[];if(h)a.push(h+' h');if(m)a.push(m+' min');if(r||!a.length)a.push(r+' s');return a.join(' ')}
+function lLang(){return tag0(lT0+108000)-lT0}
+function lKlemmen(wer){var g=Math.min(lT0+lLang(),Date.now()/1000);
+ if(wer==='von'){lVon=Math.max(lT0,Math.min(lVon,g-L_MIN));lBis=Math.min(g,Math.max(lBis,lVon+L_MIN))}
+ else{lBis=Math.min(g,Math.max(lBis,lT0+L_MIN));lVon=Math.max(lT0,Math.min(lVon,lBis-L_MIN))}}
+function lStandard(){var nun=Date.now()/1000,pos=absNun(),live=versatz>-3&&!steht;lBis=live?nun:Math.min(nun,pos+120);lVon=lBis-120;lT0=tag0(lBis-1);lKlemmen('bis')}
+function lMarken(){lMk.innerHTML='';var L=lLang(),nun=Date.now()/1000;ereignisse().forEach(function(e){var a=nun+e.t;if(a<lT0||a>lT0+L)return;var i=document.createElement('i');i.className=e.a;i.style.left=((a-lT0)/L*100).toFixed(2)+'%';lMk.appendChild(i)})}
+function lMalen(){var L=lLang(),nun=Date.now()/1000,g=Math.min(L,nun-lT0),pa=(lVon-lT0)/L*100,pb=(lBis-lT0)/L*100;
+ lA.max=lB.max=L;lA.value=Math.round(lVon-lT0);lB.value=Math.round(lBis-lT0);
+ lWahl.style.left=pa+'%';lWahl.style.width=Math.max(.4,pb-pa)+'%';lZuk.style.width=Math.max(0,(L-g)/L*100)+'%';
+ lTag.max=datWert(nun);lTag.min=datWert(nun-(L_TAGE-1)*86400);if(document.activeElement!==lTag)lTag.value=datWert(lT0);
+ if(document.activeElement!==lVonE)lVonE.value=uhr(lVon);if(document.activeElement!==lBisE)lBisE.value=uhr(lBis);
+ lLaenge.textContent=dauerText(lBis-lVon)}
+function lZeigen(){if(lFeld.hidden||akt<0)return;if(lFuer!==akt){lFuer=akt;lEigen=false;document.getElementById('kdLName').textContent=kacheln[akt].dataset.name}
+ if(!lEigen)lStandard();else lKlemmen('bis');lMarken();lMalen()}
+function lAuf(an){lFeld.hidden=!an;lKnopf.setAttribute('aria-expanded',an?'true':'false');lMeld.hidden=true;if(an)lEigen=false;lZeigen()}
 lKnopf.addEventListener('click',function(){lAuf(lFeld.hidden)});document.getElementById('kdLZu').addEventListener('click',function(){lAuf(false)});
-lFeld.querySelectorAll('[data-dauer]').forEach(function(b){b.addEventListener('click',function(){lDauer=+b.dataset.dauer;lFeld.querySelectorAll('[data-dauer]').forEach(function(x){x.classList.toggle('an',x===b)});lMeld.hidden=true;lZeigen()})});
-document.getElementById('kdLSpeichern').addEventListener('click',function(){lZeigen();var b=lBereich(),t=new Date(b[0]*1000),n=document.getElementById('kdLName').textContent.replace(/[ÄÖÜäöüß]/g,function(c){return{'Ä':'Ae','Ö':'Oe','Ü':'Ue','ä':'ae','ö':'oe','ü':'ue','ß':'ss'}[c]}).replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'');
- document.getElementById('kdLDatei').textContent=n+'_'+t.getFullYear()+'-'+zwei(t.getMonth()+1)+'-'+zwei(t.getDate())+'_'+zwei(t.getHours())+'-'+zwei(t.getMinutes())+'-'+zwei(t.getSeconds())+'_'+(lDauer<60?lDauer+'s':(lDauer/60)+'min')+'.mp4';lMeld.hidden=false});
+function lGriff(el,wer){el.addEventListener('input',function(){lEigen=true;lMeld.hidden=true;lA.style.zIndex=el===lA?3:2;lB.style.zIndex=el===lB?3:2;
+ if(wer==='von')lVon=lT0+(+el.value);else lBis=lT0+(+el.value);lKlemmen(wer);lMalen()})}
+lGriff(lA,'von');lGriff(lB,'bis');
+function lUhrSetzen(el,wer){el.addEventListener('change',function(){var m=/^(\d{1,2}):(\d{2})(?::(\d{2}))?/.exec(el.value);if(!m)return;var t=new Date(lT0*1000);t.setHours(+m[1],+m[2],+(m[3]||0),0);
+ lEigen=true;lMeld.hidden=true;if(wer==='von')lVon=t.getTime()/1000;else lBis=t.getTime()/1000;lKlemmen(wer);lMalen()});el.addEventListener('blur',lMalen)}
+lUhrSetzen(lVonE,'von');lUhrSetzen(lBisE,'bis');
+lTag.addEventListener('change',function(){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(lTag.value),nun=Date.now()/1000;if(!m){lMalen();return}
+ var n0=new Date(+m[1],+m[2]-1,+m[3]).getTime()/1000;if(n0>tag0(nun)||n0<tag0(nun-(L_TAGE-1)*86400)){lMalen();return}
+ var dv=lVon-lT0,db=lBis-lT0;lT0=n0;lVon=n0+dv;lBis=n0+db;var g=Math.min(lT0+lLang(),nun);if(lBis>g){lVon-=lBis-g;lBis=g}
+ lEigen=true;lMeld.hidden=true;lKlemmen('bis');lMarken();lMalen()});
+lTag.addEventListener('blur',lMalen);
+document.getElementById('kdLSpeichern').addEventListener('click',function(){lZeigen();var t=new Date(lVon*1000),n=document.getElementById('kdGName').textContent.replace(/[ÄÖÜäöüß]/g,function(c){return{'Ä':'Ae','Ö':'Oe','Ü':'Ue','ä':'ae','ö':'oe','ü':'ue','ß':'ss'}[c]}).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ document.getElementById('kdLDatei').textContent=n+'_'+t.getFullYear()+'-'+zwei(t.getMonth()+1)+'-'+zwei(t.getDate())+'_'+zwei(t.getHours())+'-'+zwei(t.getMinutes())+'-'+zwei(t.getSeconds())+'_'+dauerText(lBis-lVon).replace(/ /g,'')+'.mp4';lMeld.hidden=false});
 function ticken(){var z=jetzt();if(steht)versatz=Math.min(0,standAbs-Date.now()/1000);var rec=versatz<-3,abs=absNun(),h=new Date(abs*1000).getHours();gb.classList.toggle('nacht',h<6||h>=18);glive.classList.toggle('rec',rec);glive.textContent=rec?'AUFZEICHNUNG':steht?'STANDBILD':'LIVE';zl.classList.toggle('rec',rec);goLive.disabled=!rec&&!steht;if(!ziehen)regler.value=Math.round(versatz);gzeit.textContent=zeitText(new Date(abs*1000));fuss();if(!lFeld.hidden)lZeigen();d.querySelectorAll('.kd-raster .kd-zeit').forEach(function(e){e.textContent=z});}
 setInterval(ticken,1000);
 function fuss(){var w=weg[akt]||'webrtc';d.querySelectorAll('.kd-weg button').forEach(function(b){b.classList.toggle('an',b.dataset.weg===w)});

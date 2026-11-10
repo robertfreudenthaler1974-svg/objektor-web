@@ -1090,6 +1090,11 @@ window.objektorSprache.hu={t:{
 "bis": "eddig",
 "Länge": "Hossz",
 "⬇ Als MP4 speichern": "⬇ Mentés MP4-ként",
+/* Herunterladen: Kalender + Bereichsregler (10.11.2026) */
+"Tag": "Nap",
+"Beide Enden des Reglers ziehen · Tag im Kalender wählen": "Húzza a csúszka mindkét végét · a napot a naptárban válassza",
+"Beginn": "Kezdet",
+"Ende": "Vége",
 "Beispiel – im echten BDS wird jetzt diese Datei gespeichert:": "Példa – a valódi BDS most ezt a fájlt menti:",
 "Aufzeichnung als Datei herunterladen": "Felvétel letöltése fájlként",
 /* Sicherheit + Sicherheitsbank (08.11.2026) */

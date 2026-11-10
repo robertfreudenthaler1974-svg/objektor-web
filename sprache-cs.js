@@ -1089,6 +1089,11 @@ window.objektorSprache.cs={t:{
 "bis": "do",
 "Länge": "Délka",
 "⬇ Als MP4 speichern": "⬇ Uložit jako MP4",
+/* Herunterladen: Kalender + Bereichsregler (10.11.2026) */
+"Tag": "Den",
+"Beide Enden des Reglers ziehen · Tag im Kalender wählen": "Táhněte oba konce posuvníku · den vyberte v kalendáři",
+"Beginn": "Začátek",
+"Ende": "Konec",
 "Beispiel – im echten BDS wird jetzt diese Datei gespeichert:": "Příklad – skutečný BDS nyní uloží tento soubor:",
 "Aufzeichnung als Datei herunterladen": "Stáhnout záznam jako soubor",
 "Es werden keine Cookies gesetzt, keine Analysewerkzeuge eingesetzt und keine Profile gebildet. Schriftarten und Skripte werden nicht von fremden Servern geladen. Ihre Wahl der Darstellung (hell oder dunkel) und der Sprache wird nur im Speicher Ihres Browsers abgelegt und nicht an uns übertragen.": "Nenastavují se žádné cookies, nepoužívají se analytické nástroje a nevytvářejí se profily. Písma a skripty se nenačítají z cizích serverů. Vaše volba zobrazení (světlé nebo tmavé) a jazyka se ukládá jen v paměti vašeho prohlížeče a nepřenáší se k nám.",

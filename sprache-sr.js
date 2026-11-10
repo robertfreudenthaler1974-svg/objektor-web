@@ -1090,6 +1090,11 @@ window.objektorSprache.sr={t:{
 "bis": "do",
 "Länge": "Trajanje",
 "⬇ Als MP4 speichern": "⬇ Sačuvaj kao MP4",
+/* Herunterladen: Kalender + Bereichsregler (10.11.2026) */
+"Tag": "Dan",
+"Beide Enden des Reglers ziehen · Tag im Kalender wählen": "Povucite oba kraja klizača · dan izaberite u kalendaru",
+"Beginn": "Početak",
+"Ende": "Kraj",
 "Beispiel – im echten BDS wird jetzt diese Datei gespeichert:": "Primer – pravi BDS sada čuva ovu datoteku:",
 "Aufzeichnung als Datei herunterladen": "Preuzmi snimak kao datoteku",
 /* Sicherheit + Sicherheitsbank (08.11.2026) */

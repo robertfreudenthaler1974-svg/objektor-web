@@ -1089,6 +1089,11 @@ window.objektorSprache.it={t:{
 "bis": "a",
 "Länge": "Durata",
 "⬇ Als MP4 speichern": "⬇ Salva come MP4",
+/* Herunterladen: Kalender + Bereichsregler (10.11.2026) */
+"Tag": "Giorno",
+"Beide Enden des Reglers ziehen · Tag im Kalender wählen": "Trascina entrambe le estremità del cursore · scegli il giorno nel calendario",
+"Beginn": "Inizio",
+"Ende": "Fine",
 "Beispiel – im echten BDS wird jetzt diese Datei gespeichert:": "Esempio – il vero BDS ora salva questo file:",
 "Aufzeichnung als Datei herunterladen": "Scarica la registrazione come file",
 "Es werden keine Cookies gesetzt, keine Analysewerkzeuge eingesetzt und keine Profile gebildet. Schriftarten und Skripte werden nicht von fremden Servern geladen. Ihre Wahl der Darstellung (hell oder dunkel) und der Sprache wird nur im Speicher Ihres Browsers abgelegt und nicht an uns übertragen.": "Non vengono impostati cookie, non si usano strumenti di analisi e non si creano profili. Font e script non vengono caricati da server esterni. La scelta della visualizzazione (chiaro o scuro) e della lingua viene salvata solo nella memoria del browser e non ci viene trasmessa.",
