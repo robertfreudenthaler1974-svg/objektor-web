@@ -1121,11 +1121,11 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
  --al-grund:#1A1C1F;--al-karte:#2A2D32;--al-rand:#474C54;--al-text:#F2F4F6;--al-matt:#A3ABB4;
  --al-feld:#0D131B;--al-feldtext:#0F151C;--al-linie:#566679;--al-boden:#18212C;--al-fenster:#0A0F15;
  --al-gruen:#46C07E;--al-rot:#EF6464;--al-gelb:#F0B23A;
- --al-kn:#3A2F33;--al-knr:#B45C5E;--al-kna:#B4585B;--al-knar:#E27C7C;--al-knat:#FFFFFF;--al-kng:#22362E;--al-kngr:#4DB37C;--al-leiste:#141517;--al-leisteblau:#4D8EF0;--al-leisteblaugrund:#26282C}
+ --al-kn:#3A2F33;--al-knr:#B45C5E;--al-kna:#B4585B;--al-knar:#E27C7C;--al-knat:#FFFFFF;--al-kng:#22362E;--al-kngr:#4DB37C;--al-kgna:#3E9A6C;--al-kgnar:#6FD39C;--al-leiste:#141517;--al-leisteblau:#4D8EF0;--al-leisteblaugrund:#26282C}
 #hausDemo[data-app="hell"] .al-demo{--al-grund:#EEF1F4;--al-karte:#FFFFFF;--al-rand:#C9D2DB;--al-text:#10171F;--al-matt:#5B6775;
  --al-feld:#5F6E82;--al-feldtext:#FFFFFF;--al-linie:#F2F5F8;--al-boden:#48566A;--al-fenster:#56657A;
  --al-gruen:#1E9A5A;--al-rot:#D24343;--al-gelb:#B87A00;
- --al-kn:#FDEDED;--al-knr:#E79494;--al-kna:#F09C9C;--al-knar:#E07070;--al-knat:#FFFFFF;--al-kng:#E7F6EE;--al-kngr:#5CC08A;--al-leiste:#FFFFFF;--al-leisteblau:#1659A7;--al-leisteblaugrund:#EAEEF4}
+ --al-kn:#FDEDED;--al-knr:#E79494;--al-kna:#F09C9C;--al-knar:#E07070;--al-knat:#FFFFFF;--al-kng:#E7F6EE;--al-kngr:#5CC08A;--al-kgna:#7FCDA0;--al-kgnar:#4DB37C;--al-leiste:#FFFFFF;--al-leisteblau:#1659A7;--al-leisteblaugrund:#EAEEF4}
 .al-in{position:relative;height:100%;font-size:calc(100cqw / 36.5625);background:var(--al-grund);color:var(--al-text);font-family:Inter,system-ui,sans-serif;line-height:1.25;
  --al-z:var(--al-gruen)}
 .al-in[data-zustand="zuhause"]{--al-z:var(--al-gelb)}
@@ -1152,6 +1152,7 @@ footer a{color:var(--leise);text-decoration:none;margin-left:20px}
 .al-kn b{font-size:1.25em;font-weight:600}
 .al-kn[aria-pressed="true"]{background:var(--al-kna);border-color:var(--al-knar);color:var(--al-knat);box-shadow:0 .5em 1.6em rgba(224,90,90,.35)}
 .al-kn.gruen{background:var(--al-kng);border-color:var(--al-kngr)}
+.al-kn[data-modus="unscharf"][aria-pressed="true"]{background:var(--al-kgna);border-color:var(--al-kgnar);color:var(--al-knat);box-shadow:0 .5em 1.6em rgba(63,163,114,.35)}
 .al-feld{border:1px solid var(--al-rand);border-radius:1.3em;overflow:hidden;background:var(--al-feldtext)}
 .al-feld svg,.al-m svg{display:block;width:100%;height:auto}
 .al-ft{text-align:center;padding:1em 0 1.2em;border-top:1px solid var(--al-rand)}
