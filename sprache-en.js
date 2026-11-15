@@ -1,6 +1,22 @@
 /* Objektor · Sprache en (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.en={t:{
+/* Ihre Vorteile (16.11.2026) */
+"Kosten sparen": "Save costs",
+"eine App statt vieler Programme, Lizenzen und Zettel": "one app instead of many programs, licences and paper notes",
+"IHRE VORTEILE": "YOUR BENEFITS",
+"Schneller behoben": "Fixed faster",
+"Störung am Plan, sofort beim Richtigen": "Fault on the plan, straight to the right person",
+"Nichts geht unter": "Nothing gets lost",
+"Alarme per Push, sicher zugestellt": "Alarms by push, reliably delivered",
+"Prüfsicher": "Audit-proof",
+"jede Wartung lückenlos nachweisbar": "every maintenance job fully documented",
+"Eine App": "One app",
+"statt vieler Programme und Zettel": "instead of many programs and paper notes",
+"Alle melden mit": "Everyone can report",
+"per QR-Code ohne App, in 6 Sprachen": "via QR code without an app, in 6 languages",
+"Ihre Wahl": "Your choice",
+"Server im Haus oder Cloud in Deutschland": "server on site or cloud in Germany",
 /* Analyse 08.11.2026: Alt-Texte, Sprunglink, Knoepfe */
 "Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung": "Building plan of a shopping centre with tickets on the shops and an open fault report",
 "Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich": "Camera overview with live images of the entrance, hall and outdoor area",

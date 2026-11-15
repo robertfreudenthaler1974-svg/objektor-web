@@ -1,6 +1,22 @@
 /* Objektor · Sprache cs (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.cs={t:{
+/* Ihre Vorteile (16.11.2026) */
+"Kosten sparen": "Úspora nákladů",
+"eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikace místo mnoha programů, licencí a papírků",
+"IHRE VORTEILE": "VAŠE VÝHODY",
+"Schneller behoben": "Rychleji vyřešeno",
+"Störung am Plan, sofort beim Richtigen": "Porucha na plánu, hned u správné osoby",
+"Nichts geht unter": "Nic se neztratí",
+"Alarme per Push, sicher zugestellt": "Alarmy přes push, spolehlivě doručené",
+"Prüfsicher": "Připraveno na kontrolu",
+"jede Wartung lückenlos nachweisbar": "každá údržba doložitelná bez mezer",
+"Eine App": "Jedna aplikace",
+"statt vieler Programme und Zettel": "místo mnoha programů a papírků",
+"Alle melden mit": "Hlásit mohou všichni",
+"per QR-Code ohne App, in 6 Sprachen": "přes QR kód bez aplikace, v 6 jazycích",
+"Ihre Wahl": "Vaše volba",
+"Server im Haus oder Cloud in Deutschland": "server ve vlastní budově nebo cloud v Německu",
 /* Analyse 08.11.2026: Alt-Texte, Sprunglink, Knoepfe */
 "Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung": "Půdorys nákupního centra s tikety u obchodů a otevřeným hlášením poruchy",
 "Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich": "Přehled kamer s živým obrazem vjezdu, haly a venkovních prostor",

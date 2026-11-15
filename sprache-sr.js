@@ -1,6 +1,22 @@
 /* Objektor · Sprache sr (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.sr={t:{
+/* Ihre Vorteile (16.11.2026) */
+"Kosten sparen": "Uštedite troškove",
+"eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikacija umesto mnogo programa, licenci i papirića",
+"IHRE VORTEILE": "VAŠE PREDNOSTI",
+"Schneller behoben": "Brže rešeno",
+"Störung am Plan, sofort beim Richtigen": "Kvar na planu, odmah kod pravog čoveka",
+"Nichts geht unter": "Ništa se ne gubi",
+"Alarme per Push, sicher zugestellt": "Alarmi putem push obaveštenja, pouzdano dostavljeni",
+"Prüfsicher": "Spremno za proveru",
+"jede Wartung lückenlos nachweisbar": "svako održavanje dokazivo bez praznina",
+"Eine App": "Jedna aplikacija",
+"statt vieler Programme und Zettel": "umesto mnogo programa i papirića",
+"Alle melden mit": "Svi mogu da prijave",
+"per QR-Code ohne App, in 6 Sprachen": "putem QR koda bez aplikacije, na 6 jezika",
+"Ihre Wahl": "Vaš izbor",
+"Server im Haus oder Cloud in Deutschland": "server na licu mesta ili oblak u Nemačkoj",
 /* Analyse 08.11.2026: Alt-Texte, Sprunglink, Knoepfe */
 "Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung": "Plan tržnog centra sa tiketima na prodavnicama i otvorenom prijavom kvara",
 "Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich": "Pregled kamera sa slikom uživo sa ulaza, iz hale i spoljnog prostora",

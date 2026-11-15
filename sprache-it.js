@@ -1,6 +1,22 @@
 /* Objektor · Sprache it (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.it={t:{
+/* Ihre Vorteile (16.11.2026) */
+"Kosten sparen": "Risparmiare sui costi",
+"eine App statt vieler Programme, Lizenzen und Zettel": "un'unica app invece di tanti programmi, licenze e foglietti",
+"IHRE VORTEILE": "I VOSTRI VANTAGGI",
+"Schneller behoben": "Risolto prima",
+"Störung am Plan, sofort beim Richtigen": "Guasto sulla pianta, subito alla persona giusta",
+"Nichts geht unter": "Nulla va perso",
+"Alarme per Push, sicher zugestellt": "Allarmi via push, recapitati con certezza",
+"Prüfsicher": "A prova di verifica",
+"jede Wartung lückenlos nachweisbar": "ogni manutenzione documentata senza lacune",
+"Eine App": "Un'unica app",
+"statt vieler Programme und Zettel": "invece di tanti programmi e foglietti",
+"Alle melden mit": "Tutti possono segnalare",
+"per QR-Code ohne App, in 6 Sprachen": "tramite codice QR senza app, in 6 lingue",
+"Ihre Wahl": "A vostra scelta",
+"Server im Haus oder Cloud in Deutschland": "server in sede o cloud in Germania",
 /* Analyse 08.11.2026: Alt-Texte, Sprunglink, Knoepfe */
 "Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung": "Planimetria di un centro commerciale con ticket sui negozi e una segnalazione di guasto aperta",
 "Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich": "Panoramica telecamere con immagini live di ingresso, hall ed esterno",

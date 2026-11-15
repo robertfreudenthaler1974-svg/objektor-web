@@ -1,6 +1,22 @@
 /* Objektor · Sprache hu (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.hu={t:{
+/* Ihre Vorteile (16.11.2026) */
+"Kosten sparen": "Költségmegtakarítás",
+"eine App statt vieler Programme, Lizenzen und Zettel": "egy app sok program, licenc és cetli helyett",
+"IHRE VORTEILE": "AZ ÖN ELŐNYEI",
+"Schneller behoben": "Gyorsabb hibaelhárítás",
+"Störung am Plan, sofort beim Richtigen": "Hiba a tervrajzon, azonnal a megfelelő emberhez",
+"Nichts geht unter": "Semmi sem vész el",
+"Alarme per Push, sicher zugestellt": "Riasztások push-értesítésben, biztosan kézbesítve",
+"Prüfsicher": "Ellenőrzésbiztos",
+"jede Wartung lückenlos nachweisbar": "minden karbantartás hiánytalanul igazolható",
+"Eine App": "Egy app",
+"statt vieler Programme und Zettel": "sok program és cetli helyett",
+"Alle melden mit": "Mindenki jelezhet",
+"per QR-Code ohne App, in 6 Sprachen": "QR-kóddal, app nélkül, 6 nyelven",
+"Ihre Wahl": "Az Ön döntése",
+"Server im Haus oder Cloud in Deutschland": "szerver helyben vagy felhő Németországban",
 /* Analyse 08.11.2026: Alt-Texte, Sprunglink, Knoepfe */
 "Gebäudeplan eines Einkaufszentrums mit Tickets an den Shops und offener Störungsmeldung": "Bevásárlóközpont alaprajza jegyekkel az üzleteknél és egy nyitott hibabejelentéssel",
 "Kamera-Übersicht mit Livebildern von Einfahrt, Halle und Außenbereich": "Kamera-áttekintés élőképekkel a behajtóról, a csarnokról és a külső területről",
