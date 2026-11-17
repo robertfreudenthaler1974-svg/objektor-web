@@ -2,7 +2,7 @@
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.hu={t:{
 /* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
-"SO SPAREN SIE": "ÍGY SPÓROL",
+"VORTEILE": "ELŐNYÖK",
 "Lizenzkosten sparen": "Licencköltség-megtakarítás",
 "eine App statt vieler Programme, Lizenzen und Zettel": "egy app sok program, licenc és cetli helyett",
 "Weniger Arbeitszeit": "Kevesebb munkaidő",

@@ -2,7 +2,7 @@
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.it={t:{
 /* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
-"SO SPAREN SIE": "COSÌ RISPARMIATE",
+"VORTEILE": "VANTAGGI",
 "Lizenzkosten sparen": "Risparmio sulle licenze",
 "eine App statt vieler Programme, Lizenzen und Zettel": "un'unica app invece di tanti programmi, licenze e foglietti",
 "Weniger Arbeitszeit": "Meno ore di lavoro",

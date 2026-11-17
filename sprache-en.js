@@ -2,7 +2,7 @@
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.en={t:{
 /* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
-"SO SPAREN SIE": "HOW YOU SAVE",
+"VORTEILE": "BENEFITS",
 "Lizenzkosten sparen": "Save on licences",
 "eine App statt vieler Programme, Lizenzen und Zettel": "one app instead of many programs, licences and paper notes",
 "Weniger Arbeitszeit": "Less working time",
