@@ -712,7 +712,7 @@ window.objektorSprache.sr={t:{
 "Passwörter & Dokumente": "Lozinke i dokumenti",
 "Reinigungen heute (QR)": "Čišćenja danas (QR)",
 "Server im eigenen Haus": "Server u sopstvenoj zgradi",
-"Stufen hell und dunkel": "nivoa svetlo i tamno",
+"Minuten: Alarm bis jemand reagiert": "minuta: alarm dok neko ne reaguje",
 "Unterdrückung aufheben": "Ukini potiskivanje",
 "Unternehmensgegenstand": "Predmet poslovanja",
 "Ventil 2 · Bild „Beet“": "Ventil 2 · slika „Leja“",

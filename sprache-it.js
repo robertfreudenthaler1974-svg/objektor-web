@@ -483,7 +483,7 @@ window.objektorSprache.it={t:{
 "Ins Bild tippen = Zoom": "Tocca l'immagine = zoom",
 "Passwörter & Dokumente": "Password e documenti",
 "Server im eigenen Haus": "Server nel proprio edificio",
-"Stufen hell und dunkel": "Livelli chiari e scuri",
+"Minuten: Alarm bis jemand reagiert": "Minuti: allarme finché qualcuno reagisce",
 "Unternehmensgegenstand": "Oggetto sociale",
 "Ventil 2 · Bild „Beet“": "Valvola 2 · immagine “Aiuola”",
 "Zugang für Fremdfirmen": "Accesso per ditte esterne",

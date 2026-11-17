@@ -483,7 +483,7 @@ window.objektorSprache.cs={t:{
 "Ins Bild tippen = Zoom": "Klepnutí do obrazu = zoom",
 "Passwörter & Dokumente": "Hesla a dokumenty",
 "Server im eigenen Haus": "Server ve vlastní budově",
-"Stufen hell und dunkel": "Stupně světlé a tmavé",
+"Minuten: Alarm bis jemand reagiert": "Minut: alarm, dokud někdo nezareaguje",
 "Unternehmensgegenstand": "Předmět podnikání",
 "Ventil 2 · Bild „Beet“": "Ventil 2 · obrázek „Záhon“",
 "Zugang für Fremdfirmen": "Přístup pro externí firmy",

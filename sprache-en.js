@@ -483,7 +483,7 @@ window.objektorSprache.en={t:{
 "Ins Bild tippen = Zoom": "Tap the image = zoom",
 "Passwörter & Dokumente": "Passwords & documents",
 "Server im eigenen Haus": "Server in your own building",
-"Stufen hell und dunkel": "Levels light and dark",
+"Minuten: Alarm bis jemand reagiert": "Minutes: alarm until someone responds",
 "Unternehmensgegenstand": "Business purpose",
 "Ventil 2 · Bild „Beet“": "Valve 2 · image “Bed”",
 "Zugang für Fremdfirmen": "Access for contractors",

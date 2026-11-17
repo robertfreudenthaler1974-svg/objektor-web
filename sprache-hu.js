@@ -712,7 +712,7 @@ window.objektorSprache.hu={t:{
 "Passwörter & Dokumente": "Jelszavak és dokumentumok",
 "Reinigungen heute (QR)": "Takarítások ma (QR)",
 "Server im eigenen Haus": "Szerver a saját épületben",
-"Stufen hell und dunkel": "fokozat világos és sötét",
+"Minuten: Alarm bis jemand reagiert": "perc: riasztás, amíg valaki nem reagál",
 "Unterdrückung aufheben": "Elnyomás feloldása",
 "Unternehmensgegenstand": "Tevékenységi kör",
 "Ventil 2 · Bild „Beet“": "2. szelep · kép „Ágyás”",
