@@ -1,6 +1,20 @@
 /* Objektor · Sprache sr (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.sr={t:{
+/* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
+"SO SPAREN SIE": "OVAKO ŠTEDITE",
+"Lizenzkosten sparen": "Ušteda na licencama",
+"eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikacija umesto mnogo programa, licenci i papirića",
+"Weniger Arbeitszeit": "Manje radnog vremena",
+"Foto und Punkt am Plan: kein Suchen, kein Nachfragen": "fotografija i tačka na planu: bez traženja, bez dodatnih pitanja",
+"Weniger Leerfahrten": "Manje uzaludnih izlazaka",
+"Störungsmail sagt der Firma vorab, worum es geht": "mejl o kvaru unapred kaže firmi o čemu se radi",
+"Teure Folgeschäden vermeiden": "Izbegnite skupe štete",
+"Alarm per Push, alle 5 Minuten bis jemand reagiert": "push alarm na svakih 5 minuta dok neko ne reaguje",
+"Weniger Büroarbeit": "Manje kancelarijskog posla",
+"Wochenbericht als PDF und Prüfnachweise ohne Abtippen": "nedeljni PDF izveštaj i zapisnici o proveri bez prepisivanja",
+"Energiekosten senken": "Niži troškovi energije",
+"Verbrauch und Betriebsstunden zeigen, wo Geld verloren geht": "potrošnja i radni sati pokazuju gde se gubi novac",
 /* Ihre Vorteile (16.11.2026) */
 "Kosten sparen": "Uštedite troškove",
 "eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikacija umesto mnogo programa, licenci i papirića",

@@ -1,6 +1,20 @@
 /* Objektor · Sprache cs (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.cs={t:{
+/* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
+"SO SPAREN SIE": "TAK UŠETŘÍTE",
+"Lizenzkosten sparen": "Úspora na licencích",
+"eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikace místo mnoha programů, licencí a papírků",
+"Weniger Arbeitszeit": "Méně pracovního času",
+"Foto und Punkt am Plan: kein Suchen, kein Nachfragen": "fotka a bod na plánu: žádné hledání, žádné dotazy",
+"Weniger Leerfahrten": "Méně zbytečných cest",
+"Störungsmail sagt der Firma vorab, worum es geht": "e-mail o poruše řekne firmě předem, o co jde",
+"Teure Folgeschäden vermeiden": "Žádné drahé škody",
+"Alarm per Push, alle 5 Minuten bis jemand reagiert": "alarm přes push každých 5 minut, dokud někdo nezareaguje",
+"Weniger Büroarbeit": "Méně kancelářské práce",
+"Wochenbericht als PDF und Prüfnachweise ohne Abtippen": "týdenní zpráva v PDF a doklady o kontrolách bez přepisování",
+"Energiekosten senken": "Nižší náklady na energii",
+"Verbrauch und Betriebsstunden zeigen, wo Geld verloren geht": "spotřeba a provozní hodiny ukážou, kde se ztrácejí peníze",
 /* Ihre Vorteile (16.11.2026) */
 "Kosten sparen": "Úspora nákladů",
 "eine App statt vieler Programme, Lizenzen und Zettel": "jedna aplikace místo mnoha programů, licencí a papírků",

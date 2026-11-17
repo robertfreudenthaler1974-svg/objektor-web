@@ -1,6 +1,20 @@
 /* Objektor · Sprache it (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.it={t:{
+/* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
+"SO SPAREN SIE": "COSÌ RISPARMIATE",
+"Lizenzkosten sparen": "Risparmio sulle licenze",
+"eine App statt vieler Programme, Lizenzen und Zettel": "un'unica app invece di tanti programmi, licenze e foglietti",
+"Weniger Arbeitszeit": "Meno ore di lavoro",
+"Foto und Punkt am Plan: kein Suchen, kein Nachfragen": "foto e punto sulla planimetria: niente ricerche, niente telefonate",
+"Weniger Leerfahrten": "Meno uscite a vuoto",
+"Störungsmail sagt der Firma vorab, worum es geht": "l'e-mail del guasto spiega prima alla ditta di cosa si tratta",
+"Teure Folgeschäden vermeiden": "Evitare danni costosi",
+"Alarm per Push, alle 5 Minuten bis jemand reagiert": "allarme push ogni 5 minuti finché qualcuno reagisce",
+"Weniger Büroarbeit": "Meno lavoro d'ufficio",
+"Wochenbericht als PDF und Prüfnachweise ohne Abtippen": "report settimanale in PDF e verbali di verifica senza ricopiare",
+"Energiekosten senken": "Costi energetici più bassi",
+"Verbrauch und Betriebsstunden zeigen, wo Geld verloren geht": "consumi e ore di esercizio mostrano dove si perdono soldi",
 /* Ihre Vorteile (16.11.2026) */
 "Kosten sparen": "Risparmiare sui costi",
 "eine App statt vieler Programme, Lizenzen und Zettel": "un'unica app invece di tanti programmi, licenze e foglietti",

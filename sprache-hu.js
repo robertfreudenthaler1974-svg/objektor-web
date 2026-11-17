@@ -1,6 +1,20 @@
 /* Objektor · Sprache hu (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.hu={t:{
+/* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
+"SO SPAREN SIE": "ÍGY SPÓROL",
+"Lizenzkosten sparen": "Licencköltség-megtakarítás",
+"eine App statt vieler Programme, Lizenzen und Zettel": "egy app sok program, licenc és cetli helyett",
+"Weniger Arbeitszeit": "Kevesebb munkaidő",
+"Foto und Punkt am Plan: kein Suchen, kein Nachfragen": "fotó és pont a tervrajzon: nincs keresgélés, nincs visszakérdezés",
+"Weniger Leerfahrten": "Kevesebb felesleges kiszállás",
+"Störungsmail sagt der Firma vorab, worum es geht": "a hibajelentő e-mail előre megmondja a cégnek, miről van szó",
+"Teure Folgeschäden vermeiden": "Drága károk elkerülése",
+"Alarm per Push, alle 5 Minuten bis jemand reagiert": "push-riasztás 5 percenként, amíg valaki nem reagál",
+"Weniger Büroarbeit": "Kevesebb irodai munka",
+"Wochenbericht als PDF und Prüfnachweise ohne Abtippen": "heti PDF-jelentés és ellenőrzési igazolások újragépelés nélkül",
+"Energiekosten senken": "Alacsonyabb energiaköltség",
+"Verbrauch und Betriebsstunden zeigen, wo Geld verloren geht": "a fogyasztás és az üzemórák megmutatják, hol folyik el a pénz",
 /* Ihre Vorteile (16.11.2026) */
 "Kosten sparen": "Költségmegtakarítás",
 "eine App statt vieler Programme, Lizenzen und Zettel": "egy app sok program, licenc és cetli helyett",

@@ -1,6 +1,20 @@
 /* Objektor · Sprache en (08.11.2026) - Woerterbuch: "deutscher Text": "Uebersetzung". Fehlt ein Text, bleibt er deutsch. */
 window.objektorSprache=window.objektorSprache||{};
 window.objektorSprache.en={t:{
+/* Ihre Vorteile: Fokus Kostenersparnis (17.11.2026) */
+"SO SPAREN SIE": "HOW YOU SAVE",
+"Lizenzkosten sparen": "Save on licences",
+"eine App statt vieler Programme, Lizenzen und Zettel": "one app instead of many programs, licences and paper notes",
+"Weniger Arbeitszeit": "Less working time",
+"Foto und Punkt am Plan: kein Suchen, kein Nachfragen": "photo and pin on the plan: no searching, no follow-up calls",
+"Weniger Leerfahrten": "Fewer wasted trips",
+"Störungsmail sagt der Firma vorab, worum es geht": "the fault email tells the service company what it's about up front",
+"Teure Folgeschäden vermeiden": "Avoid costly damage",
+"Alarm per Push, alle 5 Minuten bis jemand reagiert": "push alarm every 5 minutes until someone responds",
+"Weniger Büroarbeit": "Less office work",
+"Wochenbericht als PDF und Prüfnachweise ohne Abtippen": "weekly PDF report and inspection records without retyping",
+"Energiekosten senken": "Lower energy costs",
+"Verbrauch und Betriebsstunden zeigen, wo Geld verloren geht": "consumption and operating hours show where money is lost",
 /* Ihre Vorteile (16.11.2026) */
 "Kosten sparen": "Save costs",
 "eine App statt vieler Programme, Lizenzen und Zettel": "one app instead of many programs, licences and paper notes",
