@@ -783,6 +783,8 @@ window.objektorSprache.en={t:{
 "Gewachsen aus dem täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Grown out of the daily operation of a large shopping centre. Every feature exists because it was missing there.",
 "Gültig für die Website objektor.at sowie für die App und die Weboberfläche der Software Objektor · Stand: November 2026": "Applies to the website objektor.at and to the app and web interface of the Objektor software · As of: November 2026",
 "Jeder stellt sich die Ansicht selbst ein. Browser und Handy merken sich ihre Wahl getrennt — am PC dunkel, am Handy hell.": "Everyone sets up their own view. Browser and phone remember their choice separately — dark on the PC, light on the phone.",
+"Darstellung nach Kundenwunsch": "Appearance to suit each customer",
+"Die Darstellung passen wir individuell nach Kundenwunsch an.": "We adapt the look individually to each customer's wishes.",
 "Es werden keine Standortdaten erhoben, kein Nutzungsverhalten zu Werbezwecken ausgewertet und keine Daten an Dritte verkauft.": "No location data is collected, no usage behaviour is analysed for advertising purposes and no data is sold to third parties.",
 "Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir weder verpflichtet noch bereit.": "We are neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.",
 "Es bestehen die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.": "You have the right to access, rectification, erasure, restriction of processing, data portability and objection.",

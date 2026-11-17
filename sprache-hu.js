@@ -1075,6 +1075,8 @@ window.objektorSprache.hu={t:{
 "Gültig für die Website objektor.at sowie für die App und die Weboberfläche der Software Objektor · Stand: November 2026": "Érvényes az objektor.at weboldalra, valamint az Objektor szoftver appjára és webes felületére · Állapot: 2026. november",
 "„Gereinigt (QR-Scan)“ antippen = so, als hätte die Reinigung den QR-Code am WC gescannt: die Zahl fängt wieder bei 0 an.": "„Kitakarítva (QR-beolvasás)” megérintése = mintha a takarító beolvasta volna a QR-kódot a WC-nél: a szám újra 0-ról indul.",
 "Jeder stellt sich die Ansicht selbst ein. Browser und Handy merken sich ihre Wahl getrennt — am PC dunkel, am Handy hell.": "Mindenki maga állítja be a nézetet. A böngésző és a telefon külön jegyzi meg — PC-n sötét, telefonon világos.",
+"Darstellung nach Kundenwunsch": "Megjelenés az ügyfél kívánsága szerint",
+"Die Darstellung passen wir individuell nach Kundenwunsch an.": "A megjelenést egyedileg, az ügyfél kívánsága szerint alakítjuk.",
 "Es werden keine Standortdaten erhoben, kein Nutzungsverhalten zu Werbezwecken ausgewertet und keine Daten an Dritte verkauft.": "Nem gyűjtünk helyadatokat, nem értékeljük a használatot reklámcélokra, és nem adunk el adatokat harmadik félnek.",
 "Parkhaus antippen: Ebenen ansehen und reservieren (z. B. für eine Veranstaltung) – reservierte Ebenen zählen nicht mehr als frei.": "Parkolóházra koppintás: szintek megtekintése és foglalása (pl. rendezvényre) – a foglalt szintek már nem számítanak szabadnak.",
 "Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir weder verpflichtet noch bereit.": "Fogyasztói békéltető testület előtti vitarendezési eljárásban nem vagyunk kötelesek és nem is kívánunk részt venni.",

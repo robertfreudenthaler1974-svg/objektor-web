@@ -783,6 +783,8 @@ window.objektorSprache.cs={t:{
 "Gewachsen aus dem täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Vyrostlo z každodenního provozu velkého nákupního centra. Každá funkce existuje, protože tam chyběla.",
 "Gültig für die Website objektor.at sowie für die App und die Weboberfläche der Software Objektor · Stand: November 2026": "Platí pro web objektor.at a pro aplikaci a webové rozhraní softwaru Objektor · Stav: listopad 2026",
 "Jeder stellt sich die Ansicht selbst ein. Browser und Handy merken sich ihre Wahl getrennt — am PC dunkel, am Handy hell.": "Každý si nastaví vlastní zobrazení. Prohlížeč a mobil si volbu pamatují zvlášť — na PC tmavě, v mobilu světle.",
+"Darstellung nach Kundenwunsch": "Vzhled podle přání zákazníka",
+"Die Darstellung passen wir individuell nach Kundenwunsch an.": "Zobrazení individuálně přizpůsobíme přání zákazníka.",
 "Es werden keine Standortdaten erhoben, kein Nutzungsverhalten zu Werbezwecken ausgewertet und keine Daten an Dritte verkauft.": "Nesbírají se žádné údaje o poloze, nevyhodnocuje se chování uživatelů pro reklamu a žádná data se neprodávají třetím stranám.",
 "Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir weder verpflichtet noch bereit.": "Nejsme povinni ani ochotni účastnit se řízení o řešení sporů před spotřebitelským rozhodčím orgánem.",
 "Es bestehen die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.": "Máte právo na přístup, opravu, výmaz, omezení zpracování, přenositelnost údajů a námitku.",

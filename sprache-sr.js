@@ -1075,6 +1075,8 @@ window.objektorSprache.sr={t:{
 "Gültig für die Website objektor.at sowie für die App und die Weboberfläche der Software Objektor · Stand: November 2026": "Važi za sajt objektor.at kao i za aplikaciju i veb interfejs softvera Objektor · Stanje: novembar 2026.",
 "„Gereinigt (QR-Scan)“ antippen = so, als hätte die Reinigung den QR-Code am WC gescannt: die Zahl fängt wieder bei 0 an.": "Dodir na „Očišćeno (QR skeniranje)“ = kao da je čistač skenirao QR kod na WC-u: broj ponovo kreće od 0.",
 "Jeder stellt sich die Ansicht selbst ein. Browser und Handy merken sich ihre Wahl getrennt — am PC dunkel, am Handy hell.": "Svako sam podešava prikaz. Pregledač i telefon pamte izbor odvojeno — na računaru tamno, na telefonu svetlo.",
+"Darstellung nach Kundenwunsch": "Izgled po želji kupca",
+"Die Darstellung passen wir individuell nach Kundenwunsch an.": "Prikaz individualno prilagođavamo željama kupca.",
 "Es werden keine Standortdaten erhoben, kein Nutzungsverhalten zu Werbezwecken ausgewertet und keine Daten an Dritte verkauft.": "Ne prikupljaju se podaci o lokaciji, ne analizira se korišćenje u reklamne svrhe i ne prodaju se podaci trećim licima.",
 "Parkhaus antippen: Ebenen ansehen und reservieren (z. B. für eine Veranstaltung) – reservierte Ebenen zählen nicht mehr als frei.": "Dodir na garažu: pregled i rezervacija nivoa (npr. za događaj) – rezervisani nivoi se više ne računaju kao slobodni.",
 "Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir weder verpflichtet noch bereit.": "Nismo obavezni niti spremni da učestvujemo u postupku rešavanja sporova pred potrošačkim arbitražnim telom.",
