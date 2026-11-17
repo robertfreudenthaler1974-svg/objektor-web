@@ -45,7 +45,7 @@ window.objektorSprache.it={t:{
 "Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.": "I guasti arrivano subito al posto giusto, gli allarmi arrivano sempre e ogni manutenzione è documentata. Invece di tanti programmi e foglietti: BDS su smartphone, tablet e nel browser.",
 "Demo-Termin vereinbaren": "Prenotare una demo",
 "Selbst ausprobieren": "Provare da soli",
-"Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Nato nella gestione quotidiana di un grande centro commerciale. Ogni funzione esiste perché lì mancava.",
+"Nicht am Schreibtisch erdacht: BDS ist im täglichen Betrieb eines großen Einkaufszentrums gewachsen – und jede Funktion musste sich dort bewähren.": "Non è nato a una scrivania: BDS è cresciuto nella gestione quotidiana di un grande centro commerciale – e ogni funzione ha dovuto dimostrare lì il suo valore.",
 "WAS SICH ÄNDERT": "COSA CAMBIA",
 "Drei Probleme, die BDS im Alltag löst": "Tre problemi quotidiani che BDS risolve",
 "Nicht noch eine Funktionsliste, sondern was danach anders ist.": "Non l'ennesimo elenco di funzioni, ma ciò che cambia dopo.",

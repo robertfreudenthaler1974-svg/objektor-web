@@ -45,7 +45,7 @@ window.objektorSprache.cs={t:{
 "Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.": "Poruchy se ihned dostanou na správné místo, alarmy spolehlivě dorazí a každá údržba je doložitelná. Místo mnoha programů a papírků: BDS v mobilu, na tabletu a v prohlížeči.",
 "Demo-Termin vereinbaren": "Domluvit ukázku",
 "Selbst ausprobieren": "Vyzkoušet si sami",
-"Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Vzniklo v každodenním provozu velkého nákupního centra. Každá funkce existuje, protože tam chyběla.",
+"Nicht am Schreibtisch erdacht: BDS ist im täglichen Betrieb eines großen Einkaufszentrums gewachsen – und jede Funktion musste sich dort bewähren.": "Nevzniklo u psacího stolu: BDS vyrostlo z každodenního provozu velkého nákupního centra – a každá funkce se tam musela osvědčit.",
 "WAS SICH ÄNDERT": "CO SE ZMĚNÍ",
 "Drei Probleme, die BDS im Alltag löst": "Tři každodenní problémy, které BDS řeší",
 "Nicht noch eine Funktionsliste, sondern was danach anders ist.": "Ne další seznam funkcí, ale co je potom jinak.",

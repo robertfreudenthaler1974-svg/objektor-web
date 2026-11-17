@@ -45,7 +45,7 @@ window.objektorSprache.sr={t:{
 "Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.": "Kvarovi odmah stižu na pravo mesto, alarmi pouzdano stižu, a svako održavanje je dokazivo. Umesto mnogo programa i papirića: BDS na telefonu, tabletu i u pregledaču.",
 "Demo-Termin vereinbaren": "Zakažite demonstraciju",
 "Selbst ausprobieren": "Isprobajte sami",
-"Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Nastalo u svakodnevnom radu velikog tržnog centra. Svaka funkcija postoji jer je tamo nedostajala.",
+"Nicht am Schreibtisch erdacht: BDS ist im täglichen Betrieb eines großen Einkaufszentrums gewachsen – und jede Funktion musste sich dort bewähren.": "Nije osmišljen za stolom: BDS je izrastao iz svakodnevnog rada velikog tržnog centra – i svaka funkcija je morala tamo da se dokaže.",
 "WAS SICH ÄNDERT": "ŠTA SE MENJA",
 "Drei Probleme, die BDS im Alltag löst": "Tri svakodnevna problema koja BDS rešava",
 "Nicht noch eine Funktionsliste, sondern was danach anders ist.": "Ne još jedna lista funkcija, već ono što je posle drugačije.",

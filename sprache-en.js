@@ -45,7 +45,7 @@ window.objektorSprache.en={t:{
 "Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.": "Faults go straight to the right place, alarms reliably get through, and every maintenance job is documented. Instead of many programs and slips of paper: BDS on the phone, tablet and in the browser.",
 "Demo-Termin vereinbaren": "Book a demo",
 "Selbst ausprobieren": "Try it yourself",
-"Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Not designed at a desk: BDS grew out of the daily operation of a large shopping centre – and every feature had to prove itself there.",
+"Nicht am Schreibtisch erdacht: BDS ist im täglichen Betrieb eines großen Einkaufszentrums gewachsen – und jede Funktion musste sich dort bewähren.": "Not designed at a desk: BDS grew out of the daily operation of a large shopping centre – and every feature had to prove itself there.",
 "WAS SICH ÄNDERT": "WHAT CHANGES",
 "Drei Probleme, die BDS im Alltag löst": "Three everyday problems BDS solves",
 "Nicht noch eine Funktionsliste, sondern was danach anders ist.": "Not another feature list, but what is different afterwards.",

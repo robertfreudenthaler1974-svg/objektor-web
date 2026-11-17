@@ -45,7 +45,7 @@ window.objektorSprache.hu={t:{
 "Störungen landen sofort am richtigen Platz, Alarme kommen sicher an, und jede Wartung ist nachweisbar. Statt vieler Programme und Zettel: BDS am Handy, Tablet und im Browser.": "A hibák azonnal a megfelelő helyre kerülnek, a riasztások biztosan megérkeznek, és minden karbantartás igazolható. Sok program és cetli helyett: BDS telefonon, tableten és böngészőben.",
 "Demo-Termin vereinbaren": "Bemutató egyeztetése",
 "Selbst ausprobieren": "Próbálja ki maga",
-"Entstanden im täglichen Betrieb eines großen Einkaufszentrums. Jede Funktion gibt es, weil sie dort gefehlt hat.": "Egy nagy bevásárlóközpont mindennapi üzemeltetéséből született. Minden funkció azért létezik, mert ott hiányzott.",
+"Nicht am Schreibtisch erdacht: BDS ist im täglichen Betrieb eines großen Einkaufszentrums gewachsen – und jede Funktion musste sich dort bewähren.": "Nem íróasztal mellett született: a BDS egy nagy bevásárlóközpont mindennapi üzemeltetéséből nőtt ki – és minden funkciónak ott kellett bizonyítania.",
 "WAS SICH ÄNDERT": "MI VÁLTOZIK",
 "Drei Probleme, die BDS im Alltag löst": "Három mindennapi probléma, amelyet a BDS megold",
 "Nicht noch eine Funktionsliste, sondern was danach anders ist.": "Nem újabb funkciólista, hanem az, ami utána másképp lesz.",
